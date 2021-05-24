@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{530:function(n,e,t){"use strict";t.r(e);var o=t(39),a=t.n(o),i=t(0),l=t.n(i),r=t(160);e.default=function(n){return l.a.createElement("div",null,l.a.createElement(r.PortalLogin,a()({},n,{loginGoRouter:"/work",fetchMethod:"get",languageUrl:"/plugin/getPluginConfig"})))}}}]);

@@ -1,0 +1,1 @@
+.work{max-width:1200px;margin:auto}.work,.work-card{display:flex;align-items:center}.work-card{flex-direction:column;width:250px;height:200px;box-shadow:0 0 5px 5px #ccc;margin:20px}.work-card img{width:80px;height:80px;object-fit:contain}

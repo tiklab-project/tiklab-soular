@@ -3,8 +3,8 @@ if [ ! -n "$JAVA_HOME" ]; then
     export JAVA_HOME="/export/server/jdk1.8.0_141"
 fi
 
-APP_MAIN="com.darthcloud.platform.AccountSaasApplication"
 #APP_MAIN=${application.main.class}
+APP_MAIN="com.darthcloud.portal.PortalApplication"
 
 PID=0
 getPID(){

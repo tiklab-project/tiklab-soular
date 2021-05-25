@@ -1,23 +1,23 @@
-package com.darthcloud.account;
+package com.darthcloud.portal;
 
 import com.darthcloud.apibox.client.annotation.EnableApiboxClient;
-import com.darthcloud.gateway.annotation.EnableGateway;
-import com.darthcloud.message.annotation.EnableMessageServer;
-import com.darthcloud.orga.annotation.EnableOrgaServer;
-import com.darthcloud.plugin.annotation.EnablePluginServer;
-import com.darthcloud.privilege.annotation.EnablePrivilegeServer;
 import org.springframework.context.annotation.Configuration;
+import com.darthcloud.user.annotation.EnableUserServer;
+import com.darthcloud.privilege.annotation.EnablePrivilegeServer;
+import com.darthcloud.message.annotation.EnableMessageServer;
+import com.darthcloud.plugin.annotation.EnablePluginServer;
+import com.darthcloud.gateway.annotation.EnableGateway;
 
 /**
  * TccCommonApplication
  */
 @Configuration
-@EnableOrgaServer
+@EnableUserServer
 @EnablePrivilegeServer
 @EnableMessageServer
 @EnablePluginServer
 @EnableGateway
 @EnableApiboxClient
-public class AccountServerAutoConfiguration {
+public class PortalServerAutoConfiguration {
 }
 

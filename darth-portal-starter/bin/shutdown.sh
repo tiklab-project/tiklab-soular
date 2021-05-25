@@ -4,7 +4,7 @@ if [ ! -n "$JAVA_HOME" ]; then
 fi
 
 #APP_MAIN=${application.main.class}
-APP_MAIN="com.darthcloud.platform.AccountSaasApplication"
+APP_MAIN="com.darthcloud.portal.PortalApplication"
 
 PID=0
 getPID(){

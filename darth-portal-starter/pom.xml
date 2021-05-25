@@ -19,6 +19,11 @@
             <artifactId>darth-portal-server</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.darthcloud</groupId>
+            <artifactId>darth-portal-ui</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

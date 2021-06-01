@@ -6,5 +6,5 @@ target/
 *.iml
 plugins/
 doc/
-/darth-portal-server/src/main/resources/static/api/
+/darth-portal-distribution/src/main/resources/static/api/
 /darth-portal-starter/src/main/resources/static/api/

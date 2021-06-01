@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
  * TccCommonApplication
  */
 @SpringBootApplication
-@PropertySource(value = "classpath:application-${env:local}.properties")
+@PropertySource(value = "classpath:application.properties")
 @EnablePortalServer
 public class PortalApplication {
 

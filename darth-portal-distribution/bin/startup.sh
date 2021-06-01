@@ -15,7 +15,7 @@ APP_MAIN="com.darthcloud.portal.PortalInlineApplication"
 
 DIR=$(cd "$(dirname "$0")"; pwd)
 APP_HOME=${DIR}/..
-APP_CONFIG=${APP_HOME}/conf/application-local.properties
+APP_CONFIG=${APP_HOME}/conf/application.properties
 APP_LOG=${APP_HOME}/logs
 
 JAVA_OPTS="$JAVA_OPTS -server -Xms512m -Xmx512m -Xmn128m -XX:ParallelGCThreads=20 -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=850 -XX:+PrintGCDetails -Xloggc:$APP_LOG/gc.log -Dfile.encoding=UTF-8"

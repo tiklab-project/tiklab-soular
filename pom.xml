@@ -18,6 +18,7 @@
     <modules>
         <module>darth-portal-server</module>
         <module>darth-portal-ui</module>
+        <module>darth-portal-distribution</module>
         <module>darth-portal-starter</module>
     </modules>
 

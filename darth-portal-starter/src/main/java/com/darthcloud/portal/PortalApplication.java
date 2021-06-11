@@ -13,12 +13,12 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 @PropertySource(value = "classpath:application-${env:local}.properties")
 @EnablePortalServer
-public class PortalInlineApplication {
+public class PortalApplication {
 
-    public static final Logger logger = LoggerFactory.getLogger(PortalInlineApplication.class);
+    public static final Logger logger = LoggerFactory.getLogger(PortalApplication.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(PortalInlineApplication.class, args);
+        SpringApplication.run(PortalApplication.class, args);
     }
 
 }

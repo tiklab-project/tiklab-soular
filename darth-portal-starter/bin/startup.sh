@@ -11,7 +11,7 @@ fi
 #       系统运行参数
 #-------------------------------------------------------------------------------------------------------------
 #application.main.class="com.darthcloud.platform.AccountSaasApplication"
-APP_MAIN="com.darthcloud.portal.PortalInlineApplication"
+APP_MAIN="com.darthcloud.portal.PortalApplication"
 
 DIR=$(cd "$(dirname "$0")"; pwd)
 APP_HOME=${DIR}/..

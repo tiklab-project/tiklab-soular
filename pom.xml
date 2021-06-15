@@ -10,16 +10,16 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <groupId>com.darthcloud</groupId>
-    <artifactId>darth-portal</artifactId>
+    <artifactId>darth-sso</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-        <module>darth-portal-server</module>
-        <module>darth-portal-ui</module>
-        <module>darth-portal-distribution</module>
-        <module>darth-portal-starter</module>
+        <module>darth-sso-server</module>
+        <module>darth-sso-ui</module>
+        <module>darth-sso-distribution</module>
+        <module>darth-sso-starter</module>
     </modules>
 
 </project>

@@ -6,22 +6,22 @@
 
     <parent>
         <groupId>com.darthcloud</groupId>
-        <artifactId>darth-portal</artifactId>
+        <artifactId>darth-sso</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>darth-portal-distribution</artifactId>
+    <artifactId>darth-sso-distribution</artifactId>
     <name>${project.artifactId}</name>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>com.darthcloud</groupId>
-            <artifactId>darth-portal-server</artifactId>
+            <artifactId>darth-sso-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.darthcloud</groupId>
-            <artifactId>darth-portal-ui</artifactId>
+            <artifactId>darth-sso-ui</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -48,7 +48,7 @@
                             <descriptors>
                                 <descriptor>assembly/distribution.xml</descriptor>
                             </descriptors>
-                            <finalName>darth-portal-${project.version}</finalName>
+                            <finalName>darth-sso-${project.version}</finalName>
                         </configuration>
                         <phase>package</phase>
                         <goals>

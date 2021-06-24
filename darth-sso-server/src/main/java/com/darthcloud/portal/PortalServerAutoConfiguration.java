@@ -16,7 +16,7 @@ import com.darthcloud.gateway.annotation.EnableGateway;
 @EnablePrivilegeServer
 @EnableMessageServer
 @EnablePluginServer
-@EnableGateway
+//@EnableGateway
 @EnableApiboxClient
 public class PortalServerAutoConfiguration {
 }

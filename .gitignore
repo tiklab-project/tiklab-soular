@@ -6,5 +6,6 @@ target/
 *.iml
 plugins/
 doc/
+APP_HOME_IS_UNDEFINED/
 /darth-sso-distribution/src/main/resources/static/api/
 /darth-sso-starter/src/main/resources/static/api/

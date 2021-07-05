@@ -6,21 +6,12 @@
 
     <parent>
         <groupId>com.doublekit</groupId>
-        <artifactId>doublekit-dependencies</artifactId>
+        <artifactId>doublekit-sso</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.doublekit</groupId>
-    <artifactId>doublekit-sso</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>doublekit-sso-ui</artifactId>
     <name>${project.artifactId}</name>
     <version>1.0.0-SNAPSHOT</version>
-
-    <modules>
-        <module>doublekit-sso-server</module>
-        <module>doublekit-sso-ui</module>
-        <module>doublekit-sso-distribution</module>
-        <module>doublekit-sso-starter</module>
-    </modules>
 
 </project>
 

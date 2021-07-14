@@ -1,6 +1,7 @@
 package com.doublekit.portal;
 
 import com.doublekit.apibox.client.annotation.EnableApiboxClient;
+import com.doublekit.toolkit.annotation.EnableToolkitServer;
 import org.springframework.context.annotation.Configuration;
 import com.doublekit.user.annotation.EnableUserServer;
 import com.doublekit.privilege.annotation.EnablePrivilegeServer;
@@ -15,6 +16,7 @@ import com.doublekit.plugin.annotation.EnablePluginServer;
 @EnablePrivilegeServer
 @EnableMessageServer
 @EnablePluginServer
+@EnableToolkitServer
 //@EnableGateway
 @EnableApiboxClient
 public class PortalServerAutoConfiguration {

@@ -10,16 +10,16 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <groupId>com.doublekit</groupId>
-    <artifactId>doublekit-portal</artifactId>
+    <artifactId>doublekit-portal-ce</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-        <module>doublekit-portal-server</module>
-        <module>doublekit-portal-ui</module>
-        <module>doublekit-portal-distribution</module>
-        <module>doublekit-portal-starter</module>
+        <module>doublekit-portal-ce-server</module>
+        <module>doublekit-portal-ce-ui</module>
+        <module>doublekit-portal-ce-distribution</module>
+        <module>doublekit-portal-ce-starter</module>
     </modules>
 
 </project>

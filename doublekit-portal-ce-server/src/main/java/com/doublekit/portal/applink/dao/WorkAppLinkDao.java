@@ -5,9 +5,9 @@ import com.doublekit.dal.jpa.JpaTemplate;
 import com.doublekit.dal.jpa.builder.deletelist.condition.DeleteCondition;
 import com.doublekit.dal.jpa.builder.querylist.condition.QueryCondition;
 import com.doublekit.dal.jpa.builder.querylist.conditionbuilder.QueryBuilders;
+import com.doublekit.portal.applink.entity.WorkAppLinkPo;
+import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 import com.doublekit.toolkit.applink.entity.AppLinkPo;
-import com.doublekit.toolkit.applink.entity.WorkAppLinkPo;
-import com.doublekit.toolkit.applink.model.WorkAppLinkQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
 @Repository
 public class WorkAppLinkDao{
 
-    private static Logger logger = LoggerFactory.getLogger(com.doublekit.toolkit.applink.dao.WorkAppLinkDao.class);
+    private static Logger logger = LoggerFactory.getLogger(WorkAppLinkDao.class);
 
     @Autowired
     JpaTemplate jpaTemplate;

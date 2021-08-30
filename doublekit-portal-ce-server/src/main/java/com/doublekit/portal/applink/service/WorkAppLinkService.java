@@ -1,8 +1,8 @@
 package com.doublekit.portal.applink.service;
 
 import com.doublekit.common.Pagination;
-import com.doublekit.toolkit.applink.model.WorkAppLink;
-import com.doublekit.toolkit.applink.model.WorkAppLinkQuery;
+import com.doublekit.portal.applink.model.WorkAppLink;
+import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

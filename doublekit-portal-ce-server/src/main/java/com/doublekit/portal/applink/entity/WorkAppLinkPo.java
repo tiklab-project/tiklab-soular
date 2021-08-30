@@ -8,7 +8,7 @@ import com.doublekit.dal.jpa.mapper.annotation.Table;
 
 import java.io.Serializable;
 
-@Table(name="tool_work_app_link")
+@Table(name="poo_work_app_link")
 public class WorkAppLinkPo implements Serializable {
 
     @Id

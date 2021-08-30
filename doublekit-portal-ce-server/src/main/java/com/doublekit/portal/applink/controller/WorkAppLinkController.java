@@ -5,9 +5,9 @@ import com.doublekit.apibox.annotation.ApiMethod;
 import com.doublekit.apibox.annotation.ApiParam;
 import com.doublekit.common.Pagination;
 import com.doublekit.common.Result;
-import com.doublekit.toolkit.applink.model.WorkAppLink;
-import com.doublekit.toolkit.applink.model.WorkAppLinkQuery;
-import com.doublekit.toolkit.applink.service.WorkAppLinkService;
+import com.doublekit.portal.applink.model.WorkAppLink;
+import com.doublekit.portal.applink.model.WorkAppLinkQuery;
+import com.doublekit.portal.applink.service.WorkAppLinkService;
 import com.doublekit.toolkit.sort.model.Exchange;
 import com.doublekit.toolkit.sort.service.ExchangeService;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ import java.util.List;
 @Api(name = "WorkAppLinkController",desc = "工作台应用链接管理")
 public class WorkAppLinkController {
 
-    private static Logger logger = LoggerFactory.getLogger(com.doublekit.toolkit.applink.controller.WorkAppLinkController.class);
+    private static Logger logger = LoggerFactory.getLogger(WorkAppLinkController.class);
 
     @Autowired
     private WorkAppLinkService workAppLinkService;

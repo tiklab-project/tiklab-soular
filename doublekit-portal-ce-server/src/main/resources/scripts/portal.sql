@@ -1,4 +1,4 @@
-CREATE TABLE tool_work_app_link(
+CREATE TABLE poo_work_app_link(
         id VARCHAR(32) PRIMARY KEY,
         app_type VARCHAR(32) NOT NULL,
         grouper VARCHAR(32) NOT NULL,

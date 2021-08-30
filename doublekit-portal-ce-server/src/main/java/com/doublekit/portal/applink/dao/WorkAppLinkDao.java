@@ -5,7 +5,7 @@ import com.doublekit.dal.jpa.JpaTemplate;
 import com.doublekit.dal.jpa.builder.deletelist.condition.DeleteCondition;
 import com.doublekit.dal.jpa.builder.querylist.condition.QueryCondition;
 import com.doublekit.dal.jpa.builder.querylist.conditionbuilder.QueryBuilders;
-import com.doublekit.portal.applink.entity.WorkAppLinkPo;
+import com.doublekit.portal.applink.entity.WorkAppLinkEntity;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 import com.doublekit.toolkit.applink.entity.AppLinkPo;
 import org.slf4j.Logger;
@@ -28,15 +28,15 @@ public class WorkAppLinkDao{
 
     /**
      * 创建认证配置
-     * @param workAppLinkPo
+     * @param workAppLinkEntity
      * @return
      */
-    public String createWorkAppLink(WorkAppLinkPo workAppLinkPo) {
+    public String createWorkAppLink(WorkAppLinkEntity workAppLinkEntity) {
         //设置序号
         Integer max = findMax();
-        workAppLinkPo.setSort(max+1);
+        workAppLinkEntity.setSort(max+1);
 
-        return jpaTemplate.save(workAppLinkPo,String.class);
+        return jpaTemplate.save(workAppLinkEntity,String.class);
     }
 
     Integer findMax(){
@@ -53,10 +53,10 @@ public class WorkAppLinkDao{
 
     /**
      * 更新认证配置
-     * @param workAppLinkPo
+     * @param workAppLinkEntity
      */
-    public void updateWorkAppLink(WorkAppLinkPo workAppLinkPo){
-        jpaTemplate.update(workAppLinkPo);
+    public void updateWorkAppLink(WorkAppLinkEntity workAppLinkEntity){
+        jpaTemplate.update(workAppLinkEntity);
     }
 
     /**
@@ -64,11 +64,11 @@ public class WorkAppLinkDao{
      * @param id
      */
     public void deleteWorkAppLink(String id){
-        jpaTemplate.delete(WorkAppLinkPo.class,id);
+        jpaTemplate.delete(WorkAppLinkEntity.class,id);
     }
 
     public void deleteWorkAppLink(DeleteCondition deleteCondition){
-        jpaTemplate.delete(WorkAppLinkPo.class,deleteCondition);
+        jpaTemplate.delete(WorkAppLinkEntity.class,deleteCondition);
     }
 
     /**
@@ -76,27 +76,27 @@ public class WorkAppLinkDao{
      * @param id
      * @return
      */
-    public WorkAppLinkPo findWorkAppLink(String id){
-        return jpaTemplate.findOne(WorkAppLinkPo.class,id);
+    public WorkAppLinkEntity findWorkAppLink(String id){
+        return jpaTemplate.findOne(WorkAppLinkEntity.class,id);
     }
 
     /**
     * findAllWorkAppLink
     * @return
     */
-    public List<WorkAppLinkPo> findAllWorkAppLink() {
-        return jpaTemplate.findAll(WorkAppLinkPo.class);
+    public List<WorkAppLinkEntity> findAllWorkAppLink() {
+        return jpaTemplate.findAll(WorkAppLinkEntity.class);
     }
 
-    public List<WorkAppLinkPo> findWorkAppLinkList(List<String> idList) {
-        return jpaTemplate.findList(WorkAppLinkPo.class,idList);
+    public List<WorkAppLinkEntity> findWorkAppLinkList(List<String> idList) {
+        return jpaTemplate.findList(WorkAppLinkEntity.class,idList);
     }
 
-    public List<WorkAppLinkPo> findWorkAppLinkList(WorkAppLinkQuery workAppLinkQuery) {
-        return jpaTemplate.findList(WorkAppLinkPo.class,workAppLinkQuery);
+    public List<WorkAppLinkEntity> findWorkAppLinkList(WorkAppLinkQuery workAppLinkQuery) {
+        return jpaTemplate.findList(WorkAppLinkEntity.class,workAppLinkQuery);
     }
 
-    public Pagination<WorkAppLinkPo> findWorkAppLinkPage(WorkAppLinkQuery workAppLinkQuery) {
-        return jpaTemplate.findPage(WorkAppLinkPo.class,workAppLinkQuery);
+    public Pagination<WorkAppLinkEntity> findWorkAppLinkPage(WorkAppLinkQuery workAppLinkQuery) {
+        return jpaTemplate.findPage(WorkAppLinkEntity.class,workAppLinkQuery);
     }
 }

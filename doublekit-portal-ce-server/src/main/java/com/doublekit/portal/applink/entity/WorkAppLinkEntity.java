@@ -9,7 +9,7 @@ import com.doublekit.dal.jpa.mapper.annotation.Table;
 import java.io.Serializable;
 
 @Table(name="poo_work_app_link")
-public class WorkAppLinkPo implements Serializable {
+public class WorkAppLinkEntity implements Serializable {
 
     @Id
     @GeneratorValue

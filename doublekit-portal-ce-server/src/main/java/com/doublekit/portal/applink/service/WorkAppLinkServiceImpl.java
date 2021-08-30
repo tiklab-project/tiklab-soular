@@ -2,12 +2,12 @@ package com.doublekit.portal.applink.service;
 
 import com.doublekit.beans.BeanMapper;
 import com.doublekit.common.Pagination;
+import com.doublekit.common.PaginationBuilder;
 import com.doublekit.join.join.JoinQuery;
 import com.doublekit.portal.applink.dao.WorkAppLinkDao;
-import com.doublekit.portal.applink.entity.WorkAppLinkPo;
+import com.doublekit.portal.applink.entity.WorkAppLinkEntity;
 import com.doublekit.portal.applink.model.WorkAppLink;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,16 +29,16 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
     @Override
     public String createWorkAppLink(@NotNull @Valid WorkAppLink workAppLink) {
-        WorkAppLinkPo workAppLinkPo = BeanMapper.map(workAppLink, WorkAppLinkPo.class);
+        WorkAppLinkEntity workAppLinkEntity = BeanMapper.map(workAppLink, WorkAppLinkEntity.class);
 
-        return workAppLinkDao.createWorkAppLink(workAppLinkPo);
+        return workAppLinkDao.createWorkAppLink(workAppLinkEntity);
     }
 
     @Override
     public void updateWorkAppLink(@NotNull @Valid WorkAppLink workAppLink) {
-        WorkAppLinkPo workAppLinkPo = BeanMapper.map(workAppLink, WorkAppLinkPo.class);
+        WorkAppLinkEntity workAppLinkEntity = BeanMapper.map(workAppLink, WorkAppLinkEntity.class);
 
-        workAppLinkDao.updateWorkAppLink(workAppLinkPo);
+        workAppLinkDao.updateWorkAppLink(workAppLinkEntity);
     }
 
     @Override
@@ -48,17 +48,17 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
     @Override
     public WorkAppLink findOne(String id) {
-        WorkAppLinkPo workAppLinkPo = workAppLinkDao.findWorkAppLink(id);
+        WorkAppLinkEntity workAppLinkEntity = workAppLinkDao.findWorkAppLink(id);
 
-        WorkAppLink workAppLink = BeanMapper.map(workAppLinkPo, WorkAppLink.class);
+        WorkAppLink workAppLink = BeanMapper.map(workAppLinkEntity, WorkAppLink.class);
         return workAppLink;
     }
 
     @Override
     public List<WorkAppLink> findList(List<String> idList) {
-        List<WorkAppLinkPo> workAppLinkPoList =  workAppLinkDao.findWorkAppLinkList(idList);
+        List<WorkAppLinkEntity> workAppLinkEntities =  workAppLinkDao.findWorkAppLinkList(idList);
 
-        List<WorkAppLink> workAppLinkList =  BeanMapper.mapList(workAppLinkPoList, WorkAppLink.class);
+        List<WorkAppLink> workAppLinkList =  BeanMapper.mapList(workAppLinkEntities, WorkAppLink.class);
         return workAppLinkList;
     }
 
@@ -72,9 +72,9 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
     @Override
     public List<WorkAppLink> findAllWorkAppLink() {
-        List<WorkAppLinkPo> workAppLinkPoList =  workAppLinkDao.findAllWorkAppLink();
+        List<WorkAppLinkEntity> workAppLinkEntities =  workAppLinkDao.findAllWorkAppLink();
 
-        List<WorkAppLink> workAppLinkList =  BeanMapper.mapList(workAppLinkPoList, WorkAppLink.class);
+        List<WorkAppLink> workAppLinkList =  BeanMapper.mapList(workAppLinkEntities, WorkAppLink.class);
 
         joinQuery.queryList(workAppLinkList);
         return workAppLinkList;
@@ -82,9 +82,9 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
     @Override
     public List<WorkAppLink> findWorkAppLinkList(WorkAppLinkQuery workAppLinkQuery) {
-        List<WorkAppLinkPo> workAppLinkPoList = workAppLinkDao.findWorkAppLinkList(workAppLinkQuery);
+        List<WorkAppLinkEntity> workAppLinkEntities = workAppLinkDao.findWorkAppLinkList(workAppLinkQuery);
 
-        List<WorkAppLink> workAppLinkList = BeanMapper.mapList(workAppLinkPoList, WorkAppLink.class);
+        List<WorkAppLink> workAppLinkList = BeanMapper.mapList(workAppLinkEntities, WorkAppLink.class);
 
         joinQuery.queryList(workAppLinkList);
 
@@ -93,16 +93,12 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
     @Override
     public Pagination<WorkAppLink> findWorkAppLinkPage(WorkAppLinkQuery workAppLinkQuery) {
-        Pagination<WorkAppLink> pg = new Pagination<>();
-
-        Pagination<WorkAppLinkPo> pagination = workAppLinkDao.findWorkAppLinkPage(workAppLinkQuery);
-        BeanUtils.copyProperties(pagination,pg);
+        Pagination<WorkAppLinkEntity> pagination = workAppLinkDao.findWorkAppLinkPage(workAppLinkQuery);
 
         List<WorkAppLink> workAppLinkList = BeanMapper.mapList(pagination.getDataList(), WorkAppLink.class);
 
         joinQuery.queryList(workAppLinkList);
 
-        pg.setDataList(workAppLinkList);
-        return pg;
+        return PaginationBuilder.build(pagination,workAppLinkList);
     }
 }

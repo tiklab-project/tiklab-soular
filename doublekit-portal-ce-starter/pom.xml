@@ -73,7 +73,7 @@
                     <artifactItems>
                         <artifactItem>
                             <groupId>com.doublekit</groupId>
-                            <artifactId>doublekit-pcc-user-language-en-plugin</artifactId>
+                            <artifactId>doublekit-prcc-user-language-en-plugin</artifactId>
                             <version>${project.version}</version>
                         </artifactItem>
                     </artifactItems>

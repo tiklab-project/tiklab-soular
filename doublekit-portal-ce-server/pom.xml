@@ -18,46 +18,41 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
         </dependency>
-        <!--doublekit common-->
+        <!--基础组件依赖-->
         <dependency>
             <groupId>com.doublekit</groupId>
             <artifactId>doublekit-gateway-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!--doublekit modules-->
+        <!--产品组件依赖-->
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcc-user-server</artifactId>
+            <artifactId>doublekit-prcc-user-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcc-eam-server</artifactId>
+            <artifactId>doublekit-prcc-eam-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcc-eam-authenticator</artifactId>
+            <artifactId>doublekit-prcc-eam-authenticator</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcc-privilege-server</artifactId>
+            <artifactId>doublekit-prcc-privilege-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcc-message-server</artifactId>
+            <artifactId>doublekit-prcc-plugin-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcc-plugin-server</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcc-toolkit-server</artifactId>
+            <artifactId>doublekit-prcc-toolkit-server</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

@@ -6,10 +6,10 @@
 
     <parent>
         <groupId>com.doublekit</groupId>
-        <artifactId>doublekit-portal-ce</artifactId>
+        <artifactId>doublekit-portal</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>doublekit-portal-ce-server</artifactId>
+    <artifactId>doublekit-portal-server</artifactId>
     <name>${project.artifactId}</name>
     <version>1.0.0-SNAPSHOT</version>
 

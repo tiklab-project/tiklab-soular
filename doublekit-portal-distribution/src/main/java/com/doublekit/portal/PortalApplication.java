@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 /**
- * TccCommonApplication
+ * PortalApplication
  */
 @SpringBootApplication
 @PropertySource(value = "classpath:application.properties")

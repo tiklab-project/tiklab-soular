@@ -11,7 +11,7 @@ fi
 #       系统运行参数
 #-------------------------------------------------------------------------------------------------------------
 #application.main.class="com.doublekit.platform.AccountSaasApplication"
-APP_MAIN="com.doublekit.portal.PortalApplication"
+APP_MAIN="com.doublekit.portal.PortalOnlineApplication"
 
 DIR=$(cd "$(dirname "$0")"; pwd)
 APP_HOME=${DIR}/..

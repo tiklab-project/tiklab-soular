@@ -4,7 +4,7 @@ if [ ! -n "$JAVA_HOME" ]; then
 fi
 
 #APP_MAIN=${application.main.class}
-APP_MAIN="com.doublekit.portal.PortalApplication"
+APP_MAIN="com.doublekit.portal.PortalOnlineApplication"
 
 PID=0
 getPID(){

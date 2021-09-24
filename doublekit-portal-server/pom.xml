@@ -27,32 +27,32 @@
         <!--产品组件依赖-->
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-prcc-user-server</artifactId>
+            <artifactId>doublekit-pcs-user-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-prcc-eam-server</artifactId>
+            <artifactId>doublekit-pcs-eam-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-prcc-eam-authenticator</artifactId>
+            <artifactId>doublekit-pcs-eam-authenticator</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-prcc-privilege-server</artifactId>
+            <artifactId>doublekit-pcs-privilege-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-prcc-plugin-server</artifactId>
+            <artifactId>doublekit-pcs-plugin-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-prcc-toolkit-server</artifactId>
+            <artifactId>doublekit-pcs-toolkit-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -3,7 +3,7 @@ package com.doublekit.portal.applink.service;
 import com.doublekit.beans.BeanMapper;
 import com.doublekit.common.Pagination;
 import com.doublekit.common.PaginationBuilder;
-import com.doublekit.join.join.JoinQuery;
+import com.doublekit.join.JoinTemplate;
 import com.doublekit.portal.applink.dao.WorkAppLinkDao;
 import com.doublekit.portal.applink.entity.WorkAppLinkEntity;
 import com.doublekit.portal.applink.model.WorkAppLink;
@@ -25,7 +25,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
     WorkAppLinkDao workAppLinkDao;
 
     @Autowired
-    JoinQuery joinQuery;
+    JoinTemplate joinTemplate;
 
     @Override
     public String createWorkAppLink(@NotNull @Valid WorkAppLink workAppLink) {
@@ -66,7 +66,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
     public WorkAppLink findWorkAppLink(@NotNull String id) {
         WorkAppLink workAppLink = findOne(id);
 
-        joinQuery.queryOne(workAppLink);
+        joinTemplate.queryOne(workAppLink);
         return workAppLink;
     }
 
@@ -76,7 +76,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
         List<WorkAppLink> workAppLinkList =  BeanMapper.mapList(workAppLinkEntities, WorkAppLink.class);
 
-        joinQuery.queryList(workAppLinkList);
+        joinTemplate.queryList(workAppLinkList);
         return workAppLinkList;
     }
 
@@ -86,7 +86,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
         List<WorkAppLink> workAppLinkList = BeanMapper.mapList(workAppLinkEntities, WorkAppLink.class);
 
-        joinQuery.queryList(workAppLinkList);
+        joinTemplate.queryList(workAppLinkList);
 
         return workAppLinkList;
     }
@@ -97,7 +97,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
         List<WorkAppLink> workAppLinkList = BeanMapper.mapList(pagination.getDataList(), WorkAppLink.class);
 
-        joinQuery.queryList(workAppLinkList);
+        joinTemplate.queryList(workAppLinkList);
 
         return PaginationBuilder.build(pagination,workAppLinkList);
     }

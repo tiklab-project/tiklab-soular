@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 /**
- * TccCommonApplication
+ * PortalApplication
  */
 @SpringBootApplication
-@PropertySource(value = "classpath:application-${env:local}.properties")
 @EnablePortal
+@PropertySource(value = "classpath:application-${env:local}.properties")
 public class PortalApplication {
 
     public static final Logger logger = LoggerFactory.getLogger(PortalApplication.class);

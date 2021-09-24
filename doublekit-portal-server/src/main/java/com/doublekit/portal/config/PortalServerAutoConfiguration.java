@@ -1,14 +1,14 @@
 package com.doublekit.portal.config;
 
-import com.doublekit.datafly.starter.annotation.EnableDataFly;
+import com.doublekit.datafly.starter.annotation.DataFly;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * TccCommonApplication
+ * PortalServerAutoConfiguration
  */
 @Configuration
-@EnableDataFly(location = {"scripts/portal.sql"})
+@DataFly(locations = {"scripts/portal.sql"})
 @ComponentScan({"com.doublekit.portal"})
 public class PortalServerAutoConfiguration {
 }

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{810:function(n,e,t){"use strict";t.r(e);var o=t(41),r=t.n(o),a=t(0),u=t.n(a),c=t(191);e.default=function(n){return u.a.createElement("div",null,u.a.createElement(c.d,r()({},n,{loginGoRouter:"/work"})))}}}]);

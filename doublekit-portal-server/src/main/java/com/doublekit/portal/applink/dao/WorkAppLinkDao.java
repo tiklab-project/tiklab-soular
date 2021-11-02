@@ -7,7 +7,7 @@ import com.doublekit.dal.jpa.builder.querylist.condition.QueryCondition;
 import com.doublekit.dal.jpa.builder.querylist.conditionbuilder.QueryBuilders;
 import com.doublekit.portal.applink.entity.WorkAppLinkEntity;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
-import com.doublekit.toolkit.applink.entity.AppLinkPo;
+import com.doublekit.toolkit.applink.entity.AppLinkEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class WorkAppLinkDao{
                 .max("sort")
                 .get();
         //添加过滤条件
-        Integer max = jpaTemplate.findOne(AppLinkPo.class,queryCondition,Integer.class);
+        Integer max = jpaTemplate.findOne(AppLinkEntity.class,queryCondition,Integer.class);
         if(max == null){
             return 0;
         }

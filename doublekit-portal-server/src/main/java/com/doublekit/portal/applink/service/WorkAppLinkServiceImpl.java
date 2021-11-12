@@ -66,7 +66,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
     public WorkAppLink findWorkAppLink(@NotNull String id) {
         WorkAppLink workAppLink = findOne(id);
 
-        joinTemplate.queryOne(workAppLink);
+        joinTemplate.joinQuery(workAppLink);
         return workAppLink;
     }
 
@@ -76,7 +76,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
         List<WorkAppLink> workAppLinkList =  BeanMapper.mapList(workAppLinkEntities, WorkAppLink.class);
 
-        joinTemplate.queryList(workAppLinkList);
+        joinTemplate.joinQuery(workAppLinkList);
         return workAppLinkList;
     }
 
@@ -86,7 +86,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
         List<WorkAppLink> workAppLinkList = BeanMapper.mapList(workAppLinkEntities, WorkAppLink.class);
 
-        joinTemplate.queryList(workAppLinkList);
+        joinTemplate.joinQuery(workAppLinkList);
 
         return workAppLinkList;
     }
@@ -97,7 +97,7 @@ public class WorkAppLinkServiceImpl implements WorkAppLinkService {
 
         List<WorkAppLink> workAppLinkList = BeanMapper.mapList(pagination.getDataList(), WorkAppLink.class);
 
-        joinTemplate.queryList(workAppLinkList);
+        joinTemplate.joinQuery(workAppLinkList);
 
         return PaginationBuilder.build(pagination,workAppLinkList);
     }

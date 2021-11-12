@@ -1,8 +1,8 @@
 package com.doublekit.portal.applink.service;
 
 import com.doublekit.beans.BeanMapper;
-import com.doublekit.common.Pagination;
-import com.doublekit.common.PaginationBuilder;
+import com.doublekit.common.page.Pagination;
+import com.doublekit.common.page.PaginationBuilder;
 import com.doublekit.join.JoinTemplate;
 import com.doublekit.portal.applink.dao.WorkAppLinkDao;
 import com.doublekit.portal.applink.entity.WorkAppLinkEntity;

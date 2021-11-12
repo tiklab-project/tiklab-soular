@@ -1,13 +1,12 @@
 package com.doublekit.portal.applink.dao;
 
-import com.doublekit.common.Pagination;
+import com.doublekit.common.page.Pagination;
 import com.doublekit.dal.jpa.JpaTemplate;
-import com.doublekit.dal.jpa.builder.deletelist.condition.DeleteCondition;
-import com.doublekit.dal.jpa.builder.querylist.condition.QueryCondition;
-import com.doublekit.dal.jpa.builder.querylist.conditionbuilder.QueryBuilders;
+import com.doublekit.dal.jpa.criterial.QueryBuilders;
+import com.doublekit.dal.jpa.criterial.model.DeleteCondition;
+import com.doublekit.dal.jpa.criterial.model.QueryCondition;
 import com.doublekit.portal.applink.entity.WorkAppLinkEntity;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
-import com.doublekit.toolkit.applink.entity.AppLinkEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +39,11 @@ public class WorkAppLinkDao{
     }
 
     Integer findMax(){
-        QueryCondition queryCondition  = QueryBuilders.instance()
+        QueryCondition queryCondition  = QueryBuilders.createQuery(WorkAppLinkEntity.class)
                 .max("sort")
                 .get();
         //添加过滤条件
-        Integer max = jpaTemplate.findOne(AppLinkEntity.class,queryCondition,Integer.class);
+        Integer max = jpaTemplate.findObject(queryCondition,Integer.class);
         if(max == null){
             return 0;
         }
@@ -68,7 +67,7 @@ public class WorkAppLinkDao{
     }
 
     public void deleteWorkAppLink(DeleteCondition deleteCondition){
-        jpaTemplate.delete(WorkAppLinkEntity.class,deleteCondition);
+        jpaTemplate.delete(deleteCondition);
     }
 
     /**
@@ -93,10 +92,10 @@ public class WorkAppLinkDao{
     }
 
     public List<WorkAppLinkEntity> findWorkAppLinkList(WorkAppLinkQuery workAppLinkQuery) {
-        return jpaTemplate.findList(WorkAppLinkEntity.class,workAppLinkQuery);
+        return jpaTemplate.findList(workAppLinkQuery,WorkAppLinkEntity.class);
     }
 
     public Pagination<WorkAppLinkEntity> findWorkAppLinkPage(WorkAppLinkQuery workAppLinkQuery) {
-        return jpaTemplate.findPage(WorkAppLinkEntity.class,workAppLinkQuery);
+        return jpaTemplate.findPage(workAppLinkQuery,WorkAppLinkEntity.class);
     }
 }

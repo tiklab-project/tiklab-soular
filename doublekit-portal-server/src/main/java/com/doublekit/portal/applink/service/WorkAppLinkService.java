@@ -1,6 +1,6 @@
 package com.doublekit.portal.applink.service;
 
-import com.doublekit.common.Pagination;
+import com.doublekit.common.page.Pagination;
 import com.doublekit.portal.applink.model.WorkAppLink;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 

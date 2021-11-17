@@ -54,7 +54,10 @@ public class TicketFilterAutoConfiguration {
                         "/document/view",
                         "/comment/view",
                         "/share/verifyAuthCode",
-                        "/share/judgeAuthCode"
+                        "/share/judgeAuthCode",
+                        "/user/findAllUser",
+                        "/orga/findAllOrga",
+                        "/userOrga/findAllUserOrga"
                 })
                 .ignorePreUrls(new String[]{
                         "/services",

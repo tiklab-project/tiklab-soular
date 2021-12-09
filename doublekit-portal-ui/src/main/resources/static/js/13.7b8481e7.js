@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{818:function(e,n,t){"use strict";t.r(n);var i=t(41),o=t.n(i),c=t(0),r=t.n(c),a=t(54),s=t(190);n.default=Object(a.inject)(s.SYSTEM_ROLE_STORE)(Object(a.observer)((function(e){return r.a.createElement(s.PrivilegeDomainRole,o()({},e,{domainId:"111"}))})))}}]);

@@ -1,14 +1,15 @@
 package com.doublekit.portal.applink.entity;
 
 
-import com.doublekit.dal.jpa.mapper.annotation.Column;
-import com.doublekit.dal.jpa.mapper.annotation.GeneratorValue;
-import com.doublekit.dal.jpa.mapper.annotation.Id;
-import com.doublekit.dal.jpa.mapper.annotation.Table;
+import com.doublekit.beans.annotation.Mapper;
+import com.doublekit.dal.jpa.mapper.annotation.*;
+import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 
 import java.io.Serializable;
 
+@Entity
 @Table(name="poo_work_app_link")
+@Mapper(source = WorkAppLinkQuery.class,target = WorkAppLinkEntity.class)
 public class WorkAppLinkEntity implements Serializable {
 
     @Id

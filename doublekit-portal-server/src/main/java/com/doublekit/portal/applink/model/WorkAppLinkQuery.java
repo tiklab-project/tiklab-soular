@@ -12,7 +12,7 @@ import com.doublekit.dal.jpa.criteria.model.OrderBuilders;
 import java.util.List;
 
 @ApiModel
-@CriteriaQuery
+@CriteriaQuery(entityAlias = "WorkAppLinkEntity")
 public class WorkAppLinkQuery {
 
     @ApiProperty(name ="orderParams",desc = "排序参数")

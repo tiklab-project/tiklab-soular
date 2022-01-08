@@ -57,7 +57,13 @@ public class TicketFilterAutoConfiguration {
                         "/share/judgeAuthCode",
                         "/user/findAllUser",
                         "/orga/findAllOrga",
-                        "/userOrga/findAllUserOrga"
+                        "/userOrga/findAllUserOrga",
+
+
+                        "/dingdingcfg/findId",
+                        "/dingding/passport/login",
+                        "/dingding/passport/logout",
+                        "/dingding/passport/valid"
                 })
                 .ignorePreUrls(new String[]{
                         "/services",

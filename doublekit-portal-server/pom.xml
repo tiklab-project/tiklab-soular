@@ -19,15 +19,14 @@
             <artifactId>aspectjweaver</artifactId>
         </dependency>
         <!--基础组件依赖-->
-        <!--产品组件依赖-->
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcs-user-server</artifactId>
+            <artifactId>doublekit-pcs-user-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcs-eam-server</artifactId>
+            <artifactId>doublekit-pcs-eam-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

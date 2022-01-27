@@ -1,6 +1,7 @@
 package com.doublekit.portal.config;
 
 import com.doublekit.apibox.client.annotation.EnableApiboxClient;
+import com.doublekit.datafly.annotation.DataFly;
 import com.doublekit.message.annotation.EnableMessage;
 import com.doublekit.beans.starter.annotation.EnableBeans;
 import com.doublekit.dal.starter.annotation.EnableDal;
@@ -34,6 +35,13 @@ import org.springframework.context.annotation.Configuration;
 @EnableDcs
 @EnableDss
 @EnableMessage
+@DataFly({
+        "user",
+        "privilege",
+        "tool",
+        "message",
+        "portal"
+})
 @EnableDataFly
 @EnableRpcServer(basePackages = {"com.doublekit"})
 @EnableRpcClient(basePackages = {"com.doublekit"})

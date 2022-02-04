@@ -15,6 +15,7 @@ import com.doublekit.eam.client.annotation.EnableEamClient;
 import com.doublekit.plugin.annotation.EnablePluginServer;
 import com.doublekit.portal.annotation.EnablePortalServer;
 import com.doublekit.privilege.annotation.EnablePrivilegeServer;
+import com.doublekit.rpc.starter.annotation.EnableRpc;
 import com.doublekit.rpc.starter.annotation.EnableRpcClient;
 import com.doublekit.rpc.starter.annotation.EnableRpcServer;
 import com.doublekit.toolkit.annotation.EnableToolkitServer;
@@ -30,21 +31,13 @@ import org.springframework.context.annotation.Configuration;
 @EnableBeans
 @EnableWeb
 @EnableDal
+@EnableDataFly
 @EnableDsl
 @EnableDfs
 @EnableDcs
 @EnableDss
+@EnableRpc
 @EnableMessage
-@DataFly({
-        "user",
-        "privilege",
-        "tool",
-        "message",
-        "portal"
-})
-@EnableDataFly
-@EnableRpcServer(basePackages = {"com.doublekit"})
-@EnableRpcClient(basePackages = {"com.doublekit"})
 //pcs
 @EnableUserServer
 @EnableEamServer

@@ -100,7 +100,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -117,7 +116,12 @@
                     <artifactItems>
                         <artifactItem>
                             <groupId>com.doublekit</groupId>
-                            <artifactId>doublekit-pcs-user-language-en-plugin</artifactId>
+                            <artifactId>doublekit-pcs-user-plugin</artifactId>
+                            <version>${project.version}</version>
+                        </artifactItem>
+                        <artifactItem>
+                            <groupId>com.doublekit</groupId>
+                            <artifactId>doublekit-pcs-privilege-plugin</artifactId>
                             <version>${project.version}</version>
                         </artifactItem>
                     </artifactItems>
@@ -125,7 +129,6 @@
                     <outputDirectory>${project.basedir}/plugin</outputDirectory>
                 </configuration>
             </plugin>
-            -->
         </plugins>
     </build>
 

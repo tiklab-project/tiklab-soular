@@ -2,9 +2,9 @@ package com.doublekit.portal.applink.dao;
 
 import com.doublekit.common.page.Pagination;
 import com.doublekit.dal.jpa.JpaTemplate;
-import com.doublekit.dal.jpa.criterial.QueryBuilders;
-import com.doublekit.dal.jpa.criterial.model.DeleteCondition;
-import com.doublekit.dal.jpa.criterial.model.QueryCondition;
+import com.doublekit.dal.jpa.criterial.conditionbuilder.QueryBuilders;
+import com.doublekit.dal.jpa.criterial.condition.DeleteCondition;
+import com.doublekit.dal.jpa.criterial.condition.QueryCondition;
 import com.doublekit.portal.applink.entity.WorkAppLinkEntity;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 import org.slf4j.Logger;

@@ -2,7 +2,7 @@ package com.doublekit.portal.applink.entity;
 
 
 import com.doublekit.beans.annotation.Mapper;
-import com.doublekit.dal.jpa.mapper.annotation.*;
+import com.doublekit.dal.jpa.annotation.*;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 
 import java.io.Serializable;

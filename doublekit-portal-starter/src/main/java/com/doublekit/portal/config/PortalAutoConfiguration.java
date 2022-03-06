@@ -6,7 +6,7 @@ import com.doublekit.dal.starter.annotation.EnableDal;
 import com.doublekit.datafly.starter.annotation.EnableDataFly;
 import com.doublekit.dcs.starter.annotation.EnableDcs;
 import com.doublekit.dfs.starter.annotation.EnableDfs;
-import com.doublekit.dsl.starter.annotation.EnableDsl;
+import com.doublekit.join.starter.annotation.EnableJoin;
 import com.doublekit.dss.starter.annotation.EnableDss;
 import com.doublekit.eam.client.annotation.EnableEamClient;
 import com.doublekit.eam.server.annotation.EnableEamServer;
@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableWeb
 @EnableDal
 @EnableDataFly
-@EnableDsl
+@EnableJoin
 @EnableDfs
 @EnableDcs
 @EnableDss

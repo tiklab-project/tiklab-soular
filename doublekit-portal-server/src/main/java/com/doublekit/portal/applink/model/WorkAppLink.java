@@ -8,6 +8,7 @@ import com.doublekit.common.BaseModel;
 import javax.validation.constraints.NotNull;
 
 @ApiModel
+@Mapper(targetAlias = "WorkAppLinkEntity")
 public class WorkAppLink extends BaseModel {
 
     @ApiProperty(name="id",desc="唯一标识")

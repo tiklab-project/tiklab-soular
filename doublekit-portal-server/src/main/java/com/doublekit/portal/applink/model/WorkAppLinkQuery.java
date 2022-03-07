@@ -12,15 +12,12 @@ import com.doublekit.common.order.OrderBuilders;
 import java.util.List;
 
 @ApiModel
-@CriteriaQuery(entityAlias = "WorkAppLinkEntity")
 public class WorkAppLinkQuery {
 
     @ApiProperty(name ="orderParams",desc = "排序参数")
-    @OrderField
     private List<Order> orderParams = OrderBuilders.instance().desc("sort").get();
 
     @ApiProperty(name ="pageParam",desc = "分页参数")
-    @PageField
     private Page pageParam = new Page();
 
     public List<Order> getOrderParams() {

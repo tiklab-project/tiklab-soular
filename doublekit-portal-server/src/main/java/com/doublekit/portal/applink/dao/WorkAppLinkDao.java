@@ -92,10 +92,16 @@ public class WorkAppLinkDao{
     }
 
     public List<WorkAppLinkEntity> findWorkAppLinkList(WorkAppLinkQuery workAppLinkQuery) {
-        return jpaTemplate.findList(workAppLinkQuery,WorkAppLinkEntity.class);
+        QueryCondition queryCondition = QueryBuilders.createQuery(WorkAppLinkEntity.class)
+                .orders(workAppLinkQuery.getOrderParams()).get();
+
+        return jpaTemplate.findList(queryCondition,WorkAppLinkEntity.class);
     }
 
     public Pagination<WorkAppLinkEntity> findWorkAppLinkPage(WorkAppLinkQuery workAppLinkQuery) {
-        return jpaTemplate.findPage(workAppLinkQuery,WorkAppLinkEntity.class);
+        QueryCondition queryCondition = QueryBuilders.createQuery(WorkAppLinkEntity.class)
+                .pagination(workAppLinkQuery.getPageParam())
+                .orders(workAppLinkQuery.getOrderParams()).get();
+        return jpaTemplate.findPage(queryCondition,WorkAppLinkEntity.class);
     }
 }

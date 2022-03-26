@@ -13,9 +13,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GatewayFilterAutoConfiguration {
 
-    @Autowired
-    Authenticator authenticator;
-
     @Bean
     public FilterRegistrationBean ticketFilterRegistration(TicketHandler ticketHandler) {
         GatewayFilter gatewayFilter = new GatewayFilter();
@@ -28,6 +25,11 @@ public class GatewayFilterAutoConfiguration {
         registration.setOrder(2);
         return registration;
     }
+
+    //初始化TicketHandler
+
+    @Autowired
+    Authenticator authenticator;
 
     @Bean
     public TicketHandler ticketHandler(TicketConfig ticketConfig){

@@ -25,27 +25,27 @@
         <!--基础组件依赖-->
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcs-user-api</artifactId>
+            <artifactId>doublekit-user-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcs-eam-api</artifactId>
+            <artifactId>doublekit-eam-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcs-privilege-spring-boot-starter</artifactId>
+            <artifactId>doublekit-privilege-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcs-plugin-spring-boot-starter</artifactId>
+            <artifactId>doublekit-plugin-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.doublekit</groupId>
-            <artifactId>doublekit-pcs-toolkit-spring-boot-starter</artifactId>
+            <artifactId>doublekit-toolkit-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

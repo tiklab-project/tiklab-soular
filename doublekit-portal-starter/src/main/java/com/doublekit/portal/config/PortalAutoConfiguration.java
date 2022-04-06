@@ -11,7 +11,7 @@ import com.doublekit.dss.starter.annotation.EnableDss;
 import com.doublekit.eam.starter.annotation.EnableEamClient;
 import com.doublekit.eam.starter.annotation.EnableEamServer;
 import com.doublekit.message.starter.annotation.EnableMessage;
-import com.doublekit.plugin.starter.annotation.EnablePluginServer;
+import com.doublekit.pluginx.starter.annotation.EnablePluginServer;
 import com.doublekit.portal.annotation.EnablePortalServer;
 import com.doublekit.privilege.starter.annotation.EnablePrivilegeServer;
 import com.doublekit.rpc.starter.annotation.EnableRpc;

@@ -69,8 +69,6 @@ public class GatewayFilterAutoConfiguration {
                         "/user/findAllUser",
                         "/orga/findAllOrga",
                         "/userOrga/findAllUserOrga",
-
-
                         "/dingdingcfg/findId",
                         "/dingding/passport/login",
                         "/dingding/passport/logout",
@@ -79,7 +77,7 @@ public class GatewayFilterAutoConfiguration {
                         "/wechat/passport/login"
                 })
                 .ignorePreUrls(new String[]{
-                        "/services",
+                        "/service",
                         "/apis/list",
                         "/apis/detail",
                         "/file",

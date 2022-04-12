@@ -75,7 +75,8 @@ public class GatewayFilterAutoConfiguration {
                         "/dingding/passport/valid",
                         "/wechatcfg/findWechatById",
                         "/wechat/passport/login",
-                        "/ldap/passport/login"
+                        "/ldap/passport/login",
+                        "/ldap/passport/logout"
                 })
                 .ignorePreUrls(new String[]{
                         "/service",

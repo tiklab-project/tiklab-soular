@@ -49,6 +49,6 @@ import org.springframework.context.annotation.Configuration;
 //other
 @EnablePortalServer
 @EnableApiboxClient
-public class PortalAutoConfiguration {
+public class  PortalAutoConfiguration {
 }
 

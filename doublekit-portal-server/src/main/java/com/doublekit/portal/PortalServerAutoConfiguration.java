@@ -1,4 +1,4 @@
-package com.doublekit.portal.config;
+package com.doublekit.portal;
 
 import com.doublekit.datafly.annotation.DataFly;
 import org.springframework.context.annotation.ComponentScan;

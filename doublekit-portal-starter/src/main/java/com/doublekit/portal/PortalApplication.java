@@ -1,6 +1,5 @@
 package com.doublekit.portal;
 
-import com.doublekit.portal.annotation.EnablePortal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;

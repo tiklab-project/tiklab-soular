@@ -1,6 +1,5 @@
-package com.doublekit.portal.annotation;
+package com.doublekit.portal;
 
-import com.doublekit.portal.config.PortalAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

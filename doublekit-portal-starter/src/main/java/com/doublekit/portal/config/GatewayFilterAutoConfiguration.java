@@ -43,10 +43,12 @@ public class GatewayFilterAutoConfiguration {
                         "/dingding/passport/valid",
                         "/wechatcfg/findWechatById",
                         "/wechat/passport/login",
+                        "/wechat/passport/logout",
                         "/ldap/passport/login",
                         "/ldap/passport/logout",
                         "/version/getVersion",
-                        "/licence/import"
+                        "/licence/import",
+                        "/wechatCallback/instruct"
                 })
                 .ignorePreUrls(new String[]{
                         "/service",

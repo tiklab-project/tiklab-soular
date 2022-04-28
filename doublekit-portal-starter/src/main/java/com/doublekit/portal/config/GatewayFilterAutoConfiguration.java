@@ -44,6 +44,7 @@ public class GatewayFilterAutoConfiguration {
                         "/wechatcfg/findWechatById",
                         "/wechat/passport/login",
                         "/wechat/passport/logout",
+                        "/wechat/passport/internallogin",
                         "/ldap/passport/login",
                         "/ldap/passport/logout",
                         "/version/getVersion",

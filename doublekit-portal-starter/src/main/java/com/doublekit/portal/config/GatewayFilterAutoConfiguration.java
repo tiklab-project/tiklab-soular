@@ -45,6 +45,7 @@ public class GatewayFilterAutoConfiguration {
                         "/wechat/passport/login",
                         "/wechat/passport/logout",
                         "/wechat/passport/internallogin",
+                        "/wechat/passport/internalacclogin",
                         "/ldap/passport/login",
                         "/ldap/passport/logout",
                         "/version/getVersion",

@@ -3,7 +3,7 @@ package com.doublekit.portal.applink.model;
 import com.doublekit.apibox.annotation.ApiModel;
 import com.doublekit.apibox.annotation.ApiProperty;
 import com.doublekit.beans.annotation.Mapper;
-import com.doublekit.common.BaseModel;
+import com.doublekit.core.BaseModel;
 
 import javax.validation.constraints.NotNull;
 

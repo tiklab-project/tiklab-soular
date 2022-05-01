@@ -1,6 +1,6 @@
 package com.doublekit.portal.applink.dao;
 
-import com.doublekit.common.page.Pagination;
+import com.doublekit.core.page.Pagination;
 import com.doublekit.dal.jpa.JpaTemplate;
 import com.doublekit.dal.jpa.criterial.conditionbuilder.QueryBuilders;
 import com.doublekit.dal.jpa.criterial.condition.DeleteCondition;

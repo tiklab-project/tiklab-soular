@@ -3,7 +3,7 @@ package com.doublekit.portal;
 import com.doublekit.apibox.client.EnableApiboxClient;
 import com.doublekit.beans.starter.annotation.EnableBeans;
 import com.doublekit.dal.starter.annotation.EnableDal;
-import com.doublekit.datafly.starter.annotation.EnableDataFly;
+import com.doublekit.dsm.starter.annotation.EnableDsm;
 import com.doublekit.dss.starter.EnableDss;
 import com.doublekit.eam.server.EnableEamServer;
 import com.doublekit.gateway.starter.EnableGateway;
@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableBeans
 @EnableWeb
 @EnableDal
-@EnableDataFly
+@EnableDsm
 @EnableJoin
 @EnableDss
 @EnableRpc

@@ -9,7 +9,7 @@ import com.doublekit.portal.applink.model.WorkAppLink;
 import com.doublekit.portal.applink.model.WorkAppLinkQuery;
 import com.doublekit.portal.applink.service.WorkAppLinkService;
 import com.doublekit.toolkit.sort.model.Exchange;
-import com.doublekit.toolkit.sort.service.ExchangeService;
+import com.doublekit.toolkit.sort.service.SortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class WorkAppLinkController {
     private WorkAppLinkService workAppLinkService;
 
     @Autowired
-    private ExchangeService exchangeService;
+    private SortService sortService;
 
     @RequestMapping(path="/createWorkAppLink",method = RequestMethod.POST)
     @ApiMethod(name = "createWorkAppLink",desc = "createWorkAppLink")
@@ -107,7 +107,7 @@ public class WorkAppLinkController {
     @ApiMethod(name = "exchange",desc = "交换排序")
     @ApiParam(name = "exchange",desc = "交换排序DTO",required = true)
     public Result<Void> exchange(@RequestBody @Valid @NotNull Exchange exchange){
-        exchangeService.exchange("orc_work_app_link","id","sort",exchange);
+        sortService.exchange("orc_work_app_link","id","sort",exchange);
 
         return Result.ok();
     }

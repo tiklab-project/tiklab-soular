@@ -33,8 +33,6 @@ import org.springframework.context.annotation.Configuration;
 @EnableMessage
 @EnableGateway
 //pcs
-@EnableUserServer
-@EnableEamServer
 @EnablePrivilegeServer
 @EnablePluginServer
 @EnableToolkitServer

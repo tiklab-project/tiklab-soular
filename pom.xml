@@ -19,6 +19,7 @@
         <module>doublekit-portal-api</module>
         <module>doublekit-portal-server</module>
         <module>doublekit-portal-starter</module>
+        <module>doublekit-portal-client</module>
     </modules>
 
     <dependencyManagement>

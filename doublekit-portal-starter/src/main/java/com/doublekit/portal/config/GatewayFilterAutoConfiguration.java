@@ -58,7 +58,8 @@ public class GatewayFilterAutoConfiguration {
                         "/apis/detail",
                         "/file",
                         "/plugin",
-                        "/authConfig"
+                        "/authConfig",
+                        "/ws"
                 })
                 .get();
     }

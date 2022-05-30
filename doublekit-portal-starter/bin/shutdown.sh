@@ -3,7 +3,7 @@ if [ ! -n "$JAVA_HOME" ]; then
     export JAVA_HOME="/export/server/jdk1.8.0_141"
 fi
 
-APP_MAIN="com.doublekit.portal.PortalCeApplication"
+APP_MAIN="com.doublekit.portal.PortalApplication"
 
 PID=0
 getPID(){

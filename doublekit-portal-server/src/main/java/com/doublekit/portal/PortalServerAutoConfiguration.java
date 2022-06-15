@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * PortalServerAutoConfiguration
  */
 @Configuration
-@SQL(modules = {"portal"})
+@SQL(modules = {"portal", "widget"})
 @ComponentScan({"com.doublekit.portal"})
 public class PortalServerAutoConfiguration {
 }

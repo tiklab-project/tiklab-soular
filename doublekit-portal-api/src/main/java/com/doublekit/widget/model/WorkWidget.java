@@ -29,6 +29,30 @@ public class WorkWidget  extends BaseModel{
     @ApiProperty(name ="type",desc = "类型值：protal、project、apibox")
     private String type;
 
+    @NotNull
+    @ApiProperty(name ="webUrl",desc = "页面跳转url")
+    private String webUrl;
+
+    @NotNull
+    @ApiProperty(name ="apiUrl",desc = "接口url")
+    private String apiUrl;
+
+    public String getWebUrl() {
+        return webUrl;
+    }
+
+    public void setWebUrl(String webUrl) {
+        this.webUrl = webUrl;
+    }
+
+    public String getApiUrl() {
+        return apiUrl;
+    }
+
+    public void setApiUrl(String apiUrl) {
+        this.apiUrl = apiUrl;
+    }
+
     public String getName() {
         return name;
     }

@@ -25,6 +25,27 @@ public class WorkWidgetEntity implements Serializable {
     @Column(name = "type",length = 32)
     private String type;
 
+    @Column(name = "web_url",length = 64)
+    private String webUrl;
+
+    @Column(name = "api_url",length = 64)
+    private String apiUrl;
+
+    public String getWebUrl() {
+        return webUrl;
+    }
+
+    public void setWebUrl(String webUrl) {
+        this.webUrl = webUrl;
+    }
+
+    public String getApiUrl() {
+        return apiUrl;
+    }
+
+    public void setApiUrl(String apiUrl) {
+        this.apiUrl = apiUrl;
+    }
 
     public String getId() {
         return id;

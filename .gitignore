@@ -6,6 +6,5 @@ target/
 *.iml
 data/
 logs/
-plugin/
 doc/
 APP_HOME_IS_UNDEFINED/

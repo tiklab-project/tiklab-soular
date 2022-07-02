@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @SpringBootApplication
 @EnablePortal
-@PropertySource(value = "classpath:application-${env:dev}.properties")
+@PropertySource(value = "classpath:application-${env:prd}.properties")
 public class PortalApplication {
 
     public static final Logger logger = LoggerFactory.getLogger(PortalApplication.class);

@@ -1,7 +1,9 @@
 package com.doublekit.portal.widget.entity;
 import com.doublekit.dal.jpa.annotation.*;
+import com.doublekit.widget.model.WorkWidget;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="work_widget_layout")
@@ -18,8 +20,12 @@ public class WorkWidgetLayoutEntity implements Serializable{
     @Column(name = "tenant",length = 32)
     private String tenant;
 
-    @Column(name = "layout")
-    private String layout;
+    @Column(name = "right_dashboard")
+    private String rightDashboard;
+
+
+    @Column(name = "left_dashboard")
+    private String leftDashboard;
 
     public String getId() {
         return id;
@@ -45,11 +51,19 @@ public class WorkWidgetLayoutEntity implements Serializable{
         this.tenant = tenant;
     }
 
-    public String getLayout() {
-        return layout;
+    public String getRightDashboard() {
+        return rightDashboard;
     }
 
-    public void setLayout(String layout) {
-        this.layout = layout;
+    public void setRightDashboard(String rightDashboard) {
+        this.rightDashboard = rightDashboard;
+    }
+
+    public String getLeftDashboard() {
+        return leftDashboard;
+    }
+
+    public void setLeftDashboard(String leftDashboard) {
+        this.leftDashboard = leftDashboard;
     }
 }

@@ -5,6 +5,7 @@ import com.doublekit.apibox.annotation.ApiProperty;
 import com.doublekit.beans.annotation.Mapper;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @ApiModel
 @Mapper(targetAlias = "WorkWidgetLayoutEntity")
@@ -20,8 +21,29 @@ public class WorkWidgetLayout {
     @ApiProperty(name ="tenant",desc = "企业租户id")
     private String tenant;
 
-    @ApiProperty(name ="layout",desc = "Widget的布局坐标 [{i: 'Widget的id', x: 坐标x, y: 坐标Y, w: 宽度列, h: 高度列}]")
-    private String layout;
+
+    @ApiProperty(name ="leftDashboard",desc = "Widget的布局坐标 [{WorkWidget}]")
+    private String leftDashboard;
+
+    @ApiProperty(name ="rightDashboard",desc = "Widget的布局坐标[{WorkWidget}]")
+    private String rightDashboard;
+
+
+    public String getLeftDashboard() {
+        return leftDashboard;
+    }
+
+    public void setLeftDashboard(String leftDashboard) {
+        this.leftDashboard = leftDashboard;
+    }
+
+    public String getRightDashboard() {
+        return rightDashboard;
+    }
+
+    public void setRightDashboard(String rightDashboard) {
+        this.rightDashboard = rightDashboard;
+    }
 
     public String getId() {
         return id;
@@ -47,11 +69,4 @@ public class WorkWidgetLayout {
         this.tenant = tenant;
     }
 
-    public String getLayout() {
-        return layout;
-    }
-
-    public void setLayout(String layout) {
-        this.layout = layout;
-    }
 }

@@ -31,6 +31,18 @@ public class WorkWidgetEntity implements Serializable {
     @Column(name = "api_url",length = 64)
     private String apiUrl;
 
+    @Column(name = "dashboard_type",length = 8)
+    private String dashboardType;
+
+    public String getDashboardType() {
+        return dashboardType;
+    }
+
+    public void setDashboardType(String dashboardType) {
+        this.dashboardType = dashboardType;
+    }
+
+
     public String getWebUrl() {
         return webUrl;
     }

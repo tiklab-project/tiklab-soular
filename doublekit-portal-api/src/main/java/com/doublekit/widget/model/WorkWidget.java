@@ -37,6 +37,18 @@ public class WorkWidget  extends BaseModel{
     @ApiProperty(name ="apiUrl",desc = "接口url")
     private String apiUrl;
 
+    @NotNull
+    @ApiProperty(name ="dashboardType",desc = "面板布局类型")
+    private String dashboardType;
+
+    public String getDashboardType() {
+        return dashboardType;
+    }
+
+    public void setDashboardType(String dashboardType) {
+        this.dashboardType = dashboardType;
+    }
+
     public String getWebUrl() {
         return webUrl;
     }

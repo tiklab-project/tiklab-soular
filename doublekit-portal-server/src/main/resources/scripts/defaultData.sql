@@ -44,10 +44,10 @@ INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('f21a59
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('0afd449318cff90bea00c0dbc458972c', '消息模板管理', 'sys_message_template', '149840d175f7c0e2d055561a8cc6be1b', NULL, '1');
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('0d841c9636e3e5f80d1cc3fa882311a5', '功能管理', 'sys_feature', '4ec3d621872b6262c1be8189b75c1c78', NULL, '1');
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('149840d175f7c0e2d055561a8cc6be1b', '消息中心', 'sys_message_center', NULL, NULL, '1');
-INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('1ce48d70b72480efaa7892fc2ac76b2f', '消息类型管理', 'sys_message_type_management', '149840d175f7c0e2d055561a8cc6be1b', NULL, '1');
+INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('1ce48d70b72480efaa7892fc2ac76b2f', '消息类型管理', 'sys_message_type', '149840d175f7c0e2d055561a8cc6be1b', NULL, '1');
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('2ec3a2259c05e4172aa1f193fa72cf59', '插件管理', 'plugin', NULL, NULL, '1');
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('4ec3d621872b6262c1be8189b75c1c78', '系统权限', 'sys_permission', NULL, NULL, '1');
-INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('56d73b0fbef2489acf6e5f06236ccbc0', '消息发送方式', 'sys_message_type', '149840d175f7c0e2d055561a8cc6be1b', NULL, '1');
+INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('56d73b0fbef2489acf6e5f06236ccbc0', '消息发送方式', 'sys_message_send', '149840d175f7c0e2d055561a8cc6be1b', NULL, '1');
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('90d527109d996117ef18ddf1cb9c17a8', '用户目录', 'sys_directory', NULL, NULL, '1');
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('a2b442614036a4cfc2af1d39bd34e057', '用户管理', 'sys_user', NULL, NULL, '1');
 INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('a9fbf0c450ef34c32fdea0c4001a04d0', '角色管理', 'sys_role', '4ec3d621872b6262c1be8189b75c1c78', NULL, '1');

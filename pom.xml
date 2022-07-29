@@ -9,7 +9,6 @@
         <artifactId>doublekit-dependencies</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.doublekit</groupId>
     <artifactId>doublekit-portal</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
@@ -19,16 +18,12 @@
         <module>doublekit-portal-api</module>
         <module>doublekit-portal-server</module>
         <module>doublekit-portal-starter</module>
+        <module>doublekit-portal-spring-boot-stater</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <!--doublekit-->
-            <dependency>
-                <groupId>com.doublekit</groupId>
-                <artifactId>doublekit-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <dependency>
                 <groupId>com.doublekit</groupId>
                 <artifactId>doublekit-utils</artifactId>

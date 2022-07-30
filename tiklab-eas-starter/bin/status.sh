@@ -3,7 +3,7 @@ if [ ! -n "$JAVA_HOME" ]; then
     export JAVA_HOME="/usr/local/jdk-16.0.2"
 fi
 
-APP_MAIN="com.tiklab.portal.PortalCeApplication"
+APP_MAIN="com.tiklab.eas.EasApplication"
 
 PID=0
 getPID(){

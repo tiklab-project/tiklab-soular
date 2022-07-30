@@ -1,7 +1,7 @@
 package com.tiklab.eas.widget.model;
 
-import com.tiklab.postlink.annotation.ApiModel;
-import com.tiklab.postlink.annotation.ApiProperty;
+import com.tiklab.postin.annotation.ApiModel;
+import com.tiklab.postin.annotation.ApiProperty;
 import com.tiklab.beans.annotation.Mapper;
 
 import javax.validation.constraints.NotNull;

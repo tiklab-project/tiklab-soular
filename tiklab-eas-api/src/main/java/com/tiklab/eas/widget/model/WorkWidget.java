@@ -1,6 +1,6 @@
 package com.tiklab.eas.widget.model;
-import com.tiklab.postlink.annotation.ApiModel;
-import com.tiklab.postlink.annotation.ApiProperty;
+import com.tiklab.postin.annotation.ApiModel;
+import com.tiklab.postin.annotation.ApiProperty;
 import com.tiklab.core.BaseModel;
 import com.tiklab.beans.annotation.Mapper;
 import javax.validation.constraints.NotNull;
@@ -26,7 +26,7 @@ public class WorkWidget  extends BaseModel{
 
 
     @NotNull
-    @ApiProperty(name ="type",desc = "类型值：protal、project、postlink")
+    @ApiProperty(name ="type",desc = "类型值：protal、project、postin")
     private String type;
 
     @NotNull

@@ -3,7 +3,7 @@ CREATE TABLE work_widget(
     name VARCHAR(32) NOT NULL COMMENT 'widget名称',
     code VARCHAR(32) NOT NULL COMMENT 'widget编码',
     description VARCHAR(32) COMMENT '描述',
-    type VARCHAR(32) NOT NULL COMMENT 'protal、project、postlink'
+    type VARCHAR(32) NOT NULL COMMENT 'protal、project、postin'
 );
 
 

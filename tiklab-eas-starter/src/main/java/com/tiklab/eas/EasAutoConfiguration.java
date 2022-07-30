@@ -1,6 +1,6 @@
 package com.tiklab.eas;
 
-import com.tiklab.postlink.client.EnablePostLinkClient;
+import com.tiklab.postin.client.EnablePostInClient;
 import com.tiklab.beans.starter.annotation.EnableBeans;
 import com.tiklab.dal.starter.annotation.EnableDal;
 import com.tiklab.dcs.starter.EnableDcs;
@@ -46,7 +46,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableLicenceServer
 //other
 @EnableEasStater
-@EnablePostLinkClient
+@EnablePostInClient
 public class  EasAutoConfiguration {
 }
 

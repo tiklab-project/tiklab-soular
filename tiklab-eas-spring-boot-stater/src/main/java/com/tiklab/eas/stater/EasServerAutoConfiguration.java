@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * PortalServerAutoConfiguration
  */
 @Configuration
-@SQL(modules = {"portal", "widget","defaultData"})
+@SQL(modules = {"portal","easDefaultData"})
 @ComponentScan({"com.tiklab.eas"})
 public class EasServerAutoConfiguration {
 }

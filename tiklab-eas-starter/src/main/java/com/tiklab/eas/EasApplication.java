@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @SpringBootApplication
 @EnableEas
-@PropertySource(value = "classpath:application-eas-${env:dev}.properties")
+@PropertySource(value = "classpath:application-${env:dev}.properties")
 public class EasApplication {
 
     public static final Logger logger = LoggerFactory.getLogger(EasApplication.class);

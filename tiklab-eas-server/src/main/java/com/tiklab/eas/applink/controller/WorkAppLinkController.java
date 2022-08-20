@@ -8,8 +8,8 @@ import com.tiklab.core.page.Pagination;
 import com.tiklab.eas.applink.model.WorkAppLink;
 import com.tiklab.eas.applink.model.WorkAppLinkQuery;
 import com.tiklab.eas.applink.service.WorkAppLinkService;
-import com.tiklab.toolkit.sort.model.Exchange;
-import com.tiklab.toolkit.sort.service.SortService;
+//import com.tiklab.toolkit.sort.model.Exchange;
+//import com.tiklab.toolkit.sort.service.SortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +36,8 @@ public class WorkAppLinkController {
     @Autowired
     private WorkAppLinkService workAppLinkService;
 
-    @Autowired
-    private SortService sortService;
+//    @Autowired
+//    private SortService sortService;
 
     @RequestMapping(path="/createWorkAppLink",method = RequestMethod.POST)
     @ApiMethod(name = "createWorkAppLink",desc = "createWorkAppLink")
@@ -103,13 +103,13 @@ public class WorkAppLinkController {
         return Result.ok(pagination);
     }
 
-    @RequestMapping(path="/exchange",method = RequestMethod.POST)
-    @ApiMethod(name = "exchange",desc = "交换排序")
-    @ApiParam(name = "exchange",desc = "交换排序DTO",required = true)
-    public Result<Void> exchange(@RequestBody @Valid @NotNull Exchange exchange){
-        sortService.exchange("orc_work_app_link","id","sort",exchange);
-
-        return Result.ok();
-    }
+//    @RequestMapping(path="/exchange",method = RequestMethod.POST)
+//    @ApiMethod(name = "exchange",desc = "交换排序")
+//    @ApiParam(name = "exchange",desc = "交换排序DTO",required = true)
+//    public Result<Void> exchange(@RequestBody @Valid @NotNull Exchange exchange){
+//        sortService.exchange("orc_work_app_link","id","sort",exchange);
+//
+//        return Result.ok();
+//    }
 
 }

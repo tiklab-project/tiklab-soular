@@ -45,9 +45,9 @@ public class GatewayFilterAutoConfiguration {
                 })
                 .ignoreUrls(new String[]{
                         "/",
-                        "/passport/login",
+                        "/eam/auth/login",
                         "/eam/auth/logout",
-                        "/passport/valid",
+                        "/eam/passport/valid",
                         "/auth/valid",
                         "/document/view",
                         "/comment/view",

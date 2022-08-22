@@ -13,7 +13,6 @@ import com.tiklab.join.starter.annotation.EnableJoin;
 import com.tiklab.licence.starter.EnableLicenceServer;
 import com.tiklab.message.starter.EnableMessage;
 import com.tiklab.pluginx.starter.EnablePluginServer;
-import com.tiklab.eas.stater.EnableEasStater;
 import com.tiklab.privilege.stater.EnablePrivilegeServer;
 import com.tiklab.rpc.starter.annotation.EnableRpc;
 import com.tiklab.toolkit.EnableToolkitServer;
@@ -45,7 +44,6 @@ import org.springframework.context.annotation.Configuration;
 @EnableToolkitServer
 @EnableLicenceServer
 //other
-@EnableEasStater
 @EnablePostInClient
 public class  EasAutoConfiguration {
 }

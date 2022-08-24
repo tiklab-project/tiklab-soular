@@ -9,13 +9,6 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>${basedir}/target</directory>
-			<includes>
-				<include>${artifactId}-${version}.jar</include>
-			</includes>
-			<outputDirectory>/lib</outputDirectory>
-		</fileSet>
-		<fileSet>
 			<directory>${basedir}/src/main/resources</directory>
 			<includes>
 				<include>*.properties</include>
@@ -53,6 +46,7 @@
 			<outputDirectory>/plugin</outputDirectory>
 		</fileSet>
 	</fileSets>
+
 	<dependencySets>
 		<dependencySet>
 			<outputDirectory>/lib</outputDirectory>

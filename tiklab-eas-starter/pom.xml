@@ -75,6 +75,24 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>enable</id>
+            <properties>
+                <profile.assembly.package.suffix>enable</profile.assembly.package.suffix>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.assembly.package.suffix>local</profile.assembly.package.suffix>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -102,9 +120,13 @@
                         <id>make-assembly</id>
                         <configuration>
                             <descriptors>
-                                <descriptor>assembly/distribution.xml</descriptor>
+                                <descriptor>assembly/distribution-${profile.assembly.package.suffix}.xml</descriptor>
+
+<!--                                <descriptor>assembly/distribution-local.xml</descriptor>-->
+<!--                                <descriptor>assembly/distribution-enable.xml</descriptor>-->
                             </descriptors>
-                            <finalName>tiklab-eas-${project.version}</finalName>
+                            <finalName>tiklab-eas</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                         <phase>package</phase>
                         <goals>
@@ -116,6 +138,5 @@
 
         </plugins>
     </build>
-
 </project>
 

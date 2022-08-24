@@ -4,22 +4,13 @@
 #该脚本可在服务器上的任意目录下执行,不会影响到日志的输出位置等
 #-------------------------------------------------------------------------------------------------------------
 export JAVA_HOME=$4
-
-DIRS=$(dirname "$PWD")
-
-
-
-if [ ! -n "$JAVA_HOME" ]; then
-    export JAVA_HOME="/usr/local/jdk-16.0.2"
-fi
+#if [ ! -n "$JAVA_HOME" ]; then
+#    export JAVA_HOME="/usr/local/jdk-16.0.2"
+#fi
 
 if [ $5 == 1 ]; then
     export JAVA_HOME="/usr/local/jdk-16.0.2"
 fi
-#SQL url-------------------------------------------------------------------------------------------------------------
-
-URL=${1}"?characterEncoding=utf8&useSSL=false&serverTimezone=UTC"
-
 #-------------------------------------------------------------------------------------------------------------
 #       系统运行参数
 #-------------------------------------------------------------------------------------------------------------
@@ -43,13 +34,6 @@ do
    CLASSPATH="$CLASSPATH":"$appJar"
 done
 
-
-for appJar in "$DIRS"/comment/*.jar;
-do
-   CLASSPATH="$CLASSPATH":"$appJar"
-done
-
-
 echo "JAVA_HOME="$JAVA_HOME
 echo "JAVA_OPTS="$JAVA_OPTS
 echo "CLASSPATH="$CLASSPATH
@@ -71,8 +55,6 @@ getPID(){
     fi
 }
 
-
-EAS_CONFIG_ARRAY=("--jdbc.url=$URL" "--jdbc.username=$2" "--jdbc.password=$3")
 # shellcheck disable=SC2120
 startup(){
     getPID
@@ -89,8 +71,7 @@ startup(){
         if [ $5 -eq 1 ]; then
             nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN > info.log 2>&1 &
         else
-
-          nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN ${EAS_CONFIG_ARRAY[0]} ${EAS_CONFIG_ARRAY[1]} ${EAS_CONFIG_ARRAY[2]}> eas.log 2>&1 &
+          nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN "--jdbc.url=$1 --jdbc.username=$2 --jdbc.password=$3"> info.log 2>&1 &
         fi
         for i in $(seq 5)
         do

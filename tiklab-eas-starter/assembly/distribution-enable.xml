@@ -52,13 +52,11 @@
         <dependencySet>
             <outputDirectory>/lib</outputDirectory>
             <excludes>
-                <!--server-->
                 <exclude>javax.activation:activation</exclude>
                 <exclude>org.ow2.asm:asm</exclude>
                 <exclude>org.aspectj:aspectjrt</exclude>
                 <exclude>org.aspectj:aspectjweaver</exclude>
                 <exclude>org.bouncycastle:bcprov-jdk15on</exclude>
-                <exclude>org.checkerframework:checker-qual</exclude>
                 <exclude>com.fasterxml:classmate</exclude>
                 <exclude>commons-beanutils:commons-beanutils</exclude>
                 <exclude>commons-codec:commons-codec</exclude>
@@ -69,21 +67,13 @@
                 <exclude>commons-logging:commons-logging</exclude>
                 <exclude>commons-pool:commons-pool</exclude>
                 <exclude>org.apache.commons:commons-text</exclude>
-                <exclude>com.aliyun:credentials-java</exclude>
-                <exclude>com.aliyun:dysmsapi20170525</exclude>
                 <exclude>net.sf.ehcache:ehcache</exclude>
-                <exclude>com.aliyun:endpoint-util</exclude>
-                <exclude>com.google.errorprone:error_prone_annotations</exclude>
-                <exclude>com.google.guava:failureaccess</exclude>
                 <exclude>com.alibaba:fastjson</exclude>
                 <exclude>org.freemarker:freemarker</exclude>
                 <exclude>com.google.code.gson:gson</exclude>
-                <exclude>com.google.guava:guava</exclude>
                 <exclude>com.caucho:hessian</exclude>
                 <exclude>org.hibernate:hibernate-validator</exclude>
                 <exclude>org.hsqldb:hsqldb</exclude>
-                <exclude>org.ini4j:ini4j</exclude>
-                <exclude>com.google.j2objc:j2objc-annotations</exclude>
                 <exclude>com.fasterxml.jackson.core:jackson-annotations</exclude>
                 <exclude>com.fasterxml.jackson.core:jackson-core</exclude>
                 <exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
@@ -100,7 +90,6 @@
                 <exclude>org.jboss.logging:jboss-logging</exclude>
                 <exclude>joda-time:joda-time</exclude>
                 <exclude>org.json:json</exclude>
-                <exclude>com.google.code.findbugs:jsr305</exclude>
                 <exclude>org.slf4j:jul-to-slf4j</exclude>
                 <exclude>com.esotericsoftware:kryo</exclude>
                 <exclude>com.esotericsoftware:kryo-shaded</exclude>
@@ -118,21 +107,15 @@
                 <exclude>org.jboss.netty:netty</exclude>
                 <exclude>org.objenesis:objenesis</exclude>
                 <exclude>ognl:ognl</exclude>
-                <exclude>com.squareup.okhttp3:okhttp</exclude>
-                <exclude>com.squareup.okio:okio</exclude>
-                <exclude>com.aliyun:openapiutil</exclude>
-                <exclude>org.jacoco:org.jacoco.agent</exclude>
                 <exclude>com.google.protobuf:protobuf-java</exclude>
                 <exclude>com.esotericsoftware:reflectasm</exclude>
                 <exclude>org.slf4j:slf4j-api</exclude>
                 <exclude>org.yaml:snakeyaml</exclude>
-
                 <exclude>javax.validation:validation-api</exclude>
                 <exclude>org.apache.tomcat.embed:tomcat-embed-websocket</exclude>
                 <exclude>org.apache.tomcat.embed:tomcat-embed-el</exclude>
                 <exclude>org.apache.tomcat.embed:tomcat-embed-core</exclude>
                 <exclude>org.apache.tomcat:tomcat-annotations-api</exclude>
-
                 <exclude>com.tiklab:tiklab-web-spring-boot-starter</exclude>
                 <exclude>com.tiklab:tiklab-web-core</exclude>
                 <exclude>com.tiklab:tiklab-utils</exclude>
@@ -176,9 +159,6 @@
                 <exclude>com.tiklab:tiklab-core</exclude>
                 <exclude>com.tiklab:tiklab-beans-core</exclude>
                 <exclude>com.tiklab:tiklab-beans-annotation</exclude>
-                <exclude>com.aliyun:tea-util</exclude>
-                <exclude>com.aliyun:tea-openapi</exclude>
-                <exclude>com.aliyun:tea</exclude>
                 <exclude>org.springframework:spring-websocket</exclude>
                 <exclude>org.springframework:spring-webmvc</exclude>
                 <exclude>org.springframework:spring-web</exclude>
@@ -199,8 +179,6 @@
                 <exclude>org.springframework:spring-aop</exclude>
                 <exclude>org.yaml:snakeyaml</exclude>
                 <exclude>com.tiklab:tiklab-mysql</exclude>
-
-
             </excludes>
         </dependencySet>
 

@@ -73,41 +73,62 @@
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.tiklab</groupId>
+            <artifactId>tiklab-mysql-starter</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 
-        <dependency>
-            <groupId>com.tiklab</groupId>
-            <artifactId>tiklab-jdk</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <type>zip</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.tiklab</groupId>
-            <artifactId>tiklab-mysql</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <type>zip</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.tiklab</groupId>
-            <artifactId>tiklab-mysql</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
     <profiles>
         <profile>
-            <id>enable</id>
+            <id>linux</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.tiklab</groupId>
+                    <artifactId>tiklab-linux-mysql</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.tiklab</groupId>
+                    <artifactId>tiklab-linux-jdk</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
             <properties>
-                <profile.assembly.package.suffix>enable</profile.assembly.package.suffix>
+                <profile.assembly.package.suffix>linux</profile.assembly.package.suffix>
+                <systemType>linux</systemType>
             </properties>
         </profile>
         <profile>
-            <id>test</id>
+            <id>windows</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.tiklab</groupId>
+                    <artifactId>tiklab-windows-mysql</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.tiklab</groupId>
+                    <artifactId>tiklab-windows-jdk</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
             <properties>
-                <profile.assembly.package.suffix>test</profile.assembly.package.suffix>
+                <profile.assembly.package.suffix>windows</profile.assembly.package.suffix>
+                <systemType>windows</systemType>
             </properties>
         </profile>
+
         <profile>
             <id>dev</id>
             <activation>
@@ -115,10 +136,18 @@
             </activation>
             <properties>
                 <profile.assembly.package.suffix>local</profile.assembly.package.suffix>
+                <systemType>windows</systemType>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>enable</id>
+            <properties>
+                <profile.assembly.package.suffix>enable</profile.assembly.package.suffix>
+                <systemType>windows</systemType>
             </properties>
         </profile>
     </profiles>
-
     <build>
         <plugins>
             <plugin>
@@ -165,7 +194,7 @@
                 <executions>
                     <execution>
                         <id>unpack</id>
-                        <phase>clean</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>unpack</goal>
                         </goals>
@@ -173,21 +202,27 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.tiklab</groupId>
-                                    <artifactId>tiklab-jdk</artifactId>
+                                    <artifactId>tiklab-eas-starter</artifactId>
                                     <version>1.0.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <outputDirectory>temp</outputDirectory>
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>com.tiklab</groupId>
-                                    <artifactId>tiklab-mysql</artifactId>
+                                    <artifactId>tiklab-${systemType}-jdk</artifactId>
+                                    <version>1.0.0-SNAPSHOT</version>
+                                    <type>zip</type>
+                                    <outputDirectory>temp</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.tiklab</groupId>
+                                    <artifactId>tiklab-${systemType}-mysql</artifactId>
                                     <version>1.0.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <outputDirectory>temp</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
-
                     </execution>
                 </executions>
             </plugin>

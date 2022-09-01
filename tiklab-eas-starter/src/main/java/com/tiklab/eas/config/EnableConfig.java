@@ -47,11 +47,10 @@ public class EnableConfig {
     //启动内嵌EAS
     @Bean
     public void startEas() throws IOException {
-        String authType = environment.getProperty("auth.type");
-
-        if (authType == null ){
-            return;
-        }
+//        String authType = environment.getProperty("auth.type");
+//        if (authType == null ){
+//            return;
+//        }
 
         EasEmbedUtil easEmbedUtil = new EasEmbedUtil();
 
@@ -66,7 +65,7 @@ public class EnableConfig {
         String username = environment.getProperty("jdbc.username");
         String password = environment.getProperty("jdbc.password");
         String javaHome = System.getProperty("user.dir");
-        String port = System.getProperty("eas.port");
+        String port = System.getProperty("eas.server.port");
         if (javaHome != null){
             javaHome= new File(javaHome).getParent()+"/jdk-16.0.2";
         }

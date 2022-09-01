@@ -66,12 +66,12 @@ public class EnableConfig {
         String username = environment.getProperty("jdbc.username");
         String password = environment.getProperty("jdbc.password");
         String javaHome = System.getProperty("user.dir");
-
+        String port = System.getProperty("eas.port");
         if (javaHome != null){
             javaHome= new File(javaHome).getParent()+"/jdk-16.0.2";
         }
 
-        Process process = easEmbedUtil.startShellEasProcess("2", url, username, password, javaHome);
+        Process process = easEmbedUtil.startShellEasProcess("2", url, username, password, javaHome, port);
 
         //执行启动脚本错误
         if (process == null){

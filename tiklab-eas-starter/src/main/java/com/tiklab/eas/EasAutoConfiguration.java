@@ -1,6 +1,5 @@
 package com.tiklab.eas;
 
-import com.tiklab.postin.client.EnablePostInClient;
 import com.tiklab.beans.starter.annotation.EnableBeans;
 import com.tiklab.dal.starter.annotation.EnableDal;
 import com.tiklab.dcs.starter.EnableDcs;
@@ -13,6 +12,7 @@ import com.tiklab.join.starter.annotation.EnableJoin;
 import com.tiklab.licence.starter.EnableLicenceServer;
 import com.tiklab.message.starter.EnableMessage;
 import com.tiklab.pluginx.starter.EnablePluginServer;
+import com.tiklab.postin.client.EnablePostInClient;
 import com.tiklab.privilege.stater.EnablePrivilegeServer;
 import com.tiklab.rpc.starter.annotation.EnableRpc;
 import com.tiklab.toolkit.EnableToolkitServer;

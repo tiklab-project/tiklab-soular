@@ -21,8 +21,9 @@ public class EasEmbedUtil {
      * @param sqlPassword 数据库密码
      * @param javaHome java环境变量地址
      * @param type 1:独立部署，2：嵌入其他项目运行
+     * @param port eas端口
      */
-    public Process startShellEasProcess(String type, String sqlUrl, String sqlName, String sqlPassword, String javaHome) throws IOException,NullPointerException {
+    public Process startShellEasProcess(String type, String sqlUrl, String sqlName, String sqlPassword, String javaHome, String port) throws IOException,NullPointerException {
         Runtime runtime=Runtime.getRuntime();
         String property = System.getProperty("os.name");
         Process process;
@@ -34,7 +35,7 @@ public class EasEmbedUtil {
         String path =new File(rootPath).getParent()+easPath;
 
 
-        String shString ="sh" + " "+path+ "/startup.sh" +" "+ sqlUrl +" " + sqlName + " " +  sqlPassword + " " + javaHome+ " " + type;
+        String shString ="sh" + " "+path+ "/startup.sh" +" "+ sqlUrl +" " + sqlName + " " +  sqlPassword + " " + javaHome+ " " + type +" " + port;
 //        String shString = "sh" + " "+path+ "/startup.sh";
         logger.info("sh 脚本：" + shString);
         if (s[0].equals("Windows")){

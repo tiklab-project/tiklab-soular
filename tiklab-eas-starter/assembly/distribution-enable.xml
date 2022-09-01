@@ -17,7 +17,7 @@
             <outputDirectory>/conf</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>${basedir}/bin</directory>
+            <directory>${basedir}/bin-${systemType}</directory>
             <fileMode>755</fileMode>
             <excludes>
                 <exclude>*.classpath</exclude>

@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.regex.Pattern;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /**
@@ -14,16 +17,8 @@ import org.slf4j.LoggerFactory;
 public class EasEmbedUtil {
     private static Logger logger = LoggerFactory.getLogger(EasEmbedUtil.class);
 
-    /**
-     *
-     * @param sqlUrl  mysql地址
-     * @param sqlName  数据库名称
-     * @param sqlPassword 数据库密码
-     * @param javaHome java环境变量地址
-     * @param type 1:独立部署，2：嵌入其他项目运行
-     * @param port eas端口
-     */
-    public Process startShellEasProcess(String type, String sqlUrl, String sqlName, String sqlPassword, String javaHome, String port) throws IOException,NullPointerException {
+
+    public Process startShellEasProcess(HashMap<String, String> easCfg) throws IOException,NullPointerException {
         Runtime runtime=Runtime.getRuntime();
         String property = System.getProperty("os.name");
         Process process;
@@ -34,8 +29,31 @@ public class EasEmbedUtil {
 
         String path =new File(rootPath).getParent()+easPath;
 
+        String port =  easCfg.get("serverPort");
+        Boolean embbedEnable = Boolean.parseBoolean(easCfg.get("embbedEnable"));
+        String address = easCfg.get("easCfg");
+        String webAddress = easCfg.get("webAddress");
 
-        String shString ="sh" + " "+path+ "/startup.sh" +" "+ sqlUrl +" " + sqlName + " " +  sqlPassword + " " + javaHome+ " " + type +" " + port;
+        Boolean mysqlEmbbedEnable = Boolean.parseBoolean(easCfg.get("mysqlEmbbedEnable"));
+        String mysqlServerPort = easCfg.get("mysqlServerPort");
+        String mysqlName = easCfg.get("mysqlName");
+        String jdbcUrl = easCfg.get("jdbcUrl");
+        String jdbcDriverClassName = easCfg.get("jdbcDriverClassName");
+        String jdbcUsername = easCfg.get("jdbcUsername");
+        String jdbcPassword = easCfg.get("jdbcPassword");
+
+        String javaHome = easCfg.get("javaHome");
+
+        String type; //type 1:独立部署，2：嵌入其他项目运行
+        if (embbedEnable) {
+            type = "2";
+        } else {
+            type ="1";
+        }
+        String PortRegEx = "^(:)\\d{1,5}$";
+        String mysqlIp = jdbcUrl.replaceAll(PortRegEx,mysqlServerPort);
+
+        String shString ="sh" + " "+path+ "/startup.sh" +" "+ jdbcUrl +" " + jdbcUsername + " " +  jdbcPassword + " " + javaHome+ " " + type +" " + port;
 //        String shString = "sh" + " "+path+ "/startup.sh";
         logger.info("sh 脚本：" + shString);
         if (s[0].equals("Windows")){

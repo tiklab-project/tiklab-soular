@@ -1,4 +1,4 @@
-package com.tiklab.eas;
+package com.tiklab.eas.stater;
 
 import com.tiklab.dsm.annotation.SQL;
 import org.springframework.context.annotation.ComponentScan;

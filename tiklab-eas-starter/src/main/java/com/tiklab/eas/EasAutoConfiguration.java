@@ -7,6 +7,7 @@ import com.tiklab.dfs.starter.EnableDfs;
 import com.tiklab.dsm.starter.annotation.EnableDsm;
 import com.tiklab.dss.starter.EnableDss;
 import com.tiklab.eam.starter.EnableEam;
+import com.tiklab.eas.stater.EnableEasServer;
 import com.tiklab.gateway.starter.EnableGateway;
 import com.tiklab.join.starter.annotation.EnableJoin;
 import com.tiklab.licence.starter.EnableLicenceServer;
@@ -45,6 +46,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableLicenceServer
 //other
 @EnablePostInClient
+
+@EnableEasServer
 public class  EasAutoConfiguration {
 }
 

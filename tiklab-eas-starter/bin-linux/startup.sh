@@ -82,7 +82,7 @@ getPID(){
 }
 
 
-EAS_CONFIG_ARRAY=("--jdbc.url=$URL" "--jdbc.username=$2" "--jdbc.password=$3" "--server.port=$6" )
+EAS_CONFIG_ARRAY=("--server.port=$6" "--jdbc.url=$URL" "--jdbc.username=$2" "--jdbc.password=$3")
 # shellcheck disable=SC2120
 startup(){
     getPID
@@ -100,7 +100,7 @@ startup(){
             nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN > info.log 2>&1 &
         else
 
-          nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN ${EAS_CONFIG_ARRAY[0]} ${EAS_CONFIG_ARRAY[1]} ${EAS_CONFIG_ARRAY[2]} ${EAS_CONFIG_ARRAY[4]}> eas.log 2>&1 &
+          nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN ${EAS_CONFIG_ARRAY[0]} ${EAS_CONFIG_ARRAY[1]} ${EAS_CONFIG_ARRAY[2]} ${EAS_CONFIG_ARRAY[3]}> eas.log 2>&1 &
         fi
         for i in $(seq 5)
         do

@@ -48,7 +48,7 @@ public class EasEmbedUtil {
         String newJdbcUrl = jdbcUrl.replaceAll("(:)\\d{1,5}", ":"+mysqlServerPort);
 
 
-        String shString ="sh" + " "+path+ "/startup.sh" +" "+ newJdbcUrl +" " + jdbcUsername + " " +  jdbcPassword + " " + javaHome+ " " + type +" " + port +" " + jdbcDriverClassName;
+        String shString ="sh" + " "+path+ "/startup.sh" +" "+ newJdbcUrl +" " + jdbcUsername + " " +  jdbcPassword +  " " + type +" " + port +" " + jdbcDriverClassName;
 //        String shString = "sh" + " "+path+ "/startup.sh";
         logger.info("sh 脚本：" + shString);
         if (s[0].equals("Windows")){

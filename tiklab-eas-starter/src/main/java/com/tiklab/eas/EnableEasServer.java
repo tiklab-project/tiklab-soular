@@ -1,4 +1,4 @@
-package com.tiklab.eas.stater;
+package com.tiklab.eas;
 
 import org.springframework.context.annotation.Import;
 

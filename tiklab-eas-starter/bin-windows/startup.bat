@@ -47,7 +47,7 @@ set CLASSPATH=%st%%s%
 
 set PID=0
 
-set EAS_CONFIG_ARRAY= "--jdbc.url=%1 --jdbc.username=%2 --jdbc.password=%3 --server.port=%6"
+set EAS_CONFIG_ARRAY= "--server.port=%6 --jdbc.url=%1 --jdbc.username=%2 --jdbc.password=%3 --jdbc.driverClassName=$7"
 
 for /f "usebackq tokens=1-2" %%a in (`jps -l ^| findstr %APP_MAIN%`) do (
 set PID=%%a

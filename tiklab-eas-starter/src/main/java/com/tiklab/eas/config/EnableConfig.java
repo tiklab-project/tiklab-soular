@@ -28,32 +28,32 @@ public class EnableConfig {
     private static final Logger logger = LoggerFactory.getLogger(EnableConfig.class);
 
     //启动内嵌mysql
-    @Bean
-    public void startMysql() throws IOException, InterruptedException {
-
-        String mysqlType = environment.getProperty("mysql.embbed.enable");
-        String mysqlPort = environment.getProperty("mysql.server.port");
-
-        if (mysqlType == null || mysqlType.equals("false")) {
-            return;
-        }
-
-        if (mysqlPort != null && getPort(Integer.parseInt(mysqlPort)) == 0) {
-            throw new IOException("存在已启动的数据库或数据库配置端口错误，请更换端口启动或更换主机启动");
-        }
-
-        MysqlConfig mysqlConfig = new MysqlConfig();
-        String mysqlName = environment.getProperty("mysql.name");
-
-        Process process = mysqlConfig.startMysql(mysqlName);
-
-        //执行启动脚本错误
-        if (process == null) {
-            throw new IOException("MYSQL启动错误。");
-        }
-        Thread.sleep(10000);
-        logger.info("MYSQL启动完成");
-    }
+//    @Bean
+//    public void startMysql() throws IOException, InterruptedException {
+//
+//        String mysqlType = environment.getProperty("mysql.embbed.enable");
+//        String mysqlPort = environment.getProperty("mysql.server.port");
+//
+//        if (mysqlType == null || mysqlType.equals("false")) {
+//            return;
+//        }
+//
+//        if (mysqlPort != null && getPort(Integer.parseInt(mysqlPort)) == 0) {
+//            throw new IOException("存在已启动的数据库或数据库配置端口错误，请更换端口启动或更换主机启动");
+//        }
+//
+//        MysqlConfig mysqlConfig = new MysqlConfig();
+//        String mysqlName = environment.getProperty("mysql.name");
+//
+//        Process process = mysqlConfig.startMysql(mysqlName);
+//
+//        //执行启动脚本错误
+//        if (process == null) {
+//            throw new IOException("MYSQL启动错误。");
+//        }
+//        Thread.sleep(10000);
+//        logger.info("MYSQL启动完成");
+//    }
 
 
 

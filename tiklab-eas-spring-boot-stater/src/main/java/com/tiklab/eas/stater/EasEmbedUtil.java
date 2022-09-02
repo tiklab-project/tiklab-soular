@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 public class EasEmbedUtil {
     private static Logger logger = LoggerFactory.getLogger(EasEmbedUtil.class);
 
-
     public Process startShellEasProcess(HashMap<String, String> easCfg) throws IOException,NullPointerException {
         Runtime runtime=Runtime.getRuntime();
         String property = System.getProperty("os.name");
@@ -31,12 +30,8 @@ public class EasEmbedUtil {
 
         String port =  easCfg.get("serverPort");
         Boolean embbedEnable = Boolean.parseBoolean(easCfg.get("embbedEnable"));
-        String address = easCfg.get("easCfg");
-        String webAddress = easCfg.get("webAddress");
 
-        Boolean mysqlEmbbedEnable = Boolean.parseBoolean(easCfg.get("mysqlEmbbedEnable"));
         String mysqlServerPort = easCfg.get("mysqlServerPort");
-        String mysqlName = easCfg.get("mysqlName");
         String jdbcUrl = easCfg.get("jdbcUrl");
         String jdbcDriverClassName = easCfg.get("jdbcDriverClassName");
         String jdbcUsername = easCfg.get("jdbcUsername");
@@ -50,10 +45,10 @@ public class EasEmbedUtil {
         } else {
             type ="1";
         }
-        String PortRegEx = "^(:)\\d{1,5}$";
-        String mysqlIp = jdbcUrl.replaceAll(PortRegEx,mysqlServerPort);
+        String newJdbcUrl = jdbcUrl.replaceAll("(:)\\d{1,5}", ":"+mysqlServerPort);
 
-        String shString ="sh" + " "+path+ "/startup.sh" +" "+ jdbcUrl +" " + jdbcUsername + " " +  jdbcPassword + " " + javaHome+ " " + type +" " + port;
+
+        String shString ="sh" + " "+path+ "/startup.sh" +" "+ newJdbcUrl +" " + jdbcUsername + " " +  jdbcPassword + " " + javaHome+ " " + type +" " + port +" " + jdbcDriverClassName;
 //        String shString = "sh" + " "+path+ "/startup.sh";
         logger.info("sh 脚本：" + shString);
         if (s[0].equals("Windows")){

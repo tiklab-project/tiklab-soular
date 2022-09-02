@@ -28,8 +28,8 @@ if [ $5 == 1 ]; then
 fi
 #SQL url-------------------------------------------------------------------------------------------------------------
 
-URL=${1}"?characterEncoding=utf8&useSSL=false&serverTimezone=UTC"
-
+#URL=${1}"?characterEncoding=utf8&useSSL=false&serverTimezone=UTC"
+URL=${1}
 #-------------------------------------------------------------------------------------------------------------
 #       系统运行参数
 #-------------------------------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ getPID(){
 }
 
 
-EAS_CONFIG_ARRAY=("--server.port=$6" "--jdbc.url=$URL" "--jdbc.username=$2" "--jdbc.password=$3")
+EAS_CONFIG_ARRAY=("--server.port=$6" "--jdbc.url=$URL" "--jdbc.username=$2" "--jdbc.password=$3" "--jdbc.driverClassName=$7")
 # shellcheck disable=SC2120
 startup(){
     getPID

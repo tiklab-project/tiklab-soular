@@ -28,8 +28,9 @@ public class EasEmbedUtil {
 
         String path =new File(rootPath).getParent()+easPath;
 
-        String port =  easCfg.get("serverPort");
-        Boolean embbedEnable = Boolean.parseBoolean(easCfg.get("embbedEnable"));
+        int port = Integer.parseInt(easCfg.get("serverPort"));
+
+        boolean embbedEnable = Boolean.parseBoolean(easCfg.get("embbedEnable"));
 
         String mysqlServerPort = easCfg.get("mysqlServerPort");
         String jdbcUrl = easCfg.get("jdbcUrl");
@@ -64,22 +65,5 @@ public class EasEmbedUtil {
         return process;
     }
 
-//    public Process process(String path,String order,String sourceAddress) throws IOException,NullPointerException {
-//
-//        Runtime runtime=Runtime.getRuntime();
-//        Process process;
-//        String property = System.getProperty("os.name");
-//
-//        String[] s = property.split(" ");
-//        if (s[0].equals("Windows")){
-//            //执行命令
-//            process = runtime.exec("cmd.exe /c cd " + path + " &&" + " " + order);
-//        }else {
-//            //执行命令
-//            String[] cmd = new String[] { "/bin/sh", "-c", "cd "+path+";"+order };
-//            process = runtime.exec(cmd);
-//        }
-//        return process;
-//    }
 }
 

@@ -6,8 +6,6 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-
-//@Conditional(EasInlineCondition.class)
 @RestController
 public class EnableEasProperty {
     public static final HashMap<String,Object> map = new HashMap<>();

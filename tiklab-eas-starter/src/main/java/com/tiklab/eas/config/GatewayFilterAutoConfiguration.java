@@ -1,9 +1,10 @@
 package com.tiklab.eas.config;
 
 import com.tiklab.eam.author.Authenticator;
-import com.tiklab.eam.server.author.config.IgnoreConfig;
-import com.tiklab.eam.server.author.config.IgnoreConfigBuilder;
-import com.tiklab.eam.server.handler.AuthorHandler;
+
+import com.tiklab.eam.client.author.AuthorHandler;
+import com.tiklab.eam.client.author.config.IgnoreConfig;
+import com.tiklab.eam.client.author.config.IgnoreConfigBuilder;
 import com.tiklab.gateway.GatewayFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

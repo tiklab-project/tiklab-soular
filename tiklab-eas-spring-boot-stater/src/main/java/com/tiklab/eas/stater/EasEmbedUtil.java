@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 public class EasEmbedUtil {
     private static Logger logger = LoggerFactory.getLogger(EasEmbedUtil.class);
 
-    public Process startShellEasProcess(HashMap<String, String> easCfg) throws IOException,NullPointerException {
+    public Process startShellEasProcess(HashMap<String, Object> easCfg) throws IOException,NullPointerException {
         Runtime runtime=Runtime.getRuntime();
         String property = System.getProperty("os.name");
         Process process;
@@ -28,17 +28,15 @@ public class EasEmbedUtil {
 
         String path =new File(rootPath).getParent()+easPath;
 
-        int port = Integer.parseInt(easCfg.get("serverPort"));
+        int port = (int) easCfg.get("serverPort");
 
-        boolean embbedEnable = Boolean.parseBoolean(easCfg.get("embbedEnable"));
+        boolean embbedEnable = (boolean) easCfg.get("embbedEnable");
 
-        String mysqlServerPort = easCfg.get("mysqlServerPort");
-        String jdbcUrl = easCfg.get("jdbcUrl");
-        String jdbcDriverClassName = easCfg.get("jdbcDriverClassName");
-        String jdbcUsername = easCfg.get("jdbcUsername");
-        String jdbcPassword = easCfg.get("jdbcPassword");
-
-        String javaHome = easCfg.get("javaHome");
+        int mysqlServerPort = (int) easCfg.get("mysqlServerPort");
+        String jdbcUrl = (String) easCfg.get("jdbcUrl");
+        String jdbcDriverClassName = (String) easCfg.get("jdbcDriverClassName");
+        String jdbcUsername = (String) easCfg.get("jdbcUsername");
+        String jdbcPassword = (String) easCfg.get("jdbcPassword");
 
         String type; //type 1:独立部署，2：嵌入其他项目运行
         if (embbedEnable) {

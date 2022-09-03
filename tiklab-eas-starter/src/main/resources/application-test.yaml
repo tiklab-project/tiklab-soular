@@ -1,0 +1,104 @@
+#application config
+app:
+  name: tiklab-eas
+
+spring:
+  profiles:
+    active: test
+
+#web config
+server:
+  port: 8080
+# enable eas to project
+eas:
+  embbed:
+    enable: false
+  server:
+    port: 8086
+#dal config
+#dal config for mysql jdbc
+jdbc:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  username: root
+  password: darth2020
+
+
+mysql:
+  name: tiklab_eas
+  embbed:
+    enable:false
+  server:
+    port:3306
+
+PROJECT_HOME: ${user.home}/tiklab/${app.name}
+DATA_HOME: ${user.home}/tiklab/${app.name}
+
+#dfs config
+#dfs.server.enabled=false
+#dfs.server.mode=server
+dfs:
+  server:
+    #    enabled: true
+    #    mode:server
+    port: 4000
+    datapath: ${DATA_HOME}/files
+  client:
+    url: 172.10.1.11:4000
+    bucket: ${app.name}
+
+#dfs
+file.path=http://file.test.tiklab.net
+
+#dcs config
+#dcs.server.enabled=false
+#dcs.server.mode=server
+dcs:
+  server:
+    #    enabled: true
+    #    mode:server
+    port: 5001
+    datapath: ${DATA_HOME}/caches
+  client:
+    url: 172.10.1.11:5001
+    bucket: ${app.name}
+
+#dss config
+#dss.server.enabled=false
+#dss.server.mode=server
+dss:
+  server:
+    #    enabled: true
+    #    mode:server
+    port: 6001
+    datapath: ${DATA_HOME}/index
+  client:
+    url: 172.10.1.11:6001
+    bucket: ${app.name}
+
+
+
+#integration config
+homes:
+  address: http://139.196.76.221:8081
+
+#plugin config
+plugin:
+  path: ${DATA_HOME}/plugin
+
+#tenant config
+tenant:
+  application: eas
+
+
+#licences config
+licences:
+  path: ${DATA_HOME}/licences
+
+
+auth:
+  wechat_suite_id: null
+  wechat_secret: null
+  wechat_token: null
+  wechat_encodingAESKey: null
+

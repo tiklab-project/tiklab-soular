@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +16,10 @@ import org.slf4j.LoggerFactory;
 public class EasEmbedUtil {
     private static Logger logger = LoggerFactory.getLogger(EasEmbedUtil.class);
 
-    public Process startShellEasProcess(HashMap<String, Object> easCfg) throws IOException,NullPointerException {
+    public Process startShellEasProcess() throws IOException,NullPointerException {
+
+        HashMap<String, Object> easCfg = EnableEasProperty.map;
+
         Runtime runtime=Runtime.getRuntime();
         String property = System.getProperty("os.name");
         Process process;

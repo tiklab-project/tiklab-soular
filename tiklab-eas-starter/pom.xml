@@ -11,8 +11,8 @@
     </parent>
 
 
-    <artifactId>tiklab-eas-starter</artifactId>
-<!--    <artifactId>tiklab-eas-starter-${systemType}</artifactId>-->
+<!--    <artifactId>tiklab-eas-starter</artifactId>-->
+    <artifactId>tiklab-eas-starter-${systemType}</artifactId>
     <name>${project.artifactId}</name>
     <version>1.0.0-SNAPSHOT</version>
 

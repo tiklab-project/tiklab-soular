@@ -11,6 +11,7 @@ import com.tiklab.gateway.starter.EnableGateway;
 import com.tiklab.join.starter.annotation.EnableJoin;
 import com.tiklab.licence.starter.EnableLicenceServer;
 import com.tiklab.message.starter.EnableMessage;
+import com.tiklab.mysql.starter.EnableMysql;
 import com.tiklab.pluginx.starter.EnablePluginServer;
 import com.tiklab.postin.client.EnablePostInClient;
 import com.tiklab.privilege.stater.EnablePrivilegeServer;
@@ -27,6 +28,9 @@ import org.springframework.context.annotation.Configuration;
 //platform
 @EnableBeans
 @EnableWeb
+
+@EnableMysql
+
 @EnableDal
 @EnableDsm
 @EnableJoin
@@ -47,6 +51,8 @@ import org.springframework.context.annotation.Configuration;
 @EnablePostInClient
 
 @EnableEasServer
+
+
 public class  EasAutoConfiguration {
 }
 

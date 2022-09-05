@@ -10,31 +10,35 @@ spring:
 server:
   port: 8080
 # enable eas to project
-eas:
-  embbed:
-    enable: false
-  server:
-    port: 8086
-
-
-
+#eas:
+#  embbed:
+#    enable: false
+#  server:
+#    port: 8086
+#  address: http:lodalhost:3305
+#  web:
+#    address: http:lodalhost:3305
+#  jdbc:
+#    url: jdbc:mysql://172.10.1.10:3306/tiklab_postin?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: darth2020
 #dal config
 #dal config for mysql jdbc
-jdbc:
-  driverClassName: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-  username: root
-  password: darth2020
+#jdbc:
+#  driverClassName: com.mysql.cj.jdbc.Driver
+#  url: jdbc:mysql://172.10.1.10:3306/tiklab_postin?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#  username: root
+#  password: darth2020
 
 
-mysql:
-  name: tiklab_eas
-  embbed:
-    enable: false
-  server:
-    port: 3306
-  version: mysql-8.0.28
-
+#mysql:
+#  name: tiklab_eas
+#  embbed:
+#    enable: true
+#  server:
+#    port: 3306
+#  version: 8.0.28
 
 PROJECT_HOME: ${user.home}/tiklab/${app.name}
 DATA_HOME: ${user.home}/tiklab/${app.name}
@@ -45,8 +49,8 @@ DATA_HOME: ${user.home}/tiklab/${app.name}
 #dfs.server.mode=server
 dfs:
   server:
-#    enabled: true
-#    mode:server
+    enabled: true
+    #    mode:server
     port: 4000
     datapath: ${DATA_HOME}/files
   client:
@@ -63,7 +67,7 @@ file:
 #dcs.server.mode=server
 dcs:
   server:
-    #    enabled: true
+    enabled: true
     #    mode:server
     port: 5000
     datapath: ${DATA_HOME}/caches
@@ -77,7 +81,7 @@ dcs:
 #dss.server.mode=server
 dss:
   server:
-    #    enabled: true
+    enabled: true
     #    mode:server
     port: 6000
     datapath: ${DATA_HOME}/index
@@ -86,9 +90,6 @@ dss:
     bucket: ${app.name}
 
 
-#auth config
-#auth.type=acc
-#auth.address=http://www.tiklab.cn
 
 #integration config
 homes:

@@ -19,7 +19,6 @@
         <module>tiklab-eas-server</module>
         <module>tiklab-eas-starter</module>
         <module>tiklab-eas-enable-starter</module>
-        <module>tiklab-eas-spring-boot-starter</module>
     </modules>
 
     <dependencyManagement>

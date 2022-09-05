@@ -1,9 +1,8 @@
-package com.tiklab.eas.starter;
+package com.tiklab.eas.enable.boot;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -61,9 +60,17 @@ public class EasEmbedUtil {
                "--jdbc.username="+jdbcUsername + " " +
                "--jdbc.password="+jdbcPassword +  " "+
                "--jdbc.driverClassName="+jdbcDriverClassName+"" + " " +
-               "--eas.embbed.enable="+embbedEnable + " " +
                "--mysql.embbed.enable="+mysqlEmbbedEnable  + " " +
-               "--eas.web.address="+webAddress  +"" + " " +
+               "--mysql.server.port="+mysqlServerPort  + " " +
+               "--eas.mysql.embbed.enable="+mysqlEmbbedEnable + " " +
+               "--eas.mysql.server.port="+mysqlServerPort + " " +
+               "-eas.mysql.name="+mysqlName + " " +
+               "--eas.server.port="+port + " " +
+               "--eas.jdbc.url="+newJdbcUrl + " " +
+               "--eas.jdbc.driverClassName="+jdbcDriverClassName + " " +
+               "--eas.jdbc.username="+jdbcUsername + " " +
+               "--eas.jdbc.password="+jdbcPassword + " " +
+               "--eas.web.address="+webAddress + " " +
                "--eas.address="+address  +"" + " "
                ;
         String shString = "sh" + " "+path+ "/startup.sh" + " " + d;

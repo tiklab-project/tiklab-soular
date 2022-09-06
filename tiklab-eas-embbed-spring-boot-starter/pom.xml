@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tiklab-eas-enable-util</artifactId>
+    <artifactId>tiklab-eas-embbed-spring-boot-starter</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

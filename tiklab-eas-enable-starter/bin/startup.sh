@@ -40,6 +40,13 @@ do
    CLASSPATH="$CLASSPATH":"$appJar"
 done
 
+
+echo "JAVA_HOME="$JAVA_HOME
+echo "JAVA_OPTS="$JAVA_OPTS
+echo "CLASSPATH="$CLASSPATH
+echo "APP_HOME="$APP_HOME
+echo "APP_MAIN="$APP_MAIN
+
 #-------------------------------------------------------------------------------------------------------------
 #   程序开始
 #-------------------------------------------------------------------------------------------------------------
@@ -59,19 +66,16 @@ getPID(){
 #-------------------------------------------------------------------------------------------------------------
 #       拼接shell脚本参数
 #-------------------------------------------------------------------------------------------------------------
-
-
 $(> temp)
 # shellcheck disable=SC2068
 for i in $@; do
-    echo "哈哈===" ${i}
-    echo "${i}">> temp
+    echo ${i} " " >> temp
 done
 
 # str取temp文本里的字符串
 eas_shell=$(cat temp)
 # 将字符串最后的一个空格去掉
-eas_shell=${eas_shell%*}
+eas_shell=${eas_shell%*" "}
 
 
 echo "读取遍历的参数======="
@@ -90,10 +94,8 @@ startup(){
         if [ ! -d "$APP_LOG" ]; then
             mkdir "$APP_LOG"
         fi
-        #nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN --server.port=8060 --jdbc.url="jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" --jdbc.username=root --jdbc.password=darth2020 --jdbc.driverClassName="com.mysql.cj.jdbc.Driver" --mysql.embbed.enable=false --mysql.server.port=3306 --eas.mysql.embbed.enable=false --eas.mysql.server.port=3306 --eas.mysql.name="tiklab_eas" --eas.server.port=8060 --eas.jdbc.url="jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" --eas.jdbc.driverClassName="com.mysql.cj.jdbc.Driver" --eas.jdbc.username=root --eas.jdbc.password=darth2020 --mysql.version="mysql-8.0.28" --eas.web.address="hhtp://localhost:8060" --eas.address="hhtp://localhost:8060" --eas.embbed.enable=false> eas.log 2>&1 &
-        #nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN --jdbc.url="jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" --server.port=8086 --jdbc.username=root --jdbc.password=darth2020 --jdbc.driverClassName="com.mysql.cj.jdbc.Driver" --eas.server.port=8080 --eas.embbed.enable=false --mysql.embbed.enable=true --mysql.name=tiklab_eas --eas.web.address="http:lodalhost:3305" --mysql.server.port=3306 --eas.address="http:lodalhost:3305" --eas.jdbc.url="jdbc:mysql://172.10.1.10:3306/tiklab_matflow?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" --eas.jdbc.driverClassName="com.mysql.cj.jdbc.Driver" --eas.jdbc.username=root --eas.jdbc.password=darth2020 --mysql.version="mysql-8.0.28" --eas.mysql.embbed.enable=true --eas.mysql.server.port=3306 --eas.mysql.name="tiklab_eas"> eas.log 2>&1 &
-       echo $1
-       nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN $eas_shell > eas.log 2>&1 &
+#        nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN --jdbc.url="jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" --server.port=8086 --jdbc.username=root --jdbc.password=darth2020 --jdbc.driverClassName="com.mysql.cj.jdbc.Driver" --eas.embbed.enable=false --mysql.embbed.enable=true --mysql.name=tiklab_eas --eas.web.address="http:lodalhost:3305" --eas.address="http:lodalhost:3305"> eas.log 2>&1 &
+        nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN $eas_shell
         # shellcheck disable=SC2034
         for i in $(seq 5)
         do

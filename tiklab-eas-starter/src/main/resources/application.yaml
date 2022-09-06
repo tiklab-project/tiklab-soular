@@ -5,6 +5,8 @@ app:
 spring:
   profiles:
     active: dev
+  config:
+    import: optional:/usr/local/apps/conf/eas/application.yaml
 
 #web config
 server:

@@ -10,7 +10,7 @@ spring:
 
 #web config
 server:
-  port: 8080
+  port: 8081
 # enable eas to project
 eas:
   embbed:

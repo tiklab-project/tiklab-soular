@@ -96,12 +96,7 @@ startup(){
         if [ ! -d "$APP_LOG" ]; then
             mkdir "$APP_LOG"
         fi
-#        if [ $4 -eq 1 ]; then
-#            nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN > info.log 2>&1 &
-#        else
-#          nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN ${EAS_CONFIG_ARRAY[0]} ${EAS_CONFIG_ARRAY[1]} ${EAS_CONFIG_ARRAY[2]} ${EAS_CONFIG_ARRAY[3]}> eas.log 2>&1 &
-#        fi
-         nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN ${EAS_CONFIG_ARRAY[0]} ${EAS_CONFIG_ARRAY[1]} ${EAS_CONFIG_ARRAY[2]} ${EAS_CONFIG_ARRAY[3]}> eas.log 2>&1 &
+         nohup $JAVA_HOME/bin/java $JAVA_opens $JAVA_OPTS -classpath $CLASSPATH $APP_MAIN > info.log 2>&1 &
 
         # shellcheck disable=SC2034
         for i in $(seq 5)

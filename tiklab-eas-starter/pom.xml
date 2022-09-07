@@ -121,7 +121,7 @@
                 </dependency>
                 <dependency>
                     <groupId>com.tiklab</groupId>
-                    <artifactId>tiklab-linux-jdk</artifactId>
+                    <artifactId>tiklab-jdk-linux</artifactId>
                     <version>1.0.0-SNAPSHOT</version>
                     <type>zip</type>
                     <scope>provided</scope>
@@ -144,7 +144,7 @@
                 </dependency>
                 <dependency>
                     <groupId>com.tiklab</groupId>
-                    <artifactId>tiklab-windows-jdk</artifactId>
+                    <artifactId>tiklab-jdk-windows</artifactId>
                     <version>1.0.0-SNAPSHOT</version>
                     <type>zip</type>
                     <scope>provided</scope>
@@ -235,7 +235,7 @@
                                 <artifactItem>
                                     <groupId>com.tiklab</groupId>
 <!--                                    <artifactId>tiklab-linux-jdk</artifactId>-->
-                                    <artifactId>tiklab-${systemType}-jdk</artifactId>
+                                    <artifactId>tiklab-jdk-${systemType}</artifactId>
                                     <version>1.0.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <outputDirectory>temp</outputDirectory>

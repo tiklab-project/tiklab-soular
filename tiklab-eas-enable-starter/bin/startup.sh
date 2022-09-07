@@ -64,7 +64,6 @@ getPID(){
 $(> temp)
 # shellcheck disable=SC2068
 for i in $@; do
-    echo "哈哈===" ${i}
     echo "${i}">> temp
 done
 

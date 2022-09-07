@@ -6,6 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Conditional(EasInlineCondition.class)
 @Configuration
-@ComponentScan({"com.tiklab.eas.eanble.util"})
+@ComponentScan({"com.tiklab.eas.eanble"})
 public class EasInlineUtilAutoConfiguration {
 }

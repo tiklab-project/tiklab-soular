@@ -85,7 +85,22 @@
         </dependency>
 
     </dependencies>
-
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>enable-windows</id>-->
+<!--            <properties>-->
+<!--                <profile.assembly.package.suffix>enable</profile.assembly.package.suffix>-->
+<!--                <systemType>windows</systemType>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--        <profile>-->
+<!--            <id>enable-linux</id>-->
+<!--            <properties>-->
+<!--                <profile.assembly.package.suffix>enable</profile.assembly.package.suffix>-->
+<!--                <systemType>linux</systemType>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--    </profiles>-->
     <build>
         <plugins>
             <plugin>

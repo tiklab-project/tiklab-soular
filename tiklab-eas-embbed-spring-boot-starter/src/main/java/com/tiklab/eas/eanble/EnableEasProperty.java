@@ -24,12 +24,6 @@ public class EnableEasProperty {
     private String webAddress;
 
     //数据库
-    @Value("${eas.mysql.embbed.enable}")
-    private boolean mysqlEmbbedEnable;
-
-    @Value("${eas.mysql.server.port}")
-    private Integer mysqlServerPort;
-
     @Value("${eas.mysql.name}")
     private String mysqlName;
 
@@ -53,9 +47,6 @@ public class EnableEasProperty {
         map.put("serverPort", serverPort);
         map.put("address", address);
         map.put("webAddress", webAddress);
-
-        map.put("mysqlEmbbedEnable", mysqlEmbbedEnable);
-        map.put("mysqlServerPort", mysqlServerPort);
         map.put("mysqlName", mysqlName);
 
         map.put("jdbcUrl", jdbcUrl);

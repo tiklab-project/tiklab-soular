@@ -33,9 +33,6 @@ public class EasEmbedUtil {
         String path =new File(rootPath).getParent()+easPath;
 
         int port = (int) easCfg.get("serverPort");
-
-        boolean embbedEnable = (boolean) easCfg.get("embbedEnable");
-
         String jdbcUrl = (String) easCfg.get("jdbcUrl");
         String jdbcDriverClassName = (String) easCfg.get("jdbcDriverClassName");
         String jdbcUsername = (String) easCfg.get("jdbcUsername");
@@ -44,17 +41,10 @@ public class EasEmbedUtil {
         String webAddress = (String) easCfg.get("webAddress");
         String address = (String) easCfg.get("address");
         // sql
-        boolean mysqlEmbbedEnable = (boolean) easCfg.get("mysqlEmbbedEnable");
-        int mysqlServerPort = (int) easCfg.get("mysqlServerPort");
         String mysqlName = (String) easCfg.get("mysqlName");
 
-        String newJdbcUrlPort = jdbcUrl.replaceAll("(:)\\d{1,5}", ":"+mysqlServerPort);
-        String[] strings = newJdbcUrlPort.split(mysqlName);
-        logger.info("mysqlName:"+mysqlName);
-        for (String i : strings) {
-            logger.info("strings:"+i);
-        }
-        String newJdbcUrl = strings[0] + "tiklab_eas"+ strings[1];
+        String newJdbcUrl = jdbcUrl.replace(mysqlName, "tiklab_eas");
+
 
 
         logger.info("sh 脚本 newJdbcUrl：" + newJdbcUrl);
@@ -64,10 +54,6 @@ public class EasEmbedUtil {
                "--jdbc.username="+jdbcUsername+" "+
                "--jdbc.password="+jdbcPassword +  " "+
                "--jdbc.driverClassName="+"\""+jdbcDriverClassName+"\""+" "+
-               "--mysql.embbed.enable="+mysqlEmbbedEnable+" " +
-               "--mysql.server.port="+mysqlServerPort  + " " +
-               "--eas.mysql.embbed.enable="+mysqlEmbbedEnable + " " +
-               "--eas.mysql.server.port="+mysqlServerPort + " " +
                "--eas.mysql.name="+mysqlName + " " +
                "--eas.server.port="+port + " " +
                "--eas.jdbc.url="+"\""+newJdbcUrl+"\"" + " " +

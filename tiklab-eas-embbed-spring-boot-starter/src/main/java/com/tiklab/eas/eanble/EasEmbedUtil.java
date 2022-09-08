@@ -43,6 +43,9 @@ public class EasEmbedUtil {
         // sql
         String mysqlName = (String) easCfg.get("mysqlName");
 
+
+//        String newJdbcUrlPort = jdbcUrl.replaceAll("(:)\\d{1,5}", ":"+mysqlServerPort);
+
         String newJdbcUrl = jdbcUrl.replace(mysqlName, "tiklab_eas");
 
 

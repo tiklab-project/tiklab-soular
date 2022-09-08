@@ -16,17 +16,18 @@ goto begin
 :end
 
 set DIRS=%P1Path%
-set JAVA_HOME=%4
-
-if %5 equ 1 (set JAVA_HOME="/usr/local/jdk-16.0.2")
-
-echo %DIRS%
 
 set APP_MAIN=com.tiklab.eas.EasApplication
 
+set JAVA_HOME=%DIRS%jdk-16.0.2
+
+echo %DIRS%
+
+xcopy /E %DIRS%temp\*.* %DIRS%
+
 set APP_HOME=%DIRS%
 
-set APP_CONFIG=%DIRS%conf\application-dev.properties
+set APP_CONFIG=%DIRS%conf\application-prd.properties
 
 set CLASSPATH=%DIRS%conf\
 
@@ -47,15 +48,16 @@ set CLASSPATH=%st%%s%
 
 set PID=0
 
-set EAS_CONFIG_ARRAY= "--server.port=%6 --jdbc.url=%1 --jdbc.username=%2 --jdbc.password=%3 --jdbc.driverClassName=$7"
-
 for /f "usebackq tokens=1-2" %%a in (`jps -l ^| findstr %APP_MAIN%`) do (
 set PID=%%a
 )
 
 if %PID% == 0 (
+    cd %DIRS%
+    md logs
     cd %JAVA_HOME%\bin
-    start /b .\java.exe %JAVA_OPTS%  %CLASSPATH%  %APP_MAIN%  %EAS_CONFIG_ARRAY%>> %DIRS%info.log
+
+    start /b .\java.exe %JAVA_OPTS%  %CLASSPATH%  %APP_MAIN% >> %DIRS%info.log
 
     echo %APP_MAIN% START STARTING.............
 

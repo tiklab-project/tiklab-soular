@@ -31,7 +31,7 @@
             <outputDirectory>/</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>${basedir}/bin-windows</directory>
+            <directory>${basedir}/bin</directory>
             <fileMode>755</fileMode>
             <excludes>
                 <exclude>*.classpath</exclude>

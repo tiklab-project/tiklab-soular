@@ -2,7 +2,7 @@
 #-------------------------------------------------------------------------------------------------------------
 DIRS=$(dirname "$PWD")
 
-APP_MAIN="com.tiklab.matflow.MatFlowApplication"
+APP_MAIN="com.tiklab.eas.EasApplication"
 
 if [ -e "${DIRS}/temp" ]; then
       mv "${DIRS}"/temp/* ${DIRS}
@@ -24,7 +24,7 @@ find ${DIRS}/ -name '*.sh' | xargs dos2unix;
 
 DIR=$(cd "$(dirname "$0")"; pwd)
 APP_HOME=${DIR}/..
-APP_CONFIG=${APP_HOME}/conf/application.yaml
+APP_CONFIG=${APP_HOME}/conf/application-${env}.properties
 APP_LOG=${APP_HOME}/logs
 
 export APP_HOME

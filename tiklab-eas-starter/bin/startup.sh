@@ -1,16 +1,26 @@
 #!/bin/sh
 #-------------------------------------------------------------------------------------------------------------
-#该脚本的使用方式为-->[sh startup.sh]
-#该脚本可在服务器上的任意目录下执行,不会影响到日志的输出位置等
-#-------------------------------------------------------------------------------------------------------------
-if [ ! -n "$JAVA_HOME" ]; then
-    export JAVA_HOME="/usr/local/jdk-16.0.2"
+DIRS=$(dirname "$PWD")
+
+APP_MAIN="com.tiklab.matflow.MatFlowApplication"
+
+if [ -e "${DIRS}/temp" ]; then
+      mv "${DIRS}"/temp/* ${DIRS}
+      rm -rf "${DIRS}"/temp
 fi
-#JAVA_HOME=/opt/jdk-16.0.2
+
+JDK_VERSION=jdk-16.0.2
+#判断是否自定义jdk
+JAVA_HOME="/usr/local/${JDK_VERSION}"
+if [ -e "${DIRS}/${JDK_VERSION}" ]; then
+      JAVA_HOME="${DIRS}/${JDK_VERSION}"
+fi
+
+find ${DIRS}/ -name '*.sh' | xargs dos2unix;
+
 #-------------------------------------------------------------------------------------------------------------
 #       系统运行参数
 #-------------------------------------------------------------------------------------------------------------
-APP_MAIN="com.tiklab.eas.EasApplication"
 
 DIR=$(cd "$(dirname "$0")"; pwd)
 APP_HOME=${DIR}/..
@@ -26,10 +36,18 @@ JAVA_OPTS="$JAVA_OPTS -Dconf.config=file:${APP_CONFIG}"
 JAVA_OPTS="$JAVA_OPTS --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.sql/java.sql=ALL-UNNAMED  -classpath"
 
 CLASSPATH=${APP_HOME}/conf
+
+#加载私有依赖
 for appJar in "$APP_HOME"/lib/*.jar;
 do
    CLASSPATH="$CLASSPATH":"$appJar"
 done
+#加载公共依赖
+for appJar in "$DIRS"/comment/*.jar;
+do
+   CLASSPATH="$CLASSPATH":"$appJar"
+done
+
 
 echo "JAVA_HOME="$JAVA_HOME
 echo "JAVA_OPTS="$JAVA_OPTS
@@ -64,7 +82,7 @@ startup(){
             mkdir "$APP_LOG"
         fi
 
-        nohup $JAVA_HOME/bin/java $JAVA_OPTS $CLASSPATH $APP_MAIN > info.log 2>&1 &
+        nohup $JAVA_HOME/bin/java $JAVA_OPTS $CLASSPATH $APP_MAIN  > info.log 2>&1 &
 
         for i in $(seq 5)
         do
@@ -85,3 +103,4 @@ startup(){
 }
 
 startup
+

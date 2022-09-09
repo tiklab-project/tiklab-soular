@@ -21,7 +21,7 @@
                 <exclude>*.yaml</exclude>
                 <exclude>*.xml</exclude>
             </excludes>
-            <outputDirectory>/lib/conf</outputDirectory>
+            <outputDirectory>/conf</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>${basedir}/src/main/resources</directory>
@@ -54,7 +54,6 @@
             <outputDirectory>/temp</outputDirectory>
         </fileSet>
     </fileSets>
-
     <dependencySets>
         <dependencySet>
             <outputDirectory>co</outputDirectory>

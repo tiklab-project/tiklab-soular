@@ -199,7 +199,6 @@
                         <id>make-assembly</id>
                         <configuration>
                             <descriptors>
-<!--                                <descriptor>assembly/distribution-linux.xml</descriptor>-->
                                 <descriptor>assembly/distribution-${profile.assembly.package.suffix}.xml</descriptor>
                             </descriptors>
                             <finalName>tiklab-eas</finalName>
@@ -227,7 +226,6 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.tiklab</groupId>
-<!--                                    <artifactId>tiklab-linux-jdk</artifactId>-->
                                     <artifactId>tiklab-jdk-${systemType}</artifactId>
                                     <version>1.0.0-SNAPSHOT</version>
                                     <type>zip</type>
@@ -235,7 +233,6 @@
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>com.tiklab</groupId>
-<!--                                    <artifactId>tiklab-linux-mysql</artifactId>-->
                                     <artifactId>tiklab-mysql-${systemType}</artifactId>
                                     <version>1.0.0-SNAPSHOT</version>
                                     <type>zip</type>

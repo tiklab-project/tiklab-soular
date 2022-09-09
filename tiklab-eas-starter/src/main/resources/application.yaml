@@ -30,6 +30,7 @@ jdbc:
 
 
 mysql:
+  local: false
   name: tiklab_eas
   embbed:
     enable: false

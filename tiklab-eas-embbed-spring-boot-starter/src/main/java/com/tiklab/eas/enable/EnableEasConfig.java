@@ -1,4 +1,4 @@
-package com.tiklab.eas.eanble;
+package com.tiklab.eas.enable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

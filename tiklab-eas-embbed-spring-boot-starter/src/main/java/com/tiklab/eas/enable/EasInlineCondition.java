@@ -1,4 +1,4 @@
-package com.tiklab.eas.eanble;
+package com.tiklab.eas.enable;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;

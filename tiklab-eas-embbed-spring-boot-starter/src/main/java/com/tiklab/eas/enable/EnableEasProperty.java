@@ -1,4 +1,4 @@
-package com.tiklab.eas.eanble;
+package com.tiklab.eas.enable;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +10,13 @@ import java.util.HashMap;
 @RestController
 public class EnableEasProperty {
     public static final HashMap<String,Object> map = new HashMap<>();
+
+    @Value("${APP_HOME}")
+    private String appHome;
+
+    @Value("${eas.env.local}")
+    private boolean local;
+
 
     @Value("${eas.embbed.enable}")
     private boolean embbedEnable;
@@ -42,7 +49,8 @@ public class EnableEasProperty {
 
     @Bean
     public void putEas(){
-
+        map.put("appHome", appHome);
+        map.put("local", local);
         map.put("embbedEnable", embbedEnable);
         map.put("serverPort", serverPort);
         map.put("address", address);

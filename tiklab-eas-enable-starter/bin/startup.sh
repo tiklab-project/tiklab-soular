@@ -35,7 +35,7 @@ do
 done
 
 
-for appJar in "$DIRS"/comment/*.jar;
+for appJar in "$DIRS"/tiklab-eas/comment/*.jar;
 do
    CLASSPATH="$CLASSPATH":"$appJar"
 done
@@ -63,16 +63,22 @@ getPID(){
 
 $(> temp)
 # shellcheck disable=SC2068
-for i in $@; do
-    echo "${i}">> temp
+LOCAL_JAVA_HOME="JAVA_HOME="
+for i in $*; do
+    if [[ ${i} == *$LOCAL_JAVA_HOME* ]]
+    then
+        echo "===设置本地开发环境java_home:${i//JAVA_HOME=/''} "
+        export JAVA_HOME=${i//JAVA_HOME=/''}
+    else
+        echo "${i}">> temp
+    fi
 done
+
 
 # str取temp文本里的字符串
 eas_shell=$(cat temp)
 # 将字符串最后的一个空格去掉
 eas_shell=${eas_shell%*}
-
-
 echo "读取遍历的参数======="
 echo $eas_shell
 

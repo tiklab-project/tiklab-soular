@@ -1,4 +1,4 @@
-package com.tiklab.eas.eanble;
+package com.tiklab.eas.enable;
 
 
 import org.slf4j.Logger;
@@ -66,6 +66,15 @@ public class EasEmbedUtil {
                "--eas.web.address="+"\""+webAddress+"\"" + " " +
                "--eas.address="+"\""+address+"\"" +"" + " "
                ;
+
+        Boolean isLocal = (boolean) easCfg.get("local");
+
+        if (isLocal) {
+            path = easCfg.get("appHome") + "/temp" + easPath;
+            String java_home = System.getProperty("java.home");
+            d += " JAVA_HOME="+java_home;
+        }
+
         String shString = "sh" + " "+path+ "/startup.sh" + " " + d;
 //        String shString = "sh" + " "+path+ "/startup.sh";
         logger.info("sh 脚本：" + shString);

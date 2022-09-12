@@ -1,4 +1,4 @@
-package com.tiklab.eas.enable;
+package com.tiklab.eas.boot;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
@@ -6,7 +6,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 
-public class EasInlineCondition implements Condition {
+public class EasCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {

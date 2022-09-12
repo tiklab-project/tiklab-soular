@@ -1,4 +1,4 @@
-package com.tiklab.eas.enable;
+package com.tiklab.eas.boot;
 
 import com.tiklab.utils.property.PropertyAndYamlSourceFactory;
 import org.slf4j.Logger;

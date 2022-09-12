@@ -98,7 +98,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.tiklab.eas.enable.EasInlineApplication</mainClass>
+                            <mainClass>com.tiklab.eas.boot.EasInlineApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

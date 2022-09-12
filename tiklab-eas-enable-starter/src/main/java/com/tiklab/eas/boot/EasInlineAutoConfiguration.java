@@ -1,4 +1,4 @@
-package com.tiklab.eas.enable;
+package com.tiklab.eas.boot;
 
 import com.tiklab.beans.starter.annotation.EnableBeans;
 import com.tiklab.dal.starter.annotation.EnableDal;

@@ -111,6 +111,7 @@ licences:
   path: ${APP_HOME}/licences
 
 auth:
+  type: local
   wechat_suite_id: null
   wechat_secret: null
   wechat_token: null

@@ -18,7 +18,6 @@
         <module>tiklab-eas-api</module>
         <module>tiklab-eas-server</module>
         <module>tiklab-eas-starter</module>
-        <module>tiklab-eas-enable-starter</module>
         <module>tiklab-eas-embbed-spring-boot-starter</module>
     </modules>
 

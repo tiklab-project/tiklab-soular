@@ -2,7 +2,7 @@
 #-------------------------------------------------------------------------------------------------------------
 DIRS=$(dirname "$PWD")
 
-APP_MAIN="com.tiklab.eas.EasApplication"
+APP_MAIN="net.tiklab.eas.EasApplication"
 
 if [ -e "${DIRS}/temp" ]; then
       mv "${DIRS}"/temp/* ${DIRS}

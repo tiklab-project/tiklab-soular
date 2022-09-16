@@ -17,7 +17,7 @@ goto begin
 
 set DIRS=%P1Path%
 
-set APP_MAIN=com.tiklab.eas.EasApplication
+set APP_MAIN=net.tiklab.eas.EasApplication
 
 set JAVA_HOME=%DIRS%jdk-16.0.2
 

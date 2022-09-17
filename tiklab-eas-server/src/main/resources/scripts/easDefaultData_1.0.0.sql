@@ -29,31 +29,31 @@ INSERT INTO `prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, 
 
 
 -- 初始化admin角色的权限功能
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('0c1f05b09b2943a62ef366dcc4086d98', '97a7db718273636659fc5e146a00edd2', 'bb6bd9002a8afdb7cf8a67ba8b5a5809', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('21594614c071747fffdd184832af4093', '97a7db718273636659fc5e146a00edd2', 'a9fbf0c450ef34c32fdea0c4001a04d0', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('234a5d4f8d1c69297f81d65d551eccbc', '97a7db718273636659fc5e146a00edd2', 'dadf107f5f644c1eba9abd35008363cf', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('2c7a843f661b1ccad201c5fbdc0f194a', '97a7db718273636659fc5e146a00edd2', '56d73b0fbef2489acf6e5f06236ccbc0', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('3472ec612bdd716895f04134b8619128', '97a7db718273636659fc5e146a00edd2', '4ec3d621872b6262c1be8189b75c1c78', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('4268380c9f52765aa78aa87936b4a771', '97a7db718273636659fc5e146a00edd2', '0afd449318cff90bea00c0dbc458972c', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('647268a714b7f1ab5e8564cfc816f4a4', '97a7db718273636659fc5e146a00edd2', '2ec3a2259c05e4172aa1f193fa72cf59', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('8473d00da60dba072e1223afdb4a89a0', '97a7db718273636659fc5e146a00edd2', '90d527109d996117ef18ddf1cb9c17a8', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('8ed4b03df3de4e01115796ff9bae7e8f', '97a7db718273636659fc5e146a00edd2', '149840d175f7c0e2d055561a8cc6be1b', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('a0b8466fb719f4be2d0d4ad3ed05e3fb', '97a7db718273636659fc5e146a00edd2', 'b79a194a1ba302eec683f48a637288d4', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('c29419cc1879313001ae44dd7c901fbb', '97a7db718273636659fc5e146a00edd2', 'a2b442614036a4cfc2af1d39bd34e057', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('ec650027ffce666328bd64dcf01975f6', '97a7db718273636659fc5e146a00edd2', 'c762b62ff7bb1eff6b2c07e50614b825', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('fb792a8b96f55d9e50448404357cc211', '97a7db718273636659fc5e146a00edd2', '0d841c9636e3e5f80d1cc3fa882311a5', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('ff2264573de1c766ebd17208f382d898', '97a7db718273636659fc5e146a00edd2', '1ce48d70b72480efaa7892fc2ac76b2f', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('0c1f05b09b2943a62ef366dcc4086d98', '1', 'bb6bd9002a8afdb7cf8a67ba8b5a5809', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('21594614c071747fffdd184832af4093', '1', 'a9fbf0c450ef34c32fdea0c4001a04d0', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('234a5d4f8d1c69297f81d65d551eccbc', '1', 'dadf107f5f644c1eba9abd35008363cf', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('2c7a843f661b1ccad201c5fbdc0f194a', '1', '56d73b0fbef2489acf6e5f06236ccbc0', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('3472ec612bdd716895f04134b8619128', '1', '4ec3d621872b6262c1be8189b75c1c78', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('4268380c9f52765aa78aa87936b4a771', '1', '0afd449318cff90bea00c0dbc458972c', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('647268a714b7f1ab5e8564cfc816f4a4', '1', '2ec3a2259c05e4172aa1f193fa72cf59', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('8473d00da60dba072e1223afdb4a89a0', '1', '90d527109d996117ef18ddf1cb9c17a8', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('8ed4b03df3de4e01115796ff9bae7e8f', '1', '149840d175f7c0e2d055561a8cc6be1b', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('a0b8466fb719f4be2d0d4ad3ed05e3fb', '1', 'b79a194a1ba302eec683f48a637288d4', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('c29419cc1879313001ae44dd7c901fbb', '1', 'a2b442614036a4cfc2af1d39bd34e057', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('ec650027ffce666328bd64dcf01975f6', '1', 'c762b62ff7bb1eff6b2c07e50614b825', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('fb792a8b96f55d9e50448404357cc211', '1', '0d841c9636e3e5f80d1cc3fa882311a5', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('ff2264573de1c766ebd17208f382d898', '1', '1ce48d70b72480efaa7892fc2ac76b2f', 'eas');
 
 -- 初始化项目角色的权限功能
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('151fa1ac728f32fb809154263214a66e', '7cfee91edf221ae1deed232ca14c03af', '0afd449318cff90bea00c0dbc458972c', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('1891348aa9c2aa12ad7e4ad6fec7f3f2', '7cfee91edf221ae1deed232ca14c03af', 'a2b442614036a4cfc2af1d39bd34e057', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('275f8e3b9196342f37853c4028f618cb', '7cfee91edf221ae1deed232ca14c03af', '56d73b0fbef2489acf6e5f06236ccbc0', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('58e074b2b686df2651f287c878591a18', '7cfee91edf221ae1deed232ca14c03af', 'dadf107f5f644c1eba9abd35008363cf', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('70ea71ccc98ee5b58844f1230b4f26be', '7cfee91edf221ae1deed232ca14c03af', '4ec3d621872b6262c1be8189b75c1c78', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('a10f95ec2cf33da08d2bd1f4fed1b26a', '7cfee91edf221ae1deed232ca14c03af', 'a9fbf0c450ef34c32fdea0c4001a04d0', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('aa151a27c4665db393120af1d4baab41', '7cfee91edf221ae1deed232ca14c03af', '1ce48d70b72480efaa7892fc2ac76b2f', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('c0f2d7a432deb9350d69db4430ddff20', '7cfee91edf221ae1deed232ca14c03af', '149840d175f7c0e2d055561a8cc6be1b', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('c9a5ecc00dc9ec150dab639bacef1f09', '7cfee91edf221ae1deed232ca14c03af', '0d841c9636e3e5f80d1cc3fa882311a5', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('eeec306f82eb749655583e11a1e6e3a6', '7cfee91edf221ae1deed232ca14c03af', '90d527109d996117ef18ddf1cb9c17a8', 'eas');
-INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('fb0594b8ded1805c8f73f60e708def86', '7cfee91edf221ae1deed232ca14c03af', 'bb6bd9002a8afdb7cf8a67ba8b5a5809', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('151fa1ac728f32fb809154263214a66e', '2', '0afd449318cff90bea00c0dbc458972c', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('1891348aa9c2aa12ad7e4ad6fec7f3f2', '2', 'a2b442614036a4cfc2af1d39bd34e057', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('275f8e3b9196342f37853c4028f618cb', '2', '56d73b0fbef2489acf6e5f06236ccbc0', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('58e074b2b686df2651f287c878591a18', '2', 'dadf107f5f644c1eba9abd35008363cf', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('70ea71ccc98ee5b58844f1230b4f26be', '2', '4ec3d621872b6262c1be8189b75c1c78', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('a10f95ec2cf33da08d2bd1f4fed1b26a', '2', 'a9fbf0c450ef34c32fdea0c4001a04d0', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('aa151a27c4665db393120af1d4baab41', '2', '1ce48d70b72480efaa7892fc2ac76b2f', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('c0f2d7a432deb9350d69db4430ddff20', '2', '149840d175f7c0e2d055561a8cc6be1b', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('c9a5ecc00dc9ec150dab639bacef1f09', '2', '0d841c9636e3e5f80d1cc3fa882311a5', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('eeec306f82eb749655583e11a1e6e3a6', '2', '90d527109d996117ef18ddf1cb9c17a8', 'eas');
+INSERT INTO `prc_role_function` (`id`, `role_id`, `function_id`,`bgroup`) VALUES ('fb0594b8ded1805c8f73f60e708def86', '2', 'bb6bd9002a8afdb7cf8a67ba8b5a5809', 'eas');
 

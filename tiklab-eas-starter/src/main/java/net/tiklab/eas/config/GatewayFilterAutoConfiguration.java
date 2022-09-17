@@ -50,24 +50,32 @@ public class GatewayFilterAutoConfiguration {
                         "/eam/auth/logout",
                         "/eam/passport/valid",
                         "/auth/valid",
+                        "/wechat/passport/login",
+                        "/wechat/passport/internallogin",
+                        "/wechat/passport/internalacclogin",
+
+
                         "/document/view",
                         "/comment/view",
                         "/share/verifyAuthCode",
                         "/share/judgeAuthCode",
-                        "/user/findAllUser",
-                        "/orga/findAllOrga",
-                        "/userOrga/findAllUserOrga",
-                        "/dingdingcfg/findId",
+
                         "/dingding/passport/login",
                         "/dingding/passport/valid",
-                        "/wechatcfg/findWechatById",
-                        "/wechat/passport/login",
-                        "/wechat/passport/internallogin",
-                        "/wechat/passport/internalacclogin",
-                        "/ldap/passport/login",
+
+                        "/user/wechatcfg/findWechatById",
+                        "/user/user/findAllUser",
+                        "/user/orga/findAllOrga",
+                        "/user/userOrga/findAllUserOrga",
+                        "/user/dingdingcfg/findId",
+
+
+
+                        "/wechatCallback/instruct",
+                        "/eam/ldap/passport/login",
                         "/version/getVersion",
                         "/licence/import",
-                        "/wechatCallback/instruct"
+
                 })
                 .ignorePreUrls(new String[]{
                         "/service",

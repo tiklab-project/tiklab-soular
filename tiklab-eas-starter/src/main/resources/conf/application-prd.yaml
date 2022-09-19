@@ -8,13 +8,9 @@ spring:
 
 #web config
 server:
-  port: 8070
+  port: 8081
 # enable eas to project
-eas:
-  embbed:
-    enable: false
-  server:
-    port: 8086
+
 #dal config
 
 #dal config for mysql jdbc

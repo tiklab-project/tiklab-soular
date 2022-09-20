@@ -16,6 +16,7 @@ import net.tiklab.pluginx.starter.EnablePluginServer;
 import net.tiklab.postin.client.EnablePostInClient;
 import net.tiklab.privilege.stater.EnablePrivilegeServer;
 import net.tiklab.rpc.starter.annotation.EnableRpc;
+import net.tiklab.todotask.stater.EnableTodoTask;
 import net.tiklab.toolkit.EnableToolkitServer;
 import net.tiklab.user.starter.EnableUser;
 import net.tiklab.web.starter.annotation.EnableWeb;
@@ -47,6 +48,8 @@ import org.springframework.context.annotation.Configuration;
 @EnablePluginServer
 @EnableToolkitServer
 @EnableLicenceServer
+@EnableTodoTask
+
 //other
 @EnablePostInClient
 

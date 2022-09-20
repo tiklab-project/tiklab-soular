@@ -45,6 +45,11 @@
 			<fileMode>755</fileMode>
 			<outputDirectory>/plugin</outputDirectory>
 		</fileSet>
+		<fileSet>
+			<directory>${basedir}/etc</directory>
+			<fileMode>755</fileMode>
+			<outputDirectory>/etc</outputDirectory>
+		</fileSet>
 	</fileSets>
 
 	<dependencySets>

@@ -1,7 +1,7 @@
 
 DIR=$(dirname "$PWD")
 
-APP_NAME=matFlow
+APP_NAME=eas
 
 #远程文件存放位置
 SOURCE_DIR=/usr/local/apps/source

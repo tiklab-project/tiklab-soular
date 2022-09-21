@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>net.tiklab</groupId>
-            <artifactId>tiklab-beans-annotation</artifactId>
+            <artifactId>tiklab-tks-annotation</artifactId>
         </dependency>
     </dependencies>
 

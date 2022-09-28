@@ -16,7 +16,7 @@ public class WorkWidgetLayoutServiceImpl implements WorkWidgetLayoutService {
 
     @Override
     public WorkWidgetLayout findWidgetLayout(WorkWidgetLayoutQuery workWidgetLayoutQuery) {
-        WorkWidgetLayoutEntity workWidgetLayoutEntity = workWidgetLayoutDao.findWorkWidgetLayoutOne(workWidgetLayoutQuery);
+        WorkWidgetLayoutEntity workWidgetLayoutEntity = workWidgetLayoutDao.findWorkWidgetLayout(workWidgetLayoutQuery);
         WorkWidgetLayout widgetLayout = BeanMapper.map(workWidgetLayoutEntity, WorkWidgetLayout.class);
         return widgetLayout;
     }
@@ -31,5 +31,12 @@ public class WorkWidgetLayoutServiceImpl implements WorkWidgetLayoutService {
     public void updateWidgetLayout(WorkWidgetLayout workWidgetLayout) {
         WorkWidgetLayoutEntity workWidgetLayoutEntity = BeanMapper.map(workWidgetLayout, WorkWidgetLayoutEntity.class);
         workWidgetLayoutDao.updateWorkWidgetLayout(workWidgetLayoutEntity);
+    }
+
+    @Override
+    public WorkWidgetLayout findWidgetLayoutOne() {
+        WorkWidgetLayoutEntity workWidgetLayoutEntity = workWidgetLayoutDao.findWorkWidgetLayoutOne();
+        WorkWidgetLayout widgetLayout = BeanMapper.map(workWidgetLayoutEntity, WorkWidgetLayout.class);
+        return widgetLayout;
     }
 }

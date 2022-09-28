@@ -28,15 +28,24 @@ public class WorkWidgetLayoutDao {
         jpaTemplate.update(workWidgetLayoutEntity);
     }
 
-    public WorkWidgetLayoutEntity findWorkWidgetLayoutOne(WorkWidgetLayoutQuery workWidgetLayoutQuery) {
+    public WorkWidgetLayoutEntity findWorkWidgetLayout(WorkWidgetLayoutQuery workWidgetLayoutQuery) {
         QueryCondition queryCondition = QueryBuilders.createQuery(WorkWidgetLayoutEntity.class)
-                .eq("uid", workWidgetLayoutQuery.getUid())
-                .eq("tenant", workWidgetLayoutQuery.getTenant())
+//                .eq("uid", workWidgetLayoutQuery.getUid())
+//                .eq("tenant", workWidgetLayoutQuery.getTenant())
                 .get();
         List<WorkWidgetLayoutEntity> list = jpaTemplate.findList(queryCondition, WorkWidgetLayoutEntity.class);
 
         if (list.size() > 0) {
             return list.get(0);
+        }
+        return null;
+    }
+
+
+    public WorkWidgetLayoutEntity findWorkWidgetLayoutOne() {
+        List<WorkWidgetLayoutEntity> all = jpaTemplate.findAll(WorkWidgetLayoutEntity.class);
+        if (all.size() > 0) {
+            return all.get(0);
         }
         return null;
     }

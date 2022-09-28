@@ -12,4 +12,6 @@ public interface WorkWidgetLayoutService {
 
     void updateWidgetLayout(WorkWidgetLayout workWidgetLayout);
 
+    WorkWidgetLayout findWidgetLayoutOne();
+
 }

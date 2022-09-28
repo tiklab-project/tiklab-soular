@@ -23,8 +23,6 @@ CREATE TABLE work_widget(
 
 CREATE TABLE work_widget_layout(
        id VARCHAR(32) PRIMARY KEY,
-       uid VARCHAR(32) NOT NULL COMMENT '用户id',
-       tenant VARCHAR(32) COMMENT '企业租户id',
        right_dashboard LONGTEXT COMMENT '右侧面板的widget数据字符型数组',
        left_dashboard LONGTEXT COMMENT '左侧侧面板的widget数据字符型数组'
 );

@@ -13,13 +13,13 @@ public class WorkWidgetLayout {
     @ApiProperty(name="id",desc="唯一标识")
     private java.lang.String id;
 
-    @NotNull
-    @ApiProperty(name ="uid",desc = "用户id")
-    private String uid;
+//    @NotNull
+//    @ApiProperty(name ="uid",desc = "用户id")
+//    private String uid;
 
 
-    @ApiProperty(name ="tenant",desc = "企业租户id")
-    private String tenant;
+//    @ApiProperty(name ="tenant",desc = "企业租户id")
+//    private String tenant;
 
 
     @ApiProperty(name ="leftDashboard",desc = "Widget的布局坐标 [{WorkWidget}]")
@@ -53,20 +53,5 @@ public class WorkWidgetLayout {
         this.id = id;
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(String tenant) {
-        this.tenant = tenant;
-    }
 
 }

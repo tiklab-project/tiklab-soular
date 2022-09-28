@@ -12,11 +12,11 @@ public class WorkWidgetLayoutEntity implements Serializable{
     @Column(name = "id",length = 32)
     private String id;
 
-    @Column(name = "uid",length = 32)
-    private String uid;
+//    @Column(name = "uid",length = 32)
+//    private String uid;
 
-    @Column(name = "tenant",length = 32)
-    private String tenant;
+//    @Column(name = "tenant",length = 32)
+//    private String tenant;
 
     @Column(name = "right_dashboard")
     private String rightDashboard;
@@ -33,21 +33,6 @@ public class WorkWidgetLayoutEntity implements Serializable{
         this.id = id;
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(String tenant) {
-        this.tenant = tenant;
-    }
 
     public String getRightDashboard() {
         return rightDashboard;

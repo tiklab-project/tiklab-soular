@@ -1,5 +1,6 @@
 package net.tiklab.eas.widget.controller;
 
+import net.tiklab.core.page.Pagination;
 import net.tiklab.postin.annotation.Api;
 import net.tiklab.postin.annotation.ApiMethod;
 import net.tiklab.postin.annotation.ApiParam;
@@ -59,6 +60,15 @@ public class WorkWidgetController {
     @ApiParam(name = "workWidgetQuery",desc = "workWidgetQuery",required = true)
     public Result<WorkWidget> findWorkWidgetList(@RequestBody @NotNull @Valid WorkWidgetQuery workWidgetQuery) {
         List<WorkWidget> workWidgetAll = workWidgetService.findWorkWidgetAll(workWidgetQuery);
+        return Result.ok(workWidgetAll);
+    }
+
+
+    @RequestMapping(path="/findWorkWidgetPage",method = RequestMethod.POST)
+    @ApiMethod(name = "findWorkWidgetPage",desc = "findWorkWidgetPage")
+    @ApiParam(name = "workWidgetQuery",desc = "workWidgetQuery",required = true)
+    public Result<Pagination<WorkWidget>> findWorkWidgetPage(@RequestBody @NotNull @Valid WorkWidgetQuery workWidgetQuery) {
+        Pagination<WorkWidget>  workWidgetAll = workWidgetService.findWorkWidgetPage(workWidgetQuery);
         return Result.ok(workWidgetAll);
     }
 }

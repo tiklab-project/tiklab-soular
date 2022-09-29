@@ -1,5 +1,6 @@
 package net.tiklab.eas.widget.dao;
 
+import net.tiklab.core.page.Pagination;
 import net.tiklab.dal.jpa.JpaTemplate;
 import net.tiklab.dal.jpa.criterial.condition.QueryCondition;
 import net.tiklab.dal.jpa.criterial.conditionbuilder.QueryBuilders;
@@ -37,5 +38,12 @@ public class WorkWidgetDao {
                 .eq("type", workWidgetQuery.getType())
                 .get();
         return jpaTemplate.findList(queryCondition,WorkWidgetEntity.class);
+    }
+
+    public Pagination<WorkWidgetEntity> findWorkWidgetPage (WorkWidgetQuery workWidgetQuery) {
+        QueryCondition queryCondition = QueryBuilders.createQuery(WorkWidgetEntity.class)
+                .eq("type", workWidgetQuery.getType())
+                .pagination(workWidgetQuery.getPageParam()).get();
+        return jpaTemplate.findPage(queryCondition,WorkWidgetEntity.class);
     }
 }

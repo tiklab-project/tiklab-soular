@@ -1,6 +1,8 @@
 package net.tiklab.eas.widget.service;
 
 import net.tiklab.beans.BeanMapper;
+import net.tiklab.core.page.Pagination;
+import net.tiklab.core.page.PaginationBuilder;
 import net.tiklab.eas.widget.dao.WorkWidgetDao;
 import net.tiklab.eas.widget.entity.WorkWidgetEntity;
 import net.tiklab.eas.widget.model.WorkWidget;
@@ -42,5 +44,12 @@ public class WorkWidgetServiceImpl implements WorkWidgetService {
     @Override
     public void deleteWorkWidget(@NotNull String id) {
         workWidgetDao.deleteWorkWidget(id);
+    }
+
+    @Override
+    public Pagination<WorkWidget> findWorkWidgetPage(WorkWidgetQuery workWidgetQuery) {
+        Pagination<WorkWidgetEntity> workWidgetPage = workWidgetDao.findWorkWidgetPage(workWidgetQuery);
+        List<WorkWidget> workWidgets = BeanMapper.mapList(workWidgetPage.getDataList(), WorkWidget.class);
+        return PaginationBuilder.build(workWidgetPage,workWidgets);
     }
 }

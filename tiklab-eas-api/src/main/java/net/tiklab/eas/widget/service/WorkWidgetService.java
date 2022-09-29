@@ -1,5 +1,6 @@
 package net.tiklab.eas.widget.service;
 
+import net.tiklab.core.page.Pagination;
 import net.tiklab.eas.widget.model.WorkWidget;
 import net.tiklab.eas.widget.model.WorkWidgetQuery;
 
@@ -14,4 +15,6 @@ public interface WorkWidgetService {
     void updateWorkWidget(WorkWidget workWidget);
 
     void deleteWorkWidget(String id);
+
+    Pagination<WorkWidget> findWorkWidgetPage(WorkWidgetQuery workWidgetQuery);
 }

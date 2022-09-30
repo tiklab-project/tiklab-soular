@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@SQL(modules = {"portal","easDefaultData"})
+@SQL(modules = {"portal","easDefaultData"}, order = 100)
 @ComponentScan({"net.tiklab.eas"})
 public class EasServerAutoConfiguration {
 }

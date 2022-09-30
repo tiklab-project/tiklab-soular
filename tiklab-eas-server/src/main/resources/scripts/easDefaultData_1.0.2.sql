@@ -1,6 +1,6 @@
 
 -- 初始话管理员角色表
-INSERT INTO `prc_role` (`id`, `name`, `description`, `grouper`, `type`, `bgroup`) VALUES ('1', '管理员角色', NULL, 'system', '1', 'eas');
+INSERT INTO `prc_role` (`id`, `name`, `description`, `grouper`, `type`, `bgroup`) VALUES ('1', 'admin', NULL, 'system', '1', 'eas');
 
 -- 初始话项目角色表
 INSERT INTO `prc_role` (`id`, `name`, `description`, `grouper`, `type`, `bgroup`) VALUES ('2', '项目角色', '项目角色', 'custom', '1', 'eas');

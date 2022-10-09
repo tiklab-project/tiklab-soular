@@ -1,4 +1,4 @@
-CREATE TABLE poo_work_app_link(
+CREATE TABLE eas_poo_work_app_link(
         id VARCHAR(32) PRIMARY KEY,
         app_type VARCHAR(32) NOT NULL,
         grouper VARCHAR(32) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE poo_work_app_link(
 
 
 
-CREATE TABLE work_widget(
+CREATE TABLE eas_work_widget(
     id VARCHAR(32) PRIMARY KEY,
     name VARCHAR(32) NOT NULL COMMENT 'widget名称',
     code VARCHAR(32) NOT NULL COMMENT 'widget编码',
@@ -21,7 +21,7 @@ CREATE TABLE work_widget(
 );
 
 
-CREATE TABLE work_widget_layout(
+CREATE TABLE eas_work_widget_layout(
        id VARCHAR(32) PRIMARY KEY,
        right_dashboard LONGTEXT COMMENT '右侧面板的widget数据字符型数组',
        left_dashboard LONGTEXT COMMENT '左侧侧面板的widget数据字符型数组'

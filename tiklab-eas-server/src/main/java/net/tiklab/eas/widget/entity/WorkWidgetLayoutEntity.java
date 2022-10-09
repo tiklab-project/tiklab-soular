@@ -4,7 +4,7 @@ import net.tiklab.dal.jpa.annotation.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="work_widget_layout")
+@Table(name="eas_work_widget_layout")
 public class WorkWidgetLayoutEntity implements Serializable{
 
     @Id

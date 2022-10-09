@@ -6,7 +6,7 @@ import net.tiklab.dal.jpa.annotation.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="poo_work_app_link")
+@Table(name="eas_poo_work_app_link")
 public class WorkAppLinkEntity implements Serializable {
 
     @Id

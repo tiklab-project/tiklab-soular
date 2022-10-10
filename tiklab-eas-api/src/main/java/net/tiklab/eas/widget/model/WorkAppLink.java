@@ -1,4 +1,4 @@
-package net.tiklab.eas.applink.model;
+package net.tiklab.eas.widget.model;
 
 import net.tiklab.postin.annotation.ApiModel;
 import net.tiklab.postin.annotation.ApiProperty;

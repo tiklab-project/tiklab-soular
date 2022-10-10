@@ -3,11 +3,12 @@ package net.tiklab.eas.applink.service;
 import net.tiklab.beans.BeanMapper;
 import net.tiklab.core.page.Pagination;
 import net.tiklab.core.page.PaginationBuilder;
+import net.tiklab.eas.widget.service.WorkAppLinkService;
 import net.tiklab.join.JoinTemplate;
 import net.tiklab.eas.applink.dao.WorkAppLinkDao;
 import net.tiklab.eas.applink.entity.WorkAppLinkEntity;
-import net.tiklab.eas.applink.model.WorkAppLink;
-import net.tiklab.eas.applink.model.WorkAppLinkQuery;
+import net.tiklab.eas.widget.model.WorkAppLink;
+import net.tiklab.eas.widget.model.WorkAppLinkQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

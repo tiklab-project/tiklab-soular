@@ -1,8 +1,8 @@
-package net.tiklab.eas.applink.service;
+package net.tiklab.eas.widget.service;
 
 import net.tiklab.core.page.Pagination;
-import net.tiklab.eas.applink.model.WorkAppLink;
-import net.tiklab.eas.applink.model.WorkAppLinkQuery;
+import net.tiklab.eas.widget.model.WorkAppLink;
+import net.tiklab.eas.widget.model.WorkAppLinkQuery;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

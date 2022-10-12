@@ -88,5 +88,3 @@ INSERT INTO `pcs_prc_role_user` (`id`, `role_id`, `user_id`, `bgroup`) VALUES ('
 -- 初始化登录退出模板
 INSERT INTO `pcs_op_log_template` (`id`, `title`, `content`, `link`, `bgroup`) VALUES ('111111', '登录退出模板', '用户<span style=\"color:blue\">${user}</span>在${timestamp}时间操作${actionType}了', NULL, 'eas');
 
--- 初始化部门根节点
-INSERT INTO `pcs_ucc_orga` (`orga_id`, `orga_name`, `parent_orga_id`, `user_type`, `path`, `sort` ) VALUES ('111111', '部门结构', NULL, 1, NULL, 1);

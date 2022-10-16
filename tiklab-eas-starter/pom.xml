@@ -128,6 +128,12 @@
             <artifactId>tiklab-update-starter</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>net.tiklab</groupId>
+            <artifactId>tiklab-widget-spring-boot-starter</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -136,25 +142,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>net.tiklab.eas.EasApplication</mainClass>
-                        </manifest>
-                    </archive>
                     <excludes>
                         <exclude>*.yaml</exclude>
                         <exclude>*.properties</exclude>
                         <exclude>*.xml</exclude>
+                        <exclude>**/config/dev/**</exclude>
+                        <exclude>**/config/test/**</exclude>
                     </excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                    </execution>
-                </executions>
             </plugin>
 
+            <!--maven打包插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -163,7 +161,7 @@
                         <id>make-assembly</id>
                         <configuration>
                             <descriptors>
-                                <descriptor>assembly/distribution.xml</descriptor>
+                                <descriptor>assembly/distribution-${assembly}.xml</descriptor>
                             </descriptors>
                             <finalName>tiklab-eas</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
@@ -175,7 +173,243 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <id>auto-clean</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <filesets>
+                                <fileset>
+                                    <directory>${basedir}/embbed</directory>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!--linux-->
+        <profile>
+            <id>system-linux</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>net.tiklab</groupId>
+                    <artifactId>tiklab-mysql-linux</artifactId>
+                    <version>${project.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>net.tiklab</groupId>
+                    <artifactId>tiklab-jdk-linux</artifactId>
+                    <version>${project.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <properties>
+                <assembly>linux</assembly>
+                <systemType>linux</systemType>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.8</version>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>net.tiklab</groupId>
+                                            <artifactId>tiklab-jdk-linux</artifactId>
+                                            <version>${project.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>net.tiklab</groupId>
+                                            <artifactId>tiklab-mysql-linux</artifactId>
+                                            <version>${project.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!--windows-->
+        <profile>
+            <id>system-windows</id>
+            <dependencies>
+                <dependency>
+                    <groupId>net.tiklab</groupId>
+                    <artifactId>tiklab-mysql-windows</artifactId>
+                    <version>${project.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>net.tiklab</groupId>
+                    <artifactId>tiklab-jdk-windows</artifactId>
+                    <version>${project.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <properties>
+                <assembly>windows</assembly>
+                <systemType>windows</systemType>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.8</version>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>net.tiklab</groupId>
+                                            <artifactId>tiklab-jdk-windows</artifactId>
+                                            <version>${project.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>net.tiklab</groupId>
+                                            <artifactId>tiklab-mysql-windows</artifactId>
+                                            <version>${project.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!--mac-->
+        <profile>
+            <id>system-mac</id>
+            <dependencies>
+                <dependency>
+                    <groupId>net.tiklab</groupId>
+                    <artifactId>tiklab-jdk-mac</artifactId>
+                    <version>${project.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>net.tiklab</groupId>
+                    <artifactId>tiklab-jdk-mac</artifactId>
+                    <version>${project.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <properties>
+                <assembly>mac</assembly>
+                <systemType>mac</systemType>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.8</version>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>net.tiklab</groupId>
+                                            <artifactId>tiklab-jdk-mac</artifactId>
+                                            <version>${project.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>net.tiklab</groupId>
+                                            <artifactId>tiklab-mysql-mac</artifactId>
+                                            <version>${project.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!--dev-->
+        <profile>
+            <id>env-dev</id>
+            <properties>
+                <yaml-type>/config/dev</yaml-type>
+            </properties>
+        </profile>
+
+        <!--test-->
+        <profile>
+            <id>env-test</id>
+            <properties>
+                <yaml-type>/config/test</yaml-type>
+            </properties>
+        </profile>
+
+        <!--release-->
+        <profile>
+            <id>env-release</id>
+            <properties>
+                <yaml-type>/</yaml-type>
+            </properties>
+        </profile>
+
+
+    </profiles>
 </project>
 

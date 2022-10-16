@@ -20,6 +20,7 @@ import net.tiklab.todotask.stater.EnableTodoTask;
 import net.tiklab.toolkit.EnableToolkitServer;
 import net.tiklab.user.starter.EnableUser;
 import net.tiklab.web.starter.annotation.EnableWeb;
+import net.tiklab.widget.starter.EnableWidget;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -49,6 +50,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableLicenceServer
 @EnableTodoTask
 @EnableLog
+@EnableWidget
+
 //other
 @EnablePostInClient
 

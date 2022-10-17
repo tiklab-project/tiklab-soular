@@ -23,7 +23,7 @@ jdbc:
 
 
 mysql:
-  datebase: tiklab_eas
+  database: tiklab_eas
   embbed:
     enable: true
 

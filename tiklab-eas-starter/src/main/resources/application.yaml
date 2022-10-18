@@ -17,18 +17,15 @@ server:
 #dal config for mysql jdbc
 jdbc:
   driverClassName: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://172.12.1.16:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  url: jdbc:mysql://localhost:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
   username: root
   password: darth2020
 
 
 mysql:
-  name: tiklab_eas
+  database: tiklab_eas
   embbed:
-    enable: false
-  server:
-    port: 3306
-  version: mysql-8.0.28
+    enable: true
 
 
 PROJECT_HOME: ${user.home}/tiklab/${app.name}

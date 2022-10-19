@@ -401,6 +401,14 @@
             </properties>
         </profile>
 
+        <!--prd-->
+        <profile>
+            <id>env-prd</id>
+            <properties>
+                <yaml-type>/config/prd</yaml-type>
+            </properties>
+        </profile>
+
         <!--release-->
         <profile>
             <id>env-release</id>

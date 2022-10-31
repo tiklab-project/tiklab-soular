@@ -8,53 +8,53 @@ INSERT INTO `pcs_mec_message_template` (`id`, `name`, `msg_type_id`, `msg_send_t
 
 
 -- 初始化功能权限
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('0afd449318cff90bea00c0dbc458972c', '消息模板管理', 'sys_message_template', '149840d175f7c0e2d055561a8cc6be1b', 1, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('0d841c9636e3e5f80d1cc3fa882311a5', '功能管理', 'sys_feature', '4ec3d621872b6262c1be8189b75c1c78', 2, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('149840d175f7c0e2d055561a8cc6be1b', '消息中心', 'sys_message_center', NULL, 3, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('1ce48d70b72480efaa7892fc2ac76b2f', '消息类型管理', 'sys_message_type', '149840d175f7c0e2d055561a8cc6be1b', 4, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('2ec3a2259c05e4172aa1f193fa72cf59', '插件管理', 'plugin', NULL, 5, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('30ac3e732b746c9527f2a5928963a6c5', '任务待办', 'todo_list', 'b604d7879bd10d31919969ebc5dcacd7', 6, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('4ec3d621872b6262c1be8189b75c1c78', '系统权限', 'sys_permission', NULL, 7, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('51fdb28c871c4da452b890152046b7d8', '我的待办', 'my_todo', 'b604d7879bd10d31919969ebc5dcacd7', 8, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('56d73b0fbef2489acf6e5f06236ccbc0', '消息发送方式', 'sys_message_send', '149840d175f7c0e2d055561a8cc6be1b', 9, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('626ddfff470fcfeb25ca483459aaae93', '待办模板', 'todo_template', 'b604d7879bd10d31919969ebc5dcacd7', 10, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('90d527109d996117ef18ddf1cb9c17a8', '用户目录', 'sys_directory', NULL, 11, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('a03673c3482a27c6576f867b62591a1f', '日志列表', 'oplog_list', 'f3cdaf11b3e0451a5f19ca171bbd8208', 12, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('a2b442614036a4cfc2af1d39bd34e057', '用户管理', 'sys_user', NULL, 13, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('a9fbf0c450ef34c32fdea0c4001a04d0', '角色管理', 'sys_role', '4ec3d621872b6262c1be8189b75c1c78', 14, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('b604d7879bd10d31919969ebc5dcacd7', '任务', 'todo', NULL, 15, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('b79a194a1ba302eec683f48a637288d4', 'License管理', 'license', NULL, 16, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('bb6bd9002a8afdb7cf8a67ba8b5a5809', 'Widget管理', 'widget', NULL, 17, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('c5289521b5cda99ae9dcc6cda4b8aba8', '日志模板', 'oplog_template', 'f3cdaf11b3e0451a5f19ca171bbd8208', 18, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('c762b62ff7bb1eff6b2c07e50614b825', '消息管理', 'sys_message_management', '149840d175f7c0e2d055561a8cc6be1b', 19, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('dadf107f5f644c1eba9abd35008363cf', '组织管理', 'sys_orga', NULL, 20, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('f0f311598f39f14b2c0ba3abbed28dae', '我的日志', 'my_oplog', 'f3cdaf11b3e0451a5f19ca171bbd8208', 21, '1', 'eas');
-INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('f3cdaf11b3e0451a5f19ca171bbd8208', '日志', 'oplog', NULL, 22, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('043e412151db118d27f2ab60d8ff73a0', '同步数据', 'user_dir_sync', '585d26bcbdf3047e502e4aa51c816090', 19, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('0c73e628fd5410c382f28a956304a9d7', '插件', 'plugin', NULL, 8, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('325c2503007fd5127baca9d7618e8291', '编辑组织', 'orga_update_orga', '6b61fbe5091a8e04d2b016f15d598f1f', 13, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('428be660dea3db2a2c5a613420b3ead7', '编辑用户', 'user_update_user', '5fb7863b09a8d0c99cef173e18106fb3', 16, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('447d9998fc00fe64c96c6f09f0d41c32', '禁止', 'user_dir_forbid', '585d26bcbdf3047e502e4aa51c816090', 21, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('49e12c2b8fca01894886211df2b797d0', '权限', 'permission', NULL, 5, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('57a3bcd1e5fedd77824359d06b06fe49', '添加用户', 'user_add_user', '5fb7863b09a8d0c99cef173e18106fb3', 15, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('585d26bcbdf3047e502e4aa51c816090', '用户目录', 'user_dir', NULL, 4, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('5fb7863b09a8d0c99cef173e18106fb3', '成员', 'user', NULL, 3, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('64bdf62686a4939c1061422394ded7cd', '版本与许可证', 'version', NULL, 10, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('6b61fbe5091a8e04d2b016f15d598f1f', '部门', 'orga', NULL, 2, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('890e7d41decf71cfe3b0e80b0c4179cf', '配置', 'user_dir_config', '585d26bcbdf3047e502e4aa51c816090', 22, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('925371be8ec674a06613bf8e37ec356c', '开启', 'user_dir_open', '585d26bcbdf3047e502e4aa51c816090', 20, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('9314739a13fedc65c948180d7702f518', '操作日志', 'log', NULL, 9, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('9633d947588684a5881ccff9eaa3aba0', '修改角色', 'user_update_role', '5fb7863b09a8d0c99cef173e18106fb3', 18, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('9c99b8a096c8788bc27be5122d0700e8', '添加组织', 'orga_add_orga', '6b61fbe5091a8e04d2b016f15d598f1f', 11, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('cb954a7c0be3b37fcc96ec023924262c', '添加用户', 'orga_add_user', '6b61fbe5091a8e04d2b016f15d598f1f', 12, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('dd81bdbb52bca933d1e7336f9c877f8e', '删除用户', 'user_delete_user', '5fb7863b09a8d0c99cef173e18106fb3', 17, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('e8bf9843bc9da8d3c4c33e31174496b3', '删除组织', 'orga_delete_orga', '6b61fbe5091a8e04d2b016f15d598f1f', 14, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('edb60bf65e4279e46ce21210b3213bd8', '待办任务', 'todotask', NULL, 7, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('f344830df1f8a160f9fdfe11cee9abe7', '工作台', 'work', NULL, 1, '1', 'eas');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`, `bgroup`) VALUES ('f6f51f9441339cd20013f4f20c378dc6', '消息通知', 'message', NULL, 6, '1', 'eas');
 
 
 -- 初始化admin角色的权限功能
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('0c1f05b09b2943a62ef366dcc4086d98', '1', 'bb6bd9002a8afdb7cf8a67ba8b5a5809', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('21594614c071747fffdd184832af4093', '1', 'a9fbf0c450ef34c32fdea0c4001a04d0', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('234a5d4f8d1c69297f81d65d551eccbc', '1', 'dadf107f5f644c1eba9abd35008363cf', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('2c7a843f661b1ccad201c5fbdc0f194a', '1', '56d73b0fbef2489acf6e5f06236ccbc0', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('3472ec612bdd716895f04134b8619128', '1', '4ec3d621872b6262c1be8189b75c1c78', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('3e5620134ccd3641be94057acc2763a5', '1', '51fdb28c871c4da452b890152046b7d8', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('4268380c9f52765aa78aa87936b4a771', '1', '0afd449318cff90bea00c0dbc458972c', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('647268a714b7f1ab5e8564cfc816f4a4', '1', '2ec3a2259c05e4172aa1f193fa72cf59', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('695cf8f1289346b16dea18056580d480', '1', 'b604d7879bd10d31919969ebc5dcacd7', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('8473d00da60dba072e1223afdb4a89a0', '1', '90d527109d996117ef18ddf1cb9c17a8', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('8ed4b03df3de4e01115796ff9bae7e8f', '1', '149840d175f7c0e2d055561a8cc6be1b', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('93999c0e286f20ef3ef8438b2e3f5e2a', '1', 'c5289521b5cda99ae9dcc6cda4b8aba8', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('94e78d51d22abb4f304a6f2c49bad312', '1', 'f3cdaf11b3e0451a5f19ca171bbd8208', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('9eba39b6e84040e2abd0674698d45a04', '1', '626ddfff470fcfeb25ca483459aaae93', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('a0b8466fb719f4be2d0d4ad3ed05e3fb', '1', 'b79a194a1ba302eec683f48a637288d4', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('a36df2b017c99016164429d7584da0ef', '1', '30ac3e732b746c9527f2a5928963a6c5', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('c29419cc1879313001ae44dd7c901fbb', '1', 'a2b442614036a4cfc2af1d39bd34e057', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('cb98b67bc194173a4041ad4cff630035', '1', 'a03673c3482a27c6576f867b62591a1f', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('ec650027ffce666328bd64dcf01975f6', '1', 'c762b62ff7bb1eff6b2c07e50614b825', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('f4fccc1571a0a510b45decd72f7c91f9', '1', 'f0f311598f39f14b2c0ba3abbed28dae', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('fb792a8b96f55d9e50448404357cc211', '1', '0d841c9636e3e5f80d1cc3fa882311a5', 'eas');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('ff2264573de1c766ebd17208f382d898', '1', '1ce48d70b72480efaa7892fc2ac76b2f', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('0ca3c8625274a9a0fb0996a7b2ca40c8', '1', '325c2503007fd5127baca9d7618e8291', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('182f37b4128825052764e57b4df3320b', '1', '49e12c2b8fca01894886211df2b797d0', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('1de76c3f04a1c5b62b1bff44065b34f7', '1', '5fb7863b09a8d0c99cef173e18106fb3', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('26af453881d5cccd6e52e502be4775e6', '1', '9314739a13fedc65c948180d7702f518', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('35a204b61b65576b34a507fb5fab96f4', '1', '6b61fbe5091a8e04d2b016f15d598f1f', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('3e682c2618a607562180eaa150e7bd2d', '1', '0c73e628fd5410c382f28a956304a9d7', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('4d62ceac4ea82c6eb1a81d4b13c4d7d1', '1', 'dd81bdbb52bca933d1e7336f9c877f8e', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('640892e368a7d9b05f1b1e88abcda964', '1', '428be660dea3db2a2c5a613420b3ead7', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('6ae50d02d4ed17f971bc6c61c0bb67ea', '1', '9633d947588684a5881ccff9eaa3aba0', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('6d56ee9b2518fd0403ffcd5b0478c298', '1', '9c99b8a096c8788bc27be5122d0700e8', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('70978ef543639b3d373ac70071a16903', '1', '447d9998fc00fe64c96c6f09f0d41c32', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('95418992b599c9fdedb92f22deb76d97', '1', 'cb954a7c0be3b37fcc96ec023924262c', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('98450c504e3ee4fff09a7c50b2354d22', '1', 'f344830df1f8a160f9fdfe11cee9abe7', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('986c25307b21df56e9d7b0022281f3cc', '1', '64bdf62686a4939c1061422394ded7cd', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('ae443de5001adc8d498cb02456d332bd', '1', '043e412151db118d27f2ab60d8ff73a0', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('b0c186a33872c62a995c4e5da09ccb14', '1', 'edb60bf65e4279e46ce21210b3213bd8', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('c5fe246887fa2115ec1cb8a07a77aef5', '1', '890e7d41decf71cfe3b0e80b0c4179cf', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('c88134f7af2c99626e62ca498d6c3216', '1', '57a3bcd1e5fedd77824359d06b06fe49', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('d026551cfc33d036de61208a413a9607', '1', '925371be8ec674a06613bf8e37ec356c', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('e5092e324e36e10d8ec24c37e34df346', '1', 'f6f51f9441339cd20013f4f20c378dc6', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('e64e932f43a121ffbc19f3846ec6de0d', '1', '585d26bcbdf3047e502e4aa51c816090', 'eas');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`, `bgroup`) VALUES ('f8438284b4abb8cfcc01074e7c5c66b3', '1', 'e8bf9843bc9da8d3c4c33e31174496b3', 'eas');
 
 
 

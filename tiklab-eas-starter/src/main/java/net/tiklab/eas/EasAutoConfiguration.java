@@ -6,6 +6,7 @@ import net.tiklab.dfs.starter.EnableDfs;
 import net.tiklab.dsm.starter.annotation.EnableDsm;
 import net.tiklab.dss.starter.EnableDss;
 import net.tiklab.eam.starter.EnableEam;
+import net.tiklab.form.starter.EnableFormServer;
 import net.tiklab.gateway.starter.EnableGateway;
 import net.tiklab.licence.starter.EnableLicenceServer;
 import net.tiklab.message.starter.EnableMessage;
@@ -51,6 +52,9 @@ import org.springframework.context.annotation.Configuration;
 @EnableTodoTask
 @EnableLog
 @EnableWidget
+
+
+@EnableFormServer
 
 //other
 @EnablePostInClient

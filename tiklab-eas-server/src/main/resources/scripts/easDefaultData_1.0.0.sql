@@ -79,5 +79,5 @@ INSERT INTO `pcs_prc_role` (`id`, `name`, `description`, `grouper`, `type`, `bgr
 INSERT INTO `pcs_prc_role_user` (`id`, `role_id`, `user_id`, `bgroup`) VALUES ('1', '1', '111111', 'eas');
 
 -- 初始化登录退出模板
-INSERT INTO `pcs_op_log_template` (`id`, `title`, `content`, `link`, `bgroup`) VALUES ('111111', '登录退出模板', '用户<span style=\"color:blue\">${user}</span>在${timestamp}时间操作${actionType}了', NULL, 'eas');
+-- INSERT INTO `pcs_op_log_template` (`id`, `title`, `content`, `link`, `bgroup`) VALUES ('111111', '登录退出模板', '用户<span style=\"color:blue\">${user}</span>在${timestamp}时间操作${actionType}了', NULL, 'eas');
 

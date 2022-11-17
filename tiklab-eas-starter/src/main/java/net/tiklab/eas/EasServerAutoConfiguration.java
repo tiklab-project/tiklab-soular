@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@SQL(modules = {"easDefaultData", "matflow", "postin"}, order = 100)
+@SQL(modules = {"easDefaultData"}, order = 100)
 @ComponentScan({"net.tiklab.eas"})
 public class EasServerAutoConfiguration {
 }

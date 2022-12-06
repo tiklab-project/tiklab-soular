@@ -6,6 +6,7 @@ import net.tiklab.dfs.starter.EnableDfs;
 import net.tiklab.dsm.starter.annotation.EnableDsm;
 import net.tiklab.dss.starter.EnableDss;
 import net.tiklab.eam.starter.EnableEam;
+import net.tiklab.flow.starter.EnableFlowServer;
 import net.tiklab.form.starter.EnableFormServer;
 import net.tiklab.gateway.starter.EnableGateway;
 import net.tiklab.licence.starter.EnableLicenceServer;
@@ -55,6 +56,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @EnableFormServer
+@EnableFlowServer
 
 //other
 @EnablePostInClient

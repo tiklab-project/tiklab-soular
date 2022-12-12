@@ -71,8 +71,6 @@ INSERT INTO `pcs_mec_message_type`  (`id`, `name`, `description`, `bgroup`) VALU
 -- test on 消息
 INSERT INTO `pcs_mec_message_template`  (`id`, `name`, `msg_type_id`, `msg_send_type_id`, `title`, `content_config_type`, `content`, `content_url`, `link`, `bgroup`) VALUES ('5ea6acf0883ead208d8e75f031ca94d0', '仓库创建通知模板', '2ba9b35136183577a6973fbf900d5b4b', '942591eeee4a3100f2ea2cb871539c65', '空间创建通知', 1, '你创建了一个仓库！', NULL, '/repositorypage/detail', 'teston');
 
--- 初始话管理员角色表
-INSERT INTO `pcs_prc_role` (`id`, `name`, `description`, `grouper`, `type`, `bgroup`) VALUES ('1', 'admin', NULL, 'system', '1', 'eas');
 
 -- 管理员角色金和admin用户绑定 表
 INSERT INTO `pcs_prc_role_user` (`id`, `role_id`, `user_id`, `bgroup`) VALUES ('1', '1', '111111', 'eas');

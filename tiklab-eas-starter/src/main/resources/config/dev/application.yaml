@@ -2,11 +2,18 @@
 app:
   name: tiklab-eas
 
+spring:
+  profiles:
+    active: dev
 
 #web config
 server:
   port: 8080
 # enable eas to project
+
+
+base:
+  url: http://eas-ce.dev.tiklab.net
 
 #dal config
 #dal config for mysql jdbc

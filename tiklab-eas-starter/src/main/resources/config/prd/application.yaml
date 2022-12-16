@@ -2,9 +2,18 @@
 app:
   name: tiklab-eas
 
+
+spring:
+  profiles:
+    active: prd
+
 #web config
 server:
   port: 8080
+
+
+base:
+  url: http://eas-ce.prd.tiklab.net
 
 #dal config
 

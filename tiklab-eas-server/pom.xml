@@ -50,7 +50,7 @@
         </dependency>
         <dependency>
             <groupId>net.tiklab</groupId>
-            <artifactId>tiklab-toolkit-spring-boot-starter</artifactId>
+            <artifactId>tiklab-integration-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

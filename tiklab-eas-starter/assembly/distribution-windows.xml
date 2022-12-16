@@ -126,8 +126,8 @@
                 <exclude>net.tiklab:tiklab-web-core</exclude>
                 <exclude>net.tiklab:tiklab-utils</exclude>
                 <exclude>net.tiklab:tiklab-user-spring-boot-starter</exclude>
-                <exclude>net.tiklab:tiklab-toolkit-server</exclude>
-                <exclude>net.tiklab:tiklab-toolkit-api</exclude>
+                <exclude>net.tiklab:tiklab-integration-server</exclude>
+                <exclude>net.tiklab:tiklab-integration-api</exclude>
                 <exclude>net.tiklab:tiklab-rpc-spring-boot-starter</exclude>
                 <exclude>net.tiklab:tiklab-rpc-server</exclude>
                 <exclude>net.tiklab:tiklab-rpc-remoting</exclude>
@@ -255,8 +255,8 @@
                 <exclude>net.tiklab:tiklab-web-core</exclude>
                 <exclude>net.tiklab:tiklab-utils</exclude>
                 <exclude>net.tiklab:tiklab-user-spring-boot-starter</exclude>
-                <exclude>net.tiklab:tiklab-toolkit-server</exclude>
-                <exclude>net.tiklab:tiklab-toolkit-api</exclude>
+                <exclude>net.tiklab:tiklab-integration-server</exclude>
+                <exclude>net.tiklab:tiklab-integration-api</exclude>
                 <exclude>net.tiklab:tiklab-rpc-spring-boot-starter</exclude>
                 <exclude>net.tiklab:tiklab-rpc-server</exclude>
                 <exclude>net.tiklab:tiklab-rpc-remoting</exclude>

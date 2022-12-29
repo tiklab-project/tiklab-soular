@@ -13,7 +13,7 @@ server:
 
 
 base:
-  url: http://eas-ce.prd.tiklab.net
+  url: http://eas-ce.tiklab.net
 
 #dal config
 

@@ -50,16 +50,12 @@ public class GatewayFilterAutoConfiguration {
                         "/eam/auth/login",
                         "/eam/auth/logout",
                         "/eam/passport/valid",
+                        "/eam/ldap/passport/login",
+
                         "/auth/valid",
                         "/wechat/passport/login",
                         "/wechat/passport/internallogin",
                         "/wechat/passport/internalacclogin",
-
-
-                        "/document/view",
-                        "/comment/view",
-                        "/share/verifyAuthCode",
-                        "/share/judgeAuthCode",
 
                         "/dingding/passport/login",
                         "/dingding/passport/valid",
@@ -73,7 +69,7 @@ public class GatewayFilterAutoConfiguration {
 
 
                         "/wechatCallback/instruct",
-                        "/eam/ldap/passport/login",
+
                         "/version/getVersion",
                         "/licence/import",
 
@@ -86,7 +82,7 @@ public class GatewayFilterAutoConfiguration {
                         "/plugin",
                         "/authConfig",
                         "/ws",
-                        "/socket"
+                        "/socket",
                 })
                 .get();
     }

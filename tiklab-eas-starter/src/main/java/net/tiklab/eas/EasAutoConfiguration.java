@@ -13,11 +13,11 @@ import net.tiklab.integration.starter.EnableIntegration;
 import net.tiklab.licence.starter.EnableLicenceServer;
 import net.tiklab.messsage.starter.EnableMessage;
 import net.tiklab.mysql.starter.EnableMysql;
-import net.tiklab.logging.stater.EnableLog;
 import net.tiklab.pluginx.starter.EnablePluginServer;
 import net.tiklab.postin.client.EnablePostInClient;
 import net.tiklab.privilege.stater.EnablePrivilegeServer;
 import net.tiklab.rpc.starter.annotation.EnableRpc;
+import net.tiklab.security.stater.EnableSecurity;
 import net.tiklab.tks.annotation.EnableTks;
 import net.tiklab.todotask.stater.EnableTodoTask;
 import net.tiklab.user.starter.EnableUser;
@@ -50,9 +50,9 @@ import org.springframework.context.annotation.Configuration;
 @EnableIntegration
 @EnableLicenceServer
 @EnableTodoTask
-@EnableLog
 
 
+@EnableSecurity
 @EnableFormServer
 @EnableFlowServer
 

@@ -1,6 +1,6 @@
 package io.tiklab.eas.widget.model;
 
-import net.tiklab.core.page.Page;
+import io.tiklab.core.page.Page;
 public class WorkWidgetQuery {
     private String type;
 

@@ -1,6 +1,6 @@
 package io.tiklab.eas.widget.controller;
 
-import net.tiklab.core.Result;
+import io.tiklab.core.Result;
 import io.tiklab.eas.widget.model.WorkWidgetLayout;
 import io.tiklab.eas.widget.service.WorkWidgetLayoutService;
 import org.slf4j.Logger;

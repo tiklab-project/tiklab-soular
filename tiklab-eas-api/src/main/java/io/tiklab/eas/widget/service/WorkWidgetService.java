@@ -2,7 +2,7 @@ package io.tiklab.eas.widget.service;
 
 
 
-import net.tiklab.core.page.Pagination;
+import io.tiklab.core.page.Pagination;
 import io.tiklab.eas.widget.model.WorkWidget;
 import io.tiklab.eas.widget.model.WorkWidgetQuery;
 

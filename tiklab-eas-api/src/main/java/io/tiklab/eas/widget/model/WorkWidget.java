@@ -1,7 +1,7 @@
 package io.tiklab.eas.widget.model;
 
-import net.tiklab.beans.annotation.Mapper;
-import net.tiklab.core.BaseModel;
+import io.tiklab.beans.annotation.Mapper;
+import io.tiklab.core.BaseModel;
 
 import javax.validation.constraints.NotNull;
 

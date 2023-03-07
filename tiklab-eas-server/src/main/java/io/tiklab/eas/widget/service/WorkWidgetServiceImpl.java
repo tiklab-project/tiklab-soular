@@ -2,12 +2,12 @@ package io.tiklab.eas.widget.service;
 
 import io.tiklab.eas.widget.dao.WorkWidgetDao;
 import io.tiklab.eas.widget.entity.WorkWidgetEntity;
-import net.tiklab.beans.BeanMapper;
-import net.tiklab.core.page.Pagination;
-import net.tiklab.core.page.PaginationBuilder;
+import io.tiklab.beans.BeanMapper;
+import io.tiklab.core.page.Pagination;
+import io.tiklab.core.page.PaginationBuilder;
 import io.tiklab.eas.widget.model.WorkWidget;
 import io.tiklab.eas.widget.model.WorkWidgetQuery;
-import net.tiklab.rpc.annotation.Exporter;
+import io.tiklab.rpc.annotation.Exporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

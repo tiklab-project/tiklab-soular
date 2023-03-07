@@ -1,9 +1,9 @@
 package io.tiklab.eas.widget.dao;
 
 import io.tiklab.eas.widget.entity.WorkWidgetLayoutEntity;
-import net.tiklab.dal.jpa.JpaTemplate;
-import net.tiklab.dal.jpa.criterial.condition.QueryCondition;
-import net.tiklab.dal.jpa.criterial.conditionbuilder.QueryBuilders;
+import io.tiklab.dal.jpa.JpaTemplate;
+import io.tiklab.dal.jpa.criterial.condition.QueryCondition;
+import io.tiklab.dal.jpa.criterial.conditionbuilder.QueryBuilders;
 import io.tiklab.eas.widget.model.WorkWidgetLayoutQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

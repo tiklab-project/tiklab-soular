@@ -1,6 +1,6 @@
 package io.tiklab.eas.widget.model;
 
-import net.tiklab.beans.annotation.Mapper;
+import io.tiklab.beans.annotation.Mapper;
 
 @Mapper(targetAlias = "WorkWidgetLayoutEntity")
 public class WorkWidgetLayout {

@@ -1,10 +1,10 @@
 package io.tiklab.eas.widget.dao;
 
 import io.tiklab.eas.widget.entity.WorkWidgetEntity;
-import net.tiklab.core.page.Pagination;
-import net.tiklab.dal.jpa.JpaTemplate;
-import net.tiklab.dal.jpa.criterial.condition.QueryCondition;
-import net.tiklab.dal.jpa.criterial.conditionbuilder.QueryBuilders;
+import io.tiklab.core.page.Pagination;
+import io.tiklab.dal.jpa.JpaTemplate;
+import io.tiklab.dal.jpa.criterial.condition.QueryCondition;
+import io.tiklab.dal.jpa.criterial.conditionbuilder.QueryBuilders;
 import io.tiklab.eas.widget.model.WorkWidgetQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

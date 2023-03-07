@@ -1,6 +1,6 @@
 package io.tiklab.eas.widget.entity;
 
-import net.tiklab.dal.jpa.annotation.*;
+import io.tiklab.dal.jpa.annotation.*;
 
 import java.io.Serializable;
 

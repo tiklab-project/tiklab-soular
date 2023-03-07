@@ -2,10 +2,10 @@ package io.tiklab.eas.widget.service;
 
 import io.tiklab.eas.widget.dao.WorkWidgetLayoutDao;
 import io.tiklab.eas.widget.entity.WorkWidgetLayoutEntity;
-import net.tiklab.beans.BeanMapper;
+import io.tiklab.beans.BeanMapper;
 import io.tiklab.eas.widget.model.WorkWidgetLayout;
 import io.tiklab.eas.widget.model.WorkWidgetLayoutQuery;
-import net.tiklab.rpc.annotation.Exporter;
+import io.tiklab.rpc.annotation.Exporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

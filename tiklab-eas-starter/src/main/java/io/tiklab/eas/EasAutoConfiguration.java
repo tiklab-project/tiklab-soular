@@ -1,5 +1,6 @@
 package io.tiklab.eas;
 
+import io.tiklab.integration.starter.EnableIntegration;
 import net.tiklab.dal.starter.annotation.EnableDal;
 import net.tiklab.dcs.starter.EnableDcs;
 import net.tiklab.dfs.starter.EnableDfs;
@@ -9,7 +10,6 @@ import net.tiklab.eam.starter.EnableEam;
 import net.tiklab.flow.starter.EnableFlowServer;
 import net.tiklab.form.starter.EnableFormServer;
 import net.tiklab.gateway.starter.EnableGateway;
-import net.tiklab.integration.starter.EnableIntegration;
 import net.tiklab.licence.starter.EnableLicenceServer;
 import net.tiklab.messsage.starter.EnableMessage;
 import net.tiklab.mysql.starter.EnableMysql;

@@ -90,6 +90,9 @@ plugin:
 tenant:
   application: eas
 
+eas:
+  embbed:
+    enable: true
 
 #licences config
 licences:

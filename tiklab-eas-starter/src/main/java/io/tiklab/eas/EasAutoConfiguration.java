@@ -15,7 +15,7 @@ import io.tiklab.messsage.starter.EnableMessage;
 import io.tiklab.mysql.starter.EnableMysql;
 import io.tiklab.pluginx.starter.EnablePluginServer;
 import io.tiklab.postin.client.EnablePostInClient;
-//import io.tiklab.privilege.stater.EnablePrivilegeServer;
+import io.tiklab.privilege.starter.EnablePrivilegeServer;
 import io.tiklab.rpc.starter.annotation.EnableRpc;
 import io.tiklab.security.stater.EnableSecurity;
 import io.tiklab.tks.annotation.EnableTks;
@@ -45,7 +45,7 @@ import org.springframework.context.annotation.Configuration;
 //pcs
 @EnableUser
 @EnableEam
-//@EnablePrivilegeServer
+@EnablePrivilegeServer
 @EnablePluginServer
 @EnableIntegration
 @EnableLicenceServer

@@ -16,7 +16,7 @@ base:
 
 eas:
   embbed:
-    enable: false
+    enable: true
 #dal config
 #dal config for mysql jdbc
 jdbc:

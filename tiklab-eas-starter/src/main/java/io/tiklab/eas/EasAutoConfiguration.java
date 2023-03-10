@@ -1,5 +1,6 @@
 package io.tiklab.eas;
 
+import io.tiklab.beans.starter.EnableBeans;
 import io.tiklab.integration.starter.EnableIntegration;
 import io.tiklab.dal.starter.annotation.EnableDal;
 import io.tiklab.dcs.starter.EnableDcs;
@@ -10,15 +11,13 @@ import io.tiklab.eam.starter.EnableEam;
 import io.tiklab.flow.starter.EnableFlowServer;
 import io.tiklab.form.starter.EnableFormServer;
 import io.tiklab.gateway.starter.EnableGateway;
+import io.tiklab.join.starter.EnableJoin;
 import io.tiklab.licence.starter.EnableLicenceServer;
 import io.tiklab.messsage.starter.EnableMessage;
 import io.tiklab.mysql.starter.EnableMysql;
 import io.tiklab.pluginx.starter.EnablePluginServer;
-import io.tiklab.postin.client.EnablePostInClient;
-import io.tiklab.privilege.starter.EnablePrivilegeServer;
 import io.tiklab.rpc.starter.annotation.EnableRpc;
 import io.tiklab.security.stater.EnableSecurity;
-import io.tiklab.tks.annotation.EnableTks;
 import io.tiklab.todotask.stater.EnableTodoTask;
 import io.tiklab.user.starter.EnableUser;
 import io.tiklab.web.starter.annotation.EnableWeb;
@@ -29,7 +28,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 //platform
-@EnableTks
+@EnableBeans
+@EnableJoin
 @EnableWeb
 
 @EnableMysql
@@ -42,10 +42,11 @@ import org.springframework.context.annotation.Configuration;
 @EnableRpc
 @EnableMessage
 @EnableGateway
+
 //pcs
 @EnableUser
 @EnableEam
-@EnablePrivilegeServer
+//@EnablePrivilegeServer
 @EnablePluginServer
 @EnableIntegration
 @EnableLicenceServer
@@ -57,7 +58,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableFlowServer
 
 //other
-@EnablePostInClient
+//@EnablePostInClient
 
 @EnableEasServer
 

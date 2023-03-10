@@ -135,7 +135,6 @@
                 <exclude>io.tiklab:tiklab-rpc-codec</exclude>
                 <exclude>io.tiklab:tiklab-rpc-client</exclude>
                 <exclude>io.tiklab:tiklab-rpc-annotation</exclude>
-                <exclude>io.tiklab:tiklab-privilege-spring-boot-starter</exclude>
                 <exclude>io.tiklab:tiklab-postin-annotation</exclude>
                 <exclude>io.tiklab:tiklab-plugin-spring-boot-starter</exclude>
                 <exclude>io.tiklab:tiklab-message-spring-boot-starter</exclude>
@@ -161,8 +160,8 @@
                 <exclude>io.tiklab:tiklab-dal-jdbc</exclude>
                 <exclude>io.tiklab:tiklab-dal-datasource</exclude>
                 <exclude>io.tiklab:tiklab-core</exclude>
-                <exclude>io.tiklab:tiklab-tks-core</exclude>
-                <exclude>io.tiklab:tiklab-tks-annotation</exclude>
+                <exclude>io.tiklab:tiklab-beans-core</exclude>
+                <exclude>io.tiklab:tiklab-beans-annotation</exclude>
                 <exclude>org.springframework:spring-websocket</exclude>
                 <exclude>org.springframework:spring-webmvc</exclude>
                 <exclude>org.springframework:spring-web</exclude>
@@ -264,7 +263,6 @@
                 <exclude>io.tiklab:tiklab-rpc-codec</exclude>
                 <exclude>io.tiklab:tiklab-rpc-client</exclude>
                 <exclude>io.tiklab:tiklab-rpc-annotation</exclude>
-                <exclude>io.tiklab:tiklab-privilege-spring-boot-starter</exclude>
                 <exclude>io.tiklab:tiklab-postin-annotation</exclude>
                 <exclude>io.tiklab:tiklab-plugin-spring-boot-starter</exclude>
                 <exclude>io.tiklab:tiklab-message-spring-boot-starter</exclude>
@@ -290,8 +288,8 @@
                 <exclude>io.tiklab:tiklab-dal-jdbc</exclude>
                 <exclude>io.tiklab:tiklab-dal-datasource</exclude>
                 <exclude>io.tiklab:tiklab-core</exclude>
-                <exclude>io.tiklab:tiklab-tks-core</exclude>
-                <exclude>io.tiklab:tiklab-tks-annotation</exclude>
+                <exclude>io.tiklab:tiklab-beans-core</exclude>
+                <exclude>io.tiklab:tiklab-beans-annotation</exclude>
                 <exclude>org.springframework:spring-websocket</exclude>
                 <exclude>org.springframework:spring-webmvc</exclude>
                 <exclude>org.springframework:spring-web</exclude>

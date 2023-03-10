@@ -35,12 +35,12 @@
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-tks-spring-boot-starter</artifactId>
+            <artifactId>tiklab-beans-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-privilege-spring-boot-starter</artifactId>
+            <artifactId>tiklab-join-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

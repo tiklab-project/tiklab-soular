@@ -38,7 +38,7 @@
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-privilege-spring-boot-starter</artifactId>
+            <artifactId>tiklab-join-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -104,11 +104,10 @@
             <groupId>io.tiklab</groupId>
             <artifactId>tiklab-licence-spring-boot-starter</artifactId>
             <version>${project.version}</version>
-
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-utils</artifactId>
+            <artifactId>tiklab-core</artifactId>
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>

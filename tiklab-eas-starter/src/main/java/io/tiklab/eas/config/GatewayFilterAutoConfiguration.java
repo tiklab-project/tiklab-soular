@@ -53,9 +53,9 @@ public class GatewayFilterAutoConfiguration {
                         "/eam/ldap/passport/login",
 
                         "/auth/valid",
-                        "/wechat/passport/login",
-                        "/wechat/passport/internallogin",
-                        "/wechat/passport/internalacclogin",
+                        "/eam/wechat/passport/login",
+                        "/eam/wechat/passport/internallogin",
+                        "/eam/wechat/passport/internalacclogin",
 
                         "/dingding/passport/login",
                         "/dingding/passport/valid",

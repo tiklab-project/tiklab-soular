@@ -72,6 +72,7 @@ public class GatewayFilterAutoConfiguration {
 
                         "/version/getVersion",
                         "/licence/import",
+                        "/user/wechatcfg/wechatCallback",
 
                 })
                 .ignorePreUrls(new String[]{

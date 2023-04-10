@@ -5,7 +5,7 @@ INSERT INTO `pcs_prc_role` (`id`, `name`, `description`, `grouper`, `type`, `sco
 -- 初始话普通色表
 INSERT INTO `pcs_prc_role` (`id`, `name`, `description`, `grouper`, `type`, `scope`, `default_role`, `business_type`) VALUES ('2', '普通角色', NULL, 'system', '1', 1, 0, 0);
 -- 管理员角色金和admin用户绑定 表
-INSERT INTO `pcs_prc_role_user` (`id`, `role_id`, `user_id`) VALUES ('1', '1', '111111');
+-- INSERT INTO `pcs_prc_role_user` (`id`, `role_id`, `user_id`) VALUES ('1', '1', '111111');
 
 
 -- 项目级

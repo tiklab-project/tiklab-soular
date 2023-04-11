@@ -39,9 +39,23 @@ INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('d0
 INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('c5fe246887fa2115ec1cb8a07a77aef5', '1', '890e7d41decf71cfe3b0e80b0c4179cf');
 INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('70978ef543639b3d373ac70071a16903', '1', '447d9998fc00fe64c96c6f09f0d41c32');
 
+-- 初始化admin角色的权限功能
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('182f37b4128825052764e57b4df3320b', '1', '49e12c2b8fca01894886211df2b797d0');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('26af453881d5cccd6e52e502be4775e6', '1', '9314739a13fedc65c948180d7702f518');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('3e682c2618a607562180eaa150e7bd2d', '1', '0c73e628fd5410c382f28a956304a9d7');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('98450c504e3ee4fff09a7c50b2354d22', '1', 'f344830df1f8a160f9fdfe11cee9abe7');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('986c25307b21df56e9d7b0022281f3cc', '1', '64bdf62686a4939c1061422394ded7cd');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('b0c186a33872c62a995c4e5da09ccb14', '1', 'edb60bf65e4279e46ce21210b3213bd8');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('e5092e324e36e10d8ec24c37e34df346', '1', 'f6f51f9441339cd20013f4f20c378dc6');
 
--- pcs ---end
 
+-- 用户组信息
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('7aa081e7588865a6ab75c14caf8317b7', '1', '4235d2624bdf30ye502e4aa51c816090');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('048474ad31d1948f35f39313f6496f7b', '1', 'hf43e412151eqwqd27f2ab60d8ff73a0');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('6db0011966d136925c0895bf5d459bcb', '1', 'hfg5371be8ec674a06613bf8e37ec343');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('10e8d88e520509822ac64455fff8b59c', '1', 'oug5371be8ec674a06613bf8e37ec343');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('7c20bbaa68277053c89933b73a3b4bba', '1', '43e7d41decf71cfe3b0e80b0c417976g');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('887d1fc798ae06acfc4e2439b2f9236e', '1', 'wqre9998fc00fe64c96c6f09f0d45343');
 
 
 
@@ -54,14 +68,5 @@ INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sor
 INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('f344830df1f8a160f9fdfe11cee9abe7', '工作台', 'work', NULL, 1, '1');
 INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('f6f51f9441339cd20013f4f20c378dc6', '消息通知', 'message', NULL, 6, '1');
 
-
--- 初始化admin角色的权限功能
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('182f37b4128825052764e57b4df3320b', '1', '49e12c2b8fca01894886211df2b797d0');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('26af453881d5cccd6e52e502be4775e6', '1', '9314739a13fedc65c948180d7702f518');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('3e682c2618a607562180eaa150e7bd2d', '1', '0c73e628fd5410c382f28a956304a9d7');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('98450c504e3ee4fff09a7c50b2354d22', '1', 'f344830df1f8a160f9fdfe11cee9abe7');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('986c25307b21df56e9d7b0022281f3cc', '1', '64bdf62686a4939c1061422394ded7cd');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('b0c186a33872c62a995c4e5da09ccb14', '1', 'edb60bf65e4279e46ce21210b3213bd8');
-INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('e5092e324e36e10d8ec24c37e34df346', '1', 'f6f51f9441339cd20013f4f20c378dc6');
 
 

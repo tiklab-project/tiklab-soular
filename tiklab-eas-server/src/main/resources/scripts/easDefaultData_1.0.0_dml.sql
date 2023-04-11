@@ -47,6 +47,7 @@ INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('98
 INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('986c25307b21df56e9d7b0022281f3cc', '1', '64bdf62686a4939c1061422394ded7cd');
 INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('b0c186a33872c62a995c4e5da09ccb14', '1', 'edb60bf65e4279e46ce21210b3213bd8');
 INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('e5092e324e36e10d8ec24c37e34df346', '1', 'f6f51f9441339cd20013f4f20c378dc6');
+INSERT INTO `pcs_prc_role_function` (`id`, `role_id`, `function_id`) VALUES ('3123092e324e36e10d8ec24c37e34126', '1', 'dasdwefas1339cd20013f4f20c378eqw');
 
 
 -- 用户组信息
@@ -67,6 +68,7 @@ INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sor
 INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('edb60bf65e4279e46ce21210b3213bd8', '待办任务', 'todotask', NULL, 7, '1');
 INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('f344830df1f8a160f9fdfe11cee9abe7', '工作台', 'work', NULL, 1, '1');
 INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('f6f51f9441339cd20013f4f20c378dc6', '消息通知', 'message', NULL, 6, '1');
+INSERT INTO `pcs_prc_function` (`id`, `name`, `code`, `parent_function_id`, `sort`, `type`) VALUES ('dasdwefas1339cd20013f4f20c378eqw', '应用授权', 'product_auth', NULL, 12, '1');
 
 
 

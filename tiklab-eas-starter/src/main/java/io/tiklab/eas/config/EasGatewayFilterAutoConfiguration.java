@@ -96,7 +96,8 @@ public class EasGatewayFilterAutoConfiguration {
                         "/version/getVersion",
                         "/licence/import",
                         "/wechatCallback/instruct",
-                        "/gui"
+                        "/gui",
+                        "/licence/tryLicence"
                 })
                 .ignorePreUrls(new String[]{
                         "/service",

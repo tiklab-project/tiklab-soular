@@ -16,6 +16,7 @@ import io.tiklab.licence.starter.EnableLicenceServer;
 import io.tiklab.messsage.starter.EnableMessage;
 import io.tiklab.mysql.starter.EnableMysql;
 import io.tiklab.pluginx.starter.EnablePluginServer;
+import io.tiklab.privilege.EnablePrivilegeServer;
 import io.tiklab.rpc.starter.annotation.EnableRpc;
 import io.tiklab.security.stater.EnableSecurity;
 import io.tiklab.todotask.stater.EnableTodoTask;
@@ -59,7 +60,7 @@ import org.springframework.context.annotation.Configuration;
 
 //other
 //@EnablePostInClient
-
+@EnablePrivilegeServer
 @EnableEasServer
 
 

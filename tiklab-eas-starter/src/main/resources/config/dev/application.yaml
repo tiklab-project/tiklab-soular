@@ -1,6 +1,6 @@
 #application config
 app:
-  name: tiklab-eas
+  name: eas
 
 spring:
   profiles:

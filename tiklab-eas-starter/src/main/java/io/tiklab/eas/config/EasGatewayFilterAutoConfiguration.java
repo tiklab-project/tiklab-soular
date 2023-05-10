@@ -67,7 +67,8 @@ public class EasGatewayFilterAutoConfiguration {
                         ".ftl",
                         ".map",
                         ".gz",
-                        "svg"
+                        ".svg",
+                        ".txt"
                 })
                 .ignoreUrls(new String[]{
                         "/",

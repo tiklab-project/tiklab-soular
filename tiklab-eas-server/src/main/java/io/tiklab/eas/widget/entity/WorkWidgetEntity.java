@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Table(name="eas_work_widget")
 public class WorkWidgetEntity implements Serializable {
     @Id
-    @GeneratorValue
-    @Column(name = "id",length = 32)
+    @GeneratorValue(length = 12)
+    @Column(name = "id",length = 12)
     private String id;
 
     @Column(name = "name",length = 32,notNull = true)

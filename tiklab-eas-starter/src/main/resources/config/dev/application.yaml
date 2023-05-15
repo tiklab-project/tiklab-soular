@@ -17,12 +17,17 @@ base:
 
 #dal config
 #dal config for mysql jdbc
-jdbc:
-  driverClassName: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
-  username: root
-  password: darth2020
+#jdbc:
+#  driverClassName: com.mysql.cj.jdbc.Driver
+#  url: jdbc:mysql://172.10.1.10:3306/tiklab_eas?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+#  username: root
+#  password: darth2020
 
+jdbc:
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://172.10.1.10:5432/tiklab_eas?stringtype=unspecified
+  username: postgres
+  password: darth2020
 
 mysql:
   local: false

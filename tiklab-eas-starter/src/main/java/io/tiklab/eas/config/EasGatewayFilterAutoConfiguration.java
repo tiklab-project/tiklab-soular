@@ -110,7 +110,8 @@ public class EasGatewayFilterAutoConfiguration {
                         "/ws",
                         "/socket",
                         "/start",
-                        "/eas"
+                        "/eas",
+                        "/sql"
                 })
                 .get();
     }

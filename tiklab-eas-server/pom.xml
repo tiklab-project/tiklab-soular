@@ -45,17 +45,12 @@
 <!--        </dependency>-->
         <dependency>
             <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-toolkit-spring-boot-starter</artifactId>
+            <artifactId>tiklab-toolkit-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-plugin-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-integration-spring-boot-starter</artifactId>
+            <artifactId>tiklab-plugin-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

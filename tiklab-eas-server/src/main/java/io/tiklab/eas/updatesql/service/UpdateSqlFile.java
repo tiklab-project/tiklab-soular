@@ -47,14 +47,37 @@ public class UpdateSqlFile {
 
 
     public static void main(String[] args) {
+
+        String[] dbString = new String[]{
+                // "tiklab_eas_00000000.sql",
+                // "tiklab_eas_a3jsr93o.sql",
+                // "tiklab_eas_c712x0xk.sql",
+                // "tiklab_eas_grd12j4g.sql",
+                // "tiklab_eas_ic9tganj.sql",
+                // "tiklab_eas_l1rrslxx.sql",
+                // "tiklab_eas_otk11j64.sql",
+                // "tiklab_eas_p7mei027.sql",
+                // "tiklab_eas_pi9cdtjs.sql",
+                "tiklab_matflow_00000000.sql",
+                "tiklab_matflow_c712x0xk.sql",
+                "tiklab_matflow_grd12j4g.sql",
+                "tiklab_matflow_l1rrslxx.sql",
+                "tiklab_matflow_otk11j64.sql",
+                "tiklab_matflow_p7mei027.sql",
+                "tiklab_matflow_pi9cdtjs.sql"
+        };
+
         updateString();
-        String fileName ="tiklab_matflow.sql";
 
-        readFile(fileName);
+        for (String s : dbString) {
 
-        writerFile(replaceCreate(),fileName);
-        writerFile(replaceInsert(),fileName);
-        writerFile(commentList,fileName);
+            readFile(s);
+            writerFile(replaceCreate(),s);
+            writerFile(replaceInsert(),s);
+            writerFile(commentList,s);
+        }
+
+
 
     }
 

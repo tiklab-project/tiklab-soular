@@ -32,7 +32,7 @@ jdbc:
 mysql:
   database: tiklab_eas
   embbed:
-    enable: true
+    enable: false
 
 
 PROJECT_HOME: ${user.home}/tiklab/${app.name}

@@ -27,7 +27,11 @@ public class UpdateSqlFile {
                 "`",
                 "CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci",
                 "ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic",
-                "USING BTREE"
+                "USING BTREE",
+                "CHARACTER SET utf8 COLLATE utf8_bin",
+                "ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic",
+                "ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic",
+                "CHARACTER SET utf8 COLLATE utf8_general_ci"
         };
         skipString = new String[]{
                 "pcs_op_log_template",
@@ -58,13 +62,29 @@ public class UpdateSqlFile {
                 // "tiklab_eas_otk11j64.sql",
                 // "tiklab_eas_p7mei027.sql",
                 // "tiklab_eas_pi9cdtjs.sql",
-                "tiklab_matflow_00000000.sql",
-                "tiklab_matflow_c712x0xk.sql",
-                "tiklab_matflow_grd12j4g.sql",
-                "tiklab_matflow_l1rrslxx.sql",
-                "tiklab_matflow_otk11j64.sql",
-                "tiklab_matflow_p7mei027.sql",
-                "tiklab_matflow_pi9cdtjs.sql"
+
+                // "tiklab_matflow_00000000.sql",
+                // "tiklab_matflow_c712x0xk.sql",
+                // "tiklab_matflow_grd12j4g.sql",
+                // "tiklab_matflow_l1rrslxx.sql",
+                // "tiklab_matflow_otk11j64.sql",
+                // "tiklab_matflow_p7mei027.sql",
+                // "tiklab_matflow_pi9cdtjs.sql",
+
+                // "tiklab_eas_57mdd3gw.sql",
+                // "tiklab_eas_79e4bi7o.sql",
+                // "tiklab_eas_82sjupnm.sql",
+                // "tiklab_eas_89d93z7e.sql",
+                // "tiklab_eas_iokw8cr6.sql",
+                // "tiklab_eas_m2d5afz3.sql",
+                // "tiklab_eas_qu219sip.sql"
+                "tiklab_matflow_1h0t8got.sql",
+                "tiklab_matflow_57mdd3gw.sql",
+                "tiklab_matflow_79e4bi7o.sql",
+                "tiklab_matflow_82sjupnm.sql",
+                "tiklab_matflow_iokw8cr6.sql",
+                "tiklab_matflow_m2d5afz3.sql"
+
         };
 
         updateString();
@@ -121,7 +141,7 @@ public class UpdateSqlFile {
 
                 createShow.append(line).append("\n");
 
-                boolean endsedWith = line.endsWith(" ROW_FORMAT = Dynamic;");
+                boolean endsedWith = line.endsWith("ROW_FORMAT = Dynamic;");
 
                 if (endsedWith){
                     b = false;

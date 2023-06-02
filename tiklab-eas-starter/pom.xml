@@ -149,13 +149,13 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
-                <dependency>
-                    <groupId>io.tiklab</groupId>
-                    <artifactId>tiklab-mysql-linux</artifactId>
-                    <version>${project.version}</version>
-                    <type>zip</type>
-                    <scope>provided</scope>
-                </dependency>
+<!--                <dependency>-->
+<!--                    <groupId>io.tiklab</groupId>-->
+<!--                    <artifactId>tiklab-mysql-linux</artifactId>-->
+<!--                    <version>${project.version}</version>-->
+<!--                    <type>zip</type>-->
+<!--                    <scope>provided</scope>-->
+<!--                </dependency>-->
                 <dependency>
                     <groupId>io.tiklab</groupId>
                     <artifactId>tiklab-jdk-linux</artifactId>
@@ -190,13 +190,13 @@
                                             <type>zip</type>
                                             <outputDirectory>embbed</outputDirectory>
                                         </artifactItem>
-                                        <artifactItem>
-                                            <groupId>io.tiklab</groupId>
-                                            <artifactId>tiklab-mysql-linux</artifactId>
-                                            <version>${project.version}</version>
-                                            <type>zip</type>
-                                            <outputDirectory>embbed</outputDirectory>
-                                        </artifactItem>
+<!--                                        <artifactItem>-->
+<!--                                            <groupId>io.tiklab</groupId>-->
+<!--                                            <artifactId>tiklab-mysql-linux</artifactId>-->
+<!--                                            <version>${project.version}</version>-->
+<!--                                            <type>zip</type>-->
+<!--                                            <outputDirectory>embbed</outputDirectory>-->
+<!--                                        </artifactItem>-->
                                     </artifactItems>
                                 </configuration>
                             </execution>
@@ -210,13 +210,13 @@
         <profile>
             <id>system-windows</id>
             <dependencies>
-                <dependency>
-                    <groupId>io.tiklab</groupId>
-                    <artifactId>tiklab-mysql-windows</artifactId>
-                    <version>${project.version}</version>
-                    <type>zip</type>
-                    <scope>provided</scope>
-                </dependency>
+<!--                <dependency>-->
+<!--                    <groupId>io.tiklab</groupId>-->
+<!--                    <artifactId>tiklab-mysql-windows</artifactId>-->
+<!--                    <version>${project.version}</version>-->
+<!--                    <type>zip</type>-->
+<!--                    <scope>provided</scope>-->
+<!--                </dependency>-->
                 <dependency>
                     <groupId>io.tiklab</groupId>
                     <artifactId>tiklab-jdk-windows</artifactId>
@@ -251,13 +251,13 @@
                                             <type>zip</type>
                                             <outputDirectory>embbed</outputDirectory>
                                         </artifactItem>
-                                        <artifactItem>
-                                            <groupId>io.tiklab</groupId>
-                                            <artifactId>tiklab-mysql-windows</artifactId>
-                                            <version>${project.version}</version>
-                                            <type>zip</type>
-                                            <outputDirectory>embbed</outputDirectory>
-                                        </artifactItem>
+<!--                                        <artifactItem>-->
+<!--                                            <groupId>io.tiklab</groupId>-->
+<!--                                            <artifactId>tiklab-mysql-windows</artifactId>-->
+<!--                                            <version>${project.version}</version>-->
+<!--                                            <type>zip</type>-->
+<!--                                            <outputDirectory>embbed</outputDirectory>-->
+<!--                                        </artifactItem>-->
                                     </artifactItems>
                                 </configuration>
                             </execution>
@@ -321,13 +321,13 @@
                                             <type>zip</type>
                                             <outputDirectory>embbed</outputDirectory>
                                         </artifactItem>
-                                        <artifactItem>
-                                            <groupId>io.tiklab</groupId>
-                                            <artifactId>tiklab-mysql-mac</artifactId>
-                                            <version>${project.version}</version>
-                                            <type>zip</type>
-                                            <outputDirectory>embbed</outputDirectory>
-                                        </artifactItem>
+<!--                                        <artifactItem>-->
+<!--                                            <groupId>io.tiklab</groupId>-->
+<!--                                            <artifactId>tiklab-mysql-mac</artifactId>-->
+<!--                                            <version>${project.version}</version>-->
+<!--                                            <type>zip</type>-->
+<!--                                            <outputDirectory>embbed</outputDirectory>-->
+<!--                                        </artifactItem>-->
                                     </artifactItems>
                                 </configuration>
                             </execution>

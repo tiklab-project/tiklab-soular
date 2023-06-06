@@ -442,7 +442,7 @@
                                     <followSymlinks>false</followSymlinks>
                                     <useDefaultExcludes>true</useDefaultExcludes>
                                     <includes>
-                                        <include>**/*</include>
+                                        <include>**/*.jar</include>
                                     </includes>
                                 </fileset>
                                 <fileset>
@@ -466,6 +466,7 @@
                 <version>2.8</version>
                 <executions>
                     <execution>
+<!--                        <phase>compile</phase>-->
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy</goal>
@@ -489,6 +490,23 @@
                     <outputDirectory>${project.basedir}/plugin</outputDirectory>
                 </configuration>
             </plugin>
+
+<!--            <plugin>-->
+<!--                <artifactId>exec-maven-plugin</artifactId>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>uncompress</id>-->
+<!--                        <phase>clean</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>exec</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <executable>${basedir}/plugin/loadplugin.bat</executable>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
 
         </plugins>

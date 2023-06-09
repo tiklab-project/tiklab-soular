@@ -487,16 +487,6 @@
                 </configuration>
             </plugin>
 
-            <!-- 执行脚本 -->
-            <plugin>
-                <groupId>io.tiklab</groupId>
-                <artifactId>maven-plugin-pd</artifactId>
-                <version>1.0.0</version>
-                <configuration>
-                    <scriptPath>${basedir}/plugin/plugin.bat</scriptPath>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 

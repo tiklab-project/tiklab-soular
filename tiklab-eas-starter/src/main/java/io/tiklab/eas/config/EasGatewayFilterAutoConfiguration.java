@@ -101,6 +101,8 @@ public class EasGatewayFilterAutoConfiguration {
                         "/wechatCallback/instruct",
                         "/gui",
                         "/licence/tryLicence",
+                        "/test/test",
+                        "/data/import"
                 })
                 .ignorePreUrls(new String[]{
                         "/service",

@@ -138,6 +138,15 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-plugin-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-plugin-plugin</artifactId>
+            <version>3.9.0</version>
+        </dependency>
+
+
     </dependencies>
 
 
@@ -353,14 +362,6 @@
             </properties>
         </profile>
 
-        <!--prd-->
-        <profile>
-            <id>env-prd</id>
-            <properties>
-                <yaml-type>/config/prd</yaml-type>
-            </properties>
-        </profile>
-
         <!--release-->
         <profile>
             <id>env-release</id>
@@ -368,7 +369,6 @@
                 <yaml-type>/</yaml-type>
             </properties>
         </profile>
-
 
     </profiles>
 
@@ -384,6 +384,7 @@
                 </configuration>
             </plugin>
 
+            <!-- jar打包配置 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -466,7 +467,6 @@
                 <version>2.8</version>
                 <executions>
                     <execution>
-<!--                        <phase>compile</phase>-->
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy</goal>
@@ -477,37 +477,25 @@
                     <artifactItems>
                         <artifactItem>
                             <groupId>io.tiklab</groupId>
-                            <artifactId>tiklab-eam-plugin</artifactId>
-                            <version>${project.version}</version>
-                        </artifactItem>
-                        <artifactItem>
-                            <groupId>io.tiklab</groupId>
-                            <artifactId>tiklab-user-plugin</artifactId>
+                            <artifactId>tiklab-user-plugin-starter</artifactId>
                             <version>${project.version}</version>
                         </artifactItem>
                     </artifactItems>
-                    <includeTypes>jar</includeTypes>
+                    <includes>tiklab-user-plugin.jar</includes>
+                    <excludes>tiklab-user-plugin-starter-1.0.0-SNAPSHOT.jar</excludes>
                     <outputDirectory>${project.basedir}/plugin</outputDirectory>
                 </configuration>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <artifactId>exec-maven-plugin</artifactId>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>uncompress</id>-->
-<!--                        <phase>clean</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>exec</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <executable>${basedir}/plugin/loadplugin.bat</executable>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-
+            <!-- 执行脚本 -->
+            <plugin>
+                <groupId>io.tiklab</groupId>
+                <artifactId>maven-plugin-pd</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <scriptPath>${basedir}/plugin/plugin.bat</scriptPath>
+                </configuration>
+            </plugin>
 
         </plugins>
     </build>

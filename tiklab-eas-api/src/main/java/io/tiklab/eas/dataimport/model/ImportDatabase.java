@@ -7,13 +7,7 @@ public class ImportDatabase {
 
     private String application;
 
-    private String ip;
-
-    private Integer port;
-
-    private String dataName;
-
-    private String schemaName;
+    private String url;
 
     private String username;
 
@@ -30,36 +24,13 @@ public class ImportDatabase {
         this.driverClassName = driverClassName;
     }
 
-    public String getIp() {
-        return ip;
+
+    public String getUrl() {
+        return url;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public Integer getPort() {
-        return port;
-    }
-
-    public void setPort(Integer port) {
-        this.port = port;
-    }
-
-    public String getDataName() {
-        return dataName;
-    }
-
-    public void setDataName(String dataName) {
-        this.dataName = dataName;
-    }
-
-    public String getSchemaName() {
-        return schemaName;
-    }
-
-    public void setSchemaName(String schemaName) {
-        this.schemaName = schemaName;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getUsername() {

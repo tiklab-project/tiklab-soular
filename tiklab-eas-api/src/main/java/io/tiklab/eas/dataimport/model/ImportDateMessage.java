@@ -10,7 +10,7 @@ public class ImportDateMessage {
     private Boolean state;
 
     // 应用
-    private String application;
+    private ImportDatabase database;
 
     // 进度
     private int speed;
@@ -33,12 +33,12 @@ public class ImportDateMessage {
         this.state = state;
     }
 
-    public String getApplication() {
-        return application;
+    public ImportDatabase getDatabase() {
+        return database;
     }
 
-    public void setApplication(String application) {
-        this.application = application;
+    public void setDatabase(ImportDatabase database) {
+        this.database = database;
     }
 
     public int getSpeed() {

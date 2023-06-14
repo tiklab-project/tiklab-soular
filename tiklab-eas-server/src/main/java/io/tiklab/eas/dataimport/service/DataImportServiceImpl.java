@@ -47,6 +47,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import java.lang.reflect.Field;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -89,10 +90,10 @@ public class DataImportServiceImpl implements DataImportService{
     @Autowired
     private RoleService roleService;
 
-    @Autowired
+    @Autowired(required = false)
     private WeChatCfgService weChatCfgService;
 
-    @Autowired
+    @Autowired(required = false)
     private LdapDirCfgService ldapDirCfgService;
 
     @Autowired
@@ -101,7 +102,7 @@ public class DataImportServiceImpl implements DataImportService{
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private final Map<String,DriverManagerDataSource> dataSourceMap = new HashMap<>();
+    private Map<String,DriverManagerDataSource> dataSourceMap = new HashMap<>();
 
     // 状态
     private Boolean runState = false ;
@@ -110,14 +111,14 @@ public class DataImportServiceImpl implements DataImportService{
 
     private String message;
 
-    private String application;
+    private ImportDatabase database;
 
-    public String getApplication() {
-        return application;
+    public ImportDatabase getDatabase() {
+        return database;
     }
 
-    public void setApplication(String application) {
-        this.application = application;
+    public void setDatabase(ImportDatabase database) {
+        this.database = database;
     }
 
     public Boolean getRunState() {
@@ -150,7 +151,8 @@ public class DataImportServiceImpl implements DataImportService{
         new Thread(() -> {
             transactionTemplate.execute(status -> {
                 setRunState(true);
-                setApplication(database.getApplication());
+                setDatabase(database);
+                setMessage(null);
                 try {
                     updateMessage(1,"连接数据库...");
                     try {
@@ -166,11 +168,14 @@ public class DataImportServiceImpl implements DataImportService{
                     logger.info("数据同步完成。");
                     updateMessage(100,"数据同步完成。");
 
+                    dataSourceMap = new HashMap<>();
+
                 } catch (Throwable throwable) {
                     String eMessage = throwable.getMessage();
                     logger.error("同步失败,回滚数据:"+eMessage);
                     status.setRollbackOnly(); // 回滚事务
                     updateMessage(getSpeed(),eMessage);
+                    dataSourceMap = new HashMap<>();
                     setRunState(false);
                 }
                 setRunState(false);
@@ -185,7 +190,7 @@ public class DataImportServiceImpl implements DataImportService{
         message.setState(getRunState());
         message.setSpeed(getSpeed());
         message.setMessage(getMessage());
-        message.setApplication(getApplication());
+        message.setDatabase(getDatabase());
         return message;
     }
 
@@ -264,16 +269,22 @@ public class DataImportServiceImpl implements DataImportService{
         syncOrgaUserData(database);
         updateMessage(99,"组织用户同步完成。");
 
-        updateMessage(1,"开始同步微信配置...");
-        syncWeChatCfgData(database);
-
-        updateMessage(1,"开始同步Ldap配置...");
-        syncLdapCfgData(database);
+        // updateMessage(1,"开始同步微信配置...");
+        // syncWeChatCfgData(database);
+        //
+        // updateMessage(1,"开始同步Ldap配置...");
+        // syncLdapCfgData(database);
     }
 
     private void updateMessage(int seep,String message){
+        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        String data =  "[" + format + "]" + "  ";
         setSpeed(seep);
-        setMessage(message);
+        if (Objects.isNull(getMessage())){
+            setMessage(data + message);
+        }else {
+            setMessage( getMessage() +"\n" + data + message);
+        }
     }
 
     /**
@@ -286,6 +297,8 @@ public class DataImportServiceImpl implements DataImportService{
         if (userList.isEmpty()){
             return;
         }
+
+        updateMessage(getSpeed(),"同步用户数："+ userList.size());
 
         for (User user : userList) {
             String id = user.getId();
@@ -303,11 +316,12 @@ public class DataImportServiceImpl implements DataImportService{
                 continue;
             }
             logger.info("同步用户："+user.getName());
+
             Boolean importData = createImportData(user);
             if (!importData){
                 throw new SystemException("数据插入失败！");
             }
-            logger.info("用户默认角色授权...");
+            updateMessage(getSpeed(),"添加授权："+user.getName());
             roleService.createSystemDefaultRoles(user.getId());
         }
 
@@ -324,7 +338,7 @@ public class DataImportServiceImpl implements DataImportService{
         if (messageItemList.isEmpty()){
             return ;
         }
-
+        updateMessage(getSpeed(),"同步消息数:" + messageItemList.size());
         for (MessageItem messageItem : messageItemList) {
             String id = messageItem.getId();
             try {
@@ -335,7 +349,7 @@ public class DataImportServiceImpl implements DataImportService{
             } catch (Exception e) {
                 continue;
             }
-            logger.info("同步message:"+messageItem.getId());
+            logger.info("同步message:" + messageItem.getId());
             Boolean importData = createImportData(messageItem);
             if (!importData){
                 throw new SystemException("数据插入失败！");
@@ -354,7 +368,7 @@ public class DataImportServiceImpl implements DataImportService{
         if (loggingList.isEmpty()){
             return ;
         }
-
+        updateMessage(getSpeed(), "同步日志数:"+loggingList.size());
         for (Logging logging : loggingList) {
             String id = logging.getId();
             try {
@@ -384,7 +398,7 @@ public class DataImportServiceImpl implements DataImportService{
         if (taskList.isEmpty()){
             return ;
         }
-
+        updateMessage(getSpeed(), "同步待办数:"+taskList.size());
         for (Task task : taskList) {
             String id = task.getId();
             Task oneTask = taskService.findOne(id);
@@ -425,6 +439,7 @@ public class DataImportServiceImpl implements DataImportService{
         for (WeChatCfg weChatCfg : userDirList) {
             String id = weChatCfg.getId();
             logger.info("同步企业微信配置:" + id);
+            updateMessage(getSpeed(), "同步企业微信配置:" + id);
         }
     }
 
@@ -467,13 +482,13 @@ public class DataImportServiceImpl implements DataImportService{
         if (userGroupList.isEmpty()){
             return;
         }
+        updateMessage(getSpeed(), "同步用户组数:" + userGroupList.size());
         for (UserGroup userGroup : userGroupList) {
             String id = userGroup.getId();
             UserGroup oneUserGroup = userGroupService.findOne(id);
             if (!Objects.isNull(oneUserGroup)){
                 continue;
             }
-            logger.info("同步用户组:" + id);
             Boolean importData = createImportData(userGroup);
             if (!importData){
                 throw new SystemException("数据插入失败！");
@@ -490,7 +505,7 @@ public class DataImportServiceImpl implements DataImportService{
         if (userGroupUserList.isEmpty()){
             return ;
         }
-
+        updateMessage(getSpeed(), "同步用户组数:" + userGroupUserList.size());
         for (UserGroupUser userGroupUser : userGroupUserList) {
             String id = userGroupUser.getId();
             UserGroupUser oneUserGroup = userGroupUserService.findOne(id);
@@ -515,13 +530,14 @@ public class DataImportServiceImpl implements DataImportService{
         if (orgaList.isEmpty()){
             return;
         }
+        updateMessage(getSpeed(), "同步部门数:" + orgaList.size());
         for (Orga orga : orgaList) {
             String id = orga.getOrgaId();
             Orga oneOrga = orgaService.findOne(id);
             if (!Objects.isNull(oneOrga)){
                 continue;
             }
-            logger.info("同步组织:" + id);
+            logger.info("同步部门:" + id);
             Boolean importData = createImportData(orga);
             if (!importData){
                 throw new SystemException("数据插入失败！");
@@ -540,14 +556,13 @@ public class DataImportServiceImpl implements DataImportService{
         if (orgaUserList.isEmpty()){
             return;
         }
-
+        updateMessage(getSpeed(), "同步部门用户数:" + orgaUserList.size());
         for (OrgaUser orgaUser : orgaUserList) {
             String id = orgaUser.getId();
             OrgaUser oneOrga = orgaUserService.findUserOrga(id);
             if (!Objects.isNull(oneOrga)){
                 continue;
             }
-            logger.info("同步组织用户:" +id);
             Boolean importData = createImportData(orgaUser);
             if (!importData){
                 throw new SystemException("数据插入失败！");
@@ -656,6 +671,9 @@ public class DataImportServiceImpl implements DataImportService{
                 tableName + "(" + substring + ") " +
                 " VALUES (" + "?" + ",?".repeat(Math.max(0, length - 1)) + ")";
         logger.info("sql:"+sql+"     params:"+ Arrays.toString(params));
+
+        updateMessage(getSpeed(), sql);
+        updateMessage(getSpeed(), Arrays.toString(params));
         int update = jdbcTemplate.update(sql, params);
         return update > 0;
     }
@@ -668,14 +686,15 @@ public class DataImportServiceImpl implements DataImportService{
     private DriverManagerDataSource createDatabase(ImportDatabase database){
 
         String application = database.getApplication();
-        String url = "jdbc:postgresql://"+database.getIp()+":"+database.getPort()+"/"+database.getDriverClassName();
+        String url = database.getUrl();
         // jdbc:postgresql://172.10.1.10:5432/tiklab_matflow?currentSchema=tiklab_matflow&stringtype=unspecified
-        if (!Objects.isNull(database.getSchemaName())){
-            url = url +"?currentSchema="+ database.getSchemaName()+"&";
-        }else {
-            url = url +"?";
+        if (!url.contains("stringtype=unspecified")){
+            if (url.contains("?")){
+                url = url + "&stringtype=unspecified";
+            }else {
+                url = url + "?stringtype=unspecified";
+            }
         }
-        url = url + "stringtype=unspecified";
 
         logger.info("创建数据库连接：" + url );
 
@@ -705,7 +724,8 @@ public class DataImportServiceImpl implements DataImportService{
                 throw new ApplicationException("无法连接到数据库，数据库用户名或密码错误！");
             }
 
-            if (message.contains("Unable to parse URL ")|| message.contains("尝试连线已失败 ")){
+            if (message.contains("Unable to parse URL ")|| message.contains("尝试连线已失败 ")
+                    || message.contains("Check that the hostname and port are correct ")){
                 throw new ApplicationException("无法连接到数据库，数据库地址或端口配置错误！");
             }
 

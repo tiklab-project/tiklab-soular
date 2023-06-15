@@ -199,13 +199,6 @@
                                             <type>zip</type>
                                             <outputDirectory>embbed</outputDirectory>
                                         </artifactItem>
-<!--                                        <artifactItem>-->
-<!--                                            <groupId>io.tiklab</groupId>-->
-<!--                                            <artifactId>tiklab-mysql-linux</artifactId>-->
-<!--                                            <version>${project.version}</version>-->
-<!--                                            <type>zip</type>-->
-<!--                                            <outputDirectory>embbed</outputDirectory>-->
-<!--                                        </artifactItem>-->
                                     </artifactItems>
                                 </configuration>
                             </execution>
@@ -260,13 +253,6 @@
                                             <type>zip</type>
                                             <outputDirectory>embbed</outputDirectory>
                                         </artifactItem>
-<!--                                        <artifactItem>-->
-<!--                                            <groupId>io.tiklab</groupId>-->
-<!--                                            <artifactId>tiklab-mysql-windows</artifactId>-->
-<!--                                            <version>${project.version}</version>-->
-<!--                                            <type>zip</type>-->
-<!--                                            <outputDirectory>embbed</outputDirectory>-->
-<!--                                        </artifactItem>-->
                                     </artifactItems>
                                 </configuration>
                             </execution>
@@ -461,31 +447,31 @@
             </plugin>
 
             <!--copy插件-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.8</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>io.tiklab</groupId>
-                            <artifactId>tiklab-user-plugin-starter</artifactId>
-                            <version>${project.version}</version>
-                        </artifactItem>
-                    </artifactItems>
-                    <includes>tiklab-user-plugin.jar</includes>
-                    <excludes>tiklab-user-plugin-starter-1.0.0-SNAPSHOT.jar</excludes>
-                    <outputDirectory>${project.basedir}/plugin</outputDirectory>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-dependency-plugin</artifactId>-->
+<!--                <version>2.8</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>prepare-package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>copy</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <artifactItems>-->
+<!--                        <artifactItem>-->
+<!--                            <groupId>io.tiklab</groupId>-->
+<!--                            <artifactId>tiklab-user-plugin-starter</artifactId>-->
+<!--                            <version>${project.version}</version>-->
+<!--                        </artifactItem>-->
+<!--                    </artifactItems>-->
+<!--                    <includes>tiklab-user-plugin.jar</includes>-->
+<!--                    <excludes>tiklab-user-plugin-starter-1.0.0-SNAPSHOT.jar</excludes>-->
+<!--                    <outputDirectory>${project.basedir}/plugin</outputDirectory>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
         </plugins>
     </build>

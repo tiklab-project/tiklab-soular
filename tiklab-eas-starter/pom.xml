@@ -158,13 +158,6 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
-<!--                <dependency>-->
-<!--                    <groupId>io.tiklab</groupId>-->
-<!--                    <artifactId>tiklab-mysql-linux</artifactId>-->
-<!--                    <version>${project.version}</version>-->
-<!--                    <type>zip</type>-->
-<!--                    <scope>provided</scope>-->
-<!--                </dependency>-->
                 <dependency>
                     <groupId>io.tiklab</groupId>
                     <artifactId>tiklab-jdk-linux</artifactId>
@@ -356,6 +349,15 @@
             </properties>
         </profile>
 
+        <!--demo-->
+        <profile>
+            <id>env-demo</id>
+            <properties>
+                <yaml-type>/config/demo</yaml-type>
+            </properties>
+        </profile>
+
+
     </profiles>
 
     <build>
@@ -445,33 +447,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!--copy插件-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                <version>2.8</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>prepare-package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>copy</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <artifactItems>-->
-<!--                        <artifactItem>-->
-<!--                            <groupId>io.tiklab</groupId>-->
-<!--                            <artifactId>tiklab-user-plugin-starter</artifactId>-->
-<!--                            <version>${project.version}</version>-->
-<!--                        </artifactItem>-->
-<!--                    </artifactItems>-->
-<!--                    <includes>tiklab-user-plugin.jar</includes>-->
-<!--                    <excludes>tiklab-user-plugin-starter-1.0.0-SNAPSHOT.jar</excludes>-->
-<!--                    <outputDirectory>${project.basedir}/plugin</outputDirectory>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
 
         </plugins>
     </build>

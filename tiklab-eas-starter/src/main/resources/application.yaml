@@ -8,7 +8,7 @@ spring:
 
 # Project access address
 base:
-  url: http://192.168.10.14:3001
+  url: http://e.eas.tiklab.net
 
 #web config
 server:

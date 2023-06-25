@@ -8,7 +8,7 @@ spring:
 
 #web config
 server:
-  port: 8081
+  port: 8080
 
 
 base:

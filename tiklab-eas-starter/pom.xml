@@ -41,11 +41,6 @@
             <artifactId>tiklab-toolkit-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.tiklab</groupId>-->
-<!--            <artifactId>tiklab-join-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.tiklab</groupId>
             <artifactId>tiklab-plugin-spring-boot-starter</artifactId>

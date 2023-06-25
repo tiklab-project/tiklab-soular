@@ -4,7 +4,7 @@ app:
 
 # Project access address
 base:
-  url: http://bac.eas.demo.tiklab.net
+  url: http://eas-ce.demo.tiklab.net
 
 #web config
 server:
@@ -32,8 +32,6 @@ dfs:
   client:
     url: 172.10.1.11:4001
     bucket: ${app.name}
-
-
 
 #dfs
 file:

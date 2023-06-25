@@ -39,7 +39,6 @@ import org.springframework.context.annotation.Configuration;
 //pcs
 @EnableUser
 @EnableEam
-//@EnablePrivilegeServer
 @EnablePluginServer
 @EnableIntegration
 @EnableLicenceServer
@@ -47,7 +46,6 @@ import org.springframework.context.annotation.Configuration;
 @EnableSecurity
 
 //other
-//@EnablePostInClient
 @EnablePrivilegeServer
 @EnableEasServer
 

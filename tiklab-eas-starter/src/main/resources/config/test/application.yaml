@@ -22,7 +22,7 @@ eas:
 #dal config for mysql jdbc
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/tiklab_eas?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5000/tiklab_eas?stringtype=unspecified
   username: postgres
   password: darth2020
 
@@ -69,6 +69,8 @@ postgresql:
   embbed:
     enable: true
   database: tiklab_eas
+  server:
+    port: 5000
 
 #integration config
 homes:

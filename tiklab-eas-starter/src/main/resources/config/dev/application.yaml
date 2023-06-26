@@ -10,7 +10,6 @@ spring:
 server:
   port: 8082
 
-
 base:
   url: http://eas-ce.dev.tiklab.net
 

@@ -78,7 +78,7 @@ dss:
 
 #integration config
 homes:
-  address: http://192.168.10.7:8080
+  address: http://homes-api.tiklab.net
 
 #plugin config
 plugin:

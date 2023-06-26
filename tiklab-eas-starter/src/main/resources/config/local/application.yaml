@@ -1,55 +1,49 @@
 #application config
 app:
-  name: tiklab-eas
+  name: eas
 
 spring:
-  config:
-    import: optional:classpath:/config/${env:local}/application.yaml
-
-# Project access address
-base:
-  url: http://e.eas.tiklab.net
+  profiles:
+    active: dev
 
 #web config
 server:
   port: 8080
-# enable eas to project
 
-#dal config
+
+base:
+  url: http://eas-ce.dev.tiklab.net
 
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://172.13.1.13:5432/tiklab_eas?stringtype=unspecified
+  url: jdbc:postgresql://172.10.1.10:5432/tiklab_eas?stringtype=unspecified
   username: postgres
   password: darth2020
 
-mysql:
-  database: tiklab_eas
-  embbed:
-    enable: false
 
 
 PROJECT_HOME: ${user.home}/tiklab/${app.name}
 DATA_HOME: ${user.home}/tiklab/${app.name}
+
 
 #dfs config
 #dfs.server.enabled=false
 #dfs.server.mode=server
 dfs:
   server:
-    #    enabled: true
-    #    mode:server
-    port: 4001
+#    enabled: true
+#    mode:server
+    port: 4000
     datapath: ${DATA_HOME}/files
   client:
-    url: 172.10.1.11:4001
+    url: 172.10.1.11:4000
     bucket: ${app.name}
-
 
 
 #dfs
 file:
-  path: http://file.tiklab.net
+  path: http://file.dev.tiklab.net
+
 #dcs config
 #dcs.server.enabled=false
 #dcs.server.mode=server
@@ -57,11 +51,13 @@ dcs:
   server:
     #    enabled: true
     #    mode:server
-    port: 5001
+    port: 5000
     datapath: ${DATA_HOME}/caches
   client:
-    url: 172.10.1.11:5001
+    url: 172.10.1.11:5000
     bucket: ${app.name}
+
+
 #dss config
 #dss.server.enabled=false
 #dss.server.mode=server
@@ -69,20 +65,24 @@ dss:
   server:
     #    enabled: true
     #    mode:server
-    port: 6001
+    port: 6000
     datapath: ${DATA_HOME}/index
   client:
-    url: 172.10.1.11:6001
+    url: 172.10.1.11:6000
     bucket: ${app.name}
 
 
+#auth config
+#auth.type=acc
+#auth.address=http://www.tiklab.cn
 
 #integration config
 homes:
-  address: http://139.196.76.221:8081
+  address: http://192.168.10.7:8080
+
 #plugin config
 plugin:
-  path: ${DATA_HOME}/plugin
+  path: ${PROJECT_HOME}/plugin
 
 #tenant config
 tenant:
@@ -97,6 +97,7 @@ licences:
   path: ${DATA_HOME}/licences
 
 auth:
+  type: local
   wechat_suite_id: null
   wechat_secret: null
   wechat_token: null

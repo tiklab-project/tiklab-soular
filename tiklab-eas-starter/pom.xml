@@ -372,6 +372,7 @@
                         <exclude>*.yaml</exclude>
                         <exclude>*.properties</exclude>
                         <exclude>*.xml</exclude>
+                        <exclude>**/config/**</exclude>
                         <exclude>**/config/dev/**</exclude>
                         <exclude>**/config/test/**</exclude>
                     </excludes>

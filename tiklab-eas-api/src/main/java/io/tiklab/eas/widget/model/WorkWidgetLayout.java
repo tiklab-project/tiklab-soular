@@ -2,7 +2,7 @@ package io.tiklab.eas.widget.model;
 
 import io.tiklab.beans.annotation.Mapper;
 
-@Mapper(targetAlias = "WorkWidgetLayoutEntity")
+@Mapper
 public class WorkWidgetLayout {
 //    @ApiProperty(name="id",desc="唯一标识")
     private String id;

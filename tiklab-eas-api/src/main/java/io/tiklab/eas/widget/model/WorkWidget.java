@@ -6,7 +6,7 @@ import io.tiklab.core.BaseModel;
 import javax.validation.constraints.NotNull;
 
 
-@Mapper(targetAlias = "WorkWidgetEntity")
+@Mapper
 public class WorkWidget  extends BaseModel{
 
 //    @ApiProperty(name="id",desc="唯一标识")

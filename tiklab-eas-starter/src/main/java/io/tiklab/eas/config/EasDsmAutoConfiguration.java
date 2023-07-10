@@ -25,7 +25,7 @@ public class EasDsmAutoConfiguration {
                 //IntegrationDsm
                 "tool_1.0.0",
                 //LicenceDsm
-                "licence_1.0.0",
+                "app-authorization_1.0.0",
                 //MessageDsm
                 "message_1.0.0",
                 //SecurityDsm

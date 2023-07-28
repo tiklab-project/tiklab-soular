@@ -50,11 +50,14 @@ file.path: http://file.test.tiklab.net
 #dcs config
 dcs:
   server:
-    port: 5001
+    enabled: true
+    port: 5030
     datapath: ${DATA_HOME}/caches
   client:
-    url: 172.10.1.11:5001
-    bucket: ${app.name}
+    url: 127.0.0.1:5030
+    group: g1
+    database: dcs1
+    expire: 7200
 
 #dss config
 dss:

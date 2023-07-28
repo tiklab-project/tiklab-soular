@@ -4,7 +4,7 @@ app:
 
 spring:
   profiles:
-    active: dev
+    active: local
 
 #web config
 server:
@@ -27,11 +27,9 @@ DATA_HOME: ${user.home}/tiklab/${app.name}
 
 
 #dfs config
-#dfs.server.enabled=false
-#dfs.server.mode=server
 dfs:
   server:
-#    enabled: true
+    enabled: false
 #    mode:server
     port: 4000
     datapath: ${DATA_HOME}/files
@@ -44,23 +42,18 @@ dfs:
 file:
   path: http://file.dev.tiklab.net
 
-#dcs config
-#dcs.server.enabled=false
-#dcs.server.mode=server
+#dcs
 dcs:
   server:
-    #    enabled: true
-    #    mode:server
-    port: 5000
+    enabled: true
+    port: 5030
     datapath: ${DATA_HOME}/caches
   client:
-    url: 172.10.1.11:5000
-    bucket: ${app.name}
+    url: 127.0.0.1:5030
+    group: g1
+    database: dcs1
+    expire: 7200
 
-
-#dss config
-#dss.server.enabled=false
-#dss.server.mode=server
 dss:
   server:
     #    enabled: true
@@ -71,14 +64,9 @@ dss:
     url: 172.10.1.11:6000
     bucket: ${app.name}
 
-
-#auth config
-#auth.type=acc
-#auth.address=http://www.tiklab.cn
-
 #integration config
 homes:
-  address: http://192.168.10.7:8080
+  address: http://192.168.10.6:8080
 
 #plugin config
 plugin:

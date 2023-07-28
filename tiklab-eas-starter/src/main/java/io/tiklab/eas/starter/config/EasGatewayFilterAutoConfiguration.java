@@ -1,4 +1,4 @@
-package io.tiklab.eas.config;
+package io.tiklab.eas.starter.config;
 
 import io.tiklab.eam.author.Authenticator;
 import io.tiklab.eam.client.author.config.AuthorConfig;

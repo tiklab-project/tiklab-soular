@@ -55,11 +55,6 @@
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-dfs-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-dcs-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>

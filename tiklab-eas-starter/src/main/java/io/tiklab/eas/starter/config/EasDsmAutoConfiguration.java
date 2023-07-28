@@ -1,7 +1,7 @@
-package io.tiklab.eas.config;
+package io.tiklab.eas.starter.config;
 
-import io.tiklab.dsm.config.model.DsmConfig;
-import io.tiklab.dsm.support.DsmConfigBuilder;
+import io.tiklab.dal.dsm.config.model.DsmConfig;
+import io.tiklab.dal.dsm.support.DsmConfigBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,7 +33,7 @@ public class EasDsmAutoConfiguration {
                 //TodoTaskDsm
                 "todotask_1.0.0",
                 //EasDsm
-                "eas_1.0.0",
+                "eas_1.0.0"
         });
 
         return dsmConfig;

@@ -19,43 +19,34 @@ jdbc:
   username: postgres
   password: darth2020
 
-
-
-PROJECT_HOME: ${user.home}/tiklab/${app.name}
-DATA_HOME: ${user.home}/tiklab/${app.name}
-
+DATA_HOME: /opt/tiklab/${app.name}
 
 #dfs config
-#dfs.server.enabled=false
-#dfs.server.mode=server
+#dfs config
 dfs:
   server:
-#    enabled: true
-#    mode:server
     port: 4000
     datapath: ${DATA_HOME}/files
   client:
     url: 172.10.1.11:4000
     bucket: ${app.name}
 
+#dcs config
+dcs:
+  server:
+    enabled: true
+    port: 5030
+    datapath: ${DATA_HOME}/caches
+  client:
+    url: 127.0.0.1:5030
+    group: g1
+    database: dcs1
+    expire: 7200
+
 
 #dfs
 file:
   path: http://file.dev.tiklab.net
-
-#dcs config
-#dcs.server.enabled=false
-#dcs.server.mode=server
-dcs:
-  server:
-    #    enabled: true
-    #    mode:server
-    port: 5000
-    datapath: ${DATA_HOME}/caches
-  client:
-    url: 172.10.1.11:5000
-    bucket: ${app.name}
-
 
 #dss config
 #dss.server.enabled=false
@@ -81,7 +72,7 @@ homes:
 
 #plugin config
 plugin:
-  path: ${PROJECT_HOME}/plugin
+  path: ${DATA_HOME}/plugin
 
 #tenant config
 tenant:

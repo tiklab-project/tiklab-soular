@@ -1,5 +1,6 @@
-package io.tiklab.eas;
+package io.tiklab.eas.starter.annotation;
 
+import io.tiklab.eas.starter.config.EasAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

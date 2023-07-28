@@ -1,6 +1,7 @@
-package io.tiklab.eas;
+package io.tiklab.eas.starter;
 
 import io.tiklab.core.property.PropertyAndYamlSourceFactory;
+import io.tiklab.eas.starter.annotation.EnableEas;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 
 /**
  * PortalApplication
+ * @author admin
  */
 @SpringBootApplication
 @EnableEas

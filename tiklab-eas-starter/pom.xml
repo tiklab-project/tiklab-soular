@@ -48,15 +48,6 @@
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-integration-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.tiklab</groupId>
-            <artifactId>tiklab-dfs-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.tiklab</groupId>
             <artifactId>tiklab-dcs-spring-boot-starter</artifactId>
         </dependency>
 
@@ -345,6 +336,14 @@
             <id>env-demo</id>
             <properties>
                 <yaml-type>/config/demo</yaml-type>
+            </properties>
+        </profile>
+
+        <!--demo-->
+        <profile>
+            <id>env-prd</id>
+            <properties>
+                <yaml-type>/config/prd</yaml-type>
             </properties>
         </profile>
 

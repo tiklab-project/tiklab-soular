@@ -35,8 +35,6 @@ dfs:
     url: 172.10.1.11:4001
     bucket: ${app.name}
 
-
-
 #dfs
 file:
   path: http://file.tiklab.net
@@ -70,6 +68,8 @@ dss:
 #integration config
 homes:
   address: http://139.196.76.221:8081
+
+
 #plugin config
 plugin:
   path: ${DATA_HOME}/plugin

@@ -8,7 +8,7 @@ if [ -e "${DIRS}/${JDK_VERSION}" ]; then
       JAVA_HOME="${DIRS}/${JDK_VERSION}"
 fi
 
-APP_MAIN="io.tiklab.eas.EasApplication"
+APP_MAIN="io.tiklab.eas.starter.EasApplication"
 
 PID=0
 getPID(){

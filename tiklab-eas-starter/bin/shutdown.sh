@@ -12,7 +12,7 @@ if [ -e "${DIRS}/embbed/${JDK_VERSION}" ]; then
 fi
 
 #APP_MAIN=${application.main.class}
-APP_MAIN="io.tiklab.eas.EasApplication"
+APP_MAIN="io.tiklab.eas.starter.EasApplication"
 
 PID=0
 getPID(){

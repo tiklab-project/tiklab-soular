@@ -2,7 +2,7 @@
 #-------------------------------------------------------------------------------------------------------------
 DIRS=$(dirname "$PWD")
 
-APP_MAIN="io.tiklab.eas.EasApplication"
+APP_MAIN="io.tiklab.eas.starter.EasApplication"
 
 
 JDK_VERSION=jdk-16.0.2

@@ -1,6 +1,6 @@
 #application config
 app:
-  name: eas
+  name: tiklab-eas
 
 # Project access address
 base:
@@ -13,11 +13,21 @@ server:
 
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://172.12.1.10:5432/tiklab_eas?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5432/eas?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/${app.name}
+DATA_HOME: /opt/tiklab/eas
+
+postgresql:
+  embbed:
+    enable: true
+  database: eas
+  db:
+    port: 5432
+    username: postgres
+    password: darth2020
+    address: ${DATA_HOME}/postgresql
 
 #dfs config
 dfs:

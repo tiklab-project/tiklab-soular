@@ -1,6 +1,6 @@
 #application config
 app:
-  name: eas
+  name: tiklab-eas
 
 spring:
   profiles:
@@ -19,7 +19,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/${app.name}
+DATA_HOME: /opt/tiklab/eas
 
 #dfs config
 #dfs config

@@ -1,6 +1,6 @@
 #application config
 app:
-  name: eas
+  name: tiklab-eas
 
 spring:
   profiles:
@@ -23,7 +23,7 @@ jdbc:
 
 
 PROJECT_HOME: ${user.home}/tiklab/${app.name}
-DATA_HOME: ${user.home}/tiklab/${app.name}
+DATA_HOME: ${user.home}/tiklab/eas
 
 
 #dfs config

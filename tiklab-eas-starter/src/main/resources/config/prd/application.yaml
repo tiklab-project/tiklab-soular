@@ -2,9 +2,6 @@
 app:
   name: tiklab-eas
 
-spring:
-  config:
-    import: optional:classpath:/config/${env:local}/application.yaml
 
 # Project access address
 base:
@@ -22,7 +19,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/${app.name}
+DATA_HOME: /opt/tiklab/eas
 
 #dfs config
 dfs:

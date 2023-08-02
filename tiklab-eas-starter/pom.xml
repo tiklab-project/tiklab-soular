@@ -389,7 +389,7 @@
                             <descriptors>
                                 <descriptor>assembly/distribution-${assembly}.xml</descriptor>
                             </descriptors>
-                            <finalName>tiklab-eas</finalName>
+                            <finalName>tiklab-eas-${version}-${timestamp}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                         <phase>package</phase>

@@ -8,7 +8,7 @@ spring:
 
 #web config
 server:
-  port: 8082
+  port: 8080
 
 base:
   url: http://eas-ce.dev.tiklab.net

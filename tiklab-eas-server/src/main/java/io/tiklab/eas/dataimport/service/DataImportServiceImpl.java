@@ -23,6 +23,7 @@ import io.tiklab.user.directory.model.LdapCfg;
 import io.tiklab.user.directory.model.WeChatCfg;
 import io.tiklab.user.directory.service.LdapDirCfgService;
 import io.tiklab.user.directory.service.WeChatCfgService;
+import io.tiklab.user.dmUser.service.UserRoleService;
 import io.tiklab.user.orga.model.Orga;
 import io.tiklab.user.orga.model.OrgaUser;
 import io.tiklab.user.orga.service.OrgaService;
@@ -61,43 +62,43 @@ public class DataImportServiceImpl implements DataImportService{
     private static final Logger logger = LoggerFactory.getLogger(DataImportServiceImpl.class);
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Autowired
-    private MessageItemService messageItemService;
+    MessageItemService messageItemService;
 
     @Autowired
-    private LoggingService opLogService;
+    LoggingService opLogService;
 
     @Autowired
-    private TaskService taskService;
+    TaskService taskService;
 
     @Autowired
-    private UserGroupService userGroupService;
+    UserGroupService userGroupService;
 
     @Autowired
-    private UserGroupUserService userGroupUserService;
+    UserGroupUserService userGroupUserService;
 
     @Autowired
-    private OrgaService orgaService;
+    OrgaService orgaService;
 
     @Autowired
-    private OrgaUserService orgaUserService;
+    OrgaUserService orgaUserService;
 
     @Autowired
-    private VersionService versionServer;
+    VersionService versionServer;
 
     @Autowired
-    private RoleService roleService;
+    UserRoleService userRoleService;
 
     @Autowired(required = false)
-    private WeChatCfgService weChatCfgService;
+    WeChatCfgService weChatCfgService;
 
     @Autowired(required = false)
-    private LdapDirCfgService ldapDirCfgService;
+    LdapDirCfgService ldapDirCfgService;
 
     @Autowired
-    private PlatformTransactionManager transactionManager;
+    PlatformTransactionManager transactionManager;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -322,7 +323,7 @@ public class DataImportServiceImpl implements DataImportService{
                 throw new SystemException("数据插入失败！");
             }
             updateMessage(getSpeed(),"添加授权："+user.getName());
-            roleService.createSystemDefaultRoles(user.getId());
+            userRoleService.createSystemDefaultRoles(user.getId());
         }
 
     }

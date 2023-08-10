@@ -7,12 +7,12 @@
     <parent>
         <groupId>io.tiklab</groupId>
         <artifactId>tiklab-dependencies</artifactId>
-        <version>1.0.0.2</version>
+        <version>1.0.0.3</version>
     </parent>
     <artifactId>tiklab-eas</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
-    <version>1.0.0.2</version>
+    <version>1.0.0.3</version>
 
     <modules>
         <module>tiklab-eas-api</module>
@@ -20,85 +20,85 @@
         <module>tiklab-eas-starter</module>
     </modules>
 
+    <properties>
+        <tiklab-eas.version>${version}</tiklab-eas.version>
+        <!--tiklab-->
+        <tiklab-dal.version>1.0.0.3</tiklab-dal.version>
+        <tiklab-core.version>1.0.0.3</tiklab-core.version>
+        <tiklab-toolkit.version>1.0.0.3</tiklab-toolkit.version>
+        <tiklab-rpc.version>1.0.0.3</tiklab-rpc.version>
+        <tiklab-dss.version>1.0.0.3</tiklab-dss.version>
+        <tiklab-dcs.version>1.0.0.3</tiklab-dcs.version>
+        <tiklab-dfs.version>1.0.0.3</tiklab-dfs.version>
+        <tiklab-codegen.version>1.0.0.3</tiklab-codegen.version>
+        <tiklab-gateway.version>1.0.0.3</tiklab-gateway.version>
+        <tiklab-plugin.version>1.0.0.3</tiklab-plugin.version>
+
+        <tiklab-user.version>1.0.0.3</tiklab-user.version>
+        <tiklab-eam.version>1.0.0.3</tiklab-eam.version>
+        <tiklab-message.version>1.0.0.3</tiklab-message.version>
+        <tiklab-security.version>1.0.0.3</tiklab-security.version>
+        <tiklab-todotask.version>1.0.0.3</tiklab-todotask.version>
+        <tiklab-licence.version>1.0.0.3</tiklab-licence.version>
+        <tiklab-privilege.version>1.0.0.3</tiklab-privilege.version>
+
+        <tiklab-postin.version>1.0.0.3</tiklab-postin.version>
+        <tiklab-postgresql.version>1.0.0.3</tiklab-postgresql.version>
+        <tiklab-jdk.version>1.0.0.3</tiklab-jdk.version>
+        <tiklab-upgrade.version>1.0.0.3</tiklab-upgrade.version>
+    </properties>
+
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-web-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-beans-annotation</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-beans-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-core</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.tiklab</groupId>
+                <artifactId>tiklab-toolkit-annotation</artifactId>
+                <version>${tiklab-toolkit.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-dal-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-dal.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-rpc-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-rpc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-dcs-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-dcs.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-dss-annotation</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-dss.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-dss-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-dss.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-codegen-core</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-codegen.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tiklab</groupId>
                 <artifactId>tiklab-postin-annotation</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-postin-client</artifactId>
-                <version>${project.version}</version>
+                <version>${tiklab-postin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <!-- 许可证信息 -->
-    <licenses>
-        <!-- Apache许可证 -->
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
 
-    <scm>
-        <url>https://gitee.com/zhangzh1978_admin/tiklab_eas</url>
-        <connection>https://gitee.com/zhangzh1978_admin/tiklab_eas.git</connection>
-        <developerConnection>https://gitee.com/zhangzh1978_admin/tiklab_eas</developerConnection>
-    </scm>
     <build>
         <plugins>
             <plugin>

@@ -43,7 +43,7 @@
         <tiklab-privilege.version>1.0.0-SNAPSHOT</tiklab-privilege.version>
 
         <tiklab-postin.version>1.0.0.3</tiklab-postin.version>
-        <tiklab-postgresql.version>1.0.0.3</tiklab-postgresql.version>
+        <tiklab-postgresql.version>1.0.0-SNAPSHOT</tiklab-postgresql.version>
         <tiklab-jdk.version>1.0.0.3</tiklab-jdk.version>
         <tiklab-upgrade.version>1.0.0.3</tiklab-upgrade.version>
     </properties>

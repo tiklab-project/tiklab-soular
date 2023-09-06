@@ -323,7 +323,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
      * @param path 文件地址
      * @throws ApplicationException 写入失败
      */
-    public void logWriteFile(String str, String path) throws ApplicationException {
+    public static void logWriteFile(String path,String str) {
         try (FileWriter writer = new FileWriter(path, StandardCharsets.UTF_8,true)) {
             writer.write(str);
             writer.flush();
@@ -448,8 +448,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }
         execMap.remove(defaultValues,defaultValues);
     }
-
-
 
 
 

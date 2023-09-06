@@ -19,6 +19,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,6 +43,9 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
     // 是否在执行
     private static final Map<String,String> execMap = new HashMap<>();
+
+
+    public final ExecutorService executorService = Executors.newCachedThreadPool();
 
     @Value("${jdbc.url}")
     String jdbcUrl;
@@ -68,64 +73,67 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         execLogMap.remove(defaultValues);
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        executorService.submit(() -> {
 
-        Map<String,Object> map = new HashMap<>();
-        map.put("begin",System.currentTimeMillis());
-        map.put("state","run");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
-        writeLog(defaultValues,date(4)+"开始备份......");
-        // 脚本位置
-        Map<String, String> dirMap = findScriptDir();
+            Map<String,Object> map = new HashMap<>();
+            map.put("begin",System.currentTimeMillis());
+            map.put("state","run");
 
-        // 获取是否开启定时备份
-        String logDir = dirMap.get("logDir");
+            writeLog(defaultValues,date(4)+"开始备份......");
+            // 脚本位置
+            Map<String, String> dirMap = findScriptDir();
 
-        String string = readFile(logDir);
-        if (!Objects.isNull(string)){
-            JSONObject jsonObject = JSONObject.parseObject(string);
-            map.put("scheduled",jsonObject.getBoolean("scheduled"));
-        }else {
-            map.put("scheduled",false);
-        }
-        logger.info("logDir文件:{}",logDir);
+            // 获取是否开启定时备份
+            String logDir = dirMap.get("logDir");
 
-        new File(logDir).delete();
+            String string = readFile(logDir);
+            if (!Objects.isNull(string)){
+                JSONObject jsonObject = JSONObject.parseObject(string);
+                map.put("scheduled",jsonObject.getBoolean("scheduled"));
+            }else {
+                map.put("scheduled",false);
+            }
+            logger.info("logDir文件:{}",logDir);
 
-        Map<String, String> jdbcUrlMap = findJdbcUrl();
+            new File(logDir).delete();
 
-        StringBuilder parameter = new StringBuilder();
-        parameter.append(" ");
-        parameter.append( " -d ").append(dirMap.get("dir")).append(" "); //脚本地址
-        parameter.append( " -t ").append("backups").append(" "); //类型为备份
-        parameter.append( " -u ").append(username).append(" "); //用户名
-        parameter.append( " -p ").append(password).append(" "); //密码
-        parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
-        parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
-        parameter.append( " -B ").append(dirMap.get("backupsDir")).append(" "); // 备份文件存放地址
-        parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
-        parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
+            Map<String, String> jdbcUrlMap = findJdbcUrl();
 
-        Runtime rt = Runtime.getRuntime();
-        try {
-            String order = "sh " + dirMap.get("scriptDir") + parameter;
-            logger.info("执行备份命令：{}",order);
-            Process process = rt.exec(order);
-            readExecResult(process,defaultValues);
-        } catch (Exception e) {
-            map.put("state","error");
+            StringBuilder parameter = new StringBuilder();
+            parameter.append(" ");
+            parameter.append( " -d ").append(dirMap.get("dir")).append(" "); //脚本地址
+            parameter.append( " -t ").append("backups").append(" "); //类型为备份
+            parameter.append( " -u ").append(username).append(" "); //用户名
+            parameter.append( " -p ").append(password).append(" "); //密码
+            parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
+            parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
+            parameter.append( " -B ").append(dirMap.get("backupsDir")).append(" "); // 备份文件存放地址
+            parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
+            parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
+
+            Runtime rt = Runtime.getRuntime();
+            try {
+                String order = "sh " + dirMap.get("scriptDir") + parameter;
+                logger.info("执行备份命令：{}",order);
+                Process process = rt.exec(order);
+                readExecResult(process,defaultValues);
+            } catch (Exception e) {
+                map.put("state","error");
+                execEnd(defaultValues,map);
+                logger.error("备份失败：{}",e.getMessage());
+                writeLog(defaultValues,date(4)+"备份失败！");
+                throw new SystemException(e);
+            }
+            map.put("state","success");
+            writeLog(defaultValues,date(4)+"备份成功！");
             execEnd(defaultValues,map);
-            logger.error("备份失败：{}",e.getMessage());
-            writeLog(defaultValues,date(4)+"备份失败！");
-            throw new SystemException(e);
-        }
-        map.put("state","success");
-        writeLog(defaultValues,date(4)+"备份成功！");
-        execEnd(defaultValues,map);
+        });
     }
 
     @Override

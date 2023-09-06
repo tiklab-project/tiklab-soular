@@ -214,7 +214,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
                 + "eas_backups_"+System.currentTimeMillis()+".sql";
 
         map.put("scriptDir",dir);
-        map.put("dir",file.getParent());
+        map.put("dir",parentPath);
         map.put("logDir",logDir);
         map.put("backupsDir",backupsDirs);
 

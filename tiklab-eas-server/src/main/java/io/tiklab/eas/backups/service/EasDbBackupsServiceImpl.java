@@ -130,7 +130,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String logDir = dirMap.get("logDir");
         String backupsDir = dirMap.get("backupsDir");
 
-        easBackups.setDir(backupsDir);
+        //备份路径
+        easBackups.setDir(new File(backupsDir).getParent());
         String string = readFile(logDir);
         if (Objects.isNull(string)){
             easBackups.setScheduled(false);
@@ -164,10 +165,13 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             easBackups.setTime("无");
             easBackups.setRunTime("0");
         }
-
         easBackups.setScheduled(false);
         if (!Objects.isNull(jsonObject.getBoolean("scheduled"))){
             easBackups.setScheduled(jsonObject.getBoolean("scheduled"));
+        }
+
+        if (!Objects.isNull(jsonObject.getString("log"))){
+            easBackups.setLog(jsonObject.getString("log"));
         }
 
         return easBackups;

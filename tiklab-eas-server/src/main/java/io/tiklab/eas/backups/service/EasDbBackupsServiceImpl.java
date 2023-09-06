@@ -151,8 +151,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }
 
         //备份路径
-        String path = jsonObject.getString("path");
-        easBackups.setPath(new File(path).getParent());
+        easBackups.setPath(new File(backupsDir).getParent());
 
         if (!Objects.isNull(jsonObject.getLong("begin"))){
             Long begin = jsonObject.getLong("begin");

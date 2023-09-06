@@ -75,6 +75,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         // 获取是否开启定时备份
         String logDir = dirMap.get("logDir");
+
         String string = readFile(logDir);
         logger.info("读取文件数据为：{}",string);
         if (!Objects.isNull(string)){
@@ -83,6 +84,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }else {
             map.put("scheduled",false);
         }
+
+        new File(logDir).delete();
 
         Map<String, String> jdbcUrlMap = findJdbcUrl();
 
@@ -208,6 +211,12 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }
 
         String logDir = parentPath + fileSeparator  + "backups" + fileSeparator + logResult;
+        File logDirFile = new File(logDir);
+        if (!logDirFile.exists()){
+            logDirFile.mkdirs();
+            // throw new SystemException("Failed to obtain script information!");
+        }
+
 
         String backupsDirs = backupsDir + fileSeparator
                 + "backups" + fileSeparator

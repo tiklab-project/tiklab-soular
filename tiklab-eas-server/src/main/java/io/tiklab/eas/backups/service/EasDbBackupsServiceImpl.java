@@ -66,6 +66,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             throw new ApplicationException(10000,"当前系统正在备份中，请勿多次点击");
         }
 
+        execLogMap.remove(defaultValues);
+
         Map<String,Object> map = new HashMap<>();
         map.put("begin",System.currentTimeMillis());
         map.put("state","run");
@@ -78,7 +80,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String logDir = dirMap.get("logDir");
 
         String string = readFile(logDir);
-        logger.info("读取文件数据为：{}",string);
         if (!Objects.isNull(string)){
             JSONObject jsonObject = JSONObject.parseObject(string);
             map.put("scheduled",jsonObject.getBoolean("scheduled"));
@@ -151,7 +152,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         //备份路径
         String path = jsonObject.getString("path");
-        easBackups.setPath(path);
+        easBackups.setPath(new File(path).getParent());
 
         if (!Objects.isNull(jsonObject.getLong("begin"))){
             Long begin = jsonObject.getLong("begin");
@@ -432,14 +433,15 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         // 写入文件
         JSONObject json = new JSONObject(map);
-        String logDir = dirMap.get("logDir");
 
+        logger.info("写入文件内容：{}",json);
+
+        String logDir = dirMap.get("logDir");
         try {
             logWriteFile(logDir, String.valueOf(json));
         }catch (Exception e){
             execMap.remove(defaultValues,defaultValues);
         }
-
         execMap.remove(defaultValues,defaultValues);
     }
 

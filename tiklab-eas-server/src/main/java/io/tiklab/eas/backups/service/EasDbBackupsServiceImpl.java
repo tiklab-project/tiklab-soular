@@ -5,6 +5,7 @@ import io.tiklab.core.exception.ApplicationException;
 import io.tiklab.core.exception.SystemException;
 import io.tiklab.dal.jpa.annotation.Id;
 import io.tiklab.eas.backups.model.EasBackups;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -214,9 +215,10 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String logDir = parentPath + fileSeparator  + "backups" + fileSeparator + logResult;
         File logDirFile = new File(parentPath + fileSeparator  + "backups");
         if (!logDirFile.exists()){
-            logDirFile.mkdirs();
+            logger.info("创建文件夹：{}",logDirFile.getAbsolutePath());
+            boolean mkdirs = logDirFile.mkdirs();
+            logger.info("创建文件夹状态：{}",mkdirs);
         }
-
 
         String backupsDirs = backupsDir + fileSeparator
                 + "backups" + fileSeparator

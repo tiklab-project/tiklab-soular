@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @SpringBootApplication
 @EnableEas
+@EnableScheduling
 @PropertySource(value = "classpath:application.yaml", factory = PropertyAndYamlSourceFactory.class)
 public class EasApplication {
 

@@ -30,7 +30,7 @@
         <dependency>
             <groupId>io.tiklab</groupId>
             <artifactId>tiklab-user-api</artifactId>
-            <version>${project.version}</version>
+            <version>${tiklab-user.version}</version>
         </dependency>
         <dependency>
             <groupId>io.tiklab</groupId>

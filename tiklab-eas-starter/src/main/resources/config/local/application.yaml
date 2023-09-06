@@ -46,10 +46,10 @@ file:
 dcs:
   server:
     enabled: true
-    port: 5030
+    port: 5035
     datapath: ${DATA_HOME}/caches
   client:
-    url: 127.0.0.1:5030
+    url: 127.0.0.1:5035
     group: g1
     database: dcs1
     expire: 7200

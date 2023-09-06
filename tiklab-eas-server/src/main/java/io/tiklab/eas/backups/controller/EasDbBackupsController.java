@@ -1,6 +1,8 @@
-package io.tiklab.eas.dataimport.controller;
+package io.tiklab.eas.backups.controller;
 
 import io.tiklab.core.Result;
+import io.tiklab.eas.backups.model.EasBackups;
+import io.tiklab.eas.backups.service.EasDbBackupsService;
 import io.tiklab.eas.dataimport.model.ImportDatabase;
 import io.tiklab.eas.dataimport.model.ImportDateMessage;
 import io.tiklab.eas.dataimport.service.DataImportService;
@@ -19,23 +21,23 @@ import javax.validation.constraints.NotNull;
  */
 
 @RestController
-@RequestMapping("/data")
-public class DataImportSController {
+@RequestMapping("/eas/backups")
+public class EasDbBackupsController {
 
     @Autowired
-    DataImportService dataImportService;
+    EasDbBackupsService easDbBackupsService;
 
-    @RequestMapping(path="/import",method = RequestMethod.POST)
-    public Result<Void> createWorkWidget(@RequestBody @NotNull @Valid ImportDatabase database) {
-        dataImportService.dataImport(database);
+    @RequestMapping(path="/backups",method = RequestMethod.POST)
+    public Result<Void> createWorkWidget() {
+        easDbBackupsService.execBackups();
         return Result.ok();
     }
 
 
-    @RequestMapping(path="/findImportMessage",method = RequestMethod.POST)
-    public Result<ImportDateMessage> findImportMessage() {
-        ImportDateMessage importMessage = dataImportService.findImportMessage();
-        return Result.ok(importMessage);
+    @RequestMapping(path="/findBackups",method = RequestMethod.POST)
+    public Result<EasBackups> findImportMessage() {
+        EasBackups backupsResult = easDbBackupsService.findBackupsResult();
+        return Result.ok(backupsResult);
     }
 
 

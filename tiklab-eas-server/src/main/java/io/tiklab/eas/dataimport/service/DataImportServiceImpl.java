@@ -719,7 +719,7 @@ public class DataImportServiceImpl implements DataImportService{
             dataSource.getConnection();
         } catch (SQLException e) {
             String message= e.getMessage();
-            logger.info("message:"+message);
+            logger.error("message:"+message);
             dataSourceMap.remove(application);
             if(message.contains("password authentication failed for user")){
                 throw new ApplicationException("无法连接到数据库，数据库用户名或密码错误！");

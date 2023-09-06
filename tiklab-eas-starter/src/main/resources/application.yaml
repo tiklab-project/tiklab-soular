@@ -35,8 +35,6 @@ dfs:
     url: 172.10.1.11:4001
     bucket: ${app.name}
 
-
-
 #dfs
 file:
   path: http://file.tiklab.net
@@ -81,6 +79,10 @@ tenant:
 eas:
   embbed:
     enable: true
+  backups:
+    dir: /opt/tiklab/eas
+    time: 0 0 2 * * ?
+
 
 #licences config
 licences:

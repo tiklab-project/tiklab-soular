@@ -68,6 +68,12 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         execLogMap.remove(defaultValues);
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         Map<String,Object> map = new HashMap<>();
         map.put("begin",System.currentTimeMillis());
         map.put("state","run");

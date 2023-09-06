@@ -75,8 +75,9 @@ tenant:
 eas:
   embbed:
     enable: true
-  time: 0 0 2 * * ?
-  dir: ${DATA_HOME}
+  backups:
+    time: 0 0 2 * * ?
+    dir: ${DATA_HOME}
 
 #licences config
 licences:

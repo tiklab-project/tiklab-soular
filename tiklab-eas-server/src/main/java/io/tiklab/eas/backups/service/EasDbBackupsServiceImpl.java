@@ -196,16 +196,22 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             throw new SystemException("application address not found!");
         }
 
+        String parentPath = file.getParent();
+        logger.info("appHome："+appHome);
+        logger.info("parentPath："+parentPath);
+
         // 获取脚本信息
-        String dir = file.getParent() + fileSeparator  + "backups" + fileSeparator + shScript;
+        String dir = parentPath + fileSeparator  + "backups" + fileSeparator + shScript;
         File dirFile = new File(dir);
-        // if (!dirFile.exists()){
-        //     throw new SystemException("Failed to obtain script information!");
-        // }
+        if (!dirFile.exists()){
+            throw new SystemException("Failed to obtain script information!");
+        }
 
-        String logDir = file.getParent() + fileSeparator  + "backups" + fileSeparator + logResult;
+        String logDir = parentPath + fileSeparator  + "backups" + fileSeparator + logResult;
 
-        String backupsDirs = backupsDir + fileSeparator  + "backups" + fileSeparator + System.currentTimeMillis()+".sql";
+        String backupsDirs = backupsDir + fileSeparator
+                + "backups" + fileSeparator
+                + "eas_backups_"+System.currentTimeMillis()+".sql";
 
         map.put("scriptDir",dir);
         map.put("dir",file.getParent());

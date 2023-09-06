@@ -328,7 +328,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             writer.write(str);
             writer.flush();
         } catch (Exception e) {
-            throw new ApplicationException("文件写入失败," + e.getMessage());
+            throw new ApplicationException("文件写入失败,错误信息：" + e.getMessage());
         }
     }
 
@@ -442,7 +442,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         try {
             logWriteFile(logDir, String.valueOf(json));
         }catch (Exception e){
-            logger.error("文件写入失败：{}",e.getMessage());
             execMap.remove(defaultValues,defaultValues);
         }
         execMap.remove(defaultValues,defaultValues);

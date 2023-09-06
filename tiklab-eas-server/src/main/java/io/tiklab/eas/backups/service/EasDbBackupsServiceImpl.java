@@ -442,6 +442,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         try {
             logWriteFile(logDir, String.valueOf(json));
         }catch (Exception e){
+            String message = e.getMessage();
+            logger.error("message:{}",message);
             execMap.remove(defaultValues,defaultValues);
         }
         execMap.remove(defaultValues,defaultValues);

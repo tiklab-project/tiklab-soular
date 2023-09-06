@@ -4,11 +4,12 @@ app:
 
 spring:
   profiles:
-    active: dev
+    active: local
 
 #web config
 server:
   port: 8080
+
 
 base:
   url: http://eas-ce.dev.tiklab.net
@@ -22,35 +23,33 @@ jdbc:
 DATA_HOME: /opt/tiklab/eas
 
 #dfs config
-#dfs config
 dfs:
   server:
+    enabled: false
+    #    mode:server
     port: 4000
     datapath: ${DATA_HOME}/files
   client:
     url: 172.10.1.11:4000
     bucket: ${app.name}
 
-#dcs config
-dcs:
-  server:
-    enabled: true
-    port: 5030
-    datapath: ${DATA_HOME}/caches
-  client:
-    url: 127.0.0.1:5030
-    group: g1
-    database: dcs1
-    expire: 7200
-
 
 #dfs
 file:
   path: http://file.dev.tiklab.net
 
-#dss config
-#dss.server.enabled=false
-#dss.server.mode=server
+#dcs
+dcs:
+  server:
+    enabled: true
+    port: 5035
+    datapath: ${DATA_HOME}/caches
+  client:
+    url: 127.0.0.1:5035
+    group: g1
+    database: dcs1
+    expire: 7200
+
 dss:
   server:
     #    enabled: true
@@ -61,14 +60,9 @@ dss:
     url: 172.10.1.11:6000
     bucket: ${app.name}
 
-
-#auth config
-#auth.type=acc
-#auth.address=http://www.tiklab.cn
-
 #integration config
 homes:
-  address: http://homes-api.tiklab.net
+  address: http://192.168.10.6:8080
 
 #plugin config
 plugin:
@@ -81,6 +75,8 @@ tenant:
 eas:
   embbed:
     enable: true
+  time: 0 0 2 * * ?
+  dir: ${DATA_HOME}
 
 #licences config
 licences:

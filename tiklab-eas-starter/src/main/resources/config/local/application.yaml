@@ -20,11 +20,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-
-
-PROJECT_HOME: ${user.home}/tiklab/${app.name}
-DATA_HOME: ${user.home}/tiklab/eas
-
+DATA_HOME: /opt/tiklab/eas
 
 #dfs config
 dfs:
@@ -70,7 +66,7 @@ homes:
 
 #plugin config
 plugin:
-  path: ${PROJECT_HOME}/plugin
+  path: ${DATA_HOME}/plugin
 
 #tenant config
 tenant:
@@ -79,6 +75,8 @@ tenant:
 eas:
   embbed:
     enable: true
+  time: 0 0 2 * * ?
+  dir: ${DATA_HOME}
 
 #licences config
 licences:

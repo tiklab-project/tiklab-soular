@@ -109,13 +109,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             logger.info("执行备份命令：{}",order);
             Process process = rt.exec(order);
             readExecResult(process,defaultValues);
-            int i = process.exitValue();
-            if (i != 0){
-                map.put("state","error");
-                execEnd(defaultValues,map);
-                writeLog(defaultValues,date(4)+"备份失败,脚本执行失败！");
-                throw new SystemException("备份失败,脚本执行失败！");
-            }
         } catch (Exception e) {
             map.put("state","error");
             execEnd(defaultValues,map);
@@ -212,17 +205,23 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             throw new SystemException("Failed to obtain script information!");
         }
 
-        String logDir = parentPath + fileSeparator  + "backups" + fileSeparator + logResult;
-        File logDirFile = new File(parentPath + fileSeparator  + "backups");
+        // 创建日志文件夹
+        String string = parentPath + fileSeparator + "backups";
+        String logDir = string + fileSeparator + logResult;
+        File logDirFile = new File(string);
         if (!logDirFile.exists()){
-            logger.info("创建文件夹：{}",logDirFile.getAbsolutePath());
-            boolean mkdirs = logDirFile.mkdirs();
-            logger.info("创建文件夹状态：{}",mkdirs);
+            logDirFile.mkdirs();
         }
 
-        String backupsDirs = backupsDir + fileSeparator
-                + "backups" + fileSeparator
-                + "eas_backups_"+System.currentTimeMillis()+".sql";
+        // 创建备份文件夹
+        String format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
+        String backups = backupsDir + fileSeparator
+                + "backups" + fileSeparator;
+        File file1 = new File(backups);
+        if (file1.exists()){
+            file1.mkdirs();
+        }
+        String backupsDirs = backups + "eas_backups_"+format+".sql";
 
         map.put("scriptDir",dir);
         map.put("dir",parentPath);
@@ -436,11 +435,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String logDir = dirMap.get("logDir");
 
         try {
-            File file = new File(logDir);
-            if (file.exists()){
-                logger.info("文件不存在，创建：{}",logDir);
-                file.mkdirs();
-            }
             logWriteFile(logDir, String.valueOf(json));
         }catch (Exception e){
             execMap.remove(defaultValues,defaultValues);

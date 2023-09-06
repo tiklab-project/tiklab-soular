@@ -434,12 +434,15 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         // 写入文件
         JSONObject json = new JSONObject(map);
 
+        String logDir = dirMap.get("logDir");
+
+        logger.info("写入文件地址：{}",logDir);
         logger.info("写入文件内容：{}",json);
 
-        String logDir = dirMap.get("logDir");
         try {
             logWriteFile(logDir, String.valueOf(json));
         }catch (Exception e){
+            logger.error("文件写入失败：{}",e.getMessage());
             execMap.remove(defaultValues,defaultValues);
         }
         execMap.remove(defaultValues,defaultValues);

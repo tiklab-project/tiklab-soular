@@ -84,6 +84,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }else {
             map.put("scheduled",false);
         }
+        logger.info("logDir文件:{}",logDir);
 
         new File(logDir).delete();
 
@@ -211,10 +212,9 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }
 
         String logDir = parentPath + fileSeparator  + "backups" + fileSeparator + logResult;
-        File logDirFile = new File(logDir);
+        File logDirFile = new File(parentPath + fileSeparator  + "backups");
         if (!logDirFile.exists()){
             logDirFile.mkdirs();
-            // throw new SystemException("Failed to obtain script information!");
         }
 
 

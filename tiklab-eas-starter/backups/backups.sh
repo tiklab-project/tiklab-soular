@@ -62,7 +62,8 @@ for arg in "$@"; do
 done
 
 #数据库可执行文件地址
-db_dir=${dir}/embbed/pgsql-10.23/bin
+#db_dir=${dir}/embbed/pgsql-10.23/bin
+db_dir=/usr/bin
 
 #效验参数
 valid_overall_parameters(){
@@ -110,6 +111,7 @@ valid_parameters(){
 
 backups(){
   valid_parameters
+  echo " export PGPASSWORD=${password} && ${db_dir}/pg_dump -U ${username} -d ${db} -n ${schema} -h ${ip} -p ${port} -f ${backups_dir}"
   export PGPASSWORD=${password} && ${db_dir}/pg_dump -U ${username} -d ${db} -n ${schema} -h ${ip} -p ${port} -f ${backups_dir}
 }
 
@@ -118,7 +120,7 @@ restore(){
   export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -n ${schema} -h ${ip} -p ${port} -f ${backups_dir}
 }
 
-if [ "${type}" -eq "backups" ]; then
+if [ "${type}" = "backups" ]; then
   echo "begin backups......"
   backups
 else

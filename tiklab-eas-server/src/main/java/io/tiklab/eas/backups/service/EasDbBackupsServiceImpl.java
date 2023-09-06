@@ -188,6 +188,10 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             easBackups.setLog(jsonObject.getString("log"));
         }
 
+        if (easBackups.getRunState().equals("run")){
+            easBackups.setLog(execLogMap.get(defaultValues));
+        }
+
         return easBackups;
     }
 

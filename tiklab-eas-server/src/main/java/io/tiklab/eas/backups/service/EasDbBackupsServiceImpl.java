@@ -76,7 +76,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         // 获取是否开启定时备份
         String logDir = dirMap.get("logDir");
         String string = readFile(logDir);
-        if (Objects.isNull(string)){
+        logger.info("读取文件数据为：{}",string);
+        if (!Objects.isNull(string)){
             JSONObject jsonObject = JSONObject.parseObject(string);
             map.put("scheduled",jsonObject.getBoolean("scheduled"));
         }else {

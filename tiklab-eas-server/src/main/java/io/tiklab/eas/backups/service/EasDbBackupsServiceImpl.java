@@ -75,17 +75,18 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         executorService.submit(() -> {
 
+            Map<String,Object> map = new HashMap<>();
+            map.put("begin",System.currentTimeMillis());
+            map.put("state","run");
+
+            writeLog(defaultValues,date(4)+"开始备份......");
+
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
-            Map<String,Object> map = new HashMap<>();
-            map.put("begin",System.currentTimeMillis());
-            map.put("state","run");
-
-            writeLog(defaultValues,date(4)+"开始备份......");
             // 脚本位置
             Map<String, String> dirMap = findScriptDir();
 

@@ -75,11 +75,12 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         // 获取是否开启定时备份
         String logDir = dirMap.get("logDir");
-        JSONObject jsonObject = JSONObject.parseObject(readFile(logDir));
-        if (Objects.isNull(jsonObject.getBoolean("scheduled"))){
-            map.put("scheduled",false);
-        }else {
+        String string = readFile(logDir);
+        if (Objects.isNull(string)){
+            JSONObject jsonObject = JSONObject.parseObject(string);
             map.put("scheduled",jsonObject.getBoolean("scheduled"));
+        }else {
+            map.put("scheduled",false);
         }
 
         Map<String, String> jdbcUrlMap = findJdbcUrl();

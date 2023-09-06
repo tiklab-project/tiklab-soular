@@ -196,7 +196,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             throw new SystemException("application address not found!");
         }
 
-        String parentPath = file.getParent();
+        String parentPath = file.getParentFile().getParent();
         logger.info("appHome："+appHome);
         logger.info("parentPath："+parentPath);
 

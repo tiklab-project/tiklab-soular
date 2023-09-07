@@ -536,6 +536,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
     public static void compress(String srcFolder, String zipPath) throws IOException {
 
+        logger.info("压缩文件夹：{}，压缩源路径：{}",srcFolder,zipPath);
+
         // 创建压缩包输出流
         FileOutputStream f = new FileOutputStream(zipPath);
         GZIPOutputStream gzip = new GZIPOutputStream(f);

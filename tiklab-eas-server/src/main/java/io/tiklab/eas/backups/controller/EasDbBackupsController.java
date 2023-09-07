@@ -41,4 +41,11 @@ public class EasDbBackupsController {
     }
 
 
+    @RequestMapping(path="/updateBackups",method = RequestMethod.POST)
+    public Result<Void> createWorkWidget(@NotNull Boolean b) {
+        easDbBackupsService.updateBackups(b);
+        return Result.ok();
+    }
+
+
 }

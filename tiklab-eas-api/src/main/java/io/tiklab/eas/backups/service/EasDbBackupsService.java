@@ -18,5 +18,12 @@ public interface EasDbBackupsService {
     EasBackups findBackupsResult();
 
 
+    /**
+     * 更新备份是否定时开启
+     * @param state true：开启 false：关闭
+     */
+    void updateBackups(Boolean state);
+
+
 
 }

@@ -196,6 +196,27 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         return easBackups;
     }
 
+    @Override
+    public void updateBackups(Boolean state){
+        Map<String, String> dirMap = findScriptDir();
+        String logDir = dirMap.get("logDir");
+        File file = new File(logDir);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("state",state);
+        // 写入文件
+        JSONObject json = new JSONObject(map);
+        try {
+            logWriteFile(logDir, String.valueOf(json));
+        }catch (Exception e){
+            String message = e.getMessage();
+            logger.error("更新定时状态失败:{}",message);
+        }
+    }
+
     /**
      * 获取脚本地址
      * @return 脚本地址

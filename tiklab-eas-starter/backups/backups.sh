@@ -110,22 +110,53 @@ valid_parameters(){
 }
 
 backups(){
-  valid_parameters
-  echo " export PGPASSWORD=${password} && ${db_dir}/pg_dump -U ${username} -d ${db} -n ${schema} -h ${ip} -p ${port} -f ${backups_dir}"
   export PGPASSWORD=${password} && ${db_dir}/pg_dump -U ${username} -d ${db} -n ${schema} -h ${ip} -p ${port} -f ${backups_dir}
 }
 
 restore(){
-  valid_parameters
   export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -n ${schema} -h ${ip} -p ${port} -f ${backups_dir}
 }
 
+echo "Validate backup data......"
+
+valid_overall_parameters
+
+for i in $(seq 10)
+  do
+     sleep 0.1
+  done
+
+echo "Validation backup data completed！"
+
+echo "Starting to obtain database connection information......"
+
+for i in $(seq 10)
+  do
+     sleep 0.1
+  done
+
+echo "db host：${ip}"
+echo "db name：${db}"
+echo "Successfully obtained database connection information!"
+
+valid_parameters
+
 if [ "${type}" = "backups" ]; then
-  echo "begin backups......"
+  echo "begin backups db......"
   backups
+  for i in $(seq 10)
+    do
+       sleep 0.1
+    done
+  echo "db backups success!"
 else
-  echo "begin restore......"
+  echo "begin restore db......"
   restore
+  for i in $(seq 10)
+      do
+         sleep 0.1
+      done
+    echo "db restore success!"
 fi
 
 

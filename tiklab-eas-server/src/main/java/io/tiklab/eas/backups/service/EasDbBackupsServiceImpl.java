@@ -157,11 +157,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             jsonObject = new JSONObject(map);
         }
 
-
         // 运行状态
         if (Objects.isNull(isRun)){
-            logger.info("未运行");
-
             // 运行状态
             String state = jsonObject.getString("state");
             easBackups.setRunState(state);
@@ -171,9 +168,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             if (!Objects.isNull(log)){
                 easBackups.setLog(log);
             }
-
         }else {
-            logger.info("正在运行");
             String execLog = execLogMap.get(defaultValues);
             easBackups.setLog(execLog);
             easBackups.setRunState("run");

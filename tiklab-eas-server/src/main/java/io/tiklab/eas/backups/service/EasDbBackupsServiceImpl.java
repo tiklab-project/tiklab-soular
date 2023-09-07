@@ -44,6 +44,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
     // 是否在执行
     private static final Map<String,String> execMap = new HashMap<>();
 
+    private static final Map<String,Boolean> scheduledMap = new HashMap<>();
 
     public final ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -72,6 +73,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }
 
         execLogMap.remove(defaultValues);
+        scheduledMap.remove(defaultValues);
 
         executorService.submit(() -> {
 
@@ -91,7 +93,9 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             if (!Objects.isNull(string)){
                 JSONObject jsonObject = JSONObject.parseObject(string);
                 map.put("scheduled",jsonObject.getBoolean("scheduled"));
+                scheduledMap.put(defaultValues,jsonObject.getBoolean("scheduled"));
             }else {
+                scheduledMap.put(defaultValues,false);
                 map.put("scheduled",false);
             }
             logger.info("logDir文件:{}",logDir);
@@ -168,20 +172,20 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             if (!Objects.isNull(log)){
                 easBackups.setLog(log);
             }
+
+            // 同步状态
+            Boolean scheduled1 = jsonObject.getBoolean("scheduled");
+            if (!Objects.isNull(scheduled1)){
+                easBackups.setScheduled(scheduled1);
+            }
+
         }else {
             String execLog = execLogMap.get(defaultValues);
             easBackups.setLog(execLog);
             easBackups.setRunState("run");
-
+            easBackups.setScheduled(scheduledMap.get(defaultValues));
         }
 
-        // 同步状态
-        Boolean scheduled1 = jsonObject.getBoolean("scheduled");
-        if (!Objects.isNull(scheduled1)){
-            easBackups.setScheduled(scheduled1);
-        }else {
-            easBackups.setScheduled(false);
-        }
 
         // 时间
         if (!Objects.isNull(jsonObject.getLong("begin"))){

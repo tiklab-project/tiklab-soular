@@ -201,7 +201,13 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String logDir = dirMap.get("logDir");
         File file = new File(logDir);
         if (!file.exists()){
-            file.mkdirs();
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                String message = e.getMessage();
+                logger.error("创建文件失败:{},message:{}",file.getAbsolutePath(),message);
+                throw new ApplicationException("创建文件失败："+message);
+            }
         }
 
         Map<String,Object> map = new HashMap<>();

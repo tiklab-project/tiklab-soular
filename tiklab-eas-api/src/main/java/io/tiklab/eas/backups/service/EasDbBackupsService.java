@@ -2,6 +2,8 @@ package io.tiklab.eas.backups.service;
 
 import io.tiklab.eas.backups.model.EasBackups;
 
+import java.io.InputStream;
+
 public interface EasDbBackupsService {
 
 
@@ -23,6 +25,7 @@ public interface EasDbBackupsService {
      * @param state true：开启 false：关闭
      */
     void updateBackups(Boolean state);
+
 
 
 

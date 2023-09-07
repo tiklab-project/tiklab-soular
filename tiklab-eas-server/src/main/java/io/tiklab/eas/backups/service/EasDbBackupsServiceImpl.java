@@ -1,6 +1,7 @@
 package io.tiklab.eas.backups.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.io.ByteStreams;
 import io.tiklab.core.exception.ApplicationException;
 import io.tiklab.core.exception.SystemException;
 import io.tiklab.dal.jpa.annotation.Id;
@@ -46,8 +47,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
     private static final Map<String,Boolean> scheduledMap = new HashMap<>();
 
-    public final ExecutorService executorService = Executors.newCachedThreadPool();
-
     @Value("${jdbc.url}")
     String jdbcUrl;
 
@@ -74,6 +73,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
         execLogMap.remove(defaultValues);
         scheduledMap.remove(defaultValues);
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
 
         executorService.submit(() -> {
 
@@ -259,9 +260,9 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }
 
         // 创建日志文件夹
-        String string = parentPath + fileSeparator + "backups";
-        String logDir = string + fileSeparator + logResult;
-        File logDirFile = new File(string);
+        String backupsLogDir = parentPath + fileSeparator + "backups";
+        String logDir = backupsLogDir + fileSeparator + logResult;
+        File logDirFile = new File(backupsLogDir);
         if (!logDirFile.exists()){
             logDirFile.mkdirs();
         }
@@ -279,6 +280,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         map.put("scriptDir",dir);
         map.put("dir",parentPath);
         map.put("logDir",logDir);
+        map.put("backupsLogDir",backupsLogDir);
         map.put("backupsDir",backupsDirs);
 
         return map;

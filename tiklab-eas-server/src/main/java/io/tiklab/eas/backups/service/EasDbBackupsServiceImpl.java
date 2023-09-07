@@ -211,7 +211,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         }
 
         Map<String,Object> map = new HashMap<>();
-        map.put("state",state);
+        map.put("scheduled",state);
         // 写入文件
         JSONObject json = new JSONObject(map);
         try {

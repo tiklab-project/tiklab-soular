@@ -98,7 +98,7 @@ public class EasDbRestoreServiceImpl implements EasDbRestoreService {
             parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
             parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
             parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
-            parameter.append( " -B ").append(dirMap.get("backupsDir")).append(" "); // 备份文件存放地址
+            parameter.append( " -B ").append(filePath).append(" "); // 备份文件存放地址
 
             Runtime rt = Runtime.getRuntime();
             try {

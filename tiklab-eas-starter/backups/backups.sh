@@ -154,7 +154,7 @@ else
   restore
   for i in $(seq 10)
       do
-         sleep 0.1
+         sleep 0.2
       done
     echo "db restore success!"
 fi

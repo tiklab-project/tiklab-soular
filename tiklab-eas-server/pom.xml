@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.tiklab</groupId>
         <artifactId>tiklab-eas</artifactId>
-        <version>1.0.0.3</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>tiklab-eas-server</artifactId>
     <name>${project.artifactId}</name>
@@ -81,6 +81,13 @@
             <artifactId>tiklab-eas-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>${commons-compress}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

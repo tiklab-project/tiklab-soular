@@ -62,8 +62,8 @@ for arg in "$@"; do
 done
 
 #数据库可执行文件地址
-#db_dir=${dir}/embbed/pgsql-10.23/bin
-db_dir=/usr/bin
+db_dir=${dir}/embbed/pgsql-10.23/bin
+#db_dir=/usr/bin
 
 #效验参数
 valid_overall_parameters(){
@@ -119,6 +119,7 @@ restore(){
 
 clean(){
   export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -h ${ip} -p ${port} -c "DROP SCHEMA IF EXISTS ${schema} CASCADE;"
+  export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -h ${ip} -p ${port} -c "CREATE SCHEMA IF NOT EXISTS ${schema};"
 }
 
 echo "Validate backup data......"

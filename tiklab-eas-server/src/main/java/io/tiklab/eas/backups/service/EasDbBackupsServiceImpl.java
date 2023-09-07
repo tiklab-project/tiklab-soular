@@ -317,7 +317,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         map.put("backupsScript",backupsScript); //备份脚本
 
         map.put("sqlImportFile",sqlImportFile); // sql导出文件
-        map.put("tarBackupsDir",tarBackupsDir); // 备份文件夹
+        map.put("tarBackupsDir",dbDir); // 备份文件夹
         map.put("tarBackupsFile",tarBackupsFile); // tar包保存位置
 
         return map;

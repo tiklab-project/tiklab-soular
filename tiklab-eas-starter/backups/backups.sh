@@ -118,7 +118,7 @@ restore(){
 }
 
 clean(){
-   export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -c "DROP SCHEMA IF EXISTS ${schema} CASCADE;"
+  export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -h ${ip} -p ${port} -c "DROP SCHEMA IF EXISTS ${schema} CASCADE;"
 }
 
 echo "Validate backup data......"

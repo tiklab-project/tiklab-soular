@@ -150,6 +150,14 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String string = readFile(logDir);
         JSONObject jsonObject = JSONObject.parseObject(string);
 
+        if (Objects.isNull(jsonObject)){
+            Map<String,Object> map = new HashMap<>();
+            map.put(defaultValues,defaultValues);
+
+            jsonObject = new JSONObject(map);
+        }
+
+
         // 运行状态
         if (Objects.isNull(isRun)){
             logger.info("未运行");

@@ -81,12 +81,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
             writeLog(defaultValues,date(4)+"开始备份......");
 
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
             // 脚本位置
             Map<String, String> dirMap = findScriptDir();
 
@@ -333,7 +327,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
             //读取执行信息
             while ((s = bufferedReader.readLine()) != null) {
-                writeLog(values, date(4)+s+"\n");
+                writeLog(values, date(4)+s);
             }
 
             //读取err执行信息
@@ -341,7 +335,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             bufferedReader = new BufferedReader(inputStreamReader);
 
             while ((s = bufferedReader.readLine()) != null) {
-                writeLog(values, date(4)+s+"\n");
+                writeLog(values, date(4)+s);
             }
             // 关闭
             inputStreamReader.close();

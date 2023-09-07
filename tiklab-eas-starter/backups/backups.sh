@@ -117,6 +117,10 @@ restore(){
   export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -n ${schema} -h ${ip} -p ${port} -f ${backups_dir}
 }
 
+clean(){
+   export PGPASSWORD=${password} &&  ${db_dir}/psql -U ${username} -d ${db} -c "DROP SCHEMA IF EXISTS ${schema} CASCADE;"
+}
+
 echo "Validate backup data......"
 
 valid_overall_parameters
@@ -150,6 +154,14 @@ if [ "${type}" = "backups" ]; then
     done
   echo "db backups success!"
 else
+  echo "Starting to clear old database data......"
+  for i in $(seq 10)
+    do
+       sleep 0.1
+    done
+  clean
+  echo "Database old data cleaning completed! "
+
   echo "begin restore db......"
   restore
   for i in $(seq 10)

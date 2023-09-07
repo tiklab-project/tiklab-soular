@@ -140,29 +140,47 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String backupsDir = dirMap.get("backupsDir");
 
         //备份路径
-        easBackups.setDir(new File(backupsDir).getParent());
-        String string = readFile(logDir);
-        if (Objects.isNull(string)){
-            easBackups.setScheduled(false);
-            easBackups.setTime("无");
-            easBackups.setRunTime("0");
-            easBackups.setRunState("无");
-            return easBackups;
-        }
+        String parent = new File(backupsDir).getParent();
+        easBackups.setDir(parent);
+        easBackups.setPath(parent);
 
+        String isRun = execMap.get(defaultValues);
+
+        // 读取文件
+        String string = readFile(logDir);
         JSONObject jsonObject = JSONObject.parseObject(string);
 
         // 运行状态
-        if (Objects.isNull(execMap.get(defaultValues))){
+        if (Objects.isNull(isRun)){
+            logger.info("未运行");
+
+            // 运行状态
             String state = jsonObject.getString("state");
             easBackups.setRunState(state);
+
+            // 日志
+            String log = jsonObject.getString("log");
+            if (!Objects.isNull(log)){
+                easBackups.setLog(log);
+            }
+
         }else {
+            logger.info("正在运行");
+            String execLog = execLogMap.get(defaultValues);
+            easBackups.setLog(execLog);
             easBackups.setRunState("run");
+
         }
 
-        //备份路径
-        easBackups.setPath(new File(backupsDir).getParent());
+        // 同步状态
+        Boolean scheduled1 = jsonObject.getBoolean("scheduled");
+        if (!Objects.isNull(scheduled1)){
+            easBackups.setScheduled(scheduled1);
+        }else {
+            easBackups.setScheduled(false);
+        }
 
+        // 时间
         if (!Objects.isNull(jsonObject.getLong("begin"))){
             Long begin = jsonObject.getLong("begin");
             Long end = jsonObject.getLong("end");
@@ -170,23 +188,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(begin));
             easBackups.setTime(format);
             easBackups.setRunTime(String.valueOf(end-begin));
-        }else {
-            easBackups.setTime("无");
-            easBackups.setRunTime("0");
         }
-        easBackups.setScheduled(false);
-        if (!Objects.isNull(jsonObject.getBoolean("scheduled"))){
-            easBackups.setScheduled(jsonObject.getBoolean("scheduled"));
-        }
-
-        if (!Objects.isNull(jsonObject.getString("log"))){
-            easBackups.setLog(jsonObject.getString("log"));
-        }
-
-        if (easBackups.getRunState().equals("run")){
-            easBackups.setLog(execLogMap.get(defaultValues));
-        }
-
         return easBackups;
     }
 

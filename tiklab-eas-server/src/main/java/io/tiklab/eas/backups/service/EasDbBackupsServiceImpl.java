@@ -273,14 +273,14 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String backups = backupsDir + fileSeparator
                 + "backups" + fileSeparator;
         File file1 = new File(backups);
-        if (file1.exists()){
+        if (!file1.exists()){
             file1.mkdirs();
         }
         String backupsDirs = backups + "eas_backups_"+format+".sql";
 
+        map.put("logDir",logDir);
         map.put("scriptDir",dir);
         map.put("dir",parentPath);
-        map.put("logDir",logDir);
         map.put("backupsLogDir",backupsLogDir);
         map.put("backupsDir",backupsDirs);
 

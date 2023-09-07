@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class BackupsTask {
 
@@ -15,7 +17,8 @@ public class BackupsTask {
     @Scheduled(cron = "${eas.backups.time}")
     public void scheduledBackups(){
         EasBackups backupsResult = easDbBackupsService.findBackupsResult();
-        if (backupsResult.getScheduled()){
+        Boolean scheduled = backupsResult.getScheduled();
+        if (!Objects.isNull(scheduled) && scheduled){
             easDbBackupsService.execBackups();
         }
     }

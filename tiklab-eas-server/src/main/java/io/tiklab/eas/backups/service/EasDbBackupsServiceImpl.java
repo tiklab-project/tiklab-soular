@@ -329,13 +329,11 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         String s;
         bufferedReader = new BufferedReader(inputStreamReader);
 
-        StringBuilder builder = new StringBuilder();
-
         try {
 
             //读取执行信息
             while ((s = bufferedReader.readLine()) != null) {
-                builder.append(date(4)).append(s).append("\n");
+                writeLog(values, date(4)+s+"\n");
             }
 
             //读取err执行信息
@@ -343,11 +341,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
             bufferedReader = new BufferedReader(inputStreamReader);
 
             while ((s = bufferedReader.readLine()) != null) {
-                builder.append(date(4)).append(s).append("\n");
+                writeLog(values, date(4)+s+"\n");
             }
-
-            writeLog(values, String.valueOf(builder));
-
             // 关闭
             inputStreamReader.close();
             bufferedReader.close();
@@ -355,6 +350,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         } catch (Exception e){
             logger.error("读取执行信息失败！{}",e.getMessage());
             writeLog(values, "读取执行信息失败！");
+            process.destroy();
             throw new SystemException(e);
         }
         process.destroy();
@@ -478,9 +474,6 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         JSONObject json = new JSONObject(map);
 
         String logDir = dirMap.get("logDir");
-
-        logger.info("写入文件地址：{}",logDir);
-        logger.info("写入文件内容：{}",json);
 
         try {
             logWriteFile(logDir, String.valueOf(json));

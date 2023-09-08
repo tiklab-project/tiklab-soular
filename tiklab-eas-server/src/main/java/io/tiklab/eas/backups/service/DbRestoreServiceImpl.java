@@ -152,12 +152,11 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                         FileUtils.deleteDirectory(unzipFile);
                     } catch (IOException e) {
                         writeLog(defaultValues,date(4)+"删除恢复文件失败,message:"+e.getMessage());
-                        return;
+                        throw new SystemException(e);
                     }
                 }
                 writeLog(defaultValues,date(4) + " Clean cache files completed!");
 
-                logger.info("运行完成0：{}",backups.toString());
                 execEnd(defaultValues,true,null);
             }catch (Exception e){
                 logger.info("异常：{}",e.getMessage());
@@ -221,10 +220,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
         backups.setType(type);
         // 备份状态
         Backups lastBackups = backupsService.findLastBackups(type);
-        if (Objects.isNull(lastBackups)){
-            backups.setScheduled(false);
-        }else {
-            backups.setScheduled(lastBackups.getScheduled());
+        if (!Objects.isNull(lastBackups)){
             backups.setId(lastBackups.getId());
             return backups;
         }
@@ -436,16 +432,16 @@ public class DbRestoreServiceImpl implements DbRestoreService {
      */
     public void execEnd(String key,boolean state,String message){
         Backups backups = execMap.get(key);
-        logger.info("运行完成1：{}",backups.toString());
         if (state){
+            logger.info("运行成功！");
             backups.setRunState(success);
             writeLog(defaultValues,date(4)+"Restore successful！");
         }else {
+            logger.info("运行失败！");
             writeLog(defaultValues,date(4) + "error:" + message);
             writeLog(defaultValues,date(4)+"Restore error！");
             backups.setRunState(error);
         }
-        logger.info("运行完成2：{}",backups.toString());
         backupsService.updateBackups(backups);
         execMap.remove(key);
     }

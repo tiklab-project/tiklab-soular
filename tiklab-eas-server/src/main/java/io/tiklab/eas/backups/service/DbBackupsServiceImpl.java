@@ -1,27 +1,19 @@
 package io.tiklab.eas.backups.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
-import com.google.common.io.ByteStreams;
 import io.tiklab.core.exception.ApplicationException;
 import io.tiklab.core.exception.SystemException;
-import io.tiklab.dal.jpa.annotation.Id;
-import io.tiklab.eas.backups.model.EasBackups;
+import io.tiklab.eas.backups.model.Backups;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -31,9 +23,16 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPOutputStream;
 
 @Service
-public class EasDbBackupsServiceImpl implements EasDbBackupsService {
+public class DbBackupsServiceImpl implements DbBackupsService {
 
-    private final static Logger logger = LoggerFactory.getLogger(EasDbBackupsServiceImpl.class);
+    private final static Logger logger = LoggerFactory.getLogger(DbBackupsServiceImpl.class);
+
+    private static final String run = "run";
+    private static final String success = "success";
+    private static final String error = "error";
+
+    private static final String type = "backups";
+
 
     // 备份脚本
     private static final String shScript = "backups.sh";
@@ -43,14 +42,8 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
     // 默认值
     private static final String defaultValues = "default";
-
-    // 执行信息
-    private static final Map<String,String> execLogMap = new HashMap<>();
-
     // 是否在执行
-    private static final Map<String,String> execMap = new HashMap<>();
-
-    private static final Map<String,Boolean> scheduledMap = new HashMap<>();
+    private static final Map<String, Backups> execMap = new HashMap<>();
 
     @Value("${jdbc.url}")
     String jdbcUrl;
@@ -67,55 +60,39 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
     @Value("${eas.backups.time}")
     String scheduled;
 
+    @Autowired
+    BackupsService backupsService;
+
+
     @Override
     public void execBackups(){
+        Backups backups = execMap.get(defaultValues);
 
-        if (Objects.isNull(execMap.get(defaultValues))){
-            execMap.put(defaultValues,defaultValues);
+        if (Objects.isNull(backups)){
+            execMap.put(defaultValues,initBackups());
         }else {
             throw new ApplicationException(10000,"当前系统正在备份中，请勿多次点击");
         }
 
-        execLogMap.remove(defaultValues);
-        scheduledMap.remove(defaultValues);
-
         ExecutorService executorService = Executors.newCachedThreadPool();
-
+        // 执行备份
         executorService.submit(() -> {
-
-            Map<String,Object> map = new HashMap<>();
-            map.put("begin",System.currentTimeMillis());
-            map.put("state","run");
-
             writeLog(defaultValues,date(4)+"开始备份......");
+
+            // 脚本执行参数
+            StringBuilder parameter = new StringBuilder();
 
             // 脚本位置
             Map<String, String> dirMap = findScriptDir();
-
-            // 获取是否开启定时备份
-            String logFile = dirMap.get("logFile");
-            String string = readFile(logFile);
-            if (!Objects.isNull(string)){
-                JSONObject jsonObject = JSONObject.parseObject(string);
-                map.put("scheduled",jsonObject.getBoolean("scheduled"));
-                scheduledMap.put(defaultValues,jsonObject.getBoolean("scheduled"));
-            }else {
-                scheduledMap.put(defaultValues,false);
-                map.put("scheduled",false);
-            }
-            logger.info("logDir文件:{}",logFile);
-
-            new File(logFile).delete();
-
-            Map<String, String> jdbcUrlMap = findJdbcUrl();
-
-            StringBuilder parameter = new StringBuilder();
             parameter.append(" ");
             parameter.append( " -d ").append(dirMap.get("dir")).append(" "); // 程序主目录
             parameter.append( " -B ").append(dirMap.get("sqlImportFile")).append(" "); // 备份文件存放地址
             parameter.append( " -t ").append("backups").append(" "); //类型为备份
             parameter.append( " -u ").append(username).append(" "); //用户名
             parameter.append( " -p ").append(password).append(" "); //密码
+
+            // 解析jdbc信息
+            Map<String, String> jdbcUrlMap = findJdbcUrl();
             parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
             parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
             parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
@@ -128,133 +105,85 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
                 Process process = rt.exec(order);
                 readExecResult(process,defaultValues);
             } catch (Exception e) {
-                map.put("state","error");
-                execEnd(defaultValues,map);
-                logger.error("备份失败：{}",e.getMessage());
-                writeLog(defaultValues,date(4)+"备份失败！");
+                execEnd(defaultValues,false,"脚本执行失败："+e.getMessage());
                 throw new SystemException(e);
             }
+
             writeLog(defaultValues,date(4)+"数据库备份成功！");
             writeLog(defaultValues,date(4)+"压缩文件......");
 
+            String tarBackupsDir = dirMap.get("tarBackupsDir");
+
+            File file = new File(tarBackupsDir);
             // 压缩文件
             try {
                 compress(dirMap.get("tarBackupsDir"),dirMap.get("tarBackupsFile"));
             } catch (IOException e) {
-                map.put("state","error");
-                execEnd(defaultValues,map);
-                logger.error("压缩文件失败：{}",e.getMessage());
-                writeLog(defaultValues,date(4)+"备份失败！");
+                file.delete();
+                execEnd(defaultValues,false,"压缩文件失败：" + e.getMessage());
                 throw new SystemException(e);
             }
+            file.delete();
 
-            map.put("state","success");
-            writeLog(defaultValues,date(4)+"备份成功！");
-            execEnd(defaultValues,map);
+            execEnd(defaultValues,true,null);
         });
     }
 
     @Override
-    public EasBackups findBackupsResult(){
-        EasBackups easBackups = new EasBackups();
-
-        Map<String, String> dirMap = findScriptDir();
-        String logDir = dirMap.get("logFile");
-        String backupsDir = dirMap.get("tarBackupsDir");
-
-        //备份路径
-        String parent = new File(backupsDir).getParent();
-        easBackups.setDir(parent);
-        easBackups.setPath(parent);
-
-        String isRun = execMap.get(defaultValues);
-
-        // 读取文件
-        String string = readFile(logDir);
-        JSONObject jsonObject = JSONObject.parseObject(string);
-
-        if (Objects.isNull(jsonObject)){
-            Map<String,Object> map = new HashMap<>();
-            map.put(defaultValues,defaultValues);
-
-            jsonObject = new JSONObject(map);
-        }
-
-        // 运行状态
-        if (Objects.isNull(isRun)){
-            // 运行状态
-            String state = jsonObject.getString("state");
-            easBackups.setRunState(state);
-
-            // 日志
-            String log = jsonObject.getString("log");
-            if (!Objects.isNull(log)){
-                easBackups.setLog(log);
-            }
-
-            // 同步状态
-            Boolean scheduled1 = jsonObject.getBoolean("scheduled");
-            if (!Objects.isNull(scheduled1)){
-                easBackups.setScheduled(scheduled1);
-            }
-
+    public Backups findBackupsResult(){
+        Backups backups = execMap.get(defaultValues);
+        if (Objects.isNull(backups)){
+            return backupsService.findLastBackups(type);
         }else {
-            String execLog = execLogMap.get(defaultValues);
-            easBackups.setLog(execLog);
-            easBackups.setRunState("run");
-            easBackups.setScheduled(scheduledMap.get(defaultValues));
+            return backups;
         }
-
-
-        // 时间
-        if (!Objects.isNull(jsonObject.getLong("begin"))){
-            Long begin = jsonObject.getLong("begin");
-            Long end = jsonObject.getLong("end");
-
-            String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(begin));
-            easBackups.setTime(format);
-            easBackups.setRunTime(String.valueOf(end-begin));
-        }
-        return easBackups;
     }
 
     @Override
     public void updateBackups(Boolean state){
-        Map<String, String> dirMap = findScriptDir();
-        String logDir = dirMap.get("logFile");
-        File file = new File(logDir);
-        Map<String,Object> map;
-        if (!file.exists()){
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                String message = e.getMessage();
-                logger.error("创建文件失败:{},message:{}",file.getAbsolutePath(),message);
-                throw new ApplicationException("创建文件失败："+message);
-            }
-            map = new HashMap<>();
+
+        // 正在运行
+        Backups backups = execMap.get(defaultValues);
+        if (!Objects.isNull(backups)){
+            backups.setScheduled(state);
+            execMap.put(defaultValues,backups);
+            return;
+        }
+
+        // 存在备份记录
+        Backups lastBackups = backupsService.findLastBackups(type);
+        if (!Objects.isNull(lastBackups)){
+            lastBackups.setScheduled(state);
+            backupsService.updateBackups(lastBackups);
+            return;
+        }
+
+        // 不存在备份记录
+        Backups easBackups = new Backups();
+        easBackups.setScheduled(state);
+        easBackups.setType(type);
+        backupsService.createBackups(easBackups);
+    }
+
+    /**
+     * 初始化备份信息
+     * @return 备份信息
+     */
+    public Backups initBackups(){
+        Backups backups = new Backups();
+        backups.setRunState(run);
+        backups.setCreateTime(date(0));
+        // 备份状态
+        Backups lastBackups = backupsService.findLastBackups(type);
+        if (Objects.isNull(lastBackups)){
+            backups.setScheduled(false);
         }else {
-            String string = readFile(logDir);
-
-            file.delete();
-
-            if (!Objects.isNull(string)){
-                JSONObject jsonObject = JSONObject.parseObject(string);
-                map =JSONObject.parseObject(jsonObject.toJSONString(), new TypeReference<>(){});
-            }else {
-                map = new HashMap<>();
-            }
+            backups.setScheduled(lastBackups.getScheduled());
         }
-
-        map.put("scheduled",state);
-        // 写入文件
-        JSONObject json = new JSONObject(map);
-        try {
-            logWriteFile(logDir, String.valueOf(json));
-        }catch (Exception e){
-            String message = e.getMessage();
-            logger.error("更新定时状态失败:{}",message);
-        }
+        backups.setType(type);
+        String backupsId = backupsService.createBackups(backups);
+        backups.setId(backupsId);
+        return backups;
     }
 
     /**
@@ -308,7 +237,7 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         if (!dbDirFile.exists()){
             dbDirFile.mkdirs();
         }
-        String sqlImportFile = dbDir + fileSeparator  + "eas_backups_"+format+".sql";
+        String sqlImportFile = dbDir + fileSeparator  + "eas_db_backups.sql";
 
         map.put("dir",parentPath); // 程序主目录
         map.put("scriptDir",scriptDir); //脚本地址
@@ -405,68 +334,21 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
     }
 
     /**
-     * 字符串写入文件
-     * @param str 字符串
-     * @param path 文件地址
-     * @throws ApplicationException 写入失败
-     */
-    public static void logWriteFile(String path,String str) {
-        try (FileWriter writer = new FileWriter(path, StandardCharsets.UTF_8,true)) {
-            writer.write(str);
-            writer.flush();
-        } catch (Exception e) {
-            throw new ApplicationException("文件写入失败,错误信息：" + e.getMessage());
-        }
-    }
-
-    /**
-     * 读取文件内容
-     * @param fileAddress 文件地址
-     * @return 内容
-     */
-    public String readFile(String fileAddress) {
-        if (!new File(fileAddress).exists()){
-            return null;
-        }
-
-        StringBuilder s = new StringBuilder();
-        try {
-            Path path = Paths.get(fileAddress);
-            List<String> lines ;
-            lines = Files.readAllLines(path,StandardCharsets.UTF_8);
-            for (String line : lines) {
-                s.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            throw new ApplicationException("读取文件信息失败" + e.getMessage());
-        }
-        return s.toString();
-    }
-
-    /**
      * 格式化输出流
      * @param inputStream 流  GBK,US-ASCII,ISO-8859-1,ISO-8859-1,UTF-16BE ,UTF-16LE, UTF-16,UTF-8
      * @return 输出流
      */
     public InputStreamReader encode(InputStream inputStream){
-        if (findSystemType() == 1){
+        int findSystemType = 2;
+        String property = System.getProperty("os.name");
+        if (property.split(" ")[0].equals("Windows")){
+            findSystemType  = 1;
+        }
+
+        if (findSystemType == 1){
             return new InputStreamReader(inputStream, Charset.forName("GBK"));
         }else {
             return new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        }
-    }
-
-    /**
-     * 系统类型
-     * @return 1.windows 2.其他
-     */
-    public int findSystemType(){
-        String property = System.getProperty("os.name");
-        String[] s1 = property.split(" ");
-        if (s1[0].equals("Windows")){
-            return 1;
-        }else {
-            return 2;
         }
     }
 
@@ -496,44 +378,40 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
      * @param values 日志内容
      */
     public void writeLog(String key,String values){
-        String string = execLogMap.get(key);
-        if (Objects.isNull(string)){
-            execLogMap.put(key,values);
+        Backups backups = execMap.get(key);
+        String log = backups.getLog();
+        if (Objects.isNull(log)){
+            backups.setLog(values);
         } else {
-            execLogMap.put(key,string +"\n" + values);
+            backups.setLog(log +"\n" + values);
         }
+        execMap.put(key, backups);
     }
 
     /**
      * 执行结束
      * @param key key
-     * @param map 执行信息
      */
-    public void execEnd(String key,Map<String,Object> map){
-
-        map.put("end",System.currentTimeMillis());
-
-        String execLog = execLogMap.get(key);
-
-        Map<String, String> dirMap = findScriptDir();
-        map.put("log", execLog);
-
-        // 写入文件
-        JSONObject json = new JSONObject(map);
-
-        String logDir = dirMap.get("logFile");
-
-        try {
-            logWriteFile(logDir, String.valueOf(json));
-        }catch (Exception e){
-            String message = e.getMessage();
-            logger.error("message:{}",message);
-            execMap.remove(defaultValues,defaultValues);
+    public void execEnd(String key,boolean state,String message){
+        Backups backups = execMap.get(key);
+        if (state){
+            backups.setRunState(success);
+            writeLog(defaultValues,date(4)+"Backup successful！");
+        }else {
+            writeLog(defaultValues,date(4) + "error:"+message);
+            writeLog(defaultValues,date(4)+"Backup error！");
+            backups.setRunState(error);
         }
-        execMap.remove(defaultValues,defaultValues);
+        backupsService.updateBackups(backups);
+        execMap.remove(key);
     }
 
-
+    /**
+     * 压缩目录
+     * @param srcFolder  需要压缩的目录
+     * @param zipPath 压缩后的位置
+     * @throws IOException 压缩失败
+     */
     public static void compress(String srcFolder, String zipPath) throws IOException {
 
         logger.info("压缩文件夹：{}，压缩源路径：{}",srcFolder,zipPath);
@@ -557,8 +435,14 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
         taos.close();
     }
 
-    private static void compressFolder(String srcFolder, TarArchiveOutputStream taos)
-            throws IOException {
+    /**
+     * 递归压缩文件夹中的所有文件
+     * @param srcFolder 需要压缩的目录
+     * @param tags 压缩包格式
+     * @throws IOException 压缩失败
+     */
+
+    private static void compressFolder(String srcFolder, TarArchiveOutputStream tags) throws IOException {
 
         File folder = new File(srcFolder);
 
@@ -567,15 +451,14 @@ public class EasDbBackupsServiceImpl implements EasDbBackupsService {
 
             // 如果是文件夹,递归压缩
             if (file.isDirectory()) {
-                compressFolder(file.getAbsolutePath(), taos);
+                compressFolder(file.getAbsolutePath(), tags);
             } else {
-
                 // 添加文件到压缩包
                 TarArchiveEntry tarEntry = new TarArchiveEntry(file, file.getName());
-                taos.putArchiveEntry(tarEntry);
+                tags.putArchiveEntry(tarEntry);
 
-                IOUtils.copy(new FileInputStream(file), taos);
-                taos.closeArchiveEntry();
+                IOUtils.copy(new FileInputStream(file), tags);
+                tags.closeArchiveEntry();
             }
         }
     }

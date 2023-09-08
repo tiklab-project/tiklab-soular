@@ -1,10 +1,10 @@
 package io.tiklab.eas.backups.service;
 
-import io.tiklab.eas.backups.model.EasBackups;
+import io.tiklab.eas.backups.model.Backups;
 
 import java.io.InputStream;
 
-public interface EasDbRestoreService {
+public interface DbRestoreService {
 
 
     String uploadBackups(String fileName, InputStream inputStream);
@@ -13,7 +13,7 @@ public interface EasDbRestoreService {
     void execRestore(String filePath);
 
 
-    EasBackups findRestoreResult();
+    Backups findRestoreResult();
 
 
 

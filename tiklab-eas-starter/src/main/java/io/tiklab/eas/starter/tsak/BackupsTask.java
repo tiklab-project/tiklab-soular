@@ -1,7 +1,8 @@
 package io.tiklab.eas.starter.tsak;
 
-import io.tiklab.eas.backups.model.EasBackups;
-import io.tiklab.eas.backups.service.EasDbBackupsService;
+import io.tiklab.eas.backups.model.Backups;
+import io.tiklab.eas.backups.service.BackupsService;
+import io.tiklab.eas.backups.service.DbBackupsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +16,19 @@ public class BackupsTask {
 
     private static final Logger logger = LoggerFactory.getLogger(BackupsTask.class);
 
-
     @Autowired
-    EasDbBackupsService easDbBackupsService;
+    DbBackupsService dbBackupsService;
 
     @Scheduled(cron = "${eas.backups.time}")
     public void scheduledBackups(){
         logger.info("Eas备份定时任务被触发......");
-        EasBackups backupsResult = easDbBackupsService.findBackupsResult();
+
+        Backups backupsResult = dbBackupsService.findBackupsResult();
         Boolean scheduled = backupsResult.getScheduled();
 
         if (!Objects.isNull(scheduled) && scheduled ){
             logger.info("应用开启定时备份......");
-            easDbBackupsService.execBackups();
+            dbBackupsService.execBackups();
         }else {
             logger.info("应用未开启定时备份......");
         }

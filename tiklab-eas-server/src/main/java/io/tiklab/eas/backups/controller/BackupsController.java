@@ -2,17 +2,13 @@ package io.tiklab.eas.backups.controller;
 
 import io.tiklab.core.Result;
 import io.tiklab.core.exception.SystemException;
-import io.tiklab.eas.backups.model.EasBackups;
-import io.tiklab.eas.backups.service.EasDbBackupsService;
-import io.tiklab.eas.backups.service.EasDbRestoreService;
-import io.tiklab.eas.dataimport.model.ImportDatabase;
-import io.tiklab.eas.dataimport.model.ImportDateMessage;
-import io.tiklab.eas.dataimport.service.DataImportService;
+import io.tiklab.eas.backups.model.Backups;
+import io.tiklab.eas.backups.service.DbBackupsService;
+import io.tiklab.eas.backups.service.DbRestoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,31 +20,31 @@ import java.io.InputStream;
 
 @RestController
 @RequestMapping("/eas/backups")
-public class EasDbBackupsController {
+public class BackupsController {
 
     @Autowired
-    EasDbBackupsService easDbBackupsService;
+    DbBackupsService dbBackupsService;
 
     @Autowired
-    EasDbRestoreService easDbRestoreService;
+    DbRestoreService dbRestoreService;
 
     @RequestMapping(path="/backups",method = RequestMethod.POST)
     public Result<Void> createWorkWidget() {
-        easDbBackupsService.execBackups();
+        dbBackupsService.execBackups();
         return Result.ok();
     }
 
 
     @RequestMapping(path="/findBackups",method = RequestMethod.POST)
-    public Result<EasBackups> findBackups() {
-        EasBackups backupsResult = easDbBackupsService.findBackupsResult();
+    public Result<Backups> findBackups() {
+        Backups backupsResult = dbBackupsService.findBackupsResult();
         return Result.ok(backupsResult);
     }
 
 
     @RequestMapping(path="/updateBackups",method = RequestMethod.POST)
     public Result<Void> updateBackups(@NotNull Boolean scheduled) {
-        easDbBackupsService.updateBackups(scheduled);
+        dbBackupsService.updateBackups(scheduled);
         return Result.ok();
     }
 
@@ -59,7 +55,7 @@ public class EasDbBackupsController {
         try {
             String fileName = uploadFile.getOriginalFilename();   //获取文件名字
             InputStream inputStream = uploadFile.getInputStream();
-            string = easDbRestoreService.uploadBackups(fileName, inputStream);
+            string = dbRestoreService.uploadBackups(fileName, inputStream);
         } catch (IOException e) {
             throw new SystemException(e);
         }
@@ -68,14 +64,14 @@ public class EasDbBackupsController {
 
     @RequestMapping(path="/restore",method = RequestMethod.POST)
     public Result<Void> execRestore(@NotNull String path) {
-        easDbRestoreService.execRestore(path);
+        dbRestoreService.execRestore(path);
         return Result.ok();
     }
 
 
     @RequestMapping(path="/findRestore",method = RequestMethod.POST)
-    public Result<EasBackups> findRestoreResult() {
-        EasBackups backupsResult = easDbRestoreService.findRestoreResult();
+    public Result<Backups> findRestoreResult() {
+        Backups backupsResult = dbRestoreService.findRestoreResult();
         return Result.ok(backupsResult);
     }
 

@@ -3,9 +3,16 @@ package io.tiklab.eas.backups.service;
 import com.alibaba.fastjson.JSONObject;
 import io.tiklab.core.exception.ApplicationException;
 import io.tiklab.core.exception.SystemException;
-import io.tiklab.eas.backups.model.EasBackups;
+import io.tiklab.eas.backups.model.Backups;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.aspectj.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +30,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class EasDbRestoreServiceImpl implements EasDbRestoreService {
+public class DbRestoreServiceImpl implements DbRestoreService {
 
-    private final static Logger logger = LoggerFactory.getLogger(EasDbRestoreServiceImpl.class);
+    private final static Logger logger = LoggerFactory.getLogger(DbRestoreServiceImpl.class);
+
+
+    private static final String run = "run";
+    private static final String success = "success";
+    private static final String error = "error";
+
+    private static final String type = "restore";
 
     // 备份脚本
     private static final String shScript = "backups.sh";
@@ -36,11 +50,8 @@ public class EasDbRestoreServiceImpl implements EasDbRestoreService {
     // 默认值
     private static final String defaultValues = "default";
 
-    // 执行信息
-    private static final Map<String,String> execLogMap = new HashMap<>();
-
     // 是否在执行
-    private static final Map<String,String> execMap = new HashMap<>();
+    private static final Map<String,Backups> execMap = new HashMap<>();
 
 
     @Value("${jdbc.url}")
@@ -58,129 +69,105 @@ public class EasDbRestoreServiceImpl implements EasDbRestoreService {
     @Value("${eas.backups.time}")
     String scheduled;
 
+    @Autowired
+    BackupsService backupsService;
+
     @Override
     public void execRestore(String filePath){
-
-        if (Objects.isNull(execMap.get(defaultValues))){
-            execMap.put(defaultValues,defaultValues);
+        Backups backups = execMap.get(defaultValues);
+        if (Objects.isNull(backups)){
+            execMap.put(defaultValues,initBackups());
         }else {
             throw new ApplicationException(10000,"当前系统正在恢复中，请勿多次点击");
         }
-
-        execLogMap.remove(defaultValues);
 
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         executorService.submit(() -> {
 
-            Map<String,Object> map = new HashMap<>();
-            map.put("begin",System.currentTimeMillis());
-            map.put("state","run");
-
             writeLog(defaultValues,date(4)+"开始恢复......");
+
+            writeLog(defaultValues,date(4)+"解压备份文件......");
+            File file = new File(filePath);
+            if (!file.exists()){
+                writeLog(defaultValues,date(4)+"没有找到备份文件！");
+                return;
+            }
 
             // 脚本位置
             Map<String, String> dirMap = findScriptDir();
+            String dir = dirMap.get("dir");
+            String unzipFileDir = dirMap.get("unzipFileDir");
+            String sqlFile = dirMap.get("sqlFile");
 
-            // 删除上次的运行结果
-            String logDir = dirMap.get("logDir");
-            new File(logDir).delete();
+            // 删除原备份文件
+            File unzipFile = new File(unzipFileDir);
+            if (unzipFile.exists()){
+                try {
+                    FileUtils.deleteDirectory(unzipFile);
+                } catch (IOException e) {
+                    writeLog(defaultValues,date(4)+"删除原备份文件失败,message:"+e.getMessage());
+                    return;
+                }
+            }
+
+            // 解压文件
+            try {
+                decompress(filePath,dir);
+            }catch (Exception e){
+                writeLog(defaultValues,date(4)+"备份文件解压失败,message:"+e.getMessage());
+                return;
+            }
 
             Map<String, String> jdbcUrlMap = findJdbcUrl();
 
             StringBuilder parameter = new StringBuilder();
             parameter.append(" ");
+            parameter.append( " -t ").append(type).append(" "); //类型为备份
+
+            // 地址
             parameter.append( " -d ").append(dirMap.get("dir")).append(" "); //脚本地址
-            parameter.append( " -t ").append("restore").append(" "); //类型为备份
+            parameter.append( " -B ").append(sqlFile).append(" "); // 备份文件存放地址
+
+            // 认证信息
             parameter.append( " -u ").append(username).append(" "); //用户名
             parameter.append( " -p ").append(password).append(" "); //密码
             parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
             parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
             parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
             parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
-            parameter.append( " -B ").append(filePath).append(" "); // 备份文件存放地址
 
             Runtime rt = Runtime.getRuntime();
             try {
-                String order = "sh " + dirMap.get("scriptDir") + parameter;
+                String order = "sh " + dirMap.get("backupsScript") + parameter;
                 logger.info("执行恢复命令：{}",order);
                 Process process = rt.exec(order);
                 readExecResult(process,defaultValues);
             } catch (Exception e) {
-                map.put("state","error");
-                execEnd(defaultValues,map);
-                logger.error("恢复失败：{}",e.getMessage());
-                writeLog(defaultValues,date(4)+"恢复失败！");
+                execEnd(defaultValues,false,e.getMessage());
                 throw new SystemException(e);
             }
-            map.put("state","success");
-            writeLog(defaultValues,date(4)+"恢复成功！");
-            execEnd(defaultValues,map);
+            execEnd(defaultValues,true,null);
         });
 
     }
 
     @Override
-    public EasBackups findRestoreResult(){
-        EasBackups easBackups = new EasBackups();
-
-        Map<String, String> dirMap = findScriptDir();
-        String logDir = dirMap.get("logDir");
-        String backupsDir = dirMap.get("backupsDir");
-
-        //备份路径
-        String parent = new File(backupsDir).getParent();
-        easBackups.setDir(parent);
-        easBackups.setPath(parent);
-
-        String isRun = execMap.get(defaultValues);
-
-        // 读取文件
-        String string = readFile(logDir);
-        JSONObject jsonObject = JSONObject.parseObject(string);
-
-        if (Objects.isNull(jsonObject)){
-            Map<String,Object> map = new HashMap<>();
-            map.put(defaultValues,defaultValues);
-
-            jsonObject = new JSONObject(map);
-        }
-
-        // 运行状态
-        if (Objects.isNull(isRun)){
-            // 运行状态
-            String state = jsonObject.getString("state");
-            easBackups.setRunState(state);
-
-            // 日志
-            String log = jsonObject.getString("log");
-            if (!Objects.isNull(log)){
-                easBackups.setLog(log);
-            }
+    public Backups findRestoreResult(){
+        Backups backups = execMap.get(defaultValues);
+        if (Objects.isNull(backups)){
+            return backupsService.findLastBackups(type);
         }else {
-            String execLog = execLogMap.get(defaultValues);
-            easBackups.setLog(execLog);
-            easBackups.setRunState("run");
+            return backups;
         }
-
-        // 时间
-        if (!Objects.isNull(jsonObject.getLong("begin"))){
-            Long end = jsonObject.getLong("end");
-            Long begin = jsonObject.getLong("begin");
-
-            String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(begin));
-            easBackups.setTime(format);
-            easBackups.setRunTime(String.valueOf(end-begin));
-        }
-        return easBackups;
     }
 
     @Override
     public String uploadBackups(String fileName, InputStream inputStream) {
         Map<String, String> dirMap = findScriptDir();
-        String backupsLogDir = dirMap.get("backupsLogDir");
+        String tempFileDir = dirMap.get("tempFileDir");
 
-        File file = new File(backupsLogDir + "/" + fileName);
+        File file = new File(tempFileDir + "/" + fileName);
         if (file.exists()){
             file.delete();
         }
@@ -194,15 +181,32 @@ public class EasDbRestoreServiceImpl implements EasDbRestoreService {
         return file.getAbsolutePath();
     }
 
+    /**
+     * 初始化备份信息
+     * @return 备份信息
+     */
+    public Backups initBackups(){
+        Backups backups = new Backups();
+        backups.setRunState(run);
+        backups.setCreateTime(date(0));
+        // 备份状态
+        Backups lastBackups = backupsService.findLastBackups(type);
+        if (Objects.isNull(lastBackups)){
+            backups.setScheduled(false);
+        }else {
+            backups.setScheduled(lastBackups.getScheduled());
+        }
+        backups.setType(type);
+        String backupsId = backupsService.createBackups(backups);
+        backups.setId(backupsId);
+        return backups;
+    }
 
     /**
      * 获取脚本地址
      * @return 脚本地址
      */
     public Map<String,String> findScriptDir(){
-
-        Map<String,String> map = new HashMap<>();
-        String fileSeparator = System.getProperty("file.separator");
 
         // 获取启动文件地址
         String appHome = System.getProperty("APP_HOME");
@@ -213,41 +217,50 @@ public class EasDbRestoreServiceImpl implements EasDbRestoreService {
         //判断文件夹是否存在
         File file = new File(appHome);
         if (!file.exists()){
-            throw new SystemException("Application address not found!");
+            throw new SystemException("application address not found!");
         }
-
         String parentPath = file.getParentFile().getParent();
 
-        // 获取脚本信息
-        String dir = parentPath + fileSeparator  + "backups" + fileSeparator + shScript;
-        File dirFile = new File(dir);
+        Map<String,String> map = new HashMap<>();
+
+        // 系统文件分隔符
+        String separator = System.getProperty("file.separator");
+
+        // 获取脚本地址
+        String scriptDir = parentPath + separator + "bin";
+
+        // 文件解压后的路径
+        String unzipFileDir = parentPath + separator + "db";
+
+        // 文件上传路径
+        String tempFileDir = parentPath + separator + "temp";
+        File tempFile = new File(tempFileDir);
+        if (tempFile.exists()){
+            tempFile.mkdirs();
+        }
+
+        // 解压后sql文件地址
+        String sqlFile = parentPath + separator + "db"+ separator +"eas_db_backups.sql";
+
+        // 备份脚本
+        String backupsScript = scriptDir + separator + shScript;
+
+        // 日志脚本
+        String logFile = scriptDir + separator + logResult;
+
+        File dirFile = new File(scriptDir);
         if (!dirFile.exists()){
             throw new SystemException("Failed to obtain script information!");
         }
 
-        // 创建日志文件夹
-        String backupsLogDir = parentPath + fileSeparator + "backups";
-        String logDir = backupsLogDir + fileSeparator + logResult;
-        File logDirFile = new File(backupsLogDir);
-        if (!logDirFile.exists()){
-            logDirFile.mkdirs();
-        }
+        map.put("dir",parentPath); // 程序主目录
+        map.put("scriptDir",scriptDir); //可执行脚本目录
 
-        // 创建备份文件夹
-        String format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
-        String backups = backupsDir + fileSeparator
-                + "backups" + fileSeparator;
-        File file1 = new File(backups);
-        if (file1.exists()){
-            file1.mkdirs();
-        }
-        String backupsDirs = backups + "eas_backups_"+format+".sql";
-
-        map.put("scriptDir",dir);
-        map.put("dir",parentPath);
-        map.put("logDir",logDir);
-        map.put("backupsLogDir",backupsLogDir);
-        map.put("backupsDir",backupsDirs);
+        map.put("logFile",logFile); //日志文件地址
+        map.put("backupsScript",backupsScript); //备份脚本文件地址
+        map.put("unzipFileDir",unzipFileDir); //备份脚本文件地址
+        map.put("sqlFile",sqlFile); //备份脚本文件地址
+        map.put("tempFileDir",tempFileDir); //备份脚本文件地址
 
         return map;
     }
@@ -334,68 +347,22 @@ public class EasDbRestoreServiceImpl implements EasDbRestoreService {
     }
 
     /**
-     * 字符串写入文件
-     * @param str 字符串
-     * @param path 文件地址
-     * @throws ApplicationException 写入失败
-     */
-    public static void logWriteFile(String path,String str) {
-        try (FileWriter writer = new FileWriter(path, StandardCharsets.UTF_8,true)) {
-            writer.write(str);
-            writer.flush();
-        } catch (Exception e) {
-            throw new ApplicationException("文件写入失败,错误信息：" + e.getMessage());
-        }
-    }
-
-    /**
-     * 读取文件内容
-     * @param fileAddress 文件地址
-     * @return 内容
-     */
-    public String readFile(String fileAddress) {
-        if (!new File(fileAddress).exists()){
-            return null;
-        }
-
-        StringBuilder s = new StringBuilder();
-        try {
-            Path path = Paths.get(fileAddress);
-            List<String> lines ;
-            lines = Files.readAllLines(path,StandardCharsets.UTF_8);
-            for (String line : lines) {
-                s.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            throw new ApplicationException("读取文件信息失败" + e.getMessage());
-        }
-        return s.toString();
-    }
-
-    /**
      * 格式化输出流
      * @param inputStream 流  GBK,US-ASCII,ISO-8859-1,ISO-8859-1,UTF-16BE ,UTF-16LE, UTF-16,UTF-8
      * @return 输出流
      */
     public InputStreamReader encode(InputStream inputStream){
-        if (findSystemType() == 1){
-            return new InputStreamReader(inputStream, Charset.forName("GBK"));
-        }else {
-            return new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        }
-    }
-
-    /**
-     * 系统类型
-     * @return 1.windows 2.其他
-     */
-    public int findSystemType(){
+        String type = "2";
         String property = System.getProperty("os.name");
         String[] s1 = property.split(" ");
         if (s1[0].equals("Windows")){
-            return 1;
+            type = "1";
+        }
+
+        if (type.equals("1")){
+            return new InputStreamReader(inputStream, Charset.forName("GBK"));
         }else {
-            return 2;
+            return new InputStreamReader(inputStream, StandardCharsets.UTF_8);
         }
     }
 
@@ -425,41 +392,73 @@ public class EasDbRestoreServiceImpl implements EasDbRestoreService {
      * @param values 日志内容
      */
     public void writeLog(String key,String values){
-        String string = execLogMap.get(key);
-        if (Objects.isNull(string)){
-            execLogMap.put(key,values);
+        Backups backups = execMap.get(key);
+        String log = backups.getLog();
+        if (Objects.isNull(log)){
+            backups.setLog(values);
         } else {
-            execLogMap.put(key,string +"\n" + values);
+            backups.setLog(log +"\n" + values);
         }
+        execMap.put(key, backups);
     }
 
     /**
      * 执行结束
      * @param key key
-     * @param map 执行信息
      */
-    public void execEnd(String key,Map<String,Object> map){
-
-
-        String execLog = execLogMap.get(key);
-        map.put("end",System.currentTimeMillis());
-
-        Map<String, String> dirMap = findScriptDir();
-        map.put("log", execLog);
-
-        // 写入文件
-        JSONObject json = new JSONObject(map);
-
-        String logDir = dirMap.get("logDir");
-
-        try {
-            logWriteFile(logDir, String.valueOf(json));
-        }catch (Exception e){
-            String message = e.getMessage();
-            logger.error("message:{}",message);
-            execMap.remove(defaultValues,defaultValues);
+    public void execEnd(String key,boolean state,String message){
+        Backups backups = execMap.get(key);
+        if (state){
+            backups.setRunState(success);
+            writeLog(defaultValues,date(4)+"Restore successful！");
+        }else {
+            writeLog(defaultValues,date(4) + "error:"+message);
+            writeLog(defaultValues,date(4)+"Restore error！");
+            backups.setRunState(error);
         }
-        execMap.remove(defaultValues,defaultValues);
+        backupsService.updateBackups(backups);
+        execMap.remove(key);
+    }
+
+
+    /**
+     * 解压文件
+     * @param zipFile 需要解压的文件
+     * @param destDir 解压地址
+     * @throws Exception 解压失败
+     */
+    public static void decompress(String zipFile, String destDir) throws Exception {
+
+        try (FileInputStream fis = new FileInputStream(zipFile);
+             GzipCompressorInputStream gzip = new GzipCompressorInputStream(fis);
+             TarArchiveInputStream tais = new TarArchiveInputStream(gzip)) {
+
+            TarArchiveEntry entry;
+
+            // 迭代压缩包中的每个条目
+            while ((entry = tais.getNextTarEntry()) != null) {
+
+                // 如果是目录,创建目录
+                if (entry.isDirectory()) {
+                    new File(destDir + "/" + entry.getName()).mkdirs();
+                } else {
+
+                    // 是文件,写入文件数据
+                    int count;
+                    byte data[] = new byte[2048];
+
+                    FileOutputStream fos = new FileOutputStream(destDir + "/" + entry.getName());
+                    BufferedOutputStream dest = new BufferedOutputStream(fos);
+
+                    while ((count = tais.read(data)) != -1) {
+                        dest.write(data, 0, count);
+                    }
+                    dest.close();
+                }
+            }
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
     }
 
 

@@ -1,10 +1,8 @@
 package io.tiklab.eas.backups.service;
 
-import io.tiklab.eas.backups.model.EasBackups;
+import io.tiklab.eas.backups.model.Backups;
 
-import java.io.InputStream;
-
-public interface EasDbBackupsService {
+public interface DbBackupsService {
 
 
     /**
@@ -17,7 +15,7 @@ public interface EasDbBackupsService {
      * 查询备份信息
      * @return 备份信息
      */
-    EasBackups findBackupsResult();
+    Backups findBackupsResult();
 
 
     /**

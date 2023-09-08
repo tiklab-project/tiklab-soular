@@ -69,6 +69,9 @@ public class DbRestoreServiceImpl implements DbRestoreService {
     @Value("${eas.backups.time}")
     String scheduled;
 
+    @Value("${eas.backups.version:15}")
+    String version;
+
     @Autowired
     BackupsService backupsService;
 
@@ -114,6 +117,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 StringBuilder parameter = new StringBuilder();
                 parameter.append(" ");
                 parameter.append( " -t ").append(type).append(" "); //类型为备份
+                parameter.append( " -v ").append(version).append(" "); //数据库版本
 
                 // 地址
                 parameter.append( " -d ").append(dirMap.get("dir")).append(" "); //脚本地址

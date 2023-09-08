@@ -90,6 +90,8 @@ public class DbBackupsServiceImpl implements DbBackupsService {
               parameter.append( " -d ").append(dirMap.get("dir")).append(" "); // 程序主目录
               parameter.append( " -B ").append(dirMap.get("sqlImportFile")).append(" "); // 备份文件存放地址
               parameter.append( " -t ").append(type).append(" "); //类型为备份
+              parameter.append( " -v ").append(version).append(" "); //数据库版本
+
               parameter.append( " -u ").append(username).append(" "); //用户名
               parameter.append( " -p ").append(password).append(" "); //密码
 

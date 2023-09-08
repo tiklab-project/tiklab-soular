@@ -36,9 +36,11 @@ public class EasDsmAutoConfiguration {
                 "eas_1.0.0"
         });
         dsmConfig.newVersion("1.0.1", new String[]{
-                //PrivilegeDsm
                 "privilege_1.0.1",
                 "eas_1.0.1",
+        });
+        dsmConfig.newVersion("1.0.2", new String[]{
+                "eas_1.0.2",
         });
 
         return dsmConfig;

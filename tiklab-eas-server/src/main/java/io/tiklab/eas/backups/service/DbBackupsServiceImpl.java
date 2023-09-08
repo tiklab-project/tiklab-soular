@@ -58,6 +58,9 @@ public class DbBackupsServiceImpl implements DbBackupsService {
     @Value("${eas.backups.dir}")
     String backupsDir;
 
+    @Value("${eas.backups.version:15}")
+    String version;
+
     @Autowired
     BackupsService backupsService;
 

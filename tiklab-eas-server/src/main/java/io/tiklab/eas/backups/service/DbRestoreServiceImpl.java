@@ -104,7 +104,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 writeLog(defaultValues,date(4)+"Unzip backup files......");
                 // 解压文件
                 try {
-                    decompress(filePath,dir);
+                    decompress(filePath,unzipFileDir);
                 }catch (Exception e){
                     throw new ApplicationException("备份文件解压失败,message:"+e.getMessage());
                 }

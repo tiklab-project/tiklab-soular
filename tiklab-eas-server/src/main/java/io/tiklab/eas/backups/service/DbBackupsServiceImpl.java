@@ -188,14 +188,16 @@ public class DbBackupsServiceImpl implements DbBackupsService {
         backups.setRunState(run);
         backups.setCreateTime(date(0));
         backups.setDir(backupsDir);
+        backups.setType(type);
         // 备份状态
         Backups lastBackups = backupsService.findLastBackups(type);
         if (Objects.isNull(lastBackups)){
             backups.setScheduled(false);
         }else {
             backups.setScheduled(lastBackups.getScheduled());
+            return backups;
         }
-        backups.setType(type);
+
         String backupsId = backupsService.createBackups(backups);
         backups.setId(backupsId);
         return backups;

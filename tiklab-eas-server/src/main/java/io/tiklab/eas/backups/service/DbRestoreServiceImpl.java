@@ -184,6 +184,11 @@ public class DbRestoreServiceImpl implements DbRestoreService {
         Map<String, String> dirMap = findScriptDir();
         String tempFileDir = dirMap.get("tempFileDir");
 
+        File tempFile = new File(tempFileDir);
+        if (!tempFile.exists()){
+            tempFile.mkdirs();
+        }
+
         File file = new File(tempFileDir + "/" + fileName);
         if (file.exists()){
             file.delete();
@@ -207,14 +212,15 @@ public class DbRestoreServiceImpl implements DbRestoreService {
         backups.setRunState(run);
         backups.setCreateTime(date(0));
         backups.setDir(backupsDir);
+        backups.setType(type);
         // 备份状态
         Backups lastBackups = backupsService.findLastBackups(type);
         if (Objects.isNull(lastBackups)){
             backups.setScheduled(false);
         }else {
             backups.setScheduled(lastBackups.getScheduled());
+            return backups;
         }
-        backups.setType(type);
         String backupsId = backupsService.createBackups(backups);
         backups.setId(backupsId);
         return backups;
@@ -246,9 +252,6 @@ public class DbRestoreServiceImpl implements DbRestoreService {
 
         // 获取脚本地址
         String scriptDir = parentPath + separator + "bin";
-
-        // 文件解压后的路径
-        String unzipFileDir = parentPath + separator + "db";
 
         // 文件上传路径
         String tempFileDir = parentPath + separator + "temp";

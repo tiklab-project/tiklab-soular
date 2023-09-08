@@ -4,7 +4,7 @@ import io.tiklab.beans.BeanMapper;
 import io.tiklab.dal.jpa.JpaTemplate;
 import io.tiklab.dal.jpa.criterial.condition.QueryCondition;
 import io.tiklab.dal.jpa.criterial.conditionbuilder.QueryBuilders;
-import io.tiklab.eas.backups.entity.EasBackupsEntity;
+import io.tiklab.eas.backups.entity.BackupsEntity;
 import io.tiklab.eas.backups.model.Backups;
 import io.tiklab.eas.backups.model.BackupsQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,34 +15,34 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
-public class EasBackupsDao {
+public class BackupsDao {
 
     @Autowired
     JpaTemplate jpaTemplate;
 
     public String createBackups(Backups backups){
-        EasBackupsEntity easBackupsEntity = BeanMapper.map(backups, EasBackupsEntity.class);
-        return jpaTemplate.save(easBackupsEntity, String.class);
+        BackupsEntity backupsEntity = BeanMapper.map(backups, BackupsEntity.class);
+        return jpaTemplate.save(backupsEntity, String.class);
     }
 
     public void updateBackups(Backups backups){
-        EasBackupsEntity easBackupsEntity = BeanMapper.map(backups, EasBackupsEntity.class);
-         jpaTemplate.update(easBackupsEntity);
+        BackupsEntity backupsEntity = BeanMapper.map(backups, BackupsEntity.class);
+         jpaTemplate.update(backupsEntity);
     }
 
     public void deleteBackups(String backupsId){
-        jpaTemplate.delete(EasBackupsEntity.class,backupsId);
+        jpaTemplate.delete(BackupsEntity.class,backupsId);
     }
 
 
     public Backups findBackups(String backupsId){
-        EasBackupsEntity backupsEntity = jpaTemplate.findOne(EasBackupsEntity.class, backupsId);
+        BackupsEntity backupsEntity = jpaTemplate.findOne(BackupsEntity.class, backupsId);
         return BeanMapper.map(backupsEntity, Backups.class);
     }
 
 
     public List<Backups> findAllBackups(){
-        List<EasBackupsEntity> backupsEntityList = jpaTemplate.findAll(EasBackupsEntity.class);
+        List<BackupsEntity> backupsEntityList = jpaTemplate.findAll(BackupsEntity.class);
         if (backupsEntityList == null || backupsEntityList.isEmpty()){
             return Collections.emptyList();
         }
@@ -51,11 +51,11 @@ public class EasBackupsDao {
 
 
     public List<Backups> findBackupsList (BackupsQuery backupsQuery) {
-        QueryCondition queryCondition = QueryBuilders.createQuery(EasBackupsEntity.class)
+        QueryCondition queryCondition = QueryBuilders.createQuery(BackupsEntity.class)
                 .eq("type", backupsQuery.getType())
                 .orders(backupsQuery.getOrderParams())
                 .get();
-        List<EasBackupsEntity> easBackupsEntities = jpaTemplate.findList(queryCondition, EasBackupsEntity.class);
+        List<BackupsEntity> easBackupsEntities = jpaTemplate.findList(queryCondition, BackupsEntity.class);
         if (Objects.isNull(easBackupsEntities) || easBackupsEntities.isEmpty()){
             return Collections.emptyList();
         }

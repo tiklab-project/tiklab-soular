@@ -4,7 +4,7 @@ import io.tiklab.dal.jpa.annotation.*;
 
 @Entity
 @Table(name="eas_db_backups")
-public class EasBackupsEntity {
+public class BackupsEntity {
 
     @Id
     @GeneratorValue(length = 12)

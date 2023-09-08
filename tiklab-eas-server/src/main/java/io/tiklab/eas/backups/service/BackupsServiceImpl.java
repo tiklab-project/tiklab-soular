@@ -1,6 +1,6 @@
 package io.tiklab.eas.backups.service;
 
-import io.tiklab.eas.backups.dao.EasBackupsDao;
+import io.tiklab.eas.backups.dao.BackupsDao;
 import io.tiklab.eas.backups.model.Backups;
 import io.tiklab.eas.backups.model.BackupsQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 public class BackupsServiceImpl implements BackupsService {
 
     @Autowired
-    EasBackupsDao backupsDao;
+    BackupsDao backupsDao;
 
 
     public String createBackups(Backups backups){

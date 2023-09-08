@@ -147,6 +147,16 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 execEnd(defaultValues,false,e.getMessage());
                 throw new SystemException(e);
             }
+
+            if (unzipFile.exists()){
+                try {
+                    FileUtils.deleteDirectory(unzipFile);
+                } catch (IOException e) {
+                    writeLog(defaultValues,date(4)+"删除恢复文件失败,message:"+e.getMessage());
+                    return;
+                }
+            }
+
             execEnd(defaultValues,true,null);
         });
 
@@ -189,6 +199,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
         Backups backups = new Backups();
         backups.setRunState(run);
         backups.setCreateTime(date(0));
+        backups.setDir(backupsDir);
         // 备份状态
         Backups lastBackups = backupsService.findLastBackups(type);
         if (Objects.isNull(lastBackups)){

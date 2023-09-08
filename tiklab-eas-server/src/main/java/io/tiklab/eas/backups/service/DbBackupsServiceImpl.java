@@ -5,6 +5,7 @@ import io.tiklab.core.exception.SystemException;
 import io.tiklab.eas.backups.model.Backups;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,9 +58,6 @@ public class DbBackupsServiceImpl implements DbBackupsService {
     @Value("${eas.backups.dir}")
     String backupsDir;
 
-    @Value("${eas.backups.time}")
-    String scheduled;
-
     @Autowired
     BackupsService backupsService;
 
@@ -109,22 +107,38 @@ public class DbBackupsServiceImpl implements DbBackupsService {
                 throw new SystemException(e);
             }
 
-            writeLog(defaultValues,date(4)+"数据库备份成功！");
-            writeLog(defaultValues,date(4)+"压缩文件......");
+            writeLog(defaultValues,date(4)+"Start compressing files......");
 
             String tarBackupsDir = dirMap.get("tarBackupsDir");
 
             File file = new File(tarBackupsDir);
             // 压缩文件
             try {
-                compress(dirMap.get("tarBackupsDir"),dirMap.get("tarBackupsFile"));
+                compress(tarBackupsDir , dirMap.get("tarBackupsFile"));
             } catch (IOException e) {
-                file.delete();
+                // 删除旧的文件
+                try {
+                    FileUtils.deleteDirectory(file);
+                } catch (IOException e1) {
+                    execEnd(defaultValues,false,"删除旧文件失败：" + e1.getMessage());
+                    throw new SystemException(e1);
+                }
                 execEnd(defaultValues,false,"压缩文件失败：" + e.getMessage());
                 throw new SystemException(e);
             }
-            file.delete();
 
+            writeLog(defaultValues,date(4)+"File compression completed!");
+
+            writeLog(defaultValues,date(4)+"Clear cache information......");
+
+            // 删除旧的文件
+            try {
+                FileUtils.deleteDirectory(file);
+            } catch (IOException e) {
+                execEnd(defaultValues,false,"删除旧文件失败：" + e.getMessage());
+                throw new SystemException(e);
+            }
+            writeLog(defaultValues,date(4)+"Cache information clearing completed!");
             execEnd(defaultValues,true,null);
         });
     }
@@ -173,6 +187,7 @@ public class DbBackupsServiceImpl implements DbBackupsService {
         Backups backups = new Backups();
         backups.setRunState(run);
         backups.setCreateTime(date(0));
+        backups.setDir(backupsDir);
         // 备份状态
         Backups lastBackups = backupsService.findLastBackups(type);
         if (Objects.isNull(lastBackups)){

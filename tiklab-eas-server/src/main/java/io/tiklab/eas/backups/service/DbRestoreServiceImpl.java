@@ -160,6 +160,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 logger.info("运行完成0：{}",backups.toString());
                 execEnd(defaultValues,true,null);
             }catch (Exception e){
+                logger.info("异常：{}",e.getMessage());
                 execEnd(defaultValues,false,"备份失败！");
                 throw new SystemException(e);
             }
@@ -440,12 +441,12 @@ public class DbRestoreServiceImpl implements DbRestoreService {
             backups.setRunState(success);
             writeLog(defaultValues,date(4)+"Restore successful！");
         }else {
-            writeLog(defaultValues,date(4) + "error:"+message);
+            writeLog(defaultValues,date(4) + "error:" + message);
             writeLog(defaultValues,date(4)+"Restore error！");
             backups.setRunState(error);
         }
-        backupsService.updateBackups(backups);
         logger.info("运行完成2：{}",backups.toString());
+        backupsService.updateBackups(backups);
         execMap.remove(key);
     }
 

@@ -1,5 +1,10 @@
 package io.tiklab.eas.backups.model;
 
+import io.tiklab.beans.annotation.Mapper;
+import io.tiklab.join.annotation.Join;
+
+@Join
+@Mapper
 public class Backups {
 
     private String id;
@@ -20,7 +25,15 @@ public class Backups {
     private String log;
 
     // 定时同步
-    private Boolean scheduled = false;
+    private Boolean scheduled;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -30,19 +43,12 @@ public class Backups {
         this.type = type;
     }
 
-    public Backups() {
+    public String getRunState() {
+        return runState;
     }
 
-    public Backups(String runState) {
+    public void setRunState(String runState) {
         this.runState = runState;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getCreateTime() {
@@ -53,13 +59,12 @@ public class Backups {
         this.createTime = createTime;
     }
 
-
-    public String getRunState() {
-        return runState;
+    public String getDir() {
+        return dir;
     }
 
-    public void setRunState(String runState) {
-        this.runState = runState;
+    public void setDir(String dir) {
+        this.dir = dir;
     }
 
     public String getLog() {
@@ -77,13 +82,4 @@ public class Backups {
     public void setScheduled(Boolean scheduled) {
         this.scheduled = scheduled;
     }
-
-    public String getDir() {
-        return dir;
-    }
-
-    public void setDir(String dir) {
-        this.dir = dir;
-    }
-
 }

@@ -21,7 +21,7 @@ public class BackupsEntity {
     private String log;
 
     @Column(name = "scheduled")
-    private Boolean scheduled;
+    private String scheduled;
 
     @Column(name = "dir")
     private String dir;
@@ -30,20 +30,20 @@ public class BackupsEntity {
     private String createTime;
 
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getRunState() {
@@ -62,11 +62,11 @@ public class BackupsEntity {
         this.log = log;
     }
 
-    public Boolean getScheduled() {
+    public String getScheduled() {
         return scheduled;
     }
 
-    public void setScheduled(Boolean scheduled) {
+    public void setScheduled(String scheduled) {
         this.scheduled = scheduled;
     }
 
@@ -85,5 +85,4 @@ public class BackupsEntity {
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
-
 }

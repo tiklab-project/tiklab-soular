@@ -117,8 +117,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 try {
                     decompress(filePath,dir);
                 }catch (Exception e){
-                    writeLog(defaultValues,date(4)+"备份文件解压失败,message:"+e.getMessage());
-                    return;
+                    throw new ApplicationException("备份文件解压失败,message:"+e.getMessage());
                 }
                 writeLog(defaultValues,date(4)+"Backup file decompression completed!");
 

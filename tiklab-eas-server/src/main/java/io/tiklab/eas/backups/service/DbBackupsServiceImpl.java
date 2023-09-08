@@ -75,7 +75,7 @@ public class DbBackupsServiceImpl implements DbBackupsService {
         ExecutorService executorService = Executors.newCachedThreadPool();
         // 执行备份
         executorService.submit(() -> {
-            writeLog(defaultValues,date(4)+"开始备份......");
+            writeLog(defaultValues,date(4)+"begin backups......");
 
             // 脚本执行参数
             StringBuilder parameter = new StringBuilder();
@@ -85,7 +85,7 @@ public class DbBackupsServiceImpl implements DbBackupsService {
             parameter.append(" ");
             parameter.append( " -d ").append(dirMap.get("dir")).append(" "); // 程序主目录
             parameter.append( " -B ").append(dirMap.get("sqlImportFile")).append(" "); // 备份文件存放地址
-            parameter.append( " -t ").append("backups").append(" "); //类型为备份
+            parameter.append( " -t ").append(type).append(" "); //类型为备份
             parameter.append( " -u ").append(username).append(" "); //用户名
             parameter.append( " -p ").append(password).append(" "); //密码
 
@@ -107,7 +107,7 @@ public class DbBackupsServiceImpl implements DbBackupsService {
                 throw new SystemException(e);
             }
 
-            writeLog(defaultValues,date(4)+"Start compressing files......");
+            writeLog(defaultValues,date(4) + "Start compressing files......");
 
             String tarBackupsDir = dirMap.get("tarBackupsDir");
 

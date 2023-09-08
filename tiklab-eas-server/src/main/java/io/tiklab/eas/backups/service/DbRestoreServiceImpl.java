@@ -85,9 +85,9 @@ public class DbRestoreServiceImpl implements DbRestoreService {
 
         executorService.submit(() -> {
 
-            writeLog(defaultValues,date(4)+"开始恢复......");
+            writeLog(defaultValues,date(4)+"begin  restore......");
 
-            writeLog(defaultValues,date(4)+"解压备份文件......");
+            writeLog(defaultValues,date(4)+"Obtain recovery files");
             File file = new File(filePath);
             if (!file.exists()){
                 writeLog(defaultValues,date(4)+"没有找到备份文件！");
@@ -100,6 +100,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
             String unzipFileDir = dirMap.get("unzipFileDir");
             String sqlFile = dirMap.get("sqlFile");
 
+            writeLog(defaultValues,date(4)+"Create temporary directory......");
             // 删除原备份文件
             File unzipFile = new File(unzipFileDir);
             if (unzipFile.exists()){
@@ -111,6 +112,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 }
             }
 
+            writeLog(defaultValues,date(4)+"Unzip backup files......");
             // 解压文件
             try {
                 decompress(filePath,dir);
@@ -118,6 +120,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 writeLog(defaultValues,date(4)+"备份文件解压失败,message:"+e.getMessage());
                 return;
             }
+            writeLog(defaultValues,date(4)+"Backup file decompression completed!");
 
             Map<String, String> jdbcUrlMap = findJdbcUrl();
 
@@ -137,6 +140,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
             parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
             parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
 
+            writeLog(defaultValues,date(4)+"Starting database recovery......");
             Runtime rt = Runtime.getRuntime();
             try {
                 String order = "sh " + dirMap.get("backupsScript") + parameter;
@@ -147,7 +151,9 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 execEnd(defaultValues,false,e.getMessage());
                 throw new SystemException(e);
             }
+            writeLog(defaultValues,date(4)+"Starting database recovery completed!");
 
+            writeLog(defaultValues,date(4)+"Clean cache files.....");
             if (unzipFile.exists()){
                 try {
                     FileUtils.deleteDirectory(unzipFile);
@@ -156,6 +162,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                     return;
                 }
             }
+            writeLog(defaultValues,date(4)+"Clean cache files completed!");
 
             execEnd(defaultValues,true,null);
         });
@@ -246,12 +253,12 @@ public class DbRestoreServiceImpl implements DbRestoreService {
         // 文件上传路径
         String tempFileDir = parentPath + separator + "temp";
         File tempFile = new File(tempFileDir);
-        if (tempFile.exists()){
+        if (!tempFile.exists()){
             tempFile.mkdirs();
         }
 
         // 解压后sql文件地址
-        String sqlFile = parentPath + separator + "db"+ separator +"eas_db_backups.sql";
+        String sqlFile = parentPath + separator + "temp" + separator +"eas_db_backups.sql";
 
         // 备份脚本
         String backupsScript = scriptDir + separator + shScript;
@@ -269,9 +276,9 @@ public class DbRestoreServiceImpl implements DbRestoreService {
 
         map.put("logFile",logFile); //日志文件地址
         map.put("backupsScript",backupsScript); //备份脚本文件地址
-        map.put("unzipFileDir",unzipFileDir); //备份脚本文件地址
-        map.put("sqlFile",sqlFile); //备份脚本文件地址
-        map.put("tempFileDir",tempFileDir); //备份脚本文件地址
+        map.put("unzipFileDir",tempFileDir); //文件解压目录
+        map.put("sqlFile",sqlFile); //解压后sql文件地址
+        map.put("tempFileDir",tempFileDir); //文件解压目录
 
         return map;
     }

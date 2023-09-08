@@ -90,8 +90,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 writeLog(defaultValues,date(4)+"Obtain recovery files");
                 File file = new File(filePath);
                 if (!file.exists()){
-                    writeLog(defaultValues,date(4)+"没有找到备份文件！");
-                    return;
+                    throw new ApplicationException("没有找到备份文件");
                 }
 
                 // 脚本位置
@@ -101,16 +100,6 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 String sqlFile = dirMap.get("sqlFile");
 
                 writeLog(defaultValues,date(4)+"Create temporary directory......");
-                // 删除原备份文件
-                File unzipFile = new File(unzipFileDir);
-                if (unzipFile.exists()){
-                    try {
-                        FileUtils.deleteDirectory(unzipFile);
-                    } catch (IOException e) {
-                        writeLog(defaultValues,date(4)+"删除原备份文件失败,message:"+e.getMessage());
-                        return;
-                    }
-                }
 
                 writeLog(defaultValues,date(4)+"Unzip backup files......");
                 // 解压文件
@@ -153,6 +142,9 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                 writeLog(defaultValues,date(4)+"Starting database recovery completed!");
 
                 writeLog(defaultValues,date(4)+"Clean cache files.....");
+
+                // 删除原备份文件
+                File unzipFile = new File(unzipFileDir);
                 if (unzipFile.exists()){
                     try {
                         FileUtils.deleteDirectory(unzipFile);
@@ -188,6 +180,13 @@ public class DbRestoreServiceImpl implements DbRestoreService {
         String tempFileDir = dirMap.get("tempFileDir");
 
         File tempFile = new File(tempFileDir);
+
+        try {
+            FileUtils.deleteDirectory(tempFile);
+        } catch (IOException e) {
+            throw new ApplicationException(e);
+        }
+
         if (!tempFile.exists()){
             tempFile.mkdirs();
         }

@@ -450,6 +450,8 @@ public class DbRestoreServiceImpl implements DbRestoreService {
      */
     public static void decompress(String zipFile, String destDir) throws Exception {
 
+        logger.info("解压文件：{}，解压地址：{}",zipFile,destDir);
+
         try (FileInputStream fis = new FileInputStream(zipFile);
              GzipCompressorInputStream gzip = new GzipCompressorInputStream(fis);
              TarArchiveInputStream tais = new TarArchiveInputStream(gzip)) {

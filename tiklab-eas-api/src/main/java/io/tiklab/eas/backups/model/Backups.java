@@ -82,4 +82,17 @@ public class Backups {
     public void setScheduled(Boolean scheduled) {
         this.scheduled = scheduled;
     }
+
+    @Override
+    public String toString() {
+        return "Backups{" +
+                "id='" + id + '\'' +
+                ", type='" + type + '\'' +
+                ", runState='" + runState + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", dir='" + dir + '\'' +
+                ", log='" + log + '\'' +
+                ", scheduled=" + scheduled +
+                '}';
+    }
 }

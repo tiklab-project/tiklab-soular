@@ -95,7 +95,6 @@ public class DbRestoreServiceImpl implements DbRestoreService {
 
                 // 脚本位置
                 Map<String, String> dirMap = findScriptDir();
-                String dir = dirMap.get("dir");
                 String unzipFileDir = dirMap.get("unzipFileDir");
                 String sqlFile = dirMap.get("sqlFile");
 
@@ -136,7 +135,6 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                     Process process = rt.exec(order);
                     readExecResult(process,defaultValues);
                 } catch (Exception e) {
-                    execEnd(defaultValues,false,e.getMessage());
                     throw new SystemException(e);
                 }
                 writeLog(defaultValues,date(4)+"Starting database recovery completed!");
@@ -153,8 +151,9 @@ public class DbRestoreServiceImpl implements DbRestoreService {
                         return;
                     }
                 }
-                writeLog(defaultValues,date(4)+"Clean cache files completed!");
+                writeLog(defaultValues,date(4) + " Clean cache files completed!");
 
+                logger.info("运行完成0：{}",backups.toString());
                 execEnd(defaultValues,true,null);
             }catch (Exception e){
                 execEnd(defaultValues,false,"备份失败！");
@@ -432,6 +431,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
      */
     public void execEnd(String key,boolean state,String message){
         Backups backups = execMap.get(key);
+        logger.info("运行完成1：{}",backups.toString());
         if (state){
             backups.setRunState(success);
             writeLog(defaultValues,date(4)+"Restore successful！");
@@ -441,6 +441,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
             backups.setRunState(error);
         }
         backupsService.updateBackups(backups);
+        logger.info("运行完成2：{}",backups.toString());
         execMap.remove(key);
     }
 

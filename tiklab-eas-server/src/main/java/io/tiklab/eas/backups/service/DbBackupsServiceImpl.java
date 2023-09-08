@@ -75,71 +75,76 @@ public class DbBackupsServiceImpl implements DbBackupsService {
         ExecutorService executorService = Executors.newCachedThreadPool();
         // 执行备份
         executorService.submit(() -> {
-            writeLog(defaultValues,date(4)+"begin backups......");
+          try {
+              writeLog(defaultValues,date(4)+"begin backups......");
 
-            // 脚本执行参数
-            StringBuilder parameter = new StringBuilder();
+              // 脚本执行参数
+              StringBuilder parameter = new StringBuilder();
 
-            // 脚本位置
-            Map<String, String> dirMap = findScriptDir();
-            parameter.append(" ");
-            parameter.append( " -d ").append(dirMap.get("dir")).append(" "); // 程序主目录
-            parameter.append( " -B ").append(dirMap.get("sqlImportFile")).append(" "); // 备份文件存放地址
-            parameter.append( " -t ").append(type).append(" "); //类型为备份
-            parameter.append( " -u ").append(username).append(" "); //用户名
-            parameter.append( " -p ").append(password).append(" "); //密码
+              // 脚本位置
+              Map<String, String> dirMap = findScriptDir();
+              parameter.append(" ");
+              parameter.append( " -d ").append(dirMap.get("dir")).append(" "); // 程序主目录
+              parameter.append( " -B ").append(dirMap.get("sqlImportFile")).append(" "); // 备份文件存放地址
+              parameter.append( " -t ").append(type).append(" "); //类型为备份
+              parameter.append( " -u ").append(username).append(" "); //用户名
+              parameter.append( " -p ").append(password).append(" "); //密码
 
-            // 解析jdbc信息
-            Map<String, String> jdbcUrlMap = findJdbcUrl();
-            parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
-            parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
-            parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
-            parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
+              // 解析jdbc信息
+              Map<String, String> jdbcUrlMap = findJdbcUrl();
+              parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
+              parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
+              parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
+              parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
 
-            Runtime rt = Runtime.getRuntime();
-            try {
-                String order = "sh " + dirMap.get("backupsScript") + parameter;
-                logger.info("执行备份命令：{}",order);
-                Process process = rt.exec(order);
-                readExecResult(process,defaultValues);
-            } catch (Exception e) {
-                execEnd(defaultValues,false,"脚本执行失败："+e.getMessage());
-                throw new SystemException(e);
-            }
+              Runtime rt = Runtime.getRuntime();
+              try {
+                  String order = "sh " + dirMap.get("backupsScript") + parameter;
+                  logger.info("执行备份命令：{}",order);
+                  Process process = rt.exec(order);
+                  readExecResult(process,defaultValues);
+              } catch (Exception e) {
+                  execEnd(defaultValues,false,"脚本执行失败："+e.getMessage());
+                  throw new SystemException(e);
+              }
 
-            writeLog(defaultValues,date(4) + "Start compressing files......");
+              writeLog(defaultValues,date(4) + "Start compressing files......");
 
-            String tarBackupsDir = dirMap.get("tarBackupsDir");
+              String tarBackupsDir = dirMap.get("tarBackupsDir");
 
-            File file = new File(tarBackupsDir);
-            // 压缩文件
-            try {
-                compress(tarBackupsDir , dirMap.get("tarBackupsFile"));
-            } catch (IOException e) {
-                // 删除旧的文件
-                try {
-                    FileUtils.deleteDirectory(file);
-                } catch (IOException e1) {
-                    execEnd(defaultValues,false,"删除旧文件失败：" + e1.getMessage());
-                    throw new SystemException(e1);
-                }
-                execEnd(defaultValues,false,"压缩文件失败：" + e.getMessage());
-                throw new SystemException(e);
-            }
+              File file = new File(tarBackupsDir);
+              // 压缩文件
+              try {
+                  compress(tarBackupsDir , dirMap.get("tarBackupsFile"));
+              } catch (IOException e) {
+                  // 删除旧的文件
+                  try {
+                      FileUtils.deleteDirectory(file);
+                  } catch (IOException e1) {
+                      execEnd(defaultValues,false,"删除旧文件失败：" + e1.getMessage());
+                      throw new SystemException(e1);
+                  }
+                  execEnd(defaultValues,false,"压缩文件失败：" + e.getMessage());
+                  throw new SystemException(e);
+              }
 
-            writeLog(defaultValues,date(4)+"File compression completed!");
+              writeLog(defaultValues,date(4)+"File compression completed!");
 
-            writeLog(defaultValues,date(4)+"Clear cache information......");
+              writeLog(defaultValues,date(4)+"Clear cache information......");
 
-            // 删除旧的文件
-            try {
-                FileUtils.deleteDirectory(file);
-            } catch (IOException e) {
-                execEnd(defaultValues,false,"删除旧文件失败：" + e.getMessage());
-                throw new SystemException(e);
-            }
-            writeLog(defaultValues,date(4)+"Cache information clearing completed!");
-            execEnd(defaultValues,true,null);
+              // 删除旧的文件
+              try {
+                  FileUtils.deleteDirectory(file);
+              } catch (IOException e) {
+                  execEnd(defaultValues,false,"删除旧文件失败：" + e.getMessage());
+                  throw new SystemException(e);
+              }
+              writeLog(defaultValues,date(4)+"Cache information clearing completed!");
+              execEnd(defaultValues,true,null);
+          }catch (Exception e){
+              execEnd(defaultValues,false,"备份失败！");
+
+          }
         });
     }
 
@@ -195,6 +200,7 @@ public class DbBackupsServiceImpl implements DbBackupsService {
             backups.setScheduled(false);
         }else {
             backups.setScheduled(lastBackups.getScheduled());
+            backups.setId(lastBackups.getId());
             return backups;
         }
 

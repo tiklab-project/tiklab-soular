@@ -84,87 +84,91 @@ public class DbRestoreServiceImpl implements DbRestoreService {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         executorService.submit(() -> {
+            try {
+                writeLog(defaultValues,date(4)+"begin  restore......");
 
-            writeLog(defaultValues,date(4)+"begin  restore......");
-
-            writeLog(defaultValues,date(4)+"Obtain recovery files");
-            File file = new File(filePath);
-            if (!file.exists()){
-                writeLog(defaultValues,date(4)+"没有找到备份文件！");
-                return;
-            }
-
-            // 脚本位置
-            Map<String, String> dirMap = findScriptDir();
-            String dir = dirMap.get("dir");
-            String unzipFileDir = dirMap.get("unzipFileDir");
-            String sqlFile = dirMap.get("sqlFile");
-
-            writeLog(defaultValues,date(4)+"Create temporary directory......");
-            // 删除原备份文件
-            File unzipFile = new File(unzipFileDir);
-            if (unzipFile.exists()){
-                try {
-                    FileUtils.deleteDirectory(unzipFile);
-                } catch (IOException e) {
-                    writeLog(defaultValues,date(4)+"删除原备份文件失败,message:"+e.getMessage());
+                writeLog(defaultValues,date(4)+"Obtain recovery files");
+                File file = new File(filePath);
+                if (!file.exists()){
+                    writeLog(defaultValues,date(4)+"没有找到备份文件！");
                     return;
                 }
-            }
 
-            writeLog(defaultValues,date(4)+"Unzip backup files......");
-            // 解压文件
-            try {
-                decompress(filePath,dir);
+                // 脚本位置
+                Map<String, String> dirMap = findScriptDir();
+                String dir = dirMap.get("dir");
+                String unzipFileDir = dirMap.get("unzipFileDir");
+                String sqlFile = dirMap.get("sqlFile");
+
+                writeLog(defaultValues,date(4)+"Create temporary directory......");
+                // 删除原备份文件
+                File unzipFile = new File(unzipFileDir);
+                if (unzipFile.exists()){
+                    try {
+                        FileUtils.deleteDirectory(unzipFile);
+                    } catch (IOException e) {
+                        writeLog(defaultValues,date(4)+"删除原备份文件失败,message:"+e.getMessage());
+                        return;
+                    }
+                }
+
+                writeLog(defaultValues,date(4)+"Unzip backup files......");
+                // 解压文件
+                try {
+                    decompress(filePath,dir);
+                }catch (Exception e){
+                    writeLog(defaultValues,date(4)+"备份文件解压失败,message:"+e.getMessage());
+                    return;
+                }
+                writeLog(defaultValues,date(4)+"Backup file decompression completed!");
+
+                Map<String, String> jdbcUrlMap = findJdbcUrl();
+
+                StringBuilder parameter = new StringBuilder();
+                parameter.append(" ");
+                parameter.append( " -t ").append(type).append(" "); //类型为备份
+
+                // 地址
+                parameter.append( " -d ").append(dirMap.get("dir")).append(" "); //脚本地址
+                parameter.append( " -B ").append(sqlFile).append(" "); // 备份文件存放地址
+
+                // 认证信息
+                parameter.append( " -u ").append(username).append(" "); //用户名
+                parameter.append( " -p ").append(password).append(" "); //密码
+                parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
+                parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
+                parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
+                parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
+
+                writeLog(defaultValues,date(4)+"Starting database recovery......");
+                Runtime rt = Runtime.getRuntime();
+                try {
+                    String order = "sh " + dirMap.get("backupsScript") + parameter;
+                    logger.info("执行恢复命令：{}",order);
+                    Process process = rt.exec(order);
+                    readExecResult(process,defaultValues);
+                } catch (Exception e) {
+                    execEnd(defaultValues,false,e.getMessage());
+                    throw new SystemException(e);
+                }
+                writeLog(defaultValues,date(4)+"Starting database recovery completed!");
+
+                writeLog(defaultValues,date(4)+"Clean cache files.....");
+                if (unzipFile.exists()){
+                    try {
+                        FileUtils.deleteDirectory(unzipFile);
+                    } catch (IOException e) {
+                        writeLog(defaultValues,date(4)+"删除恢复文件失败,message:"+e.getMessage());
+                        return;
+                    }
+                }
+                writeLog(defaultValues,date(4)+"Clean cache files completed!");
+
+                execEnd(defaultValues,true,null);
             }catch (Exception e){
-                writeLog(defaultValues,date(4)+"备份文件解压失败,message:"+e.getMessage());
-                return;
-            }
-            writeLog(defaultValues,date(4)+"Backup file decompression completed!");
-
-            Map<String, String> jdbcUrlMap = findJdbcUrl();
-
-            StringBuilder parameter = new StringBuilder();
-            parameter.append(" ");
-            parameter.append( " -t ").append(type).append(" "); //类型为备份
-
-            // 地址
-            parameter.append( " -d ").append(dirMap.get("dir")).append(" "); //脚本地址
-            parameter.append( " -B ").append(sqlFile).append(" "); // 备份文件存放地址
-
-            // 认证信息
-            parameter.append( " -u ").append(username).append(" "); //用户名
-            parameter.append( " -p ").append(password).append(" "); //密码
-            parameter.append( " -D ").append(jdbcUrlMap.get("db")).append(" "); // 连接的数据库名称
-            parameter.append( " -s ").append(jdbcUrlMap.get("schema")).append(" "); // 连接的数据库模式名称
-            parameter.append( " -i ").append(jdbcUrlMap.get("ip")).append(" "); // 服务器ip
-            parameter.append( " -P ").append(jdbcUrlMap.get("port")).append(" "); // 服务器端口
-
-            writeLog(defaultValues,date(4)+"Starting database recovery......");
-            Runtime rt = Runtime.getRuntime();
-            try {
-                String order = "sh " + dirMap.get("backupsScript") + parameter;
-                logger.info("执行恢复命令：{}",order);
-                Process process = rt.exec(order);
-                readExecResult(process,defaultValues);
-            } catch (Exception e) {
-                execEnd(defaultValues,false,e.getMessage());
+                execEnd(defaultValues,false,"备份失败！");
                 throw new SystemException(e);
             }
-            writeLog(defaultValues,date(4)+"Starting database recovery completed!");
-
-            writeLog(defaultValues,date(4)+"Clean cache files.....");
-            if (unzipFile.exists()){
-                try {
-                    FileUtils.deleteDirectory(unzipFile);
-                } catch (IOException e) {
-                    writeLog(defaultValues,date(4)+"删除恢复文件失败,message:"+e.getMessage());
-                    return;
-                }
-            }
-            writeLog(defaultValues,date(4)+"Clean cache files completed!");
-
-            execEnd(defaultValues,true,null);
         });
 
     }
@@ -219,6 +223,7 @@ public class DbRestoreServiceImpl implements DbRestoreService {
             backups.setScheduled(false);
         }else {
             backups.setScheduled(lastBackups.getScheduled());
+            backups.setId(lastBackups.getId());
             return backups;
         }
         String backupsId = backupsService.createBackups(backups);

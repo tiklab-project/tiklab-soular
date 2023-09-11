@@ -73,13 +73,15 @@ plugin:
 tenant:
   application: eas
 
+backups:
+  #    time: 0 */1 * * * ?
+  time: 0 0 2 * * ?
+  dir: /data/eas
+
+
 eas:
   embbed:
     enable: true
-  backups:
-#    time: 0 */1 * * * ?
-    time: 0 0 2 * * ?
-    dir: /data/eas
 
 #licences config
 licences:

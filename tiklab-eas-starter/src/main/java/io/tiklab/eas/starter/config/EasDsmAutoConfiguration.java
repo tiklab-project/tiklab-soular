@@ -42,7 +42,6 @@ public class EasDsmAutoConfiguration {
         dsmConfig.newVersion("1.0.2", new String[]{
                 "eas_1.0.2",
         });
-
         return dsmConfig;
     }
 

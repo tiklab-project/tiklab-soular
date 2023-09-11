@@ -28,7 +28,8 @@ dfs:
     enabled: false
     #    mode:server
     port: 4000
-    datapath: ${DATA_HOME}/files
+#    datapath: ${DATA_HOME}/files
+    datapath: /data/eas/dfs
   client:
     url: 172.10.1.11:4000
     bucket: ${app.name}

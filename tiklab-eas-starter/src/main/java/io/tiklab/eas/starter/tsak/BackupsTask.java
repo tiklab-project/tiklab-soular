@@ -1,8 +1,7 @@
 package io.tiklab.eas.starter.tsak;
 
-import io.tiklab.eas.backups.model.Backups;
-import io.tiklab.eas.backups.service.BackupsService;
-import io.tiklab.eas.backups.service.DbBackupsService;
+import io.tiklab.security.backups.model.Backups;
+import io.tiklab.security.backups.service.DbBackupsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

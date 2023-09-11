@@ -30,6 +30,7 @@ public class EasDsmAutoConfiguration {
                 "message_1.0.0",
                 //SecurityDsm
                 "oplog_1.0.0",
+                "backups_1.0.0",
                 //TodoTaskDsm
                 "todotask_1.0.0",
                 //EasDsm
@@ -38,9 +39,6 @@ public class EasDsmAutoConfiguration {
         dsmConfig.newVersion("1.0.1", new String[]{
                 "privilege_1.0.1",
                 "eas_1.0.1",
-        });
-        dsmConfig.newVersion("1.0.2", new String[]{
-                "eas_1.0.2",
         });
         return dsmConfig;
     }

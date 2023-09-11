@@ -103,7 +103,12 @@ public class EasGatewayFilterAutoConfiguration {
                         "/licence/tryLicence",
                         "/test/test",
                         "/data/import",
-                        "/dingding/sync"
+                        "/dingding/sync",
+                        "/backups/findBackups",
+                        "/backups/backups",
+                        "/backups/uploadBackups",
+                        "/backups/restore",
+                        "/backups/findRestore",
                 })
                 .ignorePreUrls(new String[]{
                         "/service",

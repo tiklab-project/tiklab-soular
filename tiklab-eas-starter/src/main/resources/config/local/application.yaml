@@ -75,9 +75,11 @@ tenant:
 eas:
   embbed:
     enable: true
-  backups:
-    time: 0 0 2 * * ?
-    dir: ${DATA_HOME}
+
+backups:
+  #    time: 0 */1 * * * ?
+  time: 0 0 2 * * ?
+  dir: /data/eas
 
 postgresql:
   type: local

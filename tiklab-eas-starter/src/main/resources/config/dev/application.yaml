@@ -34,8 +34,6 @@ dfs:
     url: 172.10.1.11:4000
     bucket: ${app.name}
 
-
-#dfs
 file:
   path: http://file.dev.tiklab.net
 
@@ -77,6 +75,9 @@ backups:
   #    time: 0 */1 * * * ?
   time: 0 0 2 * * ?
   dir: /data/eas
+
+repository:
+  address: /data/eas/other
 
 
 eas:

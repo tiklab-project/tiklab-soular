@@ -20,7 +20,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/eas-ee
+DATA_HOME: /opt/tiklab/eas-ce
 
 #dfs config
 dfs:
@@ -81,7 +81,7 @@ plugin:
 
 #tenant config
 tenant:
-  application: eas
+  application: eas-ce
 
 eas:
   embbed:

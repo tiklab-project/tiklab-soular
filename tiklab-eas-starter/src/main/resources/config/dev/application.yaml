@@ -72,13 +72,8 @@ tenant:
   application: eas
 
 backups:
-  #    time: 0 */1 * * * ?
   time: 0 0 2 * * ?
   dir: /data/eas
-
-repository:
-  address: /data/eas/other
-
 
 eas:
   embbed:

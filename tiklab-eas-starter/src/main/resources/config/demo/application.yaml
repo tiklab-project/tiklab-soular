@@ -1,6 +1,7 @@
 #application config
 app:
-  name: tiklab-eas
+  name: tiklab-eas-ce
+  version: ce
 
 # Project access address
 base:
@@ -11,23 +12,15 @@ server:
   port: 8080
 # enable eas to project
 
+#dal config
+
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/eas?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5432/eas_ce?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/eas
-
-postgresql:
-  embbed:
-    enable: true
-  database: eas
-  db:
-    port: 5432
-    username: postgres
-    password: darth2020
-    address: ${DATA_HOME}/postgresql
+DATA_HOME: /opt/tiklab/eas-ee
 
 #dfs config
 dfs:
@@ -43,7 +36,7 @@ dfs:
 #dfs
 file:
   path: http://file.tiklab.net
-  
+
 #dcs config
 dcs:
   server:
@@ -70,7 +63,17 @@ dss:
 
 #integration config
 homes:
-  address:  http://homes.demo.tiklab.net
+  address: http://139.196.76.221:8081
+
+postgresql:
+  embbed:
+    enable: true
+  database: eas_ce
+  db:
+    port: 5432
+    username: postgres
+    password: darth2020
+    address: ${DATA_HOME}/postgresql
 
 #plugin config
 plugin:
@@ -83,6 +86,11 @@ tenant:
 eas:
   embbed:
     enable: true
+
+backups:
+  #    time: 0 */1 * * * ?
+  time: 0 0 2 * * ?
+  dir: /data/eas-ce
 
 #licences config
 licences:

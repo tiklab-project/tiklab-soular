@@ -15,11 +15,11 @@ server:
 
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/eas_ee?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5432/eas_ce?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/eas-ee
+DATA_HOME: /opt/tiklab/eas-ce
 
 #dfs config
 dfs:
@@ -67,7 +67,7 @@ homes:
 postgresql:
   embbed:
     enable: true
-  database: eas_ee
+  database: eas_ce
   db:
     port: 5432
     username: postgres
@@ -80,7 +80,7 @@ plugin:
 
 #tenant config
 tenant:
-  application: eas-ee
+  application: eas-ce
 
 eas:
   embbed:
@@ -89,7 +89,7 @@ eas:
 backups:
   #    time: 0 */1 * * * ?
   time: 0 0 2 * * ?
-  dir: /data/eas-ee
+  dir: /data/eas-ce
 
 #licences config
 licences:

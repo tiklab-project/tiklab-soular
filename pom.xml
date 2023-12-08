@@ -5,45 +5,46 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.tiklab</groupId>
-        <artifactId>tiklab-dependencies</artifactId>
+        <groupId>io.thoughtware</groupId>
+        <artifactId>thoughtware-dependencies</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>tiklab-eas</artifactId>
+    <artifactId>thoughtware-darth</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <version>1.0.0</version>
 
     <modules>
-        <module>tiklab-eas-api</module>
-        <module>tiklab-eas-server</module>
-        <module>tiklab-eas-starter</module>
+        <module>thoughtware-darth-api</module>
+        <module>thoughtware-darth-server</module>
+        <module>thoughtware-darth-starter</module>
     </modules>
 
     <properties>
-        <!--tiklab-->
-        <tiklab-dal.version>1.0.0</tiklab-dal.version>
-        <tiklab-core.version>1.0.0</tiklab-core.version>
-        <tiklab-toolkit.version>1.0.0</tiklab-toolkit.version>
-        <tiklab-rpc.version>1.0.0</tiklab-rpc.version>
-        <tiklab-dss.version>1.0.0</tiklab-dss.version>
-        <tiklab-dcs.version>1.0.0</tiklab-dcs.version>
-        <tiklab-dfs.version>1.0.0</tiklab-dfs.version>
-        <tiklab-codegen.version>1.0.0</tiklab-codegen.version>
-        <tiklab-gateway.version>1.0.1-SNAPSHOT</tiklab-gateway.version>
-        <tiklab-plugin.version>1.0.1-SNAPSHOT</tiklab-plugin.version>
+        <!--thoughtware-->
+        <thoughtware-dal.version>1.0.0</thoughtware-dal.version>
+        <thoughtware-core.version>1.0.0</thoughtware-core.version>
+        <thoughtware-toolkit.version>1.0.0</thoughtware-toolkit.version>
+        <thoughtware-rpc.version>1.0.0</thoughtware-rpc.version>
+        <thoughtware-dss.version>1.0.0</thoughtware-dss.version>
+        <thoughtware-dcs.version>1.0.0</thoughtware-dcs.version>
+        <thoughtware-dcs-cloud.version>1.0.1-SNAPSHOT</thoughtware-dcs-cloud.version>
+        <thoughtware-dfs.version>1.0.0</thoughtware-dfs.version>
+        <thoughtware-codegen.version>1.0.0</thoughtware-codegen.version>
+        <thoughtware-gateway.version>1.0.1-SNAPSHOT</thoughtware-gateway.version>
+        <thoughtware-plugin.version>1.0.1-SNAPSHOT</thoughtware-plugin.version>
 
-        <tiklab-user.version>1.0.1-SNAPSHOT</tiklab-user.version>
-        <tiklab-eam.version>1.0.1-SNAPSHOT</tiklab-eam.version>
-        <tiklab-message.version>1.0.1-SNAPSHOT</tiklab-message.version>
-        <tiklab-security.version>1.0.1-SNAPSHOT</tiklab-security.version>
-        <tiklab-todotask.version>1.0.1-SNAPSHOT</tiklab-todotask.version>
-        <tiklab-licence.version>1.0.1-SNAPSHOT</tiklab-licence.version>
-        <tiklab-privilege.version>1.0.1-SNAPSHOT</tiklab-privilege.version>
+        <thoughtware-user.version>1.0.1-SNAPSHOT</thoughtware-user.version>
+        <thoughtware-eam.version>1.0.1-SNAPSHOT</thoughtware-eam.version>
+        <thoughtware-message.version>1.0.1-SNAPSHOT</thoughtware-message.version>
+        <thoughtware-security.version>1.0.1-SNAPSHOT</thoughtware-security.version>
+        <thoughtware-todotask.version>1.0.1-SNAPSHOT</thoughtware-todotask.version>
+        <thoughtware-licence.version>1.0.1-SNAPSHOT</thoughtware-licence.version>
+        <thoughtware-privilege.version>1.0.1-SNAPSHOT</thoughtware-privilege.version>
 
-        <tiklab-postgresql.version>1.0.1-SNAPSHOT</tiklab-postgresql.version>
-        <tiklab-jdk.version>1.0.0</tiklab-jdk.version>
-        <tiklab-upgrade.version>1.0.0</tiklab-upgrade.version>
+        <thoughtware-postgresql.version>1.0.1-SNAPSHOT</thoughtware-postgresql.version>
+        <thoughtware-jdk.version>1.0.0</thoughtware-jdk.version>
+        <thoughtware-upgrade.version>1.0.0</thoughtware-upgrade.version>
 
         <commons-compress>1.21</commons-compress>
     </properties>
@@ -52,49 +53,49 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-core</artifactId>
-                <version>${tiklab-core.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-core</artifactId>
+                <version>${thoughtware-core.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-toolkit-annotation</artifactId>
-                <version>${tiklab-toolkit.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-toolkit-annotation</artifactId>
+                <version>${thoughtware-toolkit.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-dal-spring-boot-starter</artifactId>
-                <version>${tiklab-dal.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-dal-spring-boot-starter</artifactId>
+                <version>${thoughtware-dal.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-rpc-spring-boot-starter</artifactId>
-                <version>${tiklab-rpc.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-rpc-spring-boot-starter</artifactId>
+                <version>${thoughtware-rpc.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-dcs-spring-boot-starter</artifactId>
-                <version>${tiklab-dcs.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-dcs-spring-boot-starter</artifactId>
+                <version>${thoughtware-dcs.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-dss-annotation</artifactId>
-                <version>${tiklab-dss.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-dss-annotation</artifactId>
+                <version>${thoughtware-dss.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-dss-spring-boot-starter</artifactId>
-                <version>${tiklab-dss.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-dss-spring-boot-starter</artifactId>
+                <version>${thoughtware-dss.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-codegen-core</artifactId>
-                <version>${tiklab-codegen.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-codegen-core</artifactId>
+                <version>${thoughtware-codegen.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.tiklab</groupId>
-                <artifactId>tiklab-postin-annotation</artifactId>
-                <version>${tiklab-postin.version}</version>
+                <groupId>io.thoughtware</groupId>
+                <artifactId>thoughtware-postin-annotation</artifactId>
+                <version>${thoughtware-postin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

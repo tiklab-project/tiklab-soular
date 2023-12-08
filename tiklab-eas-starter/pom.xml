@@ -331,7 +331,7 @@
                                 <descriptor>assembly/distribution-${assembly}.xml</descriptor>
                             </descriptors>
 <!--                            <finalName>tiklab-eas-${version}-${timestamp}</finalName>-->
-                            <finalName>tiklab-eas-${version}</finalName>
+                            <finalName>tiklab-eas-1.0.0</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                         <phase>package</phase>
@@ -380,7 +380,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 

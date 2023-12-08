@@ -17,10 +17,11 @@ base:
 jdbc:
   driverClassName: org.postgresql.Driver
   url: jdbc:postgresql://172.10.1.10:5432/tiklab_eas?stringtype=unspecified
+#  url: jdbc:postgresql://172.13.1.15:5432/eas_ee?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/eas
+DATA_HOME: /Users/zcamy/tiklab/apply_data/eas
 
 #dfs config
 dfs:
@@ -77,9 +78,30 @@ eas:
     enable: true
 
 backups:
-  #    time: 0 */1 * * * ?
   time: 0 0 2 * * ?
-  dir: /data/eas
+  dir: ${DATA_HOME}
+  pgsql:
+    dir: /opt/homebrew/opt/postgresql@15/bin
+  xcode:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xcode
+  xpack:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xpack
+  dfs:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/dfs
+  other:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/other
+#  xcode:
+#     dir: /Users/zcamy/Downloads/钉钉文件
+#  xpack:
+#    dir: /Users/zcamy/Downloads/钉钉文件
+#  dfs:
+#    dir: /Users/zcamy/Downloads/钉钉文件
+#  other:
+#    dir: /Users/zcamy/Downloads/钉钉文件
+  max:
+    hour: 10
+  min:
+    size: 50
 
 postgresql:
   type: local

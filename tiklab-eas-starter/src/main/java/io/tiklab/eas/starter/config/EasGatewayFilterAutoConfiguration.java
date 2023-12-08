@@ -3,7 +3,7 @@ package io.tiklab.eas.starter.config;
 import io.tiklab.eam.author.Authenticator;
 import io.tiklab.eam.client.author.config.AuthorConfig;
 import io.tiklab.eam.client.author.config.AuthorConfigBuilder;
-import io.tiklab.eam.client.author.filter.AuthorFilter;
+import io.tiklab.eam.client.author.handler.AuthorHandler;
 import io.tiklab.gateway.router.Router;
 import io.tiklab.gateway.router.RouterBuilder;
 import io.tiklab.gateway.router.config.RouterConfig;
@@ -44,8 +44,8 @@ public class EasGatewayFilterAutoConfiguration {
 
     //认证filter
     @Bean
-    AuthorFilter authorFilter(Authenticator authenticator, AuthorConfig ignoreConfig){
-        return new AuthorFilter()
+    AuthorHandler authorFilter(Authenticator authenticator, AuthorConfig ignoreConfig){
+        return new AuthorHandler()
                 .setAuthenticator(authenticator)
                 .setAuthorConfig(ignoreConfig);
     }
@@ -87,6 +87,7 @@ public class EasGatewayFilterAutoConfiguration {
                         "/share/verifyAuthCode",
                         "/share/judgeAuthCode",
                         "/user/user/findAllUser",
+                        "/user/user/recoverPassword",
                         "/user/orga/findAllOrga",
                         "/userOrga/findAllUserOrga",
 

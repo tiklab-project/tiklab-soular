@@ -88,6 +88,10 @@ tenant:
 licences:
   path: ${DATA_HOME}/licences
 
+backups:
+  #    time: 0 */1 * * * ?
+  time: 0 0 2 * * ?
+  dir: /data/eas-ce
 
 auth:
   wechat_suite_id: null

@@ -1,6 +1,6 @@
 #application config
 app:
-  name: tiklab-eas
+  name: tiklab-darth
 
 spring:
   profiles:
@@ -12,16 +12,16 @@ server:
 
 
 base:
-  url: http://eas-ce.dev.tiklab.net
+  url: http://darth-ce.dev.tiklab.net
 
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://172.10.1.10:5432/tiklab_eas?stringtype=unspecified
-#  url: jdbc:postgresql://172.13.1.15:5432/eas_ee?stringtype=unspecified
+  url: jdbc:postgresql://172.10.1.10:5432/tiklab_darth?stringtype=unspecified
+#  url: jdbc:postgresql://172.13.1.15:5432/darth_ee?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /Users/zcamy/tiklab/apply_data/eas
+DATA_HOME: /Users/zcamy/tiklab/apply_data/darth
 
 #dfs config
 dfs:
@@ -71,9 +71,9 @@ plugin:
 
 #tenant config
 tenant:
-  application: eas
+  application: darth
 
-eas:
+darth:
   embbed:
     enable: true
 
@@ -83,13 +83,13 @@ backups:
   pgsql:
     dir: /opt/homebrew/opt/postgresql@15/bin
   xcode:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xcode
+    dir: /Users/zcamy/tiklab/apply_data/darth/backups/xcode
   xpack:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xpack
+    dir: /Users/zcamy/tiklab/apply_data/darth/backups/xpack
   dfs:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/dfs
+    dir: /Users/zcamy/tiklab/apply_data/darth/backups/dfs
   other:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/other
+    dir: /Users/zcamy/tiklab/apply_data/darth/backups/other
 #  xcode:
 #     dir: /Users/zcamy/Downloads/钉钉文件
 #  xpack:

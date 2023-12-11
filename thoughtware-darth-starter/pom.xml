@@ -330,8 +330,7 @@
                             <descriptors>
                                 <descriptor>assembly/distribution-${assembly}.xml</descriptor>
                             </descriptors>
-<!--                            <finalName>tiklab-eas-${version}-${timestamp}</finalName>-->
-                            <finalName>tiklab-eas-1.0.0</finalName>
+                            <finalName>thoughtware-darth-${version}-${timestamp}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                         <phase>package</phase>

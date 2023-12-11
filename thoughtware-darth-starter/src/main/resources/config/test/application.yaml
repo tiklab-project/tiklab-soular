@@ -64,7 +64,7 @@ dss:
 postgresql:
   embbed:
     enable: true
-  database: darth
+  database: darth-ce
   db:
     port: 5432
     username: postgres

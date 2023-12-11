@@ -22,7 +22,7 @@ darth:
 #dal config for mysql jdbc
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/darth-ce?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5432/darth_ce?stringtype=unspecified
   username: postgres
   password: darth2020
 
@@ -64,7 +64,7 @@ dss:
 postgresql:
   embbed:
     enable: true
-  database: darth-ce
+  database: darth_ce
   db:
     port: 5432
     username: postgres

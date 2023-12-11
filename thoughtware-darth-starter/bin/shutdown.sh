@@ -11,7 +11,7 @@ if [ -e "${DIRS}/embbed/${JDK_VERSION}" ]; then
       JAVA_HOME="${DIRS}/embbed/${JDK_VERSION}"
 fi
 
-APP_MAIN="io.thoughtware.eas.starter.EasApplication"
+APP_MAIN="io.thoughtware.darth.starter.DarthApplication"
 
 PID=0
 getPID(){

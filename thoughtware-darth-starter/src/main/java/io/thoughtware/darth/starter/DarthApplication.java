@@ -18,12 +18,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableEas
 @EnableScheduling
 @PropertySource(value = "classpath:application.yaml", factory = PropertyAndYamlSourceFactory.class)
-public class EasApplication {
+public class DarthApplication {
 
-    public static final Logger logger = LoggerFactory.getLogger(EasApplication.class);
+    public static final Logger logger = LoggerFactory.getLogger(DarthApplication.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(EasApplication.class, args);
+        SpringApplication.run(DarthApplication.class, args);
     }
 
 }

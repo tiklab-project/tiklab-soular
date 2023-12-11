@@ -2,7 +2,7 @@
 #-------------------------------------------------------------------------------------------------------------
 DIRS=$(dirname "$PWD")
 
-APP_MAIN="io.thoughtware.eas.starter.EasApplication"
+APP_MAIN="io.thoughtware.darth.starter.DarthApplication"
 
 
 JDK_VERSION=jdk-16.0.2

@@ -1,6 +1,6 @@
 #application config
 app:
-  name: tiklab-eas
+  name: thoughtware-darth
 
 spring:
   profiles:
@@ -9,12 +9,12 @@ spring:
 #web config
 server:
   port: 8080
-# enable eas to project
+# enable darth to project
 
 base:
-  url: http://eas-ce.test.tiklab.net
+  url: http://darth-ce.test.thoughtware.cn
 
-eas:
+darth:
   embbed:
     enable: true
 
@@ -22,11 +22,11 @@ eas:
 #dal config for mysql jdbc
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5000/eas?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5000/darth-ce?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/eas
+DATA_HOME: /opt/thoughtware/darth
 
 #dfs config
 dfs:
@@ -38,7 +38,7 @@ dfs:
     bucket: ${app.name}
 
 #dfs
-file.path: http://file.test.tiklab.net
+file.path: http://file.test.thoughtware.cn
 
 #dcs config
 dcs:
@@ -64,7 +64,7 @@ dss:
 postgresql:
   embbed:
     enable: true
-  database: eas
+  database: darth
   db:
     port: 5000
     username: postgres
@@ -73,7 +73,7 @@ postgresql:
 
 #integration config
 homes:
-  address: http://139.196.76.221:8081
+  address: http://thoughtware.cn
 
 #plugin config
 plugin:
@@ -81,7 +81,7 @@ plugin:
 
 #tenant config
 tenant:
-  application: eas
+  application: darth
 
 
 #licences config

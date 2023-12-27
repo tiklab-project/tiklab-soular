@@ -9,15 +9,15 @@
         <artifactId>thoughtware-dependencies</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>thoughtware-darth</artifactId>
+    <artifactId>thoughtware-eas</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>thoughtware-darth-api</module>
-        <module>thoughtware-darth-server</module>
-        <module>thoughtware-darth-starter</module>
+        <module>thoughtware-eas-api</module>
+        <module>thoughtware-eas-server</module>
+        <module>thoughtware-eas-starter</module>
     </modules>
 
     <properties>
@@ -27,6 +27,7 @@
         <thoughtware-toolkit.version>1.0.0</thoughtware-toolkit.version>
         <thoughtware-rpc.version>1.0.0</thoughtware-rpc.version>
         <thoughtware-dss.version>1.0.0</thoughtware-dss.version>
+        <thoughtware-dsm.version>1.0.0</thoughtware-dsm.version>
         <thoughtware-dcs.version>1.0.0</thoughtware-dcs.version>
         <thoughtware-dcs-cloud.version>1.0.1-SNAPSHOT</thoughtware-dcs-cloud.version>
         <thoughtware-dfs.version>1.0.0</thoughtware-dfs.version>

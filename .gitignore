@@ -8,6 +8,6 @@ data/
 logs/
 doc/
 APP_HOME_IS_UNDEFINED/
-thoughtware-darth-starter/plugin
-thoughtware-darth-starter/embbed
-thoughtware-darth-starter/logs
+thoughtware-eas-starter/plugin
+thoughtware-eas-starter/embbed
+thoughtware-eas-starter/logs

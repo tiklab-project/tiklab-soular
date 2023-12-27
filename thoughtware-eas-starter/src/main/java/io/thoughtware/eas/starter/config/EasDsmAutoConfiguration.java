@@ -56,10 +56,10 @@ public class EasDsmAutoConfiguration {
                 "oplog_1.0.4",
         });
         dsmConfig.newVersion("1.0.5", new String[]{
-                "message_1.0.4",
+                "message_1.0.5",
         });
         dsmConfig.newVersion("1.0.6", new String[]{
-                "message_1.0.4",
+                "message_1.0.6",
         });
         return dsmConfig;
     }

@@ -1,11 +1,11 @@
 #application config
 app:
-  name: thoughtware-darth-ce
+  name: thoughtware-eas-ce
   version: ce
 
 # Project access address
 base:
-  url: http://darth-ce.demo.thoughtware.net
+  url: http://eas-ce.demo.thoughtware.net
 
 #web config
 server:
@@ -16,11 +16,11 @@ server:
 
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/darth_ce?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5432/eas_ce?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/thoughtware/darth-ce
+DATA_HOME: /opt/thoughtware/eas-ce
 
 #dfs config
 dfs:
@@ -68,7 +68,7 @@ homes:
 postgresql:
   embbed:
     enable: true
-  database: darth_ce
+  database: eas_ce
   db:
     port: 5432
     username: postgres
@@ -81,16 +81,16 @@ plugin:
 
 #tenant config
 tenant:
-  application: darth-ce
+  application: eas-ce
 
-darth:
+eas:
   embbed:
     enable: true
 
 backups:
   #    time: 0 */1 * * * ?
   time: 0 0 2 * * ?
-  dir: /data/darth-ce
+  dir: /data/eas-ce
 
 #licences config
 licences:

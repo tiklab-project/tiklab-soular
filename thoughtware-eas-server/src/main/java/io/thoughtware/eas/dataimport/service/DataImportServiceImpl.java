@@ -14,8 +14,8 @@ import io.thoughtware.message.message.model.MessageItem;
 import io.thoughtware.message.message.service.MessageItemService;
 import io.thoughtware.security.logging.model.Logging;
 import io.thoughtware.security.logging.service.LoggingService;
-import io.thoughtware.todo.todotask.model.Task;
-import io.thoughtware.todo.todotask.service.TaskService;
+import io.thoughtware.todotask.model.Task;
+import io.thoughtware.todotask.service.TaskService;
 import io.thoughtware.toolkit.beans.BeanMapper;
 import io.thoughtware.toolkit.beans.annotation.Mapper;
 import io.thoughtware.user.directory.model.LdapCfg;
@@ -38,6 +38,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -63,13 +64,14 @@ public class DataImportServiceImpl implements DataImportService {
     @Autowired
     UserService userService;
 
+
     @Autowired
     MessageItemService messageItemService;
 
     @Autowired
     LoggingService opLogService;
 
-    @Autowired
+    @Autowired(required = false)
     TaskService taskService;
 
     @Autowired

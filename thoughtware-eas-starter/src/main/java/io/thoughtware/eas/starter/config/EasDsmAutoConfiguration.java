@@ -41,7 +41,8 @@ public class EasDsmAutoConfiguration {
                 "oplog_1.0.1",
                 "message_1.0.1",
                 "todotask_1.0.1",
-                "user-update_1.0.1"
+                "user-update_1.0.1",
+                "apply-auth_1.0.1"
         });
         dsmConfig.newVersion("1.0.2", new String[]{
                 "message_1.0.2",

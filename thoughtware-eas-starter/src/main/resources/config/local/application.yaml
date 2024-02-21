@@ -89,14 +89,6 @@ backups:
     dir: /Users/zcamy/tiklab/apply_data/eas/backups/dfs
   other:
     dir: /Users/zcamy/tiklab/apply_data/eas/backups/other
-#  xcode:
-#     dir: /Users/zcamy/Downloads/钉钉文件
-#  xpack:
-#    dir: /Users/zcamy/Downloads/钉钉文件
-#  dfs:
-#    dir: /Users/zcamy/Downloads/钉钉文件
-#  other:
-#    dir: /Users/zcamy/Downloads/钉钉文件
   max:
     hour: 10
   min:

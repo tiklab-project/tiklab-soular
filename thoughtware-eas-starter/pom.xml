@@ -69,21 +69,10 @@
             <groupId>io.thoughtware</groupId>
             <artifactId>thoughtware-rpc-spring-boot-starter</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>io.thoughtware</groupId>
-            <artifactId>thoughtware-eam-server</artifactId>
-            <version>${thoughtware-eam.version}</version>
-        </dependency>
         <dependency>
             <groupId>io.thoughtware</groupId>
             <artifactId>thoughtware-licence-spring-boot-starter</artifactId>
             <version>${thoughtware-licence.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.thoughtware</groupId>
-            <artifactId>thoughtware-todotask-spring-boot-starter</artifactId>
-            <version>${thoughtware-todotask.version}</version>
         </dependency>
         <dependency>
             <groupId>io.thoughtware</groupId>
@@ -102,8 +91,8 @@
         </dependency>
         <dependency>
             <groupId>io.thoughtware</groupId>
-            <artifactId>thoughtware-upgrade-starter</artifactId>
-            <version>${thoughtware-upgrade.version}</version>
+            <artifactId>thoughtware-install-starter</artifactId>
+            <version>${thoughtware-install.version}</version>
         </dependency>
 
         <dependency>
@@ -335,7 +324,8 @@
                             <descriptors>
                                 <descriptor>assembly/distribution-${assembly}.xml</descriptor>
                             </descriptors>
-                            <finalName>thoughtware-darth-${version}-${timestamp}</finalName>
+<!--                            <finalName>thoughtware-eas-${version}-${timestamp}</finalName>-->
+                            <finalName>thoughtware-eas-1.0.0</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                         <phase>package</phase>

@@ -12,7 +12,6 @@ import io.thoughtware.messsage.boot.starter.annotation.EnableMessageServer;
 import io.thoughtware.gateway.boot.starter.annotation.EnableGateway;
 import io.thoughtware.privilege.boot.starter.annotation.EnablePrivilegeServer;
 import io.thoughtware.security.boot.stater.annotation.EnableSecurityServer;
-import io.thoughtware.todotask.boot.stater.annotation.EnableTodoTaskServer;
 import io.thoughtware.toolkit.boot.starter.annotation.EnableToolkit;
 import io.thoughtware.rpc.boot.starter.annotation.EnableRpc;
 import io.thoughtware.plugin.starter.EnablePluginServer;
@@ -41,7 +40,6 @@ import org.springframework.context.annotation.Configuration;
 @EnableEamClient
 @EnableLicenceServer
 @EnableMessageServer
-@EnableTodoTaskServer
 @EnableSecurityServer
 @EnablePrivilegeServer
 

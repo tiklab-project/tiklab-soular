@@ -13,7 +13,7 @@ server:
 base:
   url: http://eas-ce.test.thoughtware.cn
 
-darth:
+eas:
   embbed:
     enable: true
 

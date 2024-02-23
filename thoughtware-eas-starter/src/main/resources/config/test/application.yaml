@@ -1,6 +1,6 @@
 #application config
 app:
-  name: thoughtware-darth
+  name: thoughtware-eas
 
 spring:
   profiles:
@@ -9,24 +9,22 @@ spring:
 #web config
 server:
   port: 8080
-# enable darth to project
 
 base:
-  url: http://darth-ce.test.thoughtware.cn
+  url: http://eas-ce.test.thoughtware.cn
 
 darth:
   embbed:
     enable: true
 
 #dal config
-#dal config for mysql jdbc
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/darth_ce?stringtype=unspecified
+  url: jdbc:postgresql://localhost:5432/eas_ce?stringtype=unspecified
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/thoughtware/darth-ce
+DATA_HOME: /opt/thoughtware/eas-ce
 
 #dfs config
 dfs:
@@ -64,7 +62,7 @@ dss:
 postgresql:
   embbed:
     enable: true
-  database: darth_ce
+  database: eas_ce
   db:
     port: 5432
     username: postgres
@@ -73,7 +71,7 @@ postgresql:
 
 #integration config
 homes:
-  address: http://thoughtware.cn
+  address: https://thoughtware.cn
 
 #plugin config
 plugin:
@@ -81,7 +79,7 @@ plugin:
 
 #tenant config
 tenant:
-  application: darth
+  application: eas
 
 
 #licences config

@@ -1,6 +1,7 @@
-package io.thoughtware.eas.dataimport.controller;
+package io.thoughtware.eas.count.controller;
 
 import io.thoughtware.core.Result;
+import io.thoughtware.eas.count.EasCountService;
 import io.thoughtware.eas.dataimport.model.ImportDatabase;
 import io.thoughtware.eas.dataimport.model.ImportDateMessage;
 import io.thoughtware.eas.dataimport.service.DataImportService;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * 导入数据控制器
@@ -19,23 +22,16 @@ import javax.validation.constraints.NotNull;
  */
 
 @RestController
-@RequestMapping("/data")
-public class DataImportSController {
+@RequestMapping("/count")
+public class EasCountController {
 
     @Autowired
-    DataImportService dataImportService;
+    EasCountService easCountService;
 
-    @RequestMapping(path="/import",method = RequestMethod.POST)
-    public Result<Void> createWorkWidget(@RequestBody @NotNull @Valid ImportDatabase database) {
-        dataImportService.dataImport(database);
-        return Result.ok();
-    }
-
-
-    @RequestMapping(path="/findImportMessage",method = RequestMethod.POST)
-    public Result<ImportDateMessage> findImportMessage() {
-        ImportDateMessage importMessage = dataImportService.findImportMessage();
-        return Result.ok(importMessage);
+    @RequestMapping(path="/findCount",method = RequestMethod.POST)
+    public Result<Map<String, Object>> createWorkWidget() {
+        Map<String, Object> count = easCountService.findCount();
+        return Result.ok(count);
     }
 
 

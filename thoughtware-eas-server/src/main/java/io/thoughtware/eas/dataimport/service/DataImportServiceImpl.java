@@ -416,65 +416,6 @@ public class DataImportServiceImpl implements DataImportService {
     }
 
     /**
-     * 获取微信需要同步的数据
-     * @param database 数据库信息
-     */
-    private void syncWeChatCfgData(ImportDatabase database){
-
-        // 判断系统版本
-        Version version = versionServer.getVersion();
-        if (version.getExpired()){
-            return ;
-        }
-
-        // 判断本地是否拥有企业微信配置
-        WeChatCfg weChatCfgById = weChatCfgService.findWeChatCfgById("4");
-        if (!Objects.isNull(weChatCfgById)){
-            return ;
-        }
-
-        // 获取远程企业微信配置
-        List<WeChatCfg> userDirList = findImportData(database, WeChatCfg.class);
-        if (userDirList.isEmpty()){
-            return ;
-        }
-        for (WeChatCfg weChatCfg : userDirList) {
-            String id = weChatCfg.getId();
-            logger.info("同步企业微信配置:" + id);
-            updateMessage(getSpeed(), "同步企业微信配置:" + id);
-        }
-    }
-
-    /**
-     * 获取ldap需要同步的数据
-     * @param database 数据库信息
-     */
-    private void syncLdapCfgData(ImportDatabase database){
-
-        // 判断系统版本
-        Version version = versionServer.getVersion();
-        if (version.getExpired()){
-            return ;
-        }
-
-        // 判断本地是否拥有ldap配置
-        LdapCfg ldapCfg1 = ldapDirCfgService.findById("2");
-        if (!Objects.isNull(ldapCfg1)){
-            return ;
-        }
-
-        // 获取远程ldap配置
-        List<LdapCfg> ldapCfgList = findImportData(database, LdapCfg.class);
-        if (ldapCfgList.isEmpty()){
-            return ;
-        }
-        for (LdapCfg ldapCfg : ldapCfgList) {
-            String id = ldapCfg.getId();
-            logger.info("同步Ldap配置:" + id);
-        }
-    }
-
-    /**
      * 获取用户组需要同步的数据
      * @param database 数据信息
      */

@@ -16,8 +16,8 @@ base:
 
 jdbc:
   driverClassName: org.postgresql.Driver
-#  url: jdbc:postgresql://172.10.1.10:5432/tiklab_eas?stringtype=unspecified
-  url: jdbc:postgresql://172.10.1.10:5432/tiklab_test_todo?stringtype=unspecified
+  url: jdbc:postgresql://172.10.1.10:5432/tiklab_eas?stringtype=unspecified
+#  url: jdbc:postgresql://172.10.1.10:5432/tiklab_test_todo?stringtype=unspecified
   username: postgres
   password: darth2020
 
@@ -63,7 +63,7 @@ dss:
 
 #integration config
 homes:
-  address: http://192.168.10.6:8080
+  address: http://192.168.10.10:8060
 
 #plugin config
 plugin:

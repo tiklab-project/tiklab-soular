@@ -47,20 +47,32 @@ public class EasDsmAutoConfiguration {
         dsmConfig.newVersion("1.0.2", new String[]{
                 "message_1.0.2",
                 "oplog_1.0.2",
+                "privilege_1.0.2",
+                "eas_1.0.2",
+                "apply-auth_1.0.2"
         });
         dsmConfig.newVersion("1.0.3", new String[]{
                 "message_1.0.3",
                 "oplog_1.0.3",
+                "apply-auth_1.0.3",
+                "privilege_1.0.3",
         });
         dsmConfig.newVersion("1.0.4", new String[]{
                 "message_1.0.4",
                 "oplog_1.0.4",
+                "apply-auth_1.0.4"
         });
         dsmConfig.newVersion("1.0.5", new String[]{
                 "message_1.0.5",
         });
         dsmConfig.newVersion("1.0.6", new String[]{
                 "message_1.0.6",
+        });
+        dsmConfig.newVersion("1.0.7", new String[]{
+                "message_1.0.7",
+        });
+        dsmConfig.newVersion("1.0.8", new String[]{
+                "message_1.0.8",
         });
         return dsmConfig;
     }

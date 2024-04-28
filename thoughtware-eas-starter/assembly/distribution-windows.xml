@@ -33,9 +33,9 @@
         <fileSet>
             <directory>${basedir}/bin</directory>
             <fileMode>755</fileMode>
-            <excludes>
-                <exclude>*.classpath</exclude>
-            </excludes>
+            <includes>
+                <include>*.bat</include>
+            </includes>
             <outputDirectory>/bin</outputDirectory>
         </fileSet>
         <fileSet>

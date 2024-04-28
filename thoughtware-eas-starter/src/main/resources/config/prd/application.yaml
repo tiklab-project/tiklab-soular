@@ -19,7 +19,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/eas-ce
+DATA_HOME: /Users/zcamy/tmp/pgsql/data
 
 #dfs config
 dfs:

@@ -43,8 +43,8 @@
         <thoughtware-licence.version>1.0.1-SNAPSHOT</thoughtware-licence.version>
         <thoughtware-privilege.version>1.0.1-SNAPSHOT</thoughtware-privilege.version>
 
-        <thoughtware-postgresql.version>1.0.1-SNAPSHOT</thoughtware-postgresql.version>
-        <thoughtware-jdk.version>1.0.0</thoughtware-jdk.version>
+        <thoughtware-postgresql.version>1.0.2-SNAPSHOT</thoughtware-postgresql.version>
+        <thoughtware-jdk.version>1.0.1-SNAPSHOT</thoughtware-jdk.version>
         <thoughtware-install.version>1.0.0</thoughtware-install.version>
 
         <commons-compress>1.21</commons-compress>

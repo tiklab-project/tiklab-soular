@@ -376,8 +376,8 @@
                             <descriptors>
                                 <descriptor>assembly/distribution-${assembly}.xml</descriptor>
                             </descriptors>
-                            <finalName>thoughtware-eas-${version}-${timestamp}</finalName>
-<!--                            <finalName>thoughtware-eas-1.0.0</finalName>-->
+<!--                            <finalName>thoughtware-eas-${version}-${timestamp}</finalName>-->
+                            <finalName>thoughtware-eas-1.0.0-${systemType}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                         <phase>package</phase>

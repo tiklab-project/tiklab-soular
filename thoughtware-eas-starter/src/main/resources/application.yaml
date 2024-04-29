@@ -1,21 +1,18 @@
-#application config
 app:
-  name: tiklab-eas
-
-
+  name: thoughtware-eas
+  
 spring:
+  config:
+    import: optional:classpath:/config/${env:local}/application.yaml
   profiles:
-    active: prd
+    active: release
 
-# Project access address
 base:
-  url: http://e.eas.tiklab.net
+  url: http://localhost:8080
 
-#web config
 server:
   port: 8080
 
-#dal config
 
 jdbc:
   driverClassName: org.postgresql.Driver
@@ -23,7 +20,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: D:\APsql\data
+DATA_HOME: C:\Program Files\eas
 
 #dfs config
 dfs:
@@ -38,7 +35,7 @@ dfs:
 
 #dfs
 file:
-  path: http://file.tiklab.net
+  path: http://file.thoughtware.net
 
 #dcs config
 dcs:
@@ -66,7 +63,7 @@ dss:
 
 #integration config
 homes:
-  address: http://139.196.76.221:8081
+  address: https://thoughtware.cn
 
 postgresql:
   embbed:
@@ -91,7 +88,6 @@ eas:
     enable: true
 
 backups:
-  #    time: 0 */1 * * * ?
   time: 0 0 2 * * ?
   dir: /data/eas-ce
 

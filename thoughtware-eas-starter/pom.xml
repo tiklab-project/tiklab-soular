@@ -176,6 +176,20 @@
         <profile>
             <id>system-windows</id>
             <dependencies>
+                <dependency>
+                    <groupId>io.thoughtware</groupId>
+                    <artifactId>thoughtware-jdk-windows</artifactId>
+                    <version>${thoughtware-jdk.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.thoughtware</groupId>
+                    <artifactId>thoughtware-postgresql-windows</artifactId>
+                    <version>${thoughtware-postgresql.version}</version>
+                    <type>zip</type>
+                    <scope>provided</scope>
+                </dependency>
             </dependencies>
             <properties>
                 <assembly>windows</assembly>
@@ -195,18 +209,25 @@
                                     <goal>unpack</goal>
                                 </goals>
                                 <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>io.thoughtware</groupId>
+                                            <artifactId>thoughtware-postgresql-windows</artifactId>
+                                            <version>${thoughtware-postgresql.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>io.thoughtware</groupId>
+                                            <artifactId>thoughtware-jdk-windows</artifactId>
+                                            <version>${thoughtware-jdk.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>embbed</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-
-                    <!--跳过发包-->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-deploy-plugin</artifactId>
-                        <configuration>
-                            <skip>true</skip>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>

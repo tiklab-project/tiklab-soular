@@ -20,7 +20,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: C:\Program Files\eas
+DATA_HOME: /Users/zcamy/tmp/测试/
 
 #dfs config
 dfs:

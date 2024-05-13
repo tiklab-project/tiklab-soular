@@ -100,8 +100,38 @@ echo ===========================================================================
 
 
 
+bat脚本获取D:/usr/a.yaml路径下yaml文件中的app.name的值
 
+@echo off
+setlocal
+@echo off
+setlocal enabledelayedexpansion
 
+rem 定义YAML文件路径
+set "yaml_file=D:\usr\a.yaml"
+
+rem 读取YAML文件内容
+for /f "tokens=* delims=" %%a in ('type "%yaml_file%"') do (
+    set "line=%%a"
+
+    rem 去除行首空格
+    for /l %%i in (1,1,9) do if "!line:~0,1!"==" " set "line=!line:~1!"
+
+    rem 解析键值对
+    for /f "tokens=1,* delims=:" %%b in ("!line!") do (
+        set "key=%%b"
+        set "value=%%c"
+
+        rem 去除键和值两端的空格
+        set "key=!key:~0,-1!"
+        set "value=!value:~1!"
+
+        rem 输出app.name对应的值
+        if "!key!"=="app.name" echo !value!
+    )
+)
+
+endlocal
 
 
 

@@ -68,7 +68,7 @@ pg_port(){
         exit
     }' "${YAML}")
 
-   echo "PostgreSQL start Port: ${db_port}"
+   #echo "PostgreSQL start Port: ${db_port}"
 }
 
 db_enable="false"
@@ -86,7 +86,7 @@ pg_enable(){
         exit
     }' "${YAML}")
 
-   echo "PostgreSQL embbed enable: ${db_enable}"
+   #echo "PostgreSQL embbed enable: ${db_enable}"
 }
 
 kill_pgsql(){

@@ -3,7 +3,6 @@
 DIRS=$(dirname "$PWD")
 
 APP_MAIN="io.thoughtware.eas.starter.EasApplication"
-find ${DIRS}/ -name '*.sh' | xargs dos2unix;
 
 YAML=${DIRS}/conf/application.yaml
 create_home(){
@@ -20,7 +19,8 @@ create_home(){
   else
     echo "================================================================================================================"
     echo "data ${data_home} initialized Failed!"
-    echo "start [failed]"
+    echo "请更改文件${YAML}中的DATA_HOME字段，配置应用可以访问的地址,请不要配置与程序相同的目录！"
+    echo "${APP_MAIN} start [failed]"
     echo "================================================================================================================"
     exit 1
   fi
@@ -125,7 +125,7 @@ startup(){
         getPID
 
         if [ $PID -ne 0 ]; then
-            echo "(PID=$PID)...[success]"
+            echo "$JAVA_HOME start (PID=$PID)...[success]"
             output
         else
             echo "[failed]"
@@ -159,13 +159,11 @@ output(){
       exit
   }' "${YAML}")
   echo "Apply Server Port: ${server_port}"
+  echo "PostgreSQL start Port: ${db_port}"
 
- echo "PostgreSQL start Port: ${db_port}"
-
-
-
+  ip_address=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | head -n 1)
   echo "====================================点击以下连接即可访问================================================="
-  echo "http://127.0.0.1:${server_port}"
+  echo "http://${ip_address}:${server_port}"
   echo "================================================================================================================"
 
 }

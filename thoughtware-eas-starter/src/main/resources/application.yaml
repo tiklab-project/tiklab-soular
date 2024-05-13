@@ -20,7 +20,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: C:\thoughtware\eas
+DATA_HOME: /Library/thoughtware/eas
 
 #dfs config
 dfs:

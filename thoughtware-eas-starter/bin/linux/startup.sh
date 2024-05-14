@@ -170,6 +170,7 @@ output(){
 }
 
 start(){
+  pg_port
   create_home
   valid_jdk
   valid_postgresql

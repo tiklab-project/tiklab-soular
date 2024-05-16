@@ -23,15 +23,6 @@ set DIRS=%P1Path%
 REM 输出基本文件地址
 echo DIRS:%DIRS%
 
-REM 检查目录是否存在，如果不存在则创建
-if not exist "%DIRS%" (
-    mkdir "%DIRS%"
-    if errorlevel 1 (
-        echo Failed to create directory %DIRS%.
-        exit
-    )
-)
-
 REM 内嵌应用地址
 set EMBEDDED_DIR=%DIRS%embbed
 echo EMBEDDED_DIR:%EMBEDDED_DIR%

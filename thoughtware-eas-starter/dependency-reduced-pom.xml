@@ -41,9 +41,12 @@
           <excludes>
             <exclude>*.yaml</exclude>
             <exclude>*.properties</exclude>
+            <exclude>*.xml</exclude>
             <exclude>**/config/dev/**</exclude>
             <exclude>**/config/test/**</exclude>
             <exclude>**/config/local/**</exclude>
+            <exclude>**/config/demo/**</exclude>
+            <exclude>**/config/prd/**</exclude>
           </excludes>
         </configuration>
       </plugin>

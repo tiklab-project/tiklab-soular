@@ -6,7 +6,6 @@ import io.thoughtware.licence.licence.model.Version;
 import io.thoughtware.licence.licence.service.VersionService;
 import io.thoughtware.message.message.service.MessageNoticeService;
 import io.thoughtware.message.setting.service.MessageSendTypeService;
-import io.thoughtware.plugin.manager.service.PluginManagerService;
 import io.thoughtware.privilege.role.service.RoleService;
 import io.thoughtware.security.backups.service.BackupsDbService;
 import io.thoughtware.user.directory.service.UserDirService;
@@ -43,8 +42,8 @@ public class CountServiceImpl implements CountService {
     @Autowired
     MessageSendTypeService sendTypeService;
 
-    @Autowired
-    PluginManagerService pluginManagerService;
+    // @Autowired
+    // PluginManagerService pluginManagerService;
 
     @Autowired
     VersionService versionService;
@@ -79,12 +78,6 @@ public class CountServiceImpl implements CountService {
 
         Integer sendTypeNumber = sendTypeService.findSendTypeNumber();
         map.put("sendTypeNumber",sendTypeNumber);
-
-        Integer installPluginNumber = pluginManagerService.findInstallPluginNumber();
-        map.put("installPluginNumber",installPluginNumber);
-
-        Integer shopPluginNumber = pluginManagerService.findShopPluginNumber();
-        map.put("shopPluginNumber",shopPluginNumber);
 
         Version version = versionService.getVersion();
         map.put("version",version.getExpired());

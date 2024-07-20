@@ -80,11 +80,6 @@
             <artifactId>commons-compress</artifactId>
             <version>${commons-compress}</version>
         </dependency>
-        <dependency>
-            <groupId>io.thoughtware</groupId>
-            <artifactId>thoughtware-plugin-manager</artifactId>
-            <version>${thoughtware-plugin.version}</version>
-        </dependency>
 
     </dependencies>
 

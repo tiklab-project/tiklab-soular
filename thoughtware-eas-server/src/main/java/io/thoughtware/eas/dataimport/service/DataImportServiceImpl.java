@@ -662,12 +662,10 @@ public class DataImportServiceImpl implements DataImportService {
             if(message.contains("password authentication failed for user")){
                 throw new ApplicationException("无法连接到数据库，数据库用户名或密码错误！");
             }
-
             if (message.contains("Unable to parse URL ")|| message.contains("尝试连线已失败 ")
                     || message.contains("Check that the hostname and port are correct ")){
                 throw new ApplicationException("无法连接到数据库，数据库地址或端口配置错误！");
             }
-
             throw new SystemException(e.getMessage());
         }
 

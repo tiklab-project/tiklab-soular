@@ -9,15 +9,15 @@
         <artifactId>thoughtware-dependencies</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>thoughtware-eas</artifactId>
+    <artifactId>thoughtware-soular</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <version>1.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>thoughtware-eas-api</module>
-        <module>thoughtware-eas-server</module>
-        <module>thoughtware-eas-starter</module>
+        <module>thoughtware-soular-api</module>
+        <module>thoughtware-soular-server</module>
+        <module>thoughtware-soular-starter</module>
     </modules>
 
     <properties>

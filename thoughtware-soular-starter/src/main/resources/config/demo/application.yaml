@@ -1,0 +1,103 @@
+#application config
+app:
+  name: thoughtware-eas-ce
+  version: ce
+
+# Project access address
+base:
+  url: http://eas-ce.demo.thoughtware.net
+
+#web config
+server:
+  port: 8080
+# enable darth to project
+
+#dal config
+
+jdbc:
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/eas_ce?stringtype=unspecified
+  username: postgres
+  password: darth2020
+
+DATA_HOME: /opt/thoughtware/eas-ce
+
+#dfs config
+dfs:
+  server:
+    #    enabled: true
+    #    mode:server
+    port: 4001
+    datapath: ${DATA_HOME}/files
+  client:
+    url: 172.10.1.11:4001
+    bucket: ${app.name}
+
+#dfs
+file:
+  path: http://file.thoughtware.net
+
+#dcs config
+dcs:
+  server:
+    enabled: true
+    port: 5030
+    datapath: ${DATA_HOME}/caches
+  client:
+    url: 127.0.0.1:5030
+    group: g1
+    database: dcs1
+    expire: 7200
+
+#dss config
+
+dss:
+  server:
+    #    enabled: true
+    #    mode:server
+    port: 6001
+    datapath: ${DATA_HOME}/index
+  client:
+    url: 172.10.1.11:6001
+    bucket: ${app.name}
+
+#integration config
+homes:
+  address: http://thoughtware.net
+
+postgresql:
+  embbed:
+    enable: true
+  database: eas_ce
+  db:
+    port: 5432
+    username: postgres
+    password: darth2020
+    address: ${DATA_HOME}/postgresql
+
+#plugin config
+plugin:
+  path: ${DATA_HOME}/plugin
+
+#tenant config
+tenant:
+  application: soular-ce
+
+soular:
+  embbed:
+    enable: true
+
+backups:
+  #    time: 0 */1 * * * ?
+  time: 0 0 2 * * ?
+  dir: /data/eas-ce
+
+#licences config
+licences:
+  path: ${DATA_HOME}/licences
+
+auth:
+  wechat_suite_id: null
+  wechat_secret: null
+  wechat_token: null
+  wechat_encodingAESKey: null

@@ -1,0 +1,110 @@
+     #application config
+app:
+  name: tiklab-eas
+  type: ee
+
+spring:
+  profiles:
+    active: local
+
+#web config
+server:
+  port: 8080
+
+
+base:
+  url: http://192.168.10.35:3010
+
+jdbc:
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://172.10.1.10:5432/tiklab_eas?stringtype=unspecified
+  username: postgres
+  password: darth2020
+
+DATA_HOME: /Users/zcamy/tiklab/apply_data/eas
+
+#dfs config
+dfs:
+  server:
+    enabled: false
+#    mode:server
+    port: 4000
+    datapath: ${DATA_HOME}/files
+  client:
+    url: 172.10.1.11:4000
+    bucket: ${app.name}
+
+
+#dfs
+file:
+  path: http://file.dev.tiklab.net
+
+#dcs
+dcs:
+  server:
+    enabled: true
+    port: 5035
+    datapath: ${DATA_HOME}/caches
+  client:
+    url: 127.0.0.1:5035
+    group: g1
+    database: dcs1
+    expire: 7200
+
+dss:
+  server:
+    #    enabled: true
+    #    mode:server
+    port: 6000
+    datapath: ${DATA_HOME}/index
+  client:
+    url: 172.10.1.11:6000
+    bucket: ${app.name}
+
+#integration config
+homes:
+  address: http://192.168.10.10:8060
+
+#plugin config
+plugin:
+  path: ${DATA_HOME}/plugin
+
+#tenant config
+tenant:
+  application: soular
+
+soular:
+  embbed:
+    enable: true
+
+backups:
+  time: 0 0 2 * * ?
+  dir: ${DATA_HOME}
+  pgsql:
+    dir: /opt/homebrew/opt/postgresql@15/bin
+  xcode:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xcode
+  xpack:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xpack
+  dfs:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/dfs
+  other:
+    dir: /Users/zcamy/tiklab/apply_data/eas/backups/other
+  max:
+    hour: 10
+  min:
+    size: 50
+
+postgresql:
+  type: local
+
+#licences config
+licences:
+  path: ${DATA_HOME}/licences
+
+auth:
+  type: local
+  wechat_suite_id: null
+  wechat_secret: null
+  wechat_token: null
+  wechat_encodingAESKey: null

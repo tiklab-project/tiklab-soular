@@ -50,11 +50,26 @@ soular是一款开源、免费的账号中心管理工具，帮助你轻松实�
 
 ### 克隆仓库
 ```bash
-git clone https://github.com/tiklab/tiklab-soular.git
+git clone https://github.com/tiklab-project/tiklab-soular.git
 cd tiklab-soular
 ```
 
 ### 构建项目
+
+#### 配置MAVEN仓库
+配置maven的setrings.xml文件的远程仓库为一下内容
+
+```
+<mirror>
+    <id>hadess</id>
+    <name>hadess</name>
+    <url>https://mirror.tiklab.net/repository/tiklab-maven</url>  
+    <mirrorOf>*</mirrorOf>
+</mirror>
+```
+#### 构建
+
+
 - **MAC系统**：mvn clean package -P system-mac,env-dev
 - **Linux系统**：mvn clean package -P system-linux,env-dev
 - **Windows系统**：mvn clean package -P system-windows,env-dev

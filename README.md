@@ -12,6 +12,7 @@ soular是一款开源、免费的账号中心管理工具，帮助你轻松实�
 - 不同系统的消息，代办，动态在这里都能获取到。。
 - 关联所有Tiklab应用。
 - 集成TikLab下产品，同一用户访问多个应用。
+
 ![img.png](tiklab-soular-starter/src/main/resources/img/1.png)
 
 ### 2. 账号管理
@@ -19,6 +20,7 @@ soular是一款开源、免费的账号中心管理工具，帮助你轻松实�
 - 在目录服务中管理不同的组织单位。
 - 根据不同的角色和职责创建用户组。
 - 根据公司的战略目标和业务需求，设置不同的部门。
+
 ![img.png](tiklab-soular-starter/src/main/resources/img/2.png)
 
 
@@ -26,6 +28,7 @@ soular是一款开源、免费的账号中心管理工具，帮助你轻松实�
 - 对资源的具体操作进行权限划分。
 - 授权用户能访问特定应用功能和数据。
 - 根据业务需求，自定义角色及其权限。
+
 ![img.png](tiklab-soular-starter/src/main/resources/img/3.png)
 
 ### 4. 消息管理
@@ -58,7 +61,7 @@ cd tiklab-soular
 
 ### 使用示例
 1. 使用IDEA运行SoularApplication启动。
-2. 打开浏览器，访问 http://localhost:8080。
+2. 打开浏览器，访问 http://localhost:8080
 3. 登录信息，用户名：admin 密码：123456
 
 
@@ -67,13 +70,13 @@ cd tiklab-soular
 
 [联系我们](https://tiklab.net/account/workOrder/add)
 
-邮箱: tiklab@126.com
+邮箱: tiklab@163.com
 
 如需了解更多信息，请访问我们的官方网站或加入我们的社区讨论：
 
 [官方网站](https://www.tiklab.net)
 
-邮箱: tiklab@126.com
+邮箱: tiklab@163.com
 
 #### 快来体验Soular，让你的账号管理更轻松高效！
 

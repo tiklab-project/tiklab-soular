@@ -1,3 +1,8 @@
+
+<h1 align="center" style="border-bottom: none">
+    <a href="https://soular.tiklab.net/" target="_blank"><img alt="soular" src="tiklab-soular-starter/src/main/resources/img/logo.png"></a><br>soular
+</h1>
+
 # soular - 账号与门户中心管理工具
 
 soular是一款开源、免费的账号中心管理工具，帮助你轻松实现用户管理、权限控制、消息动态管理和统一认证等功能，全面提升系统的安全性和管理效率。
@@ -7,21 +12,27 @@ soular是一款开源、免费的账号中心管理工具，帮助你轻松实�
 - 不同系统的消息，代办，动态在这里都能获取到。。
 - 关联所有Tiklab应用。
 - 集成TikLab下产品，同一用户访问多个应用。
+![img.png](tiklab-soular-starter/src/main/resources/img/1.png)
 
 ### 2. 账号管理
 - 多种账号体系，包括内部用户，企业微信用户，Ldap用户。
 - 在目录服务中管理不同的组织单位。
 - 根据不同的角色和职责创建用户组。
 - 根据公司的战略目标和业务需求，设置不同的部门。
+![img.png](tiklab-soular-starter/src/main/resources/img/2.png)
+
 
 ### 3. 权限控制
 - 对资源的具体操作进行权限划分。
 - 授权用户能访问特定应用功能和数据。
 - 根据业务需求，自定义角色及其权限。
+![img.png](tiklab-soular-starter/src/main/resources/img/3.png)
 
 ### 4. 消息管理
 - 支持多种消息方式，满足你多种需求。
 - 是否发送，发送渠道，发送人员，完全自定义。
+
+
 ## 产品优势
 - **安全可靠**：内置多层安全机制，确保用户数据的隐私和系统的安全性。
 - **开源免费**：免费开源，适合各类企业和个人开发者。
@@ -64,5 +75,5 @@ cd tiklab-soular
 
 邮箱: tiklab@126.com
 
-#### 立即体验 soular，解锁高效的自动化构建、测试和部署流程！
+#### 快来体验Soular，让你的账号管理更轻松高效！
 

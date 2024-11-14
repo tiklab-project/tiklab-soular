@@ -80,6 +80,7 @@ public class SoularGatewayFilterAutoConfiguration {
                         "/eam/auth/logout",
                         "/eam/auth/valid",
                         "/eam/wechat/passport/internallogin",
+                        "/eam/auth/valid",
 
                         "/auth/valid",
                         "/share/verifyAuthCode",

@@ -6,11 +6,11 @@ app:
 spring:
   profiles:
     active: local
+  freemarker:
+    checkTemplateLocation: false
 
-#web config
 server:
   port: 8080
-
 
 base:
   url: http://192.168.10.35:3010
@@ -49,7 +49,8 @@ dcs:
     url: 127.0.0.1:5035
     group: g1
     database: dcs1
-    expire: 7200
+#    expire: 7200
+    expire: 20
 
 dss:
   server:
@@ -63,7 +64,7 @@ dss:
 
 #integration config
 homes:
-  address: http://192.168.10.10:8060
+  address: http://192.168.10.15:8060
 
 #plugin config
 plugin:

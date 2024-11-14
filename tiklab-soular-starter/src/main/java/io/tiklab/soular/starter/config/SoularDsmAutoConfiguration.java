@@ -73,6 +73,7 @@ public class SoularDsmAutoConfiguration {
         });
         dsmConfig.newVersion("1.0.7", new String[]{
                 "message_1.0.7",
+                "eas_1.0.7",
         });
         dsmConfig.newVersion("1.0.8", new String[]{
                 "message_1.0.8",

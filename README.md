@@ -166,7 +166,8 @@ cd tiklab-soular
 
 ### 构建项目
 
-#### 配置MAVEN仓库
+**配置MAVEN仓库**
+
 配置maven的setrings.xml文件的远程仓库为一下内容
 
 ```
@@ -177,8 +178,7 @@ cd tiklab-soular
     <mirrorOf>*</mirrorOf>
 </mirror>
 ```
-#### 构建
-
+**构建**
 
 - **MAC系统**：mvn clean package -P system-mac,env-dev
 - **Linux系统**：mvn clean package -P system-linux,env-dev
@@ -203,5 +203,5 @@ cd tiklab-soular
 
 邮箱: tiklab@163.com
 
-#### 快来体验Soular，让你的账号管理更轻松高效！
+**快来体验Soular，让你的账号管理更轻松高效!**
 

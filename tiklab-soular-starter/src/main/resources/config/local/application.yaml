@@ -49,8 +49,13 @@ dcs:
     url: 127.0.0.1:5035
     group: g1
     database: dcs1
-#    expire: 7200
-    expire: 20
+    expire: 7200
+  app:
+    url: 127.0.0.1:5035
+    group: g1
+    database: app
+#    expire: 604800
+    expire: 10
 
 dss:
   server:

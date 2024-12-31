@@ -9,7 +9,7 @@ soular是一款开源、免费的账号中心管理工具，帮助你轻松实�
 ## 主要功能
 通过工作台，统一账号，统一认证，系统设置四个方面来简单了解soular的主要功能。
 
-### 1.1 统一账号
+### 统一账号
 
 soular 可以统一管理用户，部门，用户组等信息。
 
@@ -41,7 +41,7 @@ soular支持第三方账号体系，如钉钉，企业微信，Ldap等，用户�
 
 ![img](https://community.tiklab.net/api/image/87530cf8eed7cde6)
 
-### 1.2 统一认证
+### 统一认证
 
 Tiklab 系列应用可以使用 soular 作为统一的账号认证中心来使用，可以让一个账号来访问所有的Tiklab 应用，不需要再次登录各个应用，并且 soular 支持账号密码认证，钉钉认证，企业微信认证，Ladp 认证等多种认证方式。
 
@@ -57,13 +57,13 @@ Tiklab 系列应用可以使用 soular 作为统一的账号认证中心来使�
 | Ldap认证     | 可以使用 Ldap 账号密码登录。                                                  |
 
 
-### 1.3 工作台
+### 工作台
 
 soular 与TikLab进行了深度集成，打通了各系统间的消息、待办事项和动态管理。同时，soular 无缝关联TikLab旗下的所有应用，同一用户能够轻松访问多个应用。﻿
 
 ![img](https://community.tiklab.net/api/image/70b622c3d57750e7)
 
-### 1.4 系统管理
+### 系统管理
 
 通过不同的设置来更加全面的使用 soular，如权限控制，消息管理。
 
@@ -152,7 +152,7 @@ Gitee： https://gitee.com/tiklab-project/tiklab-soular
 GitHub： https://github.com/tiklab-project/tiklab-soular
 
 
-## 安装
+## 安装使用
 
 ### 系统要求
 - Java 16+

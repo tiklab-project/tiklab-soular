@@ -65,7 +65,8 @@ public class SoularDsmAutoConfiguration {
         });
         dsmConfig.newVersion("1.0.5", new String[]{
                 "message_1.0.5",
-                "eas_1.0.5"
+                "eas_1.0.5",
+                "apply-auth_1.0.5"
         });
         dsmConfig.newVersion("1.0.6", new String[]{
                 "message_1.0.6",

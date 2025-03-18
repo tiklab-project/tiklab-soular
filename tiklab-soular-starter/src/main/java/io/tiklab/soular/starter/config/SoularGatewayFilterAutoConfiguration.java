@@ -113,6 +113,7 @@ public class SoularGatewayFilterAutoConfiguration {
                         "/oplog/type/syncLogType",
                         "/todo/type/syncTaskType",
                         "/message/messageType/syncMessageType",
+                        "/init/install/findStatus"
                 })
                 .ignorePreUrls(new String[]{
                         "/service",

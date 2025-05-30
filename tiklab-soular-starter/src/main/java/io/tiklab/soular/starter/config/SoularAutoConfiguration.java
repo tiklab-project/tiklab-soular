@@ -2,6 +2,8 @@ package io.tiklab.soular.starter.config;
 
 import io.tiklab.dsm.boot.starter.annotation.EnableDsm;
 import io.tiklab.licence.boot.starter.annotation.EnableLicenceServer;
+import io.tiklab.openapi.boot.starter.annotation.EnableOpenApi;
+import io.tiklab.postin.client.EnablePostInClient;
 import io.tiklab.user.boot.starter.annotation.EnableUserServer;
 import io.tiklab.dal.boot.starter.annotation.EnableDal;
 import io.tiklab.dcs.boot.starter.annotation.EnableDcsClient;
@@ -30,6 +32,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableDcsClient
 @EnableRpc
 @EnableGateway
+@EnableOpenApi
 @EnableDsm
 
 //pcs
@@ -41,6 +44,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableSecurityServer
 @EnablePrivilegeServer
 
+// postin
+@EnablePostInClient
 //other
 @ComponentScan({"io.tiklab.soular"})
 public class SoularAutoConfiguration {

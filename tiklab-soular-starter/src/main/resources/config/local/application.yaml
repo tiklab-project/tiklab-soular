@@ -49,13 +49,14 @@ dcs:
     url: 127.0.0.1:5035
     group: g1
     database: dcs1
+#    expire: 60
     expire: 7200
   app:
     url: 127.0.0.1:5035
     group: g1
     database: app
 #    expire: 604800
-    expire: 10
+    expire: 60
 
 dss:
   server:
@@ -83,6 +84,10 @@ soular:
   embbed:
     enable: true
 
+postin:
+  scan:
+    package: io.tiklab.soular
+
 backups:
   time: 0 0 2 * * ?
   dir: ${DATA_HOME}
@@ -108,9 +113,9 @@ postgresql:
 licences:
   path: ${DATA_HOME}/licences
 
-auth:
-  type: local
-  wechat_suite_id: null
-  wechat_secret: null
-  wechat_token: null
-  wechat_encodingAESKey: null
+#auth:
+#  type: local
+#  wechat_suite_id: null
+#  wechat_secret: null
+#  wechat_token: null
+#  wechat_encodingAESKey: null

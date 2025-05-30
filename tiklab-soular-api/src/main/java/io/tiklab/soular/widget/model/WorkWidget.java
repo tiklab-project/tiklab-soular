@@ -1,5 +1,6 @@
 package io.tiklab.soular.widget.model;
 
+import io.tiklab.postin.annotation.ApiProperty;
 import io.tiklab.toolkit.beans.annotation.Mapper;
 import io.tiklab.core.BaseModel;
 
@@ -9,35 +10,35 @@ import javax.validation.constraints.NotNull;
 @Mapper
 public class WorkWidget  extends BaseModel{
 
-//    @ApiProperty(name="id",desc="唯一标识")
+    @ApiProperty(name="id",desc="唯一标识")
     private String id;
 
     @NotNull
     private String name;
 
     @NotNull
-//    @ApiProperty(name ="code",desc = "widget编码")
+    @ApiProperty(name ="code",desc = "应用编码")
     private String code;
 
 
-//    @ApiProperty(name ="description",desc = "描述")
+    @ApiProperty(name ="description",desc = "描述")
     private String description;
 
 
     @NotNull
-//    @ApiProperty(name ="type",desc = "类型值：protal、project、postin")
+    @ApiProperty(name ="type",desc = "类型值")
     private String type;
 
     @NotNull
-//    @ApiProperty(name ="webUrl",desc = "页面跳转url")
+    @ApiProperty(name ="webUrl",desc = "页面跳转URL")
     private String webUrl;
 
     @NotNull
-//    @ApiProperty(name ="apiUrl",desc = "接口url")
+    @ApiProperty(name ="apiUrl",desc = "接口URL")
     private String apiUrl;
 
     @NotNull
-//    @ApiProperty(name ="dashboardType",desc = "面板布局类型")
+    @ApiProperty(name ="dashboardType",desc = "面板布局类型")
     private String dashboardType;
 
     public String getDashboardType() {

@@ -41,7 +41,7 @@ COMMENT ON COLUMN eas_work_widget_layout.left_dashboard IS '左侧面板的 widg
 
 -- 系统级
 -- 初始话管理员角色表
-INSERT INTO pcs_prc_role (id, name, description, grouper, type, scope, default_role, business_type) VALUES ('1', '管理员角色', NULL, 'system', '1', 1, 0, 1);
+INSERT INTO pcs_prc_role (id, name, description, grouper, type, scope, default_role, business_type) VALUES ('1', '管理员', NULL, 'system', '1', 1, 0, 1);
 -- 初始话普通色表
 INSERT INTO pcs_prc_role (id, name, description, grouper, type, scope, default_role, business_type) VALUES ('2', '普通角色', NULL, 'system', '1', 1, 1, 0);
 

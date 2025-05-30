@@ -2,6 +2,9 @@ package io.tiklab.soular.widget.controller;
 
 import io.tiklab.core.Result;
 import io.tiklab.core.page.Pagination;
+import io.tiklab.postin.annotation.Api;
+import io.tiklab.postin.annotation.ApiMethod;
+import io.tiklab.postin.annotation.ApiParam;
 import io.tiklab.soular.widget.model.WorkWidget;
 import io.tiklab.soular.widget.model.WorkWidgetQuery;
 import io.tiklab.soular.widget.service.WorkWidgetService;
@@ -19,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/widget")
-////@Api(name = "WorkWidgetController",desc = "项目中可使用的Widget")
+@Api(name = "工作台应用控制器",desc = "工作台应用控制器")
 public class WorkWidgetController {
     private static Logger logger = LoggerFactory.getLogger(WorkWidgetController.class);
 
@@ -27,8 +30,8 @@ public class WorkWidgetController {
     private WorkWidgetService workWidgetService;
 
     @RequestMapping(path="/createWorkWidget",method = RequestMethod.POST)
-//   // @ApiMethod(name = "createWorkWidget",desc = "createWorkWidget")
-//   // @ApiParam(name = "workWidget",desc = "workWidget",required = true)
+    @ApiMethod(name = "创建配置的应用",desc = "创建配置的应用")
+    @ApiParam(name = "workWidget",desc = "应用信息",required = true)
     public Result<String> createWorkWidget(@RequestBody @NotNull @Valid WorkWidget workWidget) {
         String id = workWidgetService.createWorkWidget(workWidget);
         return Result.ok(id);
@@ -36,16 +39,16 @@ public class WorkWidgetController {
 
 
     @RequestMapping(path="/updateWorkWidget",method = RequestMethod.POST)
-//   // @ApiMethod(name = "updateWorkWidget",desc = "updateWorkWidget")
-//   // @ApiParam(name = "workWidget",desc = "workWidget",required = true)
+//   // //@ApiMethod(name = "updateWorkWidget",desc = "updateWorkWidget")
+//   // //@ApiParam(name = "workWidget",desc = "workWidget",required = true)
     public Result<Void> updateWorkWidget(@RequestBody @NotNull @Valid WorkWidget workWidget) {
          workWidgetService.updateWorkWidget(workWidget);
         return Result.ok();
     }
 
     @RequestMapping(path="/deleteWorkWidget",method = RequestMethod.POST)
-//   // @ApiMethod(name = "deleteWorkWidget",desc = "deleteWorkWidget")
-//   // @ApiParam(name = "id",desc = "id",required = true)
+    @ApiMethod(name = "删除配置的应用",desc = "查询配置的应用")
+    @ApiParam(name = "id",desc = "id",required = true)
     public Result<Void> deleteWorkWidget(@NotNull String id) {
         workWidgetService.deleteWorkWidget(id);
         return Result.ok();
@@ -53,8 +56,8 @@ public class WorkWidgetController {
 
 
     @RequestMapping(path="/findWorkWidgetList",method = RequestMethod.POST)
-//   // @ApiMethod(name = "workWidgetAll",desc = "workWidgetAll")
-//   // @ApiParam(name = "workWidgetQuery",desc = "workWidgetQuery",required = true)
+    @ApiMethod(name = "查询的应用列表",desc = "查询配置的应用")
+    @ApiParam(name = "workWidgetQuery",desc = "workWidgetQuery",required = true)
     public Result<WorkWidget> findWorkWidgetList(@RequestBody @NotNull @Valid WorkWidgetQuery workWidgetQuery) {
         List<WorkWidget> workWidgetAll = workWidgetService.findWorkWidgetAll(workWidgetQuery);
         return Result.ok(workWidgetAll);
@@ -62,8 +65,8 @@ public class WorkWidgetController {
 
 
     @RequestMapping(path="/findWorkWidgetPage",method = RequestMethod.POST)
-//   // @ApiMethod(name = "findWorkWidgetPage",desc = "findWorkWidgetPage")
-//   // @ApiParam(name = "workWidgetQuery",desc = "workWidgetQuery",required = true)
+    @ApiMethod(name = "分页查询的应用列表",desc = "分页查询的应用列表")
+    @ApiParam(name = "workWidgetQuery",desc = "workWidgetQuery",required = true)
     public Result<Pagination<WorkWidget>> findWorkWidgetPage(@RequestBody @NotNull @Valid WorkWidgetQuery workWidgetQuery) {
         Pagination<WorkWidget>  workWidgetAll = workWidgetService.findWorkWidgetPage(workWidgetQuery);
         return Result.ok(workWidgetAll);

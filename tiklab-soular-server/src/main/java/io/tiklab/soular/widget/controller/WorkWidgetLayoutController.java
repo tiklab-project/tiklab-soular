@@ -26,7 +26,7 @@ public class WorkWidgetLayoutController {
 
 
     @RequestMapping(path="/createLayout",method = RequestMethod.POST)
-//   // @ApiParam(name = "workWidget",desc = "workWidget",required = true)
+//   // //@ApiParam(name = "workWidget",desc = "workWidget",required = true)
     public Result<String> createLayout(@RequestBody @NotNull @Valid WorkWidgetLayout workWidgetLayout) {
         String id = workWidgetLayoutService.createWidgetLayout(workWidgetLayout);
         return Result.ok(id);
@@ -34,7 +34,7 @@ public class WorkWidgetLayoutController {
 
 
     @RequestMapping(path="/updateLayout",method = RequestMethod.POST)
-//   // @ApiParam(name = "workWidget",desc = "workWidget",required = true)
+//   // //@ApiParam(name = "workWidget",desc = "workWidget",required = true)
     public Result<String> updateLayout(@RequestBody @NotNull @Valid WorkWidgetLayout workWidgetLayout) {
         workWidgetLayoutService.updateWidgetLayout(workWidgetLayout);
         return Result.ok();
@@ -42,14 +42,14 @@ public class WorkWidgetLayoutController {
 
 
 //    @RequestMapping(path="/findLayout",method = RequestMethod.POST)
-//   // @ApiParam(name = "workWidget",desc = "workWidget",required = true)
+//   // //@ApiParam(name = "workWidget",desc = "workWidget",required = true)
 //    public Result<WorkWidgetLayout> findLayout(@RequestBody @NotNull @Valid WorkWidgetLayoutQuery workWidgetLayoutQuery) {
 //        WorkWidgetLayout widgetLayout = workWidgetLayoutService.findWidgetLayout(workWidgetLayoutQuery);
 //        return Result.ok(widgetLayout);
 //    }
 
     @RequestMapping(path="/findLayout",method = RequestMethod.POST)
-//   // @ApiParam(name = "workWidget",desc = "所有用户只有一个工作空间",required = true)
+//   // //@ApiParam(name = "workWidget",desc = "所有用户只有一个工作空间",required = true)
     public Result<WorkWidgetLayout> findLayout() {
         WorkWidgetLayout widgetLayout = workWidgetLayoutService.findWidgetLayoutOne();
         return Result.ok(widgetLayout);

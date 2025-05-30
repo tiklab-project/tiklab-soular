@@ -20,6 +20,10 @@
             <artifactId>tiklab-core</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.tiklab</groupId>
+            <artifactId>tiklab-postin-annotation</artifactId>
+        </dependency>
     </dependencies>
 
 

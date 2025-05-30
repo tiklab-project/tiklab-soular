@@ -1,6 +1,6 @@
 package io.tiklab.soular.starter.config;
 
-import io.tiklab.dsm.config.model.DsmConfig;
+import io.tiklab.dsm.model.DsmConfig;
 import io.tiklab.dsm.support.DsmConfigBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,8 @@ public class SoularDsmAutoConfiguration {
                 //TodoTaskDsm
                 "todotask_1.0.0",
                 //EasDsm
-                "eas_1.0.0"
+                "eas_1.0.0",
+                "openapi_1.0.0"
         });
         dsmConfig.newVersion("1.0.1", new String[]{
                 "privilege_1.0.1",

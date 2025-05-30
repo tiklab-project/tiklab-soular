@@ -76,6 +76,12 @@
             <version>${commons-compress}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.tiklab</groupId>
+            <artifactId>tiklab-postin-client</artifactId>
+            <version>${tiklab-postin.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -101,6 +101,12 @@
             <artifactId>tiklab-dsm-spring-boot-starter</artifactId>
             <version>${tiklab-dsm.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.tiklab</groupId>
+            <artifactId>tiklab-openapi-spring-boot-starter</artifactId>
+            <version>1.0.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <profiles>

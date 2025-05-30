@@ -43,6 +43,8 @@
         <tiklab-licence.version>1.0.2</tiklab-licence.version>
         <tiklab-privilege.version>1.0.2</tiklab-privilege.version>
 
+        <tiklab-postin.version>1.0.2</tiklab-postin.version>
+
         <tiklab-postgresql.version>1.0.2</tiklab-postgresql.version>
         <tiklab-jdk.version>1.0.2</tiklab-jdk.version>
         <tiklab-install.version>1.0.2</tiklab-install.version>

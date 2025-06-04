@@ -21,7 +21,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: ${user.home}/tiklab/tiklab-eas
+DATA_HOME: ${user.home}/tiklab/tiklab-soular
 
 #dfs config
 dfs:

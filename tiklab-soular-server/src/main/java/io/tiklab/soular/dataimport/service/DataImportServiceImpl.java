@@ -2,7 +2,6 @@ package io.tiklab.soular.dataimport.service;
 
 import io.tiklab.core.exception.ApplicationException;
 import io.tiklab.core.exception.SystemException;
-import io.tiklab.core.resolver.AnnotationResourceResolver;
 import io.tiklab.dal.jpa.annotation.Column;
 import io.tiklab.dal.jpa.annotation.Entity;
 import io.tiklab.dal.jpa.annotation.Table;
@@ -17,6 +16,7 @@ import io.tiklab.todotask.todo.model.Task;
 import io.tiklab.todotask.todo.service.TaskService;
 import io.tiklab.toolkit.beans.BeanMapper;
 import io.tiklab.toolkit.beans.annotation.Mapper;
+import io.tiklab.toolkit.resource.AnnotationResourceResolver;
 import io.tiklab.user.directory.service.LdapDirCfgService;
 import io.tiklab.user.directory.service.WeChatCfgService;
 import io.tiklab.user.dmUser.service.UserRoleService;

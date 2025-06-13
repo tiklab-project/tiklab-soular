@@ -147,9 +147,9 @@ Arbess提供了开源的源码，可以在Gitee,GitHub上面直接下载，使�
 
 开源地址：
 
-Gitee： https://gitee.com/tiklab-project/tiklab-soular
+Gitee： https://gitee.com/tiklab-kanassProject/tiklab-soular
 
-GitHub： https://github.com/tiklab-project/tiklab-soular
+GitHub： https://github.com/tiklab-kanassProject/tiklab-soular
 
 
 ## 安装使用

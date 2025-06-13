@@ -14,7 +14,7 @@ CREATE TABLE eas_work_widget (
 COMMENT ON COLUMN eas_work_widget.name IS 'widget 名称';
 COMMENT ON COLUMN eas_work_widget.code IS 'widget 编码';
 COMMENT ON COLUMN eas_work_widget.description IS '描述';
-COMMENT ON COLUMN eas_work_widget.type IS 'protal、project、postin';
+COMMENT ON COLUMN eas_work_widget.type IS 'protal、kanassProject、postin';
 COMMENT ON COLUMN eas_work_widget.web_url IS 'widget 的页面跳转 URL';
 COMMENT ON COLUMN eas_work_widget.api_url IS 'widget 的接口 URL';
 COMMENT ON COLUMN eas_work_widget.dashboard_type IS 'right、left 或者 normal';

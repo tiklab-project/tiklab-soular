@@ -1,21 +1,13 @@
 #application config
 app:
-  name: tiklab-eas
-
-spring:
-  profiles:
-    active: test
+  name: soular
 
 #web config
 server:
   port: 8080
 
-base:
+external:
   url: http://eas-ce.test.tiklab.net
-
-soular:
-  embbed:
-    enable: true
 
 #dal config
 jdbc:
@@ -24,19 +16,7 @@ jdbc:
   username: postgres
   password: darth2020
 
-DATA_HOME: /opt/tiklab/eas-ce
-
-#dfs config
-dfs:
-  server:
-    port: 4000
-    datapath: ${DATA_HOME}/files
-  client:
-    url: 172.10.1.11:4000
-    bucket: ${app.name}
-
-#dfs
-file.path: http://file.test.tiklab.net
+DATA_HOME: /opt/tiklab/tiklab-soular
 
 #dcs config
 dcs:
@@ -50,15 +30,6 @@ dcs:
     database: dcs1
     expire: 7200
 
-#dss config
-dss:
-  server:
-    port: 6001
-    datapath: ${DATA_HOME}/index
-  client:
-    url: 172.10.1.11:6001
-    bucket: ${app.name}
-
 postgresql:
   embbed:
     enable: true
@@ -68,32 +39,3 @@ postgresql:
     username: postgres
     password: darth2020
     address: ${DATA_HOME}/postgresql
-
-#integration config
-homes:
-  address: https://tiklab.net
-
-#plugin config
-plugin:
-  path: ${DATA_HOME}/plugin
-
-#tenant config
-tenant:
-  application: soular
-
-
-#licences config
-licences:
-  path: ${DATA_HOME}/licences
-
-backups:
-  #    time: 0 */1 * * * ?
-  time: 0 0 2 * * ?
-  dir: /data/eas-ce
-
-auth:
-  wechat_suite_id: null
-  wechat_secret: null
-  wechat_token: null
-  wechat_encodingAESKey: null
-

@@ -208,33 +208,33 @@ public class DataImportServiceImpl implements DataImportService {
         }
         updateMessage(15,"用户同步完成。");
 
-        updateMessage(20,"开始同步消息数据...");
-        syncMessageData(database);
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        updateMessage(30,"消息同步完成。");
+        // updateMessage(20,"开始同步消息数据...");
+        // syncMessageData(database);
+        // try {
+        //     Thread.sleep(300);
+        // } catch (InterruptedException e) {
+        //     throw new RuntimeException(e);
+        // }
+        // updateMessage(30,"消息同步完成。");
 
 
-        updateMessage(35,"开始同步日志数据...");
-        syncOplogData(database);
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        updateMessage(50,"日志同步完成。");
-
-        updateMessage(55,"开始同步待办数据...");
-        syncTodoDaskData(database);
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        updateMessage(60,"待办同步完成。");
+        // updateMessage(35,"开始同步日志数据...");
+        // syncOplogData(database);
+        // try {
+        //     Thread.sleep(300);
+        // } catch (InterruptedException e) {
+        //     throw new RuntimeException(e);
+        // }
+        // updateMessage(50,"日志同步完成。");
+        //
+        // updateMessage(55,"开始同步待办数据...");
+        // syncTodoDaskData(database);
+        // try {
+        //     Thread.sleep(300);
+        // } catch (InterruptedException e) {
+        //     throw new RuntimeException(e);
+        // }
+        // updateMessage(60,"待办同步完成。");
 
 
         updateMessage(65,"开始同步用户组数据...");
@@ -554,7 +554,7 @@ public class DataImportServiceImpl implements DataImportService {
         }
 
         if (entityList.isEmpty()){
-            return Collections.emptyList();
+            return new ArrayList<>();
         }
 
         return  BeanMapper.mapList(entityList, modelClass);

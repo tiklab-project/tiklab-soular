@@ -1,8 +1,10 @@
 package io.tiklab.soular.starter.config;
 
 import io.tiklab.dsm.boot.starter.annotation.EnableDsm;
+import io.tiklab.install.spring.boot.starter.EnableInstallServer;
 import io.tiklab.licence.boot.starter.annotation.EnableLicenceServer;
 import io.tiklab.openapi.boot.starter.annotation.EnableOpenApi;
+import io.tiklab.postgresql.spring.boot.starter.EnablePostgresql;
 import io.tiklab.postin.client.EnablePostInClient;
 import io.tiklab.user.boot.starter.annotation.EnableUserServer;
 import io.tiklab.dal.boot.starter.annotation.EnableDal;
@@ -16,7 +18,6 @@ import io.tiklab.privilege.boot.starter.annotation.EnablePrivilegeServer;
 import io.tiklab.security.boot.stater.annotation.EnableSecurityServer;
 import io.tiklab.toolkit.boot.starter.annotation.EnableToolkit;
 import io.tiklab.rpc.boot.starter.annotation.EnableRpc;
-import io.tiklab.postgresql.EnablePostgresql;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,6 +27,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 //platform
 @EnableToolkit
+@EnableInstallServer
 @EnablePostgresql
 @EnableDal
 @EnableDcsServer

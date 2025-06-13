@@ -1,18 +1,11 @@
      #application config
 app:
-  name: tiklab-eas
-  type: ee
-
-spring:
-  profiles:
-    active: local
-  freemarker:
-    checkTemplateLocation: false
+  name: soular
 
 server:
   port: 8080
 
-base:
+external:
   url: http://192.168.10.35:3010
 
 jdbc:
@@ -22,22 +15,6 @@ jdbc:
   password: darth2020
 
 DATA_HOME: ${user.home}/tiklab/tiklab-soular
-
-#dfs config
-dfs:
-  server:
-    enabled: false
-#    mode:server
-    port: 4000
-    datapath: ${DATA_HOME}/files
-  client:
-    url: 172.10.1.11:4000
-    bucket: ${app.name}
-
-
-#dfs
-file:
-  path: http://file.dev.tiklab.net
 
 #dcs
 dcs:
@@ -49,73 +26,13 @@ dcs:
     url: 127.0.0.1:5035
     group: g1
     database: dcs1
-#    expire: 60
     expire: 7200
   app:
     url: 127.0.0.1:5035
     group: g1
     database: app
-#    expire: 604800
-    expire: 60
+    expire: 604800
 
-dss:
-  server:
-    #    enabled: true
-    #    mode:server
-    port: 6000
-    datapath: ${DATA_HOME}/index
-  client:
-    url: 172.10.1.11:6000
-    bucket: ${app.name}
-
-#integration config
-homes:
-  address: http://192.168.10.15:8060
-
-#plugin config
-plugin:
-  path: ${DATA_HOME}/plugin
-
-#tenant config
-tenant:
-  application: soular
-
-soular:
-  embbed:
-    enable: true
-
-postin:
-  scan:
-    package: io.tiklab.soular
-
-backups:
-  time: 0 0 2 * * ?
-  dir: ${DATA_HOME}
-  pgsql:
-    dir: /opt/homebrew/opt/postgresql@15/bin
-  xcode:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xcode
-  xpack:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/xpack
-  dfs:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/dfs
-  other:
-    dir: /Users/zcamy/tiklab/apply_data/eas/backups/other
-  max:
-    hour: 10
-  min:
-    size: 50
 
 postgresql:
   type: local
-
-#licences config
-licences:
-  path: ${DATA_HOME}/licences
-
-#auth:
-#  type: local
-#  wechat_suite_id: null
-#  wechat_secret: null
-#  wechat_token: null
-#  wechat_encodingAESKey: null
